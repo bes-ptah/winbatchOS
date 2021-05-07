@@ -1,6 +1,13 @@
 # WinBatchX
 The home of WinBatchX in github
 
+**UPCOMING RELEASES**
+
+This is the current plan of the next releases. This may change over time by the amount of bugs and the need to fix them.
+Note: After the 16.0 release, we will release even numbered builds that pass only. Odd releases don't exist. 
+
+
+
 **16.0 Notes**
 
 May 7 2021
