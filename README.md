@@ -6,6 +6,41 @@ The home of WinBatchX in github
 This is the current plan of the next releases. This may change over time by the amount of bugs and the need to fix them.
 Note: After the 16.0 release, we will release even numbered builds that pass only. Odd releases don't exist. 
 
+Build 1536 - ACTION.EXE reconfiguration + NI 7.1
+
+Build 1538 - EDGE.EXE Launch
+
+Build 1540 - NOTEPAD.EXE Launch
+
+Build 1542 - PHOTOS.EXE Launch
+
+Build 1544 - SETTINGS.EXE Launch
+
+Build 1546 - CALENDAR.EXE Launch
+
+Build 1548 - Security Update + Bug Fixes
+
+Build 1550 - Bug fixes
+
+Build 1552 - More Security Patches
+
+Build 1554 - Bug Fixes for the NI 7 "library" variables + application fixes
+
+Build 1556 - Rounded Corners Update
+
+Build 1558 - Borderless Windowed Mode Update
+
+Build 1560 - Search Bar Update
+
+Build 1570 - Rounded Corners Update
+
+Build 1580 - 15.5 Update (May)
+
+Build 1590 - Bug Fixes
+
+Build 1600 - 16.0 Update (LTR) (June 11 2021)
+
+# Updates
 
 
 **16.0 Notes**
