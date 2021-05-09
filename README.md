@@ -4,7 +4,10 @@ The home of WinBatchX in github
 **UPCOMING RELEASES**
 
 This is the current plan of the next releases. This may change over time by the amount of bugs and the need to fix them.
-Note: After the 16.0 release, we will release even numbered builds that pass only. Odd releases don't exist. 
+Note: After 16.0 is released, we will release builds differently.
+
+
+
 
 Build 1536 - ACTION.EXE reconfiguration + NI 7.1
 
