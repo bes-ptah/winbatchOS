@@ -19,9 +19,9 @@ Build 1542 - PHOTOS.EXE Launch
 
 Build 1544 - SETTINGS.EXE Launch
 
-Build 1546 - CALENDAR.EXE Launch
+Build 1546 - CALENDAR.EXE, CALCULATOR.EXE and PAINT.EXE launch
 
-Build 1548 - Security Update + Bug Fixes
+Build 1548 - Security Update + SECURITY.EXE
 
 Build 1550 - Bug fixes
 
