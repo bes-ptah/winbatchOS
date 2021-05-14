@@ -7,17 +7,11 @@ This is the current plan of the next releases. This may change over time by the 
 Note: After 16.0 is released, we will release builds differently.
 
 
-Build 1536 - ACTION.EXE reconfiguration + NI 7.1
-
-Build 1538 - EDGE.EXE Launch
-
-Build 1540 - NOTEPAD.EXE Launch
-
 Build 1542 - PHOTOS.EXE Launch
 
 Build 1544 - SETTINGS.EXE Launch
 
-Build 1546 - CALENDAR.EXE, CALCULATOR.EXE and PAINT.EXE launch
+Build 1546 - CALENDAR.EXE, CALCULATOR.EXE and PAINT.EXE launch - NI 8
 
 Build 1548 - Security Update + SECURITY.EXE
 
@@ -130,3 +124,24 @@ Today the BatchWin team has released the BatchWin 15.0 February 2021 Update. Bui
 January 29 2021
 
 BatchWin team has released the BatchWin 15.0 January 2021 Update. This is the first update released to the public. Older releases "5.03 - 7.1" Beta and "8.03 - 12.0" Alpha are in the old.releases page. BatchWin 15.0 January 2021 update does not have extended main support status. There are not much features to this update, but will expand soon.
+
+
+
+
+
+
+# Old Releases
+
+Build 1528 - EDGE.EXE v12.3 + SETTINGS.EXE v1.0 Bug Fixes + PHOTOS.EXE launch
+
+Build 1530 - WGET.EXE, Action Center Update, Compact Startup Manager and PHOTOS.EXE launch
+
+Build 1532 - Double App error fix  Rewrite software update. (Hope it's stable)
+
+Build 1534 - Personalization Update
+
+Build 1536 - ACTION.EXE reconfiguration + NI 7.1
+
+Build 1538 - EDGE.EXE Launch
+
+Build 1540 - NOTEPAD.EXE Launch
