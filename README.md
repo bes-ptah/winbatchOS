@@ -1,6 +1,7 @@
 # WinBatchX
-The home of WinBatchX in github
- 
+What is WinBatchX? 
+
+WinBatchX is an operating system in batch script inside any supported Windows 10 Home or Pro Release. The latest release is 15.4 - The April Update. The latest **stable** build is currently 1544.
 
 # Updates
 
@@ -98,6 +99,7 @@ BatchWin team has released the BatchWin 15.0 January 2021 Update. This is the fi
 # ALL RELEASES & BUILDS
 
 This is the current plan of the next releases. This may change over time by the amount of bugs and the need to fix them.
+
 Note: After 16.0 is released, we will release builds differently.
 
 Build 1528 - EDGE.EXE v12.3 + SETTINGS.EXE v1.0 Bug Fixes + PHOTOS.EXE launch
@@ -141,6 +143,25 @@ Build 1580 - 15.5 Update (May)
 Build 1590 - Bug Fixes
 
 Build 1600 - 16.0 Update (LTR) (June 11 2021)
+
+
+# NI Interface Support
+
+NI 4.5 and under - unsupported.
+
+NI 5 didn't exist. skipped.
+
+NI 6 - Long-Term Release - Until June 1 2021
+
+NI 7 - minor version - July 1 2021
+
+NI 8 - prerelease of 9 - June 2021
+
+NI 9 - Long-Term Release - August 2021
+
+NI 10 - minor version - TBA*
+
+*To be announced
 
 
 
