@@ -7,9 +7,6 @@ This is the current plan of the next releases. This may change over time by the 
 Note: After 16.0 is released, we will release builds differently.
 
 
-> [!WARNING]
-> Build 1544 is stable
-
 Build 1536 - ACTION.EXE reconfiguration + NI 7.1
 
 Build 1538 - EDGE.EXE Launch
