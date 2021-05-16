@@ -136,7 +136,7 @@ Build 1540 - NOTEPAD.EXE Launch
 
 Build 1542 - PHOTOS.EXE Launch
 
-Build 1544 - SETTINGS.EXE Launch
+Build 1544 - SETTINGS.EXE Launch : Last version of NI 7
 
 Build 1546 - CALENDAR.EXE, CALCULATOR.EXE and PAINT.EXE launch - NI 8
 
@@ -146,7 +146,7 @@ Build 1550 - Bug fixes
 
 Build 1552 - More Security Patches
 
-Build 1554 - Bug Fixes for the NI 7 "library" variables + application fixes
+Build 1554 - Bug Fixes
 
 Build 1556 - Rounded Corners Update
 
@@ -154,7 +154,19 @@ Build 1558 - Borderless Windowed Mode Update
 
 Build 1560 - Search Bar Update
 
-Build 1570 - Rounded Corners Update
+Build 1562 - File explorer update
+
+Build 1564 - Bug Fixes
+
+Build 1566 - Bug Fixes
+
+Build 1568 - NI 8.1 Release
+
+Build 1570 - Rounded Corners Update on all buttons
+
+Build 1572 - NI 9.0 Release
+
+Build 1574-78 - NI fixes + NIDTKERNEL.EXE fixes
 
 Build 1580 - 15.5 Update (May)
 
