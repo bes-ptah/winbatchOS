@@ -1,7 +1,17 @@
 # WinBatchX
 What is WinBatchX? 
 
-WinBatchX is an operating system in batch script inside any supported Windows 10 Home or Pro Release. The latest release is 15.4 - The April Update. The latest **stable** build is currently 1544.
+WinBatchX is an operating system in batch script inside any supported Windows 10 Home or Pro Release. The latest release is 15.4 - The April Update. The latest **stable** build is currently 1546.
+
+Branch | Supported Releases
+---------------------|---------------------
+
+Beta Branch | Builds 1542,44,46,48
+---------------------|---------------------
+
+General Releases | Builds 1532,34,36,38,40
+---------------------|---------------------
+
 
 # Notes
 
@@ -12,11 +22,11 @@ May 7 2021
 
 As of here, WinBatchX is releasing the first beta version of 16.0: Build 1540. By May 15, we'll be able to add all the applications into the desktop. The NI (UI) is expected to be finished by June 1st. Then some release candidate(s) will be released to the public if needed. The initial release is expected for June 7th 2021, with support for 3 months. Report any bugs on the GitHub page.
 
-Release | Date
------------- | -------------
-Application Freeze | May 15 2021
-User Interface Freeze | June 1 2021
-Release | June 7 2021
+Release | Date | Finished
+------------ | ------------- | ---
+Application Freeze | May 15 2021 | Build 1546
+User Interface Freeze | June 1 2021 | TBA
+Release | June 7 2021 | TBA
 
 
 Release | Date | Info
