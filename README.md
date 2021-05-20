@@ -199,7 +199,13 @@ NI 8 - prerelease of 9 - June 2021
 
 NI 9 - Long-Term Release - August 2021
 
-NI 10 - minor version - TBA*
+NI 10 - minor version - October 2021
+
+NI 10.1 - first version of WinBatchX was released one year ago.
+
+NI 11 - minor version - NI 12 prerelease
+
+NI 12 - Long-Term Release - December 2021/January 2022
 
 *To be announced
 
