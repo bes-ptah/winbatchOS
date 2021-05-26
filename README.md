@@ -6,10 +6,10 @@ WinBatchX is an operating system in batch script inside any supported Windows 10
 Branch | Supported Releases
 ---------------------|---------------------
 
-Beta Branch | Builds 1542,44,46,48
+Beta Branch | Builds 1544,46,48,50,52,54,56
 ---------------------|---------------------
 
-General Releases | Builds 1532,34,36,38,40
+General Releases | Builds 1532,34,36,38,40,42
 ---------------------|---------------------
 
 
