@@ -34,18 +34,20 @@ Release | Date | Info
 16.0 | June 7 2021 | Initial Release of WinBatchX 16
 16.1 | July 2021 | Bug Fixes
 16.2 | August 2021 | TBA*
-16.3 | September 2021 | TBA*
-16.4 | October 2021 | End of Support
+
+We decided to cut short on 16.3 and .4 because the NI level will be too high. 
 
 *To Be announced
 
 There will be 3 releases each year; one in January, June and November. There are patches after the initial release.
-Relaunching applications into the NI 7 library
 
 
-**May 4 2021**
+**Relaunching applications into the NI 7 library**
+
+May 4 2021
 
 Today we are releasing Build 1538. It includes EDGE.EXE, which is completely brand new with directions on how to use it. As this build stabilizes in Build 1540, we will add more applications that work with the NI 7 library.
+
 
 **NI 6 will stay away from #7**
 
@@ -56,6 +58,7 @@ The NI 6 library variables were revolutionary and solved most of the work for Wi
 **This build has the (not imported) created new apps and the start menu.**
 
 
+
 **WinBatchX Build 1600 - 16.0**
 
 April 30 2021
@@ -63,6 +66,8 @@ April 30 2021
 You're thinking, "too Early?" Well, it's we're also never late with our releases.
 This update will be released to the general public on June 11 2021. It will definitely have more features than The previous update, 6 months ago. This will have at least 20 or more usable apps, if everything goes as planned. There are already 36 files to make WinBatchX work properly. There will be a configuration system, the new-based .htmlbatch coming soon. It will ship with NI 9's library.
 (If everything goes as planned)
+
+
 
 **Announcing WinBatchX Final Build 1526: 15.4**
 
@@ -76,6 +81,8 @@ The version number has been updated. The April Update is now 15.4. The number 4 
 WINBATCHX is still not ready for production use. This is still in the beta stages, as how far we made with the applications. 
 **Who has build 1512 Febuary Update: Tomorrow is the last day of support on that build. Move to a better build of WinBatchX.**
 
+
+
 **April Update will be Build 1526**
 
 April 27 2021
@@ -83,6 +90,8 @@ April 27 2021
 Build 1530 was supposed to be a ton of updates, meaning it will likely be to crash. The April Update has been backwinded to Build 1526, the last stable update. Check it out in the Beta Builds. We're also not sure if WGET.EXE, the download manager wget.exe is not causing this problem. is causing this problem. We might use curl as the download manager.
 **NOTICE: Build 1530 is not supported, even if it is released to the beta branch. (It's for developers)**
 **Build 1530 is now in the old releases branch.**
+
+
 
 **"Wget" will be used as default update manager for Build 1530**
 
