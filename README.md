@@ -130,29 +130,31 @@ This is the current plan of the next releases. This may change over time by the 
 
 Note: After 16.0 is released, we will release builds differently.
 
-Build 1528 - EDGE.EXE v12.3 + SETTINGS.EXE v1.0 Bug Fixes + PHOTOS.EXE launch
+You might see a lot of unsupported releases. The update manager is now moving here, instead of "winbatchx-repository" to fetch updates.
 
-Build 1530 - WGET.EXE, Action Center Update, Compact Startup Manager and PHOTOS.EXE launch
+Build 1528 - unsupported - EDGE.EXE v12.3 + SETTINGS.EXE v1.0 Bug Fixes + PHOTOS.EXE launch
 
-Build 1532 - Double App error fix  Rewrite software update. (Hope it's stable)
+Build 1530 - unsupported -  WGET.EXE, Action Center Update, Compact Startup Manager and PHOTOS.EXE launch
 
-Build 1534 - Personalization Update
+Build 1532 - unsupported -  Double App error fix  Rewrite software update. (Hope it's stable)
 
-Build 1536 - ACTION.EXE reconfiguration + NI 7.1
+Build 1534 - unsupported -  Personalization Update
 
-Build 1538 - EDGE.EXE Launch
+Build 1536 - unsupported -  ACTION.EXE reconfiguration + NI 7.1
 
-Build 1540 - NOTEPAD.EXE Launch
+Build 1538 - unsupported -  EDGE.EXE Launch
 
-Build 1542 - PHOTOS.EXE Launch
+Build 1540 - unsupported -  NOTEPAD.EXE Launch
 
-Build 1544 - SETTINGS.EXE Launch : Last version of NI 7
+Build 1542 - unsupported -  PHOTOS.EXE Launch
 
-Build 1546 - CALENDAR.EXE, CALCULATOR.EXE and PAINT.EXE launch - NI 8
+Build 1544 - unsupported -  SETTINGS.EXE Launch : Last version of NI 7
 
-Build 1548 - Security Update + SECURITY.EXE
+Build 1546 - unsupported -  CALENDAR.EXE, CALCULATOR.EXE and PAINT.EXE launch - NI 8
 
-Build 1550 - Bug fixes
+Build 1548 - unsupported -  Security Update + SECURITY.EXE
+
+Build 1550 - unsupported -  Bug fixes
 
 Build 1552 - More Security Patches
 
