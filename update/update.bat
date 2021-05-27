@@ -1,14 +1,11 @@
 ECHO OFF
-
-
-
 rem 0x0 Supported.
 rem 0x1 Not latest release.
 rem 0x2 Unsupported.
 rem 0x3 Unknown Error.
 
 
-IF %_build%==1558 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
+IF %_build%==1558 set update.exe=0x01 &set update-status-action.exe=0x01 &exit /b
 IF %_build%==1560 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
 IF %_build%==1562 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
 IF %_build%==1564 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
