@@ -13,6 +13,22 @@ General Releases | Builds 1532,34,36,38,40,42
 ---------------------|---------------------
 
 
+# How to install
+WinBatchX is designed to be portable wherever you go. You just need the core files (which is a lot of lightweight applications) and WinBatchX itself.
+1. Click on the latest release on the right. For smaller screens, scroll the bottom of the page, then click on the latest release.
+2. Download the latest version or build from the releases page.
+3. Unzip the file to a destination. This is a .zip file, meaning Windows Explorer can read it. You can use 3rd-Party tools to unzip it.
+4. Click "WinBatchX". It will start up, setting a number of variables while retriving updates. All of the batch files, batch plugins and the update are scanned by the command line from Windows Security. 
+
+5. The Username is "bes" and the Password is "bes". Remember to change this as soon as possible by going to SETTINGS > ACCOUNTS > Change Password. You can change the username too.
+**Changing Usernames and Passwords are only available Builds 1560 and up.
+
+6. You reached the WinBatchX desktop!
+
+NOTE Running WinBatchX as an adminstrator will fail since the file will change directory to the System32.
+NOTE Setup for WinBatchX will come in later builds of 16.1.
+
+
 # Notes
 
 
