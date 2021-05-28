@@ -21,7 +21,8 @@ WinBatchX is designed to be portable wherever you go. You just need the core fil
 4. Click "WinBatchX". It will start up, setting a number of variables while retriving updates. All of the batch files, batch plugins and the update are scanned by the command line from Windows Security. 
 
 5. The Username is "bes" and the Password is "bes". Remember to change this as soon as possible by going to SETTINGS > ACCOUNTS > Change Password. You can change the username too.
-**Changing Usernames and Passwords are only available Builds 1560 and up.
+**Build 1560+ Changing Usernames and Passwords are only available Builds 1560 and up.**
+**Build 1538+: Changing Usernames and Passwords manually can be done by going into SYSTEM > CONFIG.BAT in Windows Explorer.**
 
 6. You reached the WinBatchX desktop!
 
