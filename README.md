@@ -11,7 +11,7 @@ Branch | Supported Releases
 Beta Branch | Builds 1544,46,48,50,52,54,56,58,60,62,64,66; Version 16.0beta5+, 16.0rc1 (b1566)
 ---------------------|---------------------
 
-General Releases | Builds 1526,28,32,34,36,38,40,42; Version 15.2 15.3 15.4 15.5
+General Releases | Builds 1526,28,32,34,36,38,40,42; Version 15.3 (Build 1518, never released), 15.4, 15.5
 ---------------------|---------------------
 
 The how to install winbatchx has been moved to the bottom of the page.
@@ -19,9 +19,14 @@ The how to install winbatchx has been moved to the bottom of the page.
 # Infomation of WinBatchX
 
 
-**16.0 Release**
+**15.2 End of support**
 
-June 7 2021
+June 1 2021
+
+Today, WinBatchX has ended support of the 15.2 Febuary Update. This release was overhauled to extended support due to build 1520, which was unstable. That caused 15.3 to never release. 15.4 also had a similar problem; where build 1530 crashed on start. That started a new, functional interface to come into 15.5. 15.5 will release June 3 2021, before 16.0. 15.5 is expected to be supported throughout June and July before ending in August.
+
+After build 1600, we will release both odd and even numbered builds.
+
 
 **16.0 Notes**
 
