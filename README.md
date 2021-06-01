@@ -16,6 +16,9 @@ General Releases | Builds 1532,34,36,38,40,42
 
 
 # How to install
+
+**NOTE: WinBatchX has removed support for Windows 10 Version 1903. It will continue to work on that version, but know no support is coming for that version.**
+
 WinBatchX is designed to be portable wherever you go. You just need the core files (which is a lot of lightweight applications) and WinBatchX itself.
 1. Click on the latest release on the right. For smaller screens, scroll the bottom of the page, then click on the latest release.
 2. Download the latest version or build from the releases page.
@@ -262,6 +265,8 @@ The WinBatchX Repository Update System. WinBatchX uses wget.exe to download file
 Requires: 
 
 -Windows 10 ~~1903~~, 1909, 2004, 20H2, 21H1, 20H2, 21H1 or any supported release higher than 1909.
+
+- Windows 8.1 Build 9600 is unknown right now.
 
 -Any Windows 10 Supported Insider Builds   
 
