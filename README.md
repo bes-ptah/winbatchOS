@@ -1,46 +1,27 @@
 # WinBatchX
 What is WinBatchX? 
 
-WinBatchX is an operating system in batch script inside any supported Windows 10 Release. The latest release is 15.4 - The April Update. The latest **stable** build is currently 1556.
+WinBatchX is an operating system in batch script inside any supported Windows 10 Release. The latest release is 15.4 - The April Update. The latest **stable** build is currently 1566.
 
 There are no codenames for builds nor releases.
 
 Branch | Supported Releases
 ---------------------|---------------------
 
-Beta Branch | Builds 1544,46,48,50,52,54,56
+Beta Branch | Builds 1544,46,48,50,52,54,56,58,60,62,64,66; Version 16.0beta5+, 16.0rc1 (b1566)
 ---------------------|---------------------
 
-General Releases | Builds 1532,34,36,38,40,42
+General Releases | Builds 1526,28,32,34,36,38,40,42; Version 15.2 15.3 15.4 15.5
 ---------------------|---------------------
 
-
-# How to install
-
-**NOTE: WinBatchX has removed support for Windows 10 Version 1903. It will continue to work on that version, but know no support is coming for that version of Windows 10.**
-
-WinBatchX is designed to be portable wherever you go. You just need the core files (which is a lot of lightweight applications) and WinBatchX itself.
-1. Click on the latest release on the right. For smaller screens, scroll the bottom of the page, then click on the latest release.
-2. Download the latest version or build from the releases page.
-3. Unzip the file to a destination. This is a .zip file, meaning Windows Explorer can read it. You can use 3rd-Party tools to unzip it.
-4. Click "WinBatchX". It will start up, setting a number of variables while retriving updates. All of the batch files, batch plugins and the update are scanned by the command line from Windows Security. 
-
-5. The Username is "bes" and the Password is "bes". Remember to change this as soon as possible by going to SETTINGS > ACCOUNTS > Change Password. You can change the username too.
-
-**Build 1560+ Changing Usernames and Passwords are only available Builds 1560 and up.**
-
-**Build 1538+: Changing Usernames and Passwords manually can be done by going into SYSTEM > CONFIG.BAT in Windows Explorer.**
-
-7. You reached the WinBatchX desktop!
-
-NOTE Running WinBatchX as an adminstrator will fail since the file will change directory to the System32.
-NOTE Setup for WinBatchX will come in later builds of 16.1.
-
+The how to install winbatchx has been moved to the bottom of the page.
 
 # Infomation of WinBatchX
 
 
+**16.0 Release**
 
+June 7 2021
 
 **16.0 Notes**
 
@@ -198,7 +179,7 @@ Build 1554 - Bug Fixes
 
 Build 1556 - Rounded Corners Update
 
-Build 1558 - Borderless Windowed Mode Update
+Build 1558 - ~~Borderless Windowed Mode Update~~ 
 
 Build 1560 - Search Bar Update
 
@@ -208,15 +189,15 @@ Build 1564 - Bug Fixes
 
 Build 1566 - Bug Fixes
 
-Build 1568 - NI 8.1 Release
+Build 1568 - ~~NI 8.1 Release~~ Search Bar Update
 
-Build 1570 - Rounded Corners Update on all buttons
+Build 1570 - ~~Rounded Corners Update on all buttons~~ TBA
 
 Build 1572 - NI 9.0 Release
 
 Build 1574-78 - NI fixes + NIDTKERNEL.EXE fixes
 
-Build 1580 - 15.5 Update (May)
+Build 1580 - 15.5 Update (May) **LAST RELEASE of 15.0, ending the 15.2 version support **
 
 Build 1590 - Bug Fixes
 
@@ -276,4 +257,28 @@ Requires:
  
 
 
+
+
+# How to install
+
+**NOTE: WinBatchX has removed support for Windows 10 Version 1903. It will continue to work on that version, but know no support is coming for that version of Windows 10.**
+
+WinBatchX is designed to be portable wherever you go. You just need the core files (which is a lot of lightweight applications) and WinBatchX itself.
+1. Click on the latest release on the right. For smaller screens, scroll the bottom of the page, then click on the latest release.
+2. Download the latest version or build from the releases page.
+3. Unzip the file to a destination. This is a .zip file, meaning Windows Explorer can read it. You can use 3rd-Party tools to unzip it.
+4. Click "WinBatchX". It will start up, setting a number of variables while retriving updates. All of the batch files, batch plugins and the update are scanned by the command line from Windows Security. 
+5. The password is always "bes". (The owner of WinBatchX's first name)
+
+**Follow these directions if you are on build 1564 or higher**
+5. The Username is "Guest" and the Password is "bes". Remember to change this as soon as possible by going to SETTINGS > ACCOUNTS > Change Password. You can change the username too.
+
+**Build 1560+ Changing Usernames and Passwords are only available Builds 1560 and up.**
+
+**Build 1538+: Changing Usernames and Passwords manually can be done by going into SYSTEM > CONFIG.BAT in Windows Explorer.**
+
+6. You reached the WinBatchX desktop!
+
+NOTE Running WinBatchX as an adminstrator will fail since the file will change directory to the System32 Windows Folder.
+NOTE Setup for WinBatchX will come in later builds of 16.1.
 
