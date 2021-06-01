@@ -37,7 +37,9 @@ NOTE Running WinBatchX as an adminstrator will fail since the file will change d
 NOTE Setup for WinBatchX will come in later builds of 16.1.
 
 
-# Notes
+# Infomation of WinBatchX
+
+
 
 
 **16.0 Notes**
