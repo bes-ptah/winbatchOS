@@ -3,6 +3,8 @@ What is WinBatchX?
 
 WinBatchX is an operating system in batch script inside any supported Windows 10 Release. The latest release is 15.4 - The April Update. The latest **stable** build is currently 1556.
 
+There are no codenames for builds nor releases.
+
 Branch | Supported Releases
 ---------------------|---------------------
 
@@ -44,19 +46,20 @@ As of here, WinBatchX is releasing the first beta version of 16.0: Build 1540. B
 Release | Date | Finished
 ------------ | ------------- | ---
 Application Freeze | May 15 2021 | Build 1546
-User Interface Freeze | June 1 2021 | TBA
-Release | June 7 2021 | TBA
+User Interface Freeze | June 1 2021 | Build 1578
+Release | June 7 2021 | TBA*
 
+*To Be announced
 
 Release | Date | Info
 -----------|-----------|-----------
 16.0 | June 7 2021 | Initial Release of WinBatchX 16
 16.1 | July 2021 | Bug Fixes
-16.2 | August 2021 | TBA*
+16.2 | August 2021 | NI 10
 
-We decided to cut short on 16.3 and .4 because the NI level will be too high. 
+We decided to cut short on 16.3 and 16.4 because development on 17.0 will start early.
 
-*To Be announced
+
 
 There will be 3 releases each year; one in January, June and November. There are patches after the initial release.
 
@@ -219,7 +222,7 @@ Build 1600 - 16.0 Update (LTR) (June 11 2021)
 
 NI 4.5 and under - unsupported.
 
-NI 5 didn't exist. skipped.
+NI 5 didn't exist. skipped. (12.0 Milestone 4 - never existed)
 
 NI 6 - Long-Term Release - Until June 1 2021
 
@@ -229,13 +232,15 @@ NI 8 - prerelease of 9 - June 2021
 
 NI 9 - Long-Term Release - August 2021
 
-NI 10 - minor version - October 2021
+NI 10 - minor version - October 2021 - 16.1 Patch Update
 
 NI 10.1 - first version of WinBatchX was released one year ago.
 
 NI 11 - minor version - NI 12 prerelease
 
-NI 12 - Long-Term Release - December 2021/January 2022
+- Expect lots of new features to come into the desktop!
+
+NI 12 - Long-Term Release - December 2021/January/Febuary/March 2022
 
 *To be announced
 
@@ -249,14 +254,14 @@ The WinBatchX Repository Update System. WinBatchX uses wget.exe to download file
 
 **This repository support will end on June 1 2021. All updates will be redirected to the main "WinBatchX-Operating-System".**
 
-**For older builds (1532-1560) will be marked with error code 0x02- unsupported release.**
+**For older builds (1532-1558) will be marked with error code 0x02- unsupported release.**
 
 **WinBatchX 15.4 (April 2021 Update) did not come with wget.exe. No user will be notified of WinBatchX 16 because it didn't come with it. (We were planing that before Build 1540)**
 
 
 Requires: 
 
--Windows 10 19H1 or 19H2
+-Windows 10 ~~1903~~, 1909, 2004, 20H2, 21H1, 20H2, 21H1 or any supported release higher than 1909.
 
 -Any Windows 10 Supported Insider Builds   
 
