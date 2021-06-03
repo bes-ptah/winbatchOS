@@ -1,8 +1,10 @@
 ECHO OFF
-rem 0x0 Supported.
-rem 0x1 Not latest release.
-rem 0x2 Unsupported.
-rem 0x3 Unknown Error.
+
+rem Exit codes:
+rem 0x00 Supported.
+rem 0x01 Not latest release.
+rem 0x02 Unsupported.
+rem 0x03 Unknown Error.
 
 
 IF %_build%==1558 set update.exe=0x01 &set update-status-action.exe=0x01 &exit /b
