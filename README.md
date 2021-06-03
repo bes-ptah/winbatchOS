@@ -70,6 +70,19 @@ We decided to cut short on 16.3 and 16.4 because development on 17.0 will start 
 There will be 3 releases each year; one in January, June and November. There are patches after the initial release.
 
 
+
+**Update 6/3/2021**More Release Notes
+
+Version | Released | EOR (End of Release Support)
+--|--|--
+16.0 | June 7 2021 | eor at September 21 2021
+16.1 | September 3 2021 | eor at december 3 2021
+16.2 | November 28 2021 | final eor at Febuary 15 2021
+
+
+
+
+
 **Relaunching applications into the NI 7 library**
 
 May 4 2021
