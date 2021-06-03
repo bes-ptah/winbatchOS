@@ -29,6 +29,8 @@ WinBatchX is releasing the 15.5 "June 2021" Update. From now on, the numbers rep
 
 Support is for 5 months, until November 2021.
 
+16.0 is supported for 3 months. At the end of support stage for 16.0, 16.1 will be released with 3 months of support.
+
 
 
 
