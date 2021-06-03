@@ -19,6 +19,19 @@ The how to install winbatchx has been moved to the bottom of the page.
 # Infomation of WinBatchX
 
 
+**15.5 Release**
+
+June 3 2021
+
+***SKIP THIS VERSION IF YOU HAVE VERY LOW DISK SPACE***
+
+WinBatchX is releasing the 15.5 "June 2021" Update. From now on, the numbers represented on the minor release number are not focused on a month. 15.5 has new features, including maintaining applications to work no matter what error happens. The majority of the disk space used are the photos and how big the bmp files are in the "insertbmp" folder. Windowed Mode in WinBatchX is slated for another release. The demo app (no idea why it's in this release) is there for any developer to work on. 16.0 will continue to be released June 7 2021.
+
+Support is for 5 months, until November 2021.
+
+
+
+
 **15.2 End of support**
 
 June 1 2021
