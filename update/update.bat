@@ -22,7 +22,7 @@ IF %_build%==1574 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /
 IF %_build%==1576 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
 IF %_build%==1578 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
 
-rem 16.0 Release
+rem 16.0 Release Notes
 
 rem 16.0 notes
 rem 16.0 release - June      8 2021 - eor at September 21 2021
