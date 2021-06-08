@@ -30,7 +30,7 @@ June 8 2021
 
 *Are we releasing releases too fast? no, because we missed a few bugs opon release to the world.*
 
-We are again late releasing 16.0 due to a few missed bugs. The 16.0 release of WinBatchX is released! This release solves a lot of problems and includes new features. Take a look for "1600-16.0" on the github releases page for more details. The demo app exists still for developers who want to code this version.
+We are again late releasing 16.0 due to a few missed bugs. The 16.0 release of WinBatchX is released! This release solves a lot of problems and includes new features. [Take a look for "1600-16.0" on the github releases page for more details.](https://github.com/bes-ptah/WinBatchX/releases/tag/1600-16.0) . The demo app exists still for developers who want to code this version.
 
 This was moved from the "16.0 Notes" section.
 
