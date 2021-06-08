@@ -59,11 +59,14 @@ There will be 3 releases each year; one in January, June and November. There are
 
 16.0 is supported for 3 months. At the end of support stage for 16.0, 16.1 will be released with 3 months of support, and so on.
 
+
 **Last build for WinBatchX Builds was 1578**
 
-June 7 2021
+June 8 2021
 
-Arriving
+Build 1578 was the last build in the "15" major build number. There were 39 builds in total, 36 stable and 3 unstable builds (not including types of builds).
+
+
 
 
 **15.5 Release**
