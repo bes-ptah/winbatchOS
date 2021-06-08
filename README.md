@@ -38,7 +38,7 @@ Release | Date | Finished
 ------------ | ------------- | ---
 Application Freeze | May 15 2021 | Build 1546
 User Interface Freeze | June 1 2021 | Build 1576
-Release | June 7 2021 | Build 1600
+Release | June 8 2021 | Build 1600
 
 *To Be announced
 
