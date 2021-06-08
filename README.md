@@ -22,7 +22,7 @@ General Releases | Builds 1526 15.4, 15.5, 16.0
 The how to install winbatchx has been moved to the bottom of the page.
 
 # Infomation about WinBatchX
-
+###### Note: This section is a little unorganized right now. Check back later.
 
 **16.0 Release**
 
