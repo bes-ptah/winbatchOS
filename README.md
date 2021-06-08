@@ -7,7 +7,7 @@ There are no codenames for builds nor releases.
 
 **Notice:**
 
-**The Beta Branch has hit the reset button. All builds older than 1578 are now supported through June 11 2021. **
+**The Beta Branch has hit the reset button. All builds older than 1578 are now supported through June 11 2021.**
 
 
 Branch | Supported Releases
