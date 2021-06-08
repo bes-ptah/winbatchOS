@@ -13,10 +13,10 @@ There are no codenames for builds nor releases.
 Branch | Supported Releases
 ---------------------|---------------------
 
-Beta (Known As Insiders) Branch | Builds 1602,1604,1606,1608,1610
+Beta (Known As Insiders) Branch | Builds **builds_insiders**
 ---------------------|---------------------
 
-General Releases | Builds 1526 15.4, 15.5, 16.0
+General Releases | 15.4 (b1526), 15.5 (b1572), 16.0 (b1600)
 ---------------------|---------------------
 
 The how to install winbatchx has been moved to the bottom of the page.
@@ -46,7 +46,7 @@ Release | June 8 2021 | Build 1600
 
 Release | Date | Info
 -----------|-----------|-----------
-16.0 | June 7 2021 | Initial Release of WinBatchX 16
+16.0 | June 8 2021 | Initial Release of WinBatchX 16
 16.1 | August 2021 | Bug Fixes
 16.2 | October 2021 | NI 10 + UI Redo before 17.0
 
