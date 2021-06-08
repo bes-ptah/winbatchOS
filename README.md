@@ -1,20 +1,11 @@
 # WinBatchX
 What is WinBatchX? 
 
-WinBatchX is an operating system in batch script inside any supported Windows 10 Release. The latest release is 15.4 - The April Update. The latest **stable** build is currently 1566.
+WinBatchX is an operating system in batch script inside any supported Windows 10 Release. The latest release is 15.4 - The April Update. The latest **stable** build is currently **LATEST_BUILD_WINBATCHX**.
 
 There are no codenames for builds nor releases.
 
-Branch | Supported Releases
----------------------|---------------------
-
-Beta Branch | Builds 1544,46,48,50,52,54,56,58,60,62,64,66,68,70,72; Version 16.0beta5+, 16.0rc1 (b1566)
----------------------|---------------------
-
-General Releases | Builds 1526,28,32,34,36,38,40,42; Version 15.3 (Build 1518, never released), 15.4, 15.5
----------------------|---------------------
-
-The how to install winbatchx has been moved to the bottom of the page.
+The branch is currently down. Refresh in a few minutes.
 
 # Infomation of WinBatchX
 
