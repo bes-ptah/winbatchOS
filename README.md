@@ -5,9 +5,65 @@ WinBatchX is an operating system in batch script inside any supported Windows 10
 
 There are no codenames for builds nor releases.
 
-The branch is currently down. Refresh in a few minutes.
+**Notice:**
 
-# Infomation of WinBatchX
+**The Beta Branch has hit the reset button. All builds older than 1578 are now supported through June 11 2021. **
+
+
+Branch | Supported Releases
+---------------------|---------------------
+
+Beta (Known As Insiders) Branch | Builds 1602,1604,1606,1608,1610
+---------------------|---------------------
+
+General Releases | Builds 1526 15.4, 15.5, 16.0
+---------------------|---------------------
+
+The how to install winbatchx has been moved to the bottom of the page.
+
+# Infomation about WinBatchX
+
+
+**16.0 Release**
+
+June 8 2021
+
+*Are we releasing releases too fast? no, because we missed a few bugs opon release to the world.*
+
+We are again late releasing 16.0 due to a few missed bugs. The 16.0 release of WinBatchX is released! This release solves a lot of problems and includes new features. Take a look for "1600-16.0" on the github releases page for more details. The demo app exists still for developers who want to code this version.
+
+This was moved from the "16.0 Notes" section.
+
+Release | Date | Finished
+------------ | ------------- | ---
+Application Freeze | May 15 2021 | Build 1546
+User Interface Freeze | June 1 2021 | Build 1576
+Release | June 7 2021 | Build 1600
+
+*To Be announced
+
+**Read Carefully. The dates have changed.**
+
+Release | Date | Info
+-----------|-----------|-----------
+16.0 | June 7 2021 | Initial Release of WinBatchX 16
+16.1 | August 2021 | Bug Fixes
+16.2 | October 2021 | NI 10 + UI Redo before 17.0
+
+17.0 | December 2021 | NI 12
+
+
+
+There will be 3 releases each year; one in January, June and November. There are patches after the initial release.
+
+
+16.0 is supported for 3 months. At the end of support stage for 16.0, 16.1 will be released with 3 months of support, and so on.
+
+**Last build for WinBatchX Builds was 1578**
+
+June 7 2021
+
+Arriving
 
 
 **15.5 Release**
@@ -17,6 +73,8 @@ June 3 2021
 ***SKIP THIS VERSION IF YOU HAVE VERY LOW DISK SPACE***
 
 WinBatchX is releasing the 15.5 "June 2021" Update. From now on, the numbers represented on the minor release number are not focused on a month. 15.5 has new features, including maintaining applications to work no matter what error happens. The majority of the disk space used are the photos and how big the bmp files are in the "insertbmp" folder. Windowed Mode in WinBatchX is slated for another release. The demo app (no idea why it's in this release) is there for any developer to work on. 16.0 will continue to be released June 7 2021.
+
+**EDIT 06/08/2021** | Windowed Mode is expected in 17.0. 
 
 Support is for 5 months, until November 2021.
 
@@ -40,25 +98,10 @@ May 7 2021
 
 As of here, WinBatchX is releasing the first beta version of 16.0: Build 1540. By May 15, we'll be able to add all the applications into the desktop. The NI (UI) is expected to be finished by June 1st. Then some release candidate(s) will be released to the public if needed. The initial release is expected for June 7th 2021, with support for 3 months. Report any bugs on the GitHub page.
 
-Release | Date | Finished
------------- | ------------- | ---
-Application Freeze | May 15 2021 | Build 1546
-User Interface Freeze | June 1 2021 | Build 1578
-Release | June 7 2021 | TBA*
-
-*To Be announced
-
-Release | Date | Info
------------|-----------|-----------
-16.0 | June 7 2021 | Initial Release of WinBatchX 16
-16.1 | July 2021 | Bug Fixes
-16.2 | August 2021 | NI 10
-
-We decided to cut short on 16.3 and 16.4 because development on 17.0 will start early.
+*INFOMATION HERE IS NOW IN THE 16.0 RELEASE*
 
 
 
-There will be 3 releases each year; one in January, June and November. There are patches after the initial release.
 
 
 
