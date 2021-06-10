@@ -13,7 +13,7 @@ There are no codenames for builds nor releases.
 Branch | Supported Releases
 ---------------------|---------------------
 
-Beta (Known As Insiders) Branch | Builds **builds_insiders**
+Beta (Known As Insiders) Branch | Builds **1601,1602**
 ---------------------|---------------------
 
 General Releases | 15.4 (b1526), 15.5 (b1572), 16.0 (b1600)
