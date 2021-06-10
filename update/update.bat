@@ -7,10 +7,10 @@ rem 0x02 Unsupported.
 rem 0x03 Unknown Error.
 
 
-IF %_build%==1558 set update.exe=0x01 &set update-status-action.exe=0x01 &exit /b
-IF %_build%==1560 set update.exe=0x01 &set update-status-action.exe=0x01 &exit /b
-IF %_build%==1562 set update.exe=0x01 &set update-status-action.exe=0x01 &exit /b
-IF %_build%==1564 set update.exe=0x01 &set update-status-action.exe=0x01 &exit /b
+IF %_build%==1558 set update.exe=0x02 &set update-status-action.exe=0x02 &exit /b
+IF %_build%==1560 set update.exe=0x02 &set update-status-action.exe=0x02 &exit /b
+IF %_build%==1562 set update.exe=0x02 &set update-status-action.exe=0x02 &exit /b
+IF %_build%==1564 set update.exe=0x02 &set update-status-action.exe=0x02 &exit /b
 IF %_build%==1566 set update.exe=0x01 &set update-status-action.exe=0x01 &exit /b
 IF %_build%==1568 set update.exe=0x01 &set update-status-action.exe=0x01 &exit /b
 IF %_build%==1570 set update.exe=0x01 &set update-status-action.exe=0x01 &exit /b
