@@ -8,7 +8,7 @@ There are no codenames for builds nor releases.
 **Notice:**
 
 **The Beta Branch has hit the reset button. All builds older than 1578 are now supported through June 11 2021.**
-
+**From now on, we are releasing 2-3 builds every day. Note this might change when 16.1 and 16.2 are released.**
 
 Branch | Supported Releases
 ---------------------|---------------------
@@ -16,10 +16,9 @@ Branch | Supported Releases
 Beta (Known As Insiders) Branch | Builds **1601,1602**
 ---------------------|---------------------
 
-General Releases | 15.4 (b1526), 15.5 (b1572), 16.0 (b1600)
+General Releases | **15.4 (b1526), 15.5 (b1572), 16.0 (b1600)**
 ---------------------|---------------------
 
-The how to install winbatchx has been moved to the bottom of the page.
 
 # Infomation about WinBatchX
 ###### Note: This section is a little unorganized right now. Check back later.
@@ -52,12 +51,11 @@ Release | Date | Info
 
 17.0 | December 2021 | NI 12
 
-
-
 There will be 3 releases each year; one in January, June and November. There are patches after the initial release.
 
-
 16.0 is supported for 3 months. At the end of support stage for 16.0, 16.1 will be released with 3 months of support, and so on.
+
+
 
 
 **Last build for WinBatchX Builds was 1578**
@@ -65,7 +63,6 @@ There will be 3 releases each year; one in January, June and November. There are
 June 8 2021
 
 Build 1578 was the last build in the "15" major build number. There were 39 builds in total, 36 stable and 3 unstable builds (not including types of builds).
-
 
 
 
@@ -261,17 +258,25 @@ Build 1566 - Bug Fixes
 
 Build 1568 - ~~NI 8.1 Release~~ Search Bar Update
 
-Build 1570 - ~~Rounded Corners Update on all buttons~~ TBA
+Build 1570 - ~~Rounded Corners Update on all buttons~~ Bug Fixes
 
-Build 1572 - NI 9.0 Release
+Build ~~1580~~1572 - 15.5 Update (May) **LAST RELEASE of 15.0, ending the 15.2 version support **
 
-Build 1574-78 - NI fixes + NIDTKERNEL.EXE fixes
-
-Build 1580 - 15.5 Update (May) **LAST RELEASE of 15.0, ending the 15.2 version support **
-
-Build 1590 - Bug Fixes
+Build 1574-78 - NI 9 release: fixes-only + NIDTKERNEL.EXE fixes
 
 Build 1600 - 16.0 Update (LTR) (June 11 2021)
+
+Build 1601 - Major Bug Fixes after the 16.0 release
+
+Build 1602 - load icon on startup
+
+Build 1603 - DESK.EXE *reboot* time: get desk.exe working (desk.exe is unstable. Restored 1602's desk.exe.) + load icons on app startup
+
+Build 1604 - icons on the taskbar! NI 9.2
+
+Build 1605 - TBA*
+
+TBA - To be announced (here)!
 
 
 # NI Interface Support
@@ -280,17 +285,17 @@ NI 4.5 and under - unsupported.
 
 NI 5 didn't exist. skipped. (12.0 Milestone 4 - never existed)
 
-NI 6 - Long-Term Release - Until June 1 2021
+NI 6 - **UNSUPPORTED: BUILDS 1500 - 1530** - Long-Term Release - Until June 1 2021
 
 NI 7 - minor version - July 1 2021
 
-NI 8 - prerelease of 9 - June 2021
+NI 8 - prerelease of 9 - ~~June~~July 2021
 
 NI 9 - Long-Term Release - August 2021
 
 NI 10 - minor version - October 2021 - 16.1 Patch Update
 
-NI 10.1 - first version of WinBatchX was released one year ago.
+NI 10.1 - first version of WinBatchX was released one year ago: **WinBatchX 10.0 was released october 2021, with NI 1.1.**
 
 NI 11 - minor version - NI 12 prerelease
 
