@@ -8,12 +8,12 @@ There are no codenames for builds nor releases.
 **Notice:**
 
 **The Beta Branch has hit the reset button. All builds older than 1578 are now supported through June 11 2021.**
-**From now on, we are releasing 2-3 builds every day. Note this might change when 16.1 and 16.2 are released.**
+**From now on, we are releasing 2-3 builds every day.**
 
 Branch | Supported Releases
 ---------------------|---------------------
 
-Beta (Known As Insiders) Branch | Builds **1601,1602**
+Beta (Known As Insiders) Branch | Builds **1601,02,03,04,05**
 ---------------------|---------------------
 
 General Releases | **15.4 (b1526), 15.5 (b1572), 16.0 (b1600)**
@@ -29,7 +29,9 @@ June 8 2021
 
 *Are we releasing releases too fast? no, because we missed a few bugs opon release to the world.*
 
-We are again late releasing 16.0 due to a few missed bugs. The 16.0 release of WinBatchX is released! This release solves a lot of problems and includes new features. [Take a look for "1600-16.0" on the github releases page for more details.](https://github.com/bes-ptah/WinBatchX/releases/tag/1600-16.0) . The demo app exists still for developers who want to code this version.
+We are again late releasing 16.0 due to a few missed bugs. The 16.0 release of WinBatchX is released! This release solves a lot of problems and includes new features. [Take a look for "1600-16.0" on the github releases page for more details.](https://github.com/bes-ptah/WinBatchX/releases/tag/1600-16.0) . The demo app exists still for developers who want to code this version. 
+
+**06/17** | The demo app was removed in Build 1605.
 
 This was moved from the "16.0 Notes" section.
 
