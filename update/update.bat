@@ -11,23 +11,21 @@ IF %_build%==1558 set update.exe=0x02 &set update-status-action.exe=0x02 &exit /
 IF %_build%==1560 set update.exe=0x02 &set update-status-action.exe=0x02 &exit /b
 IF %_build%==1562 set update.exe=0x02 &set update-status-action.exe=0x02 &exit /b
 IF %_build%==1564 set update.exe=0x02 &set update-status-action.exe=0x02 &exit /b
-IF %_build%==1566 set update.exe=0x01 &set update-status-action.exe=0x01 &exit /b
-IF %_build%==1568 set update.exe=0x01 &set update-status-action.exe=0x01 &exit /b
-IF %_build%==1570 set update.exe=0x01 &set update-status-action.exe=0x01 &exit /b
+IF %_build%==1566 set update.exe=0x02 &set update-status-action.exe=0x02 &exit /b
+IF %_build%==1568 set update.exe=0x02 &set update-status-action.exe=0x02 &exit /b
+IF %_build%==1570 set update.exe=0x02 &set update-status-action.exe=0x02 &exit /b
 
-rem 15.5 Update - End of Release (EoR) is November 25 2021
+rem 15.5 Update - Check the EoR (End of Release) in wiki page.
 IF %_build%==1572 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
 
-IF %_build%==1574 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
-IF %_build%==1576 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
-IF %_build%==1578 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
+IF %_build%==1574 set update.exe=0x02 &set update-status-action.exe=0x02 &exit /b
+IF %_build%==1576 set update.exe=0x02 &set update-status-action.exe=0x02 &exit /b
+IF %_build%==1578 set update.exe=0x02 &set update-status-action.exe=0x02 &exit /b
 
 rem 16.0 Release Notes
 
 rem 16.0 notes
-rem 16.0 release - June      8 2021 - eor at September 21 2021
-rem 16.1 release - September 3 2021 - eor at december 3 2021
-rem 16.2 release - November 28 2021 - final eor at Febuary 15 2021
+rem 16.0 release - JCheck the EoR (End of Release) in wiki page.
 IF %_build%==1600 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
 
 IF %_build%==1601 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
