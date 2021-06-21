@@ -10,7 +10,7 @@ The latest **stable release** is **16.0**.
 Branch | Supported Releases
 ---------------------|---------------------
 
-Beta (Known As Insiders) Branch | Builds **1601,02,03,04,05**
+Beta (Known As Insiders) Branch | Builds **1601,02,03,04,05,06,07,08,09**
 ---------------------|---------------------
 
 General Releases | **15.4 (b1526), 15.5 (b1572), 16.0 (b1600)**
