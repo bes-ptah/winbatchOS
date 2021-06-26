@@ -38,6 +38,18 @@ IF %_build%==1607 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /
 IF %_build%==1608 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
 IF %_build%==1609 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
 IF %_build%==1610 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
+IF %_build%==1611 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
+IF %_build%==1612 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
+IF %_build%==1613 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
+IF %_build%==1614 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
+IF %_build%==1615 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
+IF %_build%==1616 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
+IF %_build%==1617 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
+IF %_build%==1618 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
+IF %_build%==1619 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
+IF %_build%==1620 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
+IF %_build%==1621 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
+IF %_build%==1622 set update.exe=0x00 &set update-status-action.exe=0x00 &exit /b
 
 SET update.exe=0x03
 SET update-status-action.exe=0x03
