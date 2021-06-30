@@ -15,9 +15,10 @@
 ***
 
 ##### Branch - All Supported 
-###### Beta Insiders Branch | Builds **1604,05,06,07,08,09,10,11,12**
+### Update 6/30: We will be releasing up to 20 builds a day for the General Releases Branch.
+###### Beta Insiders Branch | Builds **1604,05,06,07,08,09,10,11,12,13,14,15**
 ###### General Releases Branch | Releases **15.4 (b1526), 15.5 (b1572), 16.0 (b1600)** | Builds 1601,1602,1603,1604
-###### Small Resolutions Branch | No Builds. builds will be named "sr%_BUILD%" to show it is small resolution.
+###### Low Resolutions Branch | No Builds. builds will be named "lr%_BUILD%" to show it is small resolution.
 
 ***
 
