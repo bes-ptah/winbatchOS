@@ -3,14 +3,12 @@
 ###### What is WinBatchX? 
 
 ###### WinBatchX is an operating system in batch script inside any supported Windows 8, 8.1, 10 OR 11 Release. The latest release is 15.4 - The April Update. 
- This has *been* been tested with Windows 11.0, Build 22000.51.
+ This has *been* been tested with Windows 11.0, Build 22000.51 and .61.
 ***
 
 ###### The latest **stable** build is currently **1614**.
 
 ###### The latest **stable release** is **16.0**.
-
-###### The "low-resoutlion stable release" will be here soon!
 
 ***
 
