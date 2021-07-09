@@ -44,9 +44,9 @@ IF %_build%==1613 set update.exe=0x01 &set update-status-action.exe=0x01 &del ne
 IF %_build%==1614 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &exit /b
 
 rem Here: Builds 1615 and up will show the changelog about WinBatchX. 
-IF %_build%==1615 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
-IF %_build%==1616 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
-IF %_build%==1617 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
+IF %_build%==1615 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
+IF %_build%==1616 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
+IF %_build%==1617 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
 IF %_build%==1618 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
 IF %_build%==1619 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
 IF %_build%==1620 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
