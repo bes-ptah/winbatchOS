@@ -6,16 +6,16 @@
  This has *been* been tested with Windows 11.0, Build 22000.51 and .61.
 ***
 
-###### The latest **stable** build is currently **1614**.
+###### The latest **stable** build is currently **1619**.
 
 ###### The latest **stable release** is **16.0**.
 
 ***
 
 ##### Branch - All Supported 
-### Update 6/30: We will be releasing up to 20 builds a day for the General Releases Branch.
-###### Beta Insiders Branch | Builds **1604,05,06,07,08,09,10,11,12,13,14,15**
-###### General Releases Branch | Releases **15.4 (b1526), 15.5 (b1572), 16.0 (b1600)** | Builds 1601,1602,1603,1604
+~~Update 6/30: We will be releasing up to 20 builds a day for the General Releases Branch.~~
+###### Beta Insiders Branch | Builds **1615,16,17,18,19**
+###### General Releases Branch | Releases **15.4 (b1526), 15.5 (b1572), 16.0 (b1600)** | Builds 1601,1602,1603,1604,1605,1606,1607,1608,1609,1610,1611,1612,1613,1614
 ###### Low Resolutions Branch | No Builds. builds will be named "lr%_BUILD%" to show it is small resolution.
 
 ***
