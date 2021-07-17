@@ -52,6 +52,12 @@ IF %_build%==1619 set update.exe=0x00 &set update-status-action.exe=0x00 &call n
 IF %_build%==1620 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
 IF %_build%==1621 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
 IF %_build%==1622 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
+IF %_build%==1623 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
+IF %_build%==1624 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
+IF %_build%==1625 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
+IF %_build%==1626 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
+IF %_build%==1627 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
+IF %_build%==1628 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
 
 SET update.exe=0x03
 SET update-status-action.exe=0x03
