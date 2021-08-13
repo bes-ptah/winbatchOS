@@ -3,25 +3,28 @@
 ###### What is WinBatchX? 
 
 ###### WinBatchX is an operating system in batch script inside any supported Windows 8, 8.1, 10 OR 11 Release. The latest release is 15.4 - The April Update. It has more than 100 successful working builds and 3 known working releases.
- This has *been* been tested with Windows 11.0, Build 22000.51 and .61.
+ This has *been* been tested with Windows 11.0, Build 22000.51 and .61 and .120 and .135.
 ***
 
-###### The latest **stable** build is currently **1619**.
+###### The latest **stable** build is currently **1624**.
+###### The latest **developing** build is **1626**.
 
 ###### The latest **stable release** is **16.0**.
+###### The latest **developing release** is **16.1 (not developed yet)**.
 
 ***
 
 ##### Branch - All Supported 
-~~Update 6/30: We will be releasing up to 20 builds a day for the General Releases Branch.~~
-###### Beta Branch | Builds **1615,16,17,18,19**
+###### Beta Branch | Builds **1615,16,17,18,19,20,21,22,23,23,25**
 ###### General Releases Branch | Releases **15.4 (b1526), 15.5 (b1572), 16.0 (b1600)** | Builds 1601,1602,1603,1604,1605,1606,1607,1608,1609,1610,1611,1612,1613,1614
 ###### Low Resolutions Branch | No Builds. builds will be named "lr%_BUILD%" to show it is small resolution.
 
 ***
 
-#### News: 16.1 will be released July ~~5~~ 15 2021 to the world. Build number is 1600.1.
+#### News: 16.1 will be released October ~~5 15~~ 2021 to the world. ~~Build number will be 1600.1.~~
 #### 7/12/21 More Bug Fixes on build 1600 needed to be fixed.
+#### 8/13/21 The final release for 16.1 will be build 1950.
+
 ***
 
 ###### Note: WinBatchX's latest updates has moved to the wiki page. [Click this link to get over there.](https://github.com/bes-ptah/WinBatchX/wiki)
@@ -42,13 +45,13 @@
 
 ##### Requires: 
 
-###### -Windows 10 ~~1903~~, 1909, 2004, 20H2, 21H1, 20H2, 21H1 or any supported release higher than 1909.
+###### -Windows 10 ~~1903~~, 1909, 2004, 20H2, 21H1, 20H2, 21H1 or (21H2 (windows 11 development builds right now)) or any supported release higher than 1909.
 
-###### - Windows 8.1 Build 9600 is unknown right now.
+###### - Windows 8.1 Update 3 is unknown right now.
 
 ###### -Any Windows 10 Supported Insider Builds   
 
-###### -Unknown on 32-bit systems. Works on Intel 64, x64, and AMD64 Processors. ARM64 not tested.
+###### -WILL not support on 32-bit systems for windows 11 as 32-bit does not exist. Works on Intel 64, x64, and AMD64 Processors. ARM64 not tested.
  
 
 
