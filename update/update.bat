@@ -25,7 +25,7 @@ IF %_build%==1578 set update.exe=0x02 &set update-status-action.exe=0x02 &del ne
 rem 16.0 Release Notes
 
 rem 16.0 notes
-rem 16.0 release - JCheck the EoR (End of Release) in wiki page.
+rem 16.0 release - Check the EoR (End of Release) in wiki page.
 IF %_build%==1600 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &exit /b
 
 IF %_build%==1601 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &exit /b
@@ -47,16 +47,16 @@ rem Here: Builds 1615 and up will show the changelog about WinBatchX.
 IF %_build%==1615 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
 IF %_build%==1616 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
 IF %_build%==1617 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
-IF %_build%==1618 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
-IF %_build%==1619 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
-IF %_build%==1620 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
-IF %_build%==1621 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
-IF %_build%==1622 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
-IF %_build%==1623 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
-IF %_build%==1624 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
-IF %_build%==1625 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
-IF %_build%==1626 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
-IF %_build%==1627 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
+IF %_build%==1618 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
+IF %_build%==1619 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
+IF %_build%==1620 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
+IF %_build%==1621 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
+IF %_build%==1622 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
+IF %_build%==1623 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
+IF %_build%==1624 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
+IF %_build%==1625 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
+IF %_build%==1626 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
+IF %_build%==1627 set update.exe=0x00 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
 IF %_build%==1628 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
 
 SET update.exe=0x03
