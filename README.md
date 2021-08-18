@@ -8,8 +8,8 @@
 ###### WinBatchX does not support 32-bit as of 16.0.
 ***
 
-###### The latest **stable** build is currently **1624**.
-###### The latest **developing** build is **1626**.
+###### The latest **stable** build is currently **1626**.  1627 is unstable.
+###### The latest **developing** build is **1628**.
 
 ###### The latest **stable release** is **16.0**.
 ###### The latest **developing release** is **16.1 (not developed yet)**.
@@ -17,7 +17,7 @@
 ***
 
 ##### Branch - All Supported 
-###### Beta Branch | Builds **1615,16,17,18,19,20,21,22,23,23,25**
+###### Beta Branch | Stable Builds **1615,16,17,18,19,20,21,22,23,23,25,26**
 ###### General Releases Branch | Releases **15.4 (b1526), 15.5 (b1572), 16.0 (b1600)** | Builds 1601,1602,1603,1604,1605,1606,1607,1608,1609,1610,1611,1612,1613,1614
 ###### Low Resolutions Branch | No Builds. builds will be named "lr%_BUILD%" to show it is small resolution.
 
