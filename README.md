@@ -8,7 +8,7 @@
 ###### WinBatchX does not support 32-bit as of 16.0.
 ***
 
-###### The latest **stable** build is currently **1626**.  1627 is unstable.
+###### The latest **stable** build is currently **1624**.  1626 was pushed back to 1624 for 17.0 release issues.
 ###### The latest **developing** build is **1628**.
 
 ###### The latest **stable release** is **16.0**.
@@ -18,12 +18,12 @@
 
 ##### Branch - All Supported 
 ###### Beta Branch | Stable Builds **1615,16,17,18,19,20,21,22,23,23,25,26**
-###### General Releases Branch | Releases **15.4 (b1526), 15.5 (b1572), 16.0 (b1600)** | Builds 1601,1602,1603,1604,1605,1606,1607,1608,1609,1610,1611,1612,1613,1614
-###### Low Resolutions Branch | No Builds. builds will be named "lr%_BUILD%" to show it is small resolution.
+###### General Releases Branch | Releases **15.5 (b1572), 16.0 (b1600)** | Builds 1601,1602,1603,1604,1605,1606,1607,1608,1609,1610,1611,1612,1613,1614
+###### Low Resolutions Branch | No Builds. 
 
 ***
 
-#### News: 16.1 will be released October ~~5 15~~ 2021 to the world. ~~Build number will be 1600.1.~~
+#### News: 16.1 will be released October 2021 to the world. 
 #### 7/12/21 More Bug Fixes on build 1600 needed to be fixed.
 #### 8/13/21 The final release for 16.1 will be build 1950.
 
