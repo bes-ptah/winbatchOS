@@ -1,5 +1,4 @@
 # WinBatchX
-#### Home Page Edit 0.5
 ###### What is WinBatchX? 
 
 ###### WinBatchX is an operating system in batch script inside any supported Windows 8, 8.1, 10 OR 11 64-bit Release. The latest release is 16.0 - The 10X Update. It has more than 100 successful working builds and 3 known working releases.
