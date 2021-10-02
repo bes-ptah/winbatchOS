@@ -22,8 +22,7 @@
 
 ***
 
-#### News: 16.1 will be released October 2021 to the world. 
-#### 7/12/21 More Bug Fixes on build 1600 needed to be fixed.
+#### News: 16.1 will be released October 16 2021. A short build beta preview is coming.
 #### 8/13/21 The final release for 16.1 will be build 1950.
 
 ***
