@@ -16,7 +16,7 @@ IF %_build%==1568 set update.exe=0x02 &set update-status-action.exe=0x02 &del ne
 IF %_build%==1570 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &exit /b
 
 rem 15.5 Update - Check the EoR (End of Release) in wiki page.
-IF %_build%==1572 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &exit /b
+IF %_build%==1572 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &exit /b
 
 IF %_build%==1574 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &exit /b
 IF %_build%==1576 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &exit /b
@@ -41,9 +41,9 @@ IF %_build%==1610 set update.exe=0x01 &set update-status-action.exe=0x01 &del ne
 IF %_build%==1611 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &exit /b
 IF %_build%==1612 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &exit /b
 IF %_build%==1613 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &exit /b
-IF %_build%==1614 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &exit /b
+IF %_build%==1614 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &exit /b
 
-rem Here: Builds 1615 and up will show the changelog about WinBatchX. 
+rem Builds 1615 and up will show the changelog about WinBatchX. 
 IF %_build%==1615 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
 IF %_build%==1616 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
 IF %_build%==1617 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
@@ -58,6 +58,20 @@ IF %_build%==1625 set update.exe=0x01 &set update-status-action.exe=0x01 &call n
 IF %_build%==1626 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
 IF %_build%==1627 set update.exe=0x00 &set update-status-action.exe=0x01 &call news.bat &del news.bat &exit /b
 IF %_build%==1628 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
+IF %_build%==1629 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
+IF %_build%==1630 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
+IF %_build%==1631 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &exit /b
+
+
+
+IF %_build%==1632 set update.exe=0x00 &set update-status-action.exe=0x00 &set update-newer-release-message="You are on the latest build." &call news.bat &del news.bat &exit /b
+rem From here: 0x00:   
+rem 0x00:
+rem 0 <--if 0 then no new 
+rem  x0 <-- does nothing.
+rem    0 <-- if 2 then unsupported. if 1 then newer build. if 0 then latest build. if 3 then errored
+
+
 
 SET update.exe=0x03
 SET update-status-action.exe=0x03
