@@ -67,9 +67,9 @@ IF %_build%==1631 set update.exe=0x00 &set update-status-action.exe=0x00 &call n
 IF %_build%==1632 set update.exe=0x00 &set update-status-action.exe=0x00 &set update-newer-release-message="You are on the latest build." &call news.bat &del news.bat &exit /b
 rem From here: 0x00:   
 rem 0x00:
-rem 0 <--if 0 then no new 
-rem  x0 <-- does nothing.
-rem    0 <-- if 2 then unsupported. if 1 then newer build. if 0 then latest build. if 3 then errored
+rem 0 --if 0 then no new 
+rem  x0 -- does nothing.
+rem    0 -- if 2 then unsupported. if 1 then newer build. if 0 then latest build. if 3 then errored
 
 
 
