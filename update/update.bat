@@ -26,7 +26,7 @@ rem 16.0 Release Notes
 
 rem 16.0 notes
 rem 16.0 release - Check the EoR (End of Release) in wiki page.
-IF %_build%==1600 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &exit /b
+IF %_build%==1600 set update.exe=0x01 &set update-status-action.exe=0x00 &del news.bat &exit /b
 
 IF %_build%==1601 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &exit /b
 IF %_build%==1602 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &exit /b
