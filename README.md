@@ -61,11 +61,13 @@
 
 #### **NOTE: WinBatchX has removed support for Windows 10 Version 1903. It will continue to work on that version, but know no support is coming for that version of Windows 10.**
 
-###### WinBatchX is designed to be portable wherever you go. You just need the core files (which is a lot of lightweight applications) and WinBatchX itself.
+###### Last Updated 10-19-21:
+###### WinBatchX is designed to be portable. It does not use your registry or anything. It has it's kind-of own registry with core interface files for a GUI, and WinBatchX.bat itself. WinBatchX.bat has the apps until 17.0, when it retrieves the code from your local NIFS file system inside the system (1630 and lower) folder.
+###### To grab a copy of the latest stable release, Click on the link that says "+ %number% of releases", and the latest release is without a pre-release tag.
 ###### 1. Click on the latest release on the right. For smaller screens, scroll the bottom of the page, then click on the latest release.
 ###### 2. Download the latest version or build from the releases page.
-###### 3. Unzip the file to a destination. This is a .zip file, meaning Windows Explorer can read it. You can use 3rd-Party tools to unzip it.
-###### 4. Click "WinBatchX". It will start up, setting a number of variables while retriving updates. All of the batch files, batch plugins and the update are scanned by the command line from Windows Security. 
+###### 3. Unzip the file to a destination. This is a .zip file, meaning Windows Explorer can read it. If a dialog pops up, click on Windows Explorer, then press ok. It should open it up. You can also use 3rd-Party tools to unzip it.
+###### 4. Click "WinBatchX.bat". It will start up, setting a number of variables while retriving updates. After the updates, all the batch files, iamges, and the update .zip package is scanned by your local Windows Defender / Security command line utility.
 ###### 5. The password is always "bes". (The owner of WinBatchX's first name)
 
 ###### **Follow these directions if you are on build 1564 or higher**
@@ -77,6 +79,6 @@
 
 ###### 6. You reached the WinBatchX desktop!
 
-###### NOTE Running WinBatchX as an adminstrator will fail since the file will change directory to the System32 Windows Folder.
-###### NOTE Setup for WinBatchX will come in later builds of 16.1.
+###### NOTE Running WinBatchX as an adminstrator will fail since the file will change directory to the System32 Windows Folder. You should not move the GUI files and batch plugins to your system32 folder, because it might cause your system to fail.
+###### NOTE Setup for WinBatchX will come in later builds of 16.1, including 17.0.
 
