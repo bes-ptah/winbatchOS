@@ -17,7 +17,7 @@
 
 ##### Branch - All Supported 
 ###### Beta Branch | Stable Builds **1615,16,17,18,19,20,21,22,23,23,25,26**
-###### General Releases Branch | Releases **15.5 (b1572), 16.0 (b1600)** | Builds 1601,1602,1603,1604,1605,1606,1607,1608,1609,1610,1611,1612,1613,1614
+###### General Releases Branch | Releases **15.5 (b1572), 16.0 (b1600)** | Builds 1601,1602,1603,1604,1605 (other builds up to 1615 are unsupported)
 ###### Low Resolutions Branch | No Builds. 
 
 ***
