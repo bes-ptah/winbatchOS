@@ -72,7 +72,7 @@ rem 0 --if 0 then no new
 rem  x0 -- does nothing.
 rem    0 -- if 2 then unsupported. if 1 then newer build. if 0 then latest build. if 3 then errored
 
-
+:: 1630 - 1700: Update Build System
 
 SET update.exe=0x03
 SET update-status-action.exe=0x03
