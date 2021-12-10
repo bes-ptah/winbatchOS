@@ -16,7 +16,7 @@ IF %_build%==1568 set update.exe=0x02 &set update-status-action.exe=0x02 &del ne
 IF %_build%==1570 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &exit /b
 
 rem 15.5 Update - Check the EoR (End of Release) in wiki page.
-IF %_build%==1572 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &exit /b
+IF %_build%==1572 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &exit /b
 
 IF %_build%==1574 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &exit /b
 IF %_build%==1576 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &exit /b
@@ -73,6 +73,10 @@ rem  x0 -- does nothing.
 rem    0 -- if 2 then unsupported. if 1 then newer build. if 0 then latest build. if 3 then errored
 
 :: 1630 - 1700: Update Build System
+
+IF %_build%==1688 set update.exe=0x00 &set update-settings.exe="You are on the latest build." &del readme.md &call news.bat &del news.bat &call patchupdates.bat &del patchupdates.bat &call updateWBX.bat &del updateWBX.bat
+:: 1650+
+:: basically all of these update ".bat" files "print" them to a variable assigned. Then when WinBatchX Settings ask for a update (when you manually press the button) it will redownload and update again. (1700+ for upgrading WBX, not finished)
 
 SET update.exe=0x03
 SET update-status-action.exe=0x03
