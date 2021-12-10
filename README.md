@@ -2,13 +2,14 @@
 ###### What is WinBatchX? 
 
 ###### WinBatchX is an operating system in batch script inside any supported Windows 8, 8.1, 10 OR 11 64-bit Release. The latest release is 16.0 - The 10X Update. It has more than 100 successful working builds and 3 known working releases.
-###### This has been tested to work with Windows 11 and Insider Releases.
+###### This has been tested to work with Windows 11 and Insider Releases and (was just tested) to work with Windows NT Version 6.1 or higher.
  
 ###### WinBatchX does not support 32-bit as of 16.0.
 ***
 
 ###### The latest **stable** build is currently **1624**.
 ###### The latest **developing** build is **1628**.
+###### The latest **Canary** build is **1689**. These releases will be out in the next week or two.
 
 ###### The latest **stable release** is **16.0**.
 ###### The latest **developing release** is **16.1 (not developed yet)**.
@@ -19,9 +20,6 @@
 ###### Beta Branch | Stable Builds **1615,16,17,18,19,20,21,22,23,23,25,26**
 ###### General Releases Branch | Releases **15.5 (b1572), 16.0 (b1600)** | Builds 1601,1602,1603,1604,1605 (other builds up to 1615 are unsupported)
 ###### Low Resolutions Branch | No Builds. 
-
-
-###### Final Note: WinBatchX will not release any more builds or general releases for the year. Next year will restart the building cycle as 17.0 is nearing a somewhat-stable build.
 
 ***
 
@@ -50,9 +48,9 @@
 
 ###### -Windows 10 ~~1903~~, 1909, 2004, 20H2, 21H1, 20H2, 21H1 or (21H2 (windows 11 development builds right now)) or any supported release higher than 1909.
 
-###### - Windows 8.1 Update 3 is unknown right now.
+###### - Windows NT 6.1 and up supported.
 
-###### -Any Windows 10 Supported Insider Builds   
+###### -Any Windows 10/11 Supported Insider Builds   
 
 ###### -WILL not support on 32-bit systems for windows 11 as 32-bit does not exist. Works on Intel 64, x64, and AMD64 Processors. ARM64 not tested.
  
