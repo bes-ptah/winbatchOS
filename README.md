@@ -16,16 +16,12 @@
 ###### The latest **developing release** is **16.1 (not developed yet)**.
 
 ***
-
 ##### Branch - All Supported 
 ###### Beta Branch | Stable Builds **1615,16,17,18,19,20,21,22,23,23,25,26**
 ###### General Releases Branch | Releases **15.5 (b1572), 16.0 (b1600)** | Builds 1601,1602,1603,1604,1605 (other builds up to 1615 are unsupported)
 ###### Low Resolutions Branch | No Builds. 
 
-***
-
-#### News: 16.1 will be released October 16 2021. A short build beta preview is coming.
-#### 8/13/21 The final release for 16.1 will be build 1950.
+###### All releases from WinBatchX are supported if the build is able to take in a update from this repository. This is open-source so even your copy (or your custom build) of WinBatchX is allowed to pull releases from this build.
 
 ***
 
