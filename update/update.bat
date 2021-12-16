@@ -27,6 +27,8 @@ rem 16.0 Release Notes
 rem 16.0 notes
 rem 16.0 release - Check the EoR (End of Release) in wiki page.
 IF %_build%==1600 set update.exe=0x01 &set update-status-action.exe=0x00 &del news.bat &del readme.md &exit /b
+
+rem 16.1 notes
 IF %_build%==1600-1000 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &exit /b
 
 IF %_build%==1601 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &exit /b
@@ -45,6 +47,7 @@ IF %_build%==1613 set update.exe=0x01 &set update-status-action.exe=0x01 &del ne
 IF %_build%==1614 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &exit /b
 
 rem Builds 1615 and up will show the changelog about WinBatchX. 
+rem Pre-release WBX-17 builds!
 IF %_build%==1615 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
 IF %_build%==1616 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
 IF %_build%==1617 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
@@ -63,18 +66,11 @@ IF %_build%==1629 set update.exe=0x00 &set update-status-action.exe=0x00 &call n
 IF %_build%==1630 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &del readme.md &exit /b
 IF %_build%==1631 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &del readme.md &exit /b
 
-
-
+rem Pre-release (but unstable) builds of WBX-17 with WIN11 UI.
 IF %_build%==1632 set update.exe=0x00 &set update-status-action.exe=0x00 &set update-newer-release-message="You are on the latest build." &call news.bat &del news.bat &exit /b
-rem From here: 0x00:   
-rem 0x00:
-rem 0 --if 0 then no new 
-rem  x0 -- does nothing.
-rem    0 -- if 2 then unsupported. if 1 then newer build. if 0 then latest build. if 3 then errored
 
-:: 1630 - 1700: Update Build System
 
-IF %_build%==1688 set update.exe=0x00 &set update-settings.exe="You are on the latest build." &del readme.md &call news.bat &del news.bat &call patchupdates.bat &del patchupdates.bat &call updateWBX.bat &del updateWBX.bat
+IF %_build%==1638 set update.exe=0x00 &set update-settings.exe="You are on the latest build." &del readme.md &call news.bat &del news.bat &call patchupdates.bat &del patchupdates.bat &call updateWBX.bat &del updateWBX.bat
 :: 1650+
 :: basically all of these update ".bat" files "print" them to a variable assigned. Then when WinBatchX Settings ask for a update (when you manually press the button) it will redownload and update again. (1700+ for upgrading WBX, not finished)
 
