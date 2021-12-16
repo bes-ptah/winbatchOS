@@ -77,6 +77,7 @@ IF %_build%==1638 set update.exe=0x00 &set update-settings.exe="You are on the l
 SET update.exe=0x03
 SET update-status-action.exe=0x03
 del news.bat
+del readme.md
 exit /b
 
 
