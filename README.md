@@ -24,6 +24,9 @@
 ###### All releases from WinBatchX are supported if the build is able to take in a update from this repository. This is open-source so even your copy (or your custom build) of WinBatchX is allowed to pull releases from this build.
 
 ***
+###### Bug: Release 16.0 has a update bug: "The directory is not empty" when you press the update button.
+***
+
 
 ###### Note: WinBatchX's latest updates has moved to the wiki page. [Click this link to get over there.](https://github.com/bes-ptah/WinBatchX/wiki)
 
