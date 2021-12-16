@@ -21,7 +21,7 @@
 ###### General Releases Branch | Releases **15.5 (b1572), 16.0 (b1600)** | Builds 1601,1602,1603,1604,1605 (other builds up to 1615 are unsupported)
 ###### Low Resolutions Branch | No Builds. 
 
-###### All releases from WinBatchX are supported if the build is able to take in a update from this repository. This is open-source so even your copy (or your custom build) of WinBatchX is allowed to pull releases from this build.
+###### All releases from WinBatchX are supported for security only if the build is able to take in a update from this repository. This is open-source so even your copy (or your custom build) of WinBatchX is allowed to pull releases from this build.
 
 ***
 ###### Bug: Release 16.0 has a update bug: "The directory is not empty" when you press the update button.
