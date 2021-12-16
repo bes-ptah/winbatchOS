@@ -1,6 +1,6 @@
 # Security Policy
 
-## Supported Versions
+## [ Security ] Supported Versions
 
 While all releases are supported on security releases (ONLY 1530+ up are actually supported because they download updates from this repository) you should go for a more updated release if you're behind the 16.0 release.
 
