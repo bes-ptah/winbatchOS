@@ -28,6 +28,3 @@ EOLR    | Unreleaseable | 15.4   | 1526.12
 
 
 
-# How to install
-Coming soon
-
