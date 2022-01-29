@@ -1,8 +1,11 @@
 # WinBatchX Batch Script OS
 #### WinBatchX is a successful operating system in batch script made for any windows release (NT 6.1+) that shows a working GUI, desktop and buttons inside the command line. Many builds have tested this, over and over for about a year now (Started October 2019, public releases in January 2020). The latest release is 16.0 - The Windows ModernPC (10X) Update.
 
-#### ( ! ) Tested with the latest Insider build; Windows 11 Insider Release Build 22533
-#### ( ! ) We don't support 32-bit operating systems (and possibly ARM64 [not amd64] too!) because some of our GUI programs are 64-bit only. We may make a 32-bit copy of WinBatchX later on.
+###### Our next release, WinBatchX 17.0, will launch somewhere between April and May 2022.
+
+
+#### ( ! ) Tested with the latest Insider build; Windows 11 Insider Release Build 22543
+#### ( ! ) We don't support 32-bit operating systems (and possibly ARM64 [not amd64] too!) because some of our GUI programs are 64-bit only. We may make a 32-bit copy of WinBatchX later on but it depends on if the executables are 32-bit possible.
 
 ***
 Branch | Latest Release | Status
