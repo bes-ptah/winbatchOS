@@ -7,6 +7,11 @@
 #### ( ! ) Tested with the latest Insider build; Windows 11 Insider Release Build 22543
 #### ( ! ) We don't support 32-bit operating systems (and possibly ARM64 [not amd64] too!) because some of our GUI programs are 64-bit only. We may make a 32-bit copy of WinBatchX later on but it depends on if the executables are 32-bit possible.
 
+###### To understand a release number:
+
+###### (build)-(version release)-(beta, dev)(release beta/dev number version)
+###### 1738-16.91-beta0
+
 ***
 Branch | Latest Release | Status
 -|-|-
