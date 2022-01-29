@@ -68,7 +68,7 @@ IF %_build%==1631 set update.exe=0x01 &set update-status-action.exe=0x01 &call n
 IF %_build%==1632 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &del readme.md &exit /b
 
 rem Pre-release (but unstable) builds of WBX-17 with WIN11 UI.
-IF %_build%==1632 set update.exe=0x00 &set update-status-action.exe=0x00 &set update-newer-release-message="You are on the latest build." &call news.bat &del news.bat &exit /b
+IF %_build%==1745 set update.exe=0x00 &set update-status-action.exe=0x00 &set update-newer-release-message="You are on the latest build." &call news.bat &del news.bat &exit /b
 
 
 IF %_build%==1638 set update.exe=0x00 &set update-settings.exe="You are on the latest build." &del readme.md &call news.bat &del news.bat &call patchupdates.bat &del patchupdates.bat &call updateWBX.bat &del updateWBX.bat
