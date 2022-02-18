@@ -4,7 +4,7 @@
 ###### Our next release, WinBatchX 17.0, will launch somewhere between April and May 2022.
 
 
-#### ( ! ) Tested with the latest Insider build; Windows 11 Insider Release Build 22543
+#### ( ! ) Tested with the latest Insider build; Windows 11 Insider Release Build 22557
 #### ( ! ) We don't support 32-bit operating systems (and possibly ARM64 [not amd64] too!) because some of our GUI programs are 64-bit only. We may make a 32-bit copy of WinBatchX later on but it depends on if the executables are 32-bit possible.
 
 ###### To understand a release number:
