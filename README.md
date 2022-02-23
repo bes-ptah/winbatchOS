@@ -1,7 +1,9 @@
 # WinBatchX Batch Script OS
 #### WinBatchX is a successful operating system in batch script made for any windows release (NT 6.1+) that shows a working GUI, desktop and buttons inside the command line. Many builds have tested this, over and over for about a year now (Started October 2019, public releases in January 2020). The latest release is 16.0 - The Windows ModernPC (10X) Update.
 
-###### Our next release, WinBatchX 17.0, will launch somewhere between April and May 2022.
+###### Our next release, WinBatchX 16.1, will be released between Febuary and March 2022.
+
+###### WinBatchX 17.0's builds may be stable between April and May 2022.
 
 
 #### ( ! ) Tested with the latest Insider build; Windows 11 Insider Release Build 22557
@@ -31,8 +33,9 @@ EOL    | Unreleaseable | 15.4, 15.5   | 1526-1570
 **
 From here we will release WinBatchX builds through the "beta" branch. You will need to go there to see the new latest builds after 17.0's release.
 ***
-#### Any build or release NOT stated here is no longer supported for any bug, error or issue. We have updated update.bat to show you that infomation (If you are using b1530+).
-#### Any build above b1530 is always supported for any security issues that arrise, but that might change later on.
+
+#### Any build or release NOT stated here is no longer supported for any bug, error or issue. We have updated update.bat to show you that infomation (If you are using b1558+).
+#### Any build above b1558 is always supported for any security issues that arrise, but that may change later on.
 
 
 #### ( ! ) This is open-source so even your copy (or your custom build) of WinBatchX is allowed to pull releases from this build.
@@ -49,13 +52,13 @@ From here we will release WinBatchX builds through the "beta" branch. You will n
 
 ## [ Security ] Supported Versions
 
-While all releases are supported on security releases (ONLY 1530+ up are actually supported because they download updates from this repository) you should go for a more updated release if you're behind the 16.0 release.
+While all releases are supported on security releases (ONLY 1558+ [not 1530 anymore!]  up are actually supported because they download updates from this repository) you should go for a more updated release if you're behind the 16.0 release.
 
 
 
 ## Reporting a Vulnerability
 
-Make a issue in the issues section. Not accepting vulnerabilies from mail nor discussions, but you can help if you want to by making a pull request (with the update folder)
+Make a issue in the issues section. I'm not accepting vulnerabilies from mail nor discussions, but you can help if you want to by making a pull request (with the update folder)
 
 
 
