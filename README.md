@@ -48,18 +48,6 @@ From here we will release WinBatchX builds through the "beta" branch. You will n
 
 
 
-# Security Policy
-
-## [ Security ] Supported Versions
-
-While all releases are supported on security releases (ONLY 1558+ [not 1530 anymore!]  up are actually supported because they download updates from this repository) you should go for a more updated release if you're behind the 16.0 release.
-
-
-
-## Reporting a Vulnerability
-
-Make a issue in the issues section. I'm not accepting vulnerabilies from mail nor discussions, but you can help if you want to by making a pull request (with the update folder)
-
 
 
 
