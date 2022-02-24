@@ -24,6 +24,10 @@ General Releases    | Stable | 15.5 (b1572), 16.0 (b1600)   | 1600, 1601, 1602.
 
 ***
 
+
+[The beta branch link](https://github.com/bes-ptah/WinBatchX/tree/beta)
+
+
 **Note:
 **
 From here we will release WinBatchX builds through the "beta" branch. You will need to go there to see the new latest builds after 17.0's release.
