@@ -24,7 +24,7 @@ Branch |Status| Releases |Build
 ----|--------|-----|----
 Beta   | Stable (16.1 builds) | -   | 1600.1000 (1600.2525-next, non-released)
 General Releases    | Stable | 15.5 (b1572), 16.0 (b1600)   | 1600, 1601, 1602.
-EOL    | Unreleaseable | 15.4, 15.5   | 1526-1570
+
 
 
 ***
