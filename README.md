@@ -35,7 +35,7 @@ General Releases    | Stable | 15.5 (b1572), 16.0 (b1600)   | 1600, 1601, 1602.
 
 Copy this link to your update system:
 
-https://github.com/bes-ptah/WinBatchX/tree/beta
+https://github.com/bes-ptah/WinBatchX/archive/refs/heads/beta.zip
 
 
 
