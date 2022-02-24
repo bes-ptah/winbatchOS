@@ -14,14 +14,11 @@
 
 
 ***
-Branch |Status| Releases |Build
-----|--------|-----|----
-Beta   | Stable (16.1 builds) | -   | 1600.1000 (1600.2525-next, non-released)
-General Releases    | Stable | 15.5 (b1572), 16.0 (b1600)   | 1600, 1601, 1602.
 
 ***
 Build | Branch | Tied release | Status | Download Link |
 ------|--------|--------------|--------|---------------|
+1600.1000 | Beta | r16.1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1601-16.1/WinBatchXr1600.1000.zip) |
 
 #### As always, only the last 4 builds from the latest beta build are supported for bugs or errored features to be fixed. All builds from 1558-16.1-beta2 and up are always supported for security faults and fixes.
 
