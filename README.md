@@ -12,18 +12,16 @@
 ###### (build)-(version release)-(beta, dev)(release beta/dev number version)
 ###### 1738-16.91-beta0
 
-***
-Branch | Latest Release | Status
--|-|-
-Beta | 1600.1000 (16.1beta1) | Use this build to have Windows 10X builds! (Soon this will be 17.0's beta build.)
-General Release | 16.0(b1600.0) | Use this if you are using it in a production enviroment, or if you want a first-hand try.
+
 ***
 Branch |Status| Releases |Build
 ----|--------|-----|----
 Beta   | Stable (16.1 builds) | -   | 1600.1000 (1600.2525-next, non-released)
 General Releases    | Stable | 15.5 (b1572), 16.0 (b1600)   | 1600, 1601, 1602.
 
-
+***
+Build | Branch | Tied release | Status | Download Link |
+------|--------|--------------|--------|---------------|
 
 #### As always, only the last 4 builds from the latest beta build are supported for bugs or errored features to be fixed. All builds from 1558-16.1-beta2 and up are always supported for security faults and fixes.
 
