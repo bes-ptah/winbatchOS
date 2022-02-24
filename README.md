@@ -9,11 +9,6 @@
 #### ( ! ) Tested with the latest Insider build; Windows 11 Insider Release Build 22557
 #### ( ! ) We don't support 32-bit operating systems because some of our GUI programs are 64-bit only.
 
-###### To understand a release number:
-
-###### (build)-(version release)-(beta, dev)(release beta/dev number version)
-###### 1738-16.91-beta0
-
 ***
 Branch | Latest Release | Status
 -|-|-
@@ -33,6 +28,11 @@ General Releases    | Stable | 15.5 (b1572), 16.0 (b1600)   | 1600, 1601, 1602.
 **
 From here we will release WinBatchX builds through the "beta" branch. You will need to go there to see the new latest builds after 17.0's release.
 ***
+
+###### To understand a release number:
+
+###### (build)-(version release)-(beta, dev)(release beta/dev number version)
+###### 1738-16.91-beta0
 
 #### Any build or release NOT stated here is no longer supported for any bug, error or issue. We have updated update.bat to show you that infomation (If you are using b1558+).
 #### Any build above b1558 is always supported for any security issues that arrise, but that may change later on.
