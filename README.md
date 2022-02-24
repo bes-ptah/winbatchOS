@@ -1,15 +1,13 @@
-# WinBatchX Batch Script OS
-#### WinBatchX is a successful operating system in batch script made for any windows release (NT 6.1+) that shows a working GUI, desktop and buttons inside the command line. Many builds have tested this, over and over for about a year now (Started October 2019, public releases in January 2020). The latest release is 16.0 - The Windows ModernPC (10X) Update.
+#### WinBatchX Beta branch
+###### WinBatchX is a batch script operating system with over 80 working builds. These builds come through this branch first for early developers and testers.
 
-###### Our next release, WinBatchX 16.1, will be released between Febuary and March 2022.
+##### The next release planned is WinBatchX 16.1 (16.0 Update 1) and is planned for release out of the beta channel by March 2022. This next release has 4 planned builds for release.
+##### The next release planned after 16.1 is WinBatchX 17.0 (The Windows 11 Redesign) and is planned for release out of the beta channel by April 2022. This will include over 100 builds to make sure the new GUI interface works.
 
-###### WinBatchX 17.0's builds may be stable between April and May 2022.
 
+###### WinBatchX 17.0's builds may be unstable between March and May 2022.
 
-#### ( ! ) Tested with the latest Insider build; Windows 11 Insider Release Build 22557
-#### ( ! ) We don't support 32-bit operating systems because some of our GUI programs are 64-bit only.
-
-###### To understand a release number:
+###### (!) Important: To understand a release number-
 
 ###### (build)-(version release)-(beta, dev)(release beta/dev number version)
 ###### 1738-16.91-beta0
