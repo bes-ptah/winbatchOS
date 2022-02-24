@@ -25,25 +25,13 @@ General Releases    | Stable | 15.5 (b1572), 16.0 (b1600)   | 1600, 1601, 1602.
 
 
 
-***
+#### As always, only the last 4 builds from the latest beta build are supported for bugs or errored features to be fixed. All builds from 1558-16.1-beta2 and up are always supported for security faults and fixes.
 
-**Note:
-**
-From here we will release WinBatchX builds through the "beta" branch. You will need to go there to see the new latest builds after 17.0's release.
-***
-
-#### Any build or release NOT stated here is no longer supported for any bug, error or issue. We have updated update.bat to show you that infomation (If you are using b1558+).
-#### Any build above b1558 is always supported for any security issues that arrise, but that may change later on.
-
+### Please note: Windows Version 19H1 is not supported now on WinBatchX. Windows 10 Version 1909 or higher are supported.
 
 #### ( ! ) This is open-source so even your copy (or your custom build) of WinBatchX is allowed to pull releases from this build.
-#### ( ! ) If you are using Windows 10 1909 or lower, we don't support those versions offically anymore. These are very old releases and you should most likely update to the most recent WINDOWS version (Windows 10 21H2, or Windows 11 October 2021).
 
-
-#### Note: WinBatchX's latest updates has moved to the wiki page. [Click this link to get over there.](https://github.com/bes-ptah/WinBatchX/wiki)
-#### Note: WinBatchX's Support Page has moved to the wiki page. [Click this link to get over there.](https://github.com/bes-ptah/WinBatchX/wiki/Support-Page)
-***
-
+##### To pull builds into this branch (beta):
 
 
 
