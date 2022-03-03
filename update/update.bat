@@ -27,14 +27,14 @@ rem 16.0 release - Check the EoR (End of Release) in wiki page.
 IF %_build%==1600 set update.exe=0x01 &set update-status-action.exe=0x00 &del news.bat &del readme.md &exit /b
 
 rem 16.1 release beta builds:
-IF %_build%==1600.1000 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md  &del ../SECURITY.md &exit /b
-IF %_build%==1600.1500 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md  &del ../SECURITY.md &exit /b
-IF %_build%==1600.2525 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md  &del ../SECURITY.md &exit /b
-IF %_build%==1600.6000 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md  &del ../SECURITY.md &exit /b
-IF %_build%==1600.7575 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md  &del ../SECURITY.md &exit /b
+IF %_build%==1600.1000 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &exit /b
+IF %_build%==1600.1500 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &exit /b
+IF %_build%==1600.2525 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &exit /b
+IF %_build%==1600.6000 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &exit /b
+IF %_build%==1600.7575 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &exit /b
 
 rem Official 16.1 build (initial too)
-IF %_build%==1600.10000 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md  &del ../SECURITY.md &exit /b
+IF %_build%==1600.10000 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &exit /b
 
 IF %_build%==1601 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &exit /b
 IF %_build%==1602 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &exit /b
