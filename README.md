@@ -6,7 +6,7 @@
 ###### WinBatchX 17.0's builds may be stable between April and May 2022.
 
 
-#### ( ! ) Tested with the latest Insider build; Windows 11 Insider Release Build 22557
+#### ( ! ) Tested with the latest Insider build; Windows 11 Insider Release Build 22616
 #### ( ! ) We don't support 32-bit operating systems because some of our GUI programs are 64-bit only.
 
 ***
