@@ -57,7 +57,7 @@ rem _WBXCore-latestrelease = (message for the latest release, or build)
 rem _WBXCore-updatealert = (message for anything - major bug problems etc)
 IF %_build%==1634 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
-IF %_build%==1635 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=Test-latestrelease" &set "_update-alert=Test-alert=test-alert" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1635 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=Test-latestrelease" &set "_WBXCORE-updatealert=Test-alert=test-alert" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 rem Builds 1670+ are "release testing" WBX-17 builds
 rem Build  1700 is 17.0's release
