@@ -1,8 +1,7 @@
 #### WinBatchX Beta branch
 ###### WinBatchX is a batch script operating system with over 80 working builds. These builds come through this branch first for early developers and testers.
 
-##### The next release planned is WinBatchX 16.1 (16.0 Update 1) and is planned for release out of the beta channel by March 2022. This next release has 4 planned builds for release.
-##### The next release planned after 16.1 is WinBatchX 17.0 (The Windows 11 Redesign) and is planned for release out of the beta channel by April 2022. This will include over 100 builds to make sure the new GUI interface works.
+##### The next release planned is WinBatchX 17.0 (actually skipping 16.1, will be offered as a 'experience update') and is planned for release out of the beta channel by June 2022 (later half of june). This next release has around 40 planned builds for release.
 
 
 ###### WinBatchX 17.0's builds may be unstable between March and May 2022.
