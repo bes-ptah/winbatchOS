@@ -7,81 +7,37 @@ rem 0x02 Unsupported.
 rem 0x03 Unknown Error.
 
 
-IF %_build%==1558 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &del readme.md &exit /b
-IF %_build%==1560 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &del readme.md &exit /b
-IF %_build%==1562 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &del readme.md &exit /b
-IF %_build%==1564 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &del readme.md &exit /b
-IF %_build%==1566 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &del readme.md &exit /b
-IF %_build%==1568 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &del readme.md &exit /b
-IF %_build%==1570 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &del readme.md &exit /b
-
-rem 15.5 Update - Check the EoR (End of Release) in wiki page.
-IF %_build%==1572 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &exit /b
-
-IF %_build%==1574 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &del readme.md &exit /b
-IF %_build%==1576 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &del readme.md &exit /b
-IF %_build%==1578 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &del readme.md &exit /b
-
-rem 16.0 notes
-rem 16.0 release - Check the EoR (End of Release) in wiki page.
-IF %_build%==1600 set update.exe=0x01 &set update-status-action.exe=0x00 &del news.bat &del readme.md &exit /b
-
-rem 16.1 release beta builds:
-IF %_build%==1600.1000 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md  &del ../SECURITY.md &exit /b
-IF %_build%==1600.1500 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md  &del ../SECURITY.md &exit /b
-IF %_build%==1600.2525 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md  &del ../SECURITY.md &exit /b
-IF %_build%==1600.6000 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md  &del ../SECURITY.md &exit /b
-IF %_build%==1600.7575 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md  &del ../SECURITY.md &exit /b
-
-rem Official 16.1 build (initial too)
-IF %_build%==1600.10000 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md  &del ../SECURITY.md &exit /b
-
-IF %_build%==1601 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &exit /b
-IF %_build%==1602 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &exit /b
-IF %_build%==1603 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &exit /b
-IF %_build%==1604 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &exit /b
-IF %_build%==1605 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &exit /b
-IF %_build%==1606 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &exit /b
-IF %_build%==1607 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &exit /b
-IF %_build%==1608 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &exit /b
-IF %_build%==1609 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &exit /b
-IF %_build%==1610 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &exit /b
-IF %_build%==1611 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &exit /b
-IF %_build%==1612 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &exit /b
-IF %_build%==1613 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &exit /b
-IF %_build%==1614 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &exit /b
-
-rem Builds 1615 and up will show the changelog about WinBatchX. 
-rem Pre-release WBX-17 builds!
-IF %_build%==1615 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
-IF %_build%==1616 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
-IF %_build%==1617 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
-IF %_build%==1618 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
-IF %_build%==1619 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
-IF %_build%==1620 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
-IF %_build%==1621 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
-IF %_build%==1622 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
-IF %_build%==1623 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
-IF %_build%==1624 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
-IF %_build%==1625 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
-IF %_build%==1626 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
-IF %_build%==1627 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
-IF %_build%==1628 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
-IF %_build%==1629 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
-IF %_build%==1630 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
-IF %_build%==1631 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &exit /b
-IF %_build%==1632 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &del readme.md &exit /b
-
-rem Pre-release (but unstable) builds of WBX-17 with WIN11 UI.
-IF %_build%==1745 set update.exe=0x00 &set update-status-action.exe=0x00 &set update-newer-release-message="You are on the latest build." &call news.bat &del news.bat &exit /b
+rem WBX-18 possibly? No. Just working on a GUI manager for now with a custom build! (I might even release this to beta)
+rem Also aiming build 2000 for 18.0, going off the build number system (16.0 = 1600, 17.0 = 1700, 18.0 = 2000- see the difference)
+IF %_build%==1758 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1759 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1760 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1761 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1762 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1763 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1764 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1765 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1766 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1767 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1768 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1769 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1770 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1771 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1772 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1773 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1774 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1775 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1776 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1777 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1778 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1779 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1780 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1781 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1782 set "_WBXCORE-update=0" &set "_WBXCORE-latestrelease=You're on the latest build!" &set "_update-alert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 
-IF %_build%==1638 set update.exe=0x00 &set update-settings.exe="You are on the latest build." &del readme.md &call news.bat &del news.bat &call patchupdates.bat &del patchupdates.bat &call updateWBX.bat &del updateWBX.bat
-:: 1650+
-:: basically all of these update ".bat" files "print" them to a variable assigned. Then when WinBatchX Settings ask for a update (when you manually press the button) it will redownload and update again. (1700+ for upgrading WBX, not finished)
 
-SET update.exe=0x03
-SET update-status-action.exe=0x03
+SET "_WBXCORE-update=3"
 del news.bat
 del readme.md
 exit /b
