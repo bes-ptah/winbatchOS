@@ -55,7 +55,6 @@ rem (!) Note the way updates are recieved are now changed.
 rem _WBXCore-update = (0 = up to date) (1 = not up to date) (2 = need to update, out of support) (3 = unknown error)
 rem _WBXCore-latestrelease = (message for the latest release, or build)
 rem _WBXCore-updatealert = (message for anything - major bug problems etc)
-echo test (this is an expermential flag)
 IF %_build%==1634 set "_WBXCore-update=0" &set "_WBXCore-latestrelease=You're on the latest build!" &set "_WBXCore-updatealert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 IF %_build%==1635 set "_WBXCore-update=0" &set "_WBXCore-latestrelease=Test-latestrelease" &set "_WBXCORE-updatealert=Test-alert" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
