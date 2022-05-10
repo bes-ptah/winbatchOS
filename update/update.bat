@@ -7,7 +7,7 @@ rem 0x02 Unsupported.
 rem 0x03 Unknown Error.
 
 
-rem WBX-18 possibly? No. Just working on a GUI manager for now with a custom build! (I might even release this to beta)
+rem WBX-18 possibly? No, its 17.1 + 17.2 builds
 rem Also aiming build 2000 for 18.0, going off the build number system (16.0 = 1600, 17.0 = 1700, 18.0 = 2000- see the difference)
 IF %_build%==1758 set "_WBXCore-update=0" &set "_WBXCore-latestrelease=You're on the latest build!" &set "_WBXCore-updatealert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 IF %_build%==1759 set "_WBXCore-update=0" &set "_WBXCore-latestrelease=You're on the latest build!" &set "_WBXCore-updatealert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
