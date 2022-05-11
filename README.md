@@ -1,4 +1,4 @@
-# WinBatchX Batch Script OS
+# WinBatchX
 #### WinBatchX is a successful operating system in batch script made for any windows release (NT 6.1+) that shows a working GUI, desktop and buttons inside the command line. Over 95 builds have tested this for about a year now. The latest release is 16.0 - The Windows ModernPC (10X) Update. It's update (16.1) is recieved as an 'addon'. The previewing release is the 17.0 release.
 
 #### ( ! ) Tested with the latest Insider build; Windows 11 Insider Release Build 25115
@@ -13,18 +13,18 @@
 ***
 Branch | Latest Release | Status
 -|-|-
-Beta | 1600.1000 (16.1beta1) | Use this build to have Windows 10X builds! (Soon this will be 17.0's beta build.)
+Beta | 1633 (17.0beta1) | These builds are completely unstable, but give it a try!
 General Release | 16.0(b1600.0) | Use this if you are using it in a production enviroment, or if you want a first-hand try.
 ***
 
 
-**All beta releases are public. Superdev releases (canary releases) are not public, but go into the beta releases when they are finished.**
+**All beta releases are public. Superdev releases are not public as of right now. More builds are coming to the betas!**
 
 
-Beta | 16.1 | Builds 1600.1000, 1600.2525 (next, not released yet)
+Beta | 17.0 Beta | Builds 1600-1633
 -|-|-
 
-General Releases | 15.5, 16.0 | 1572, 1600
+General Releases | ~~15.5~~(EOL), 16.0, 16.1 | 1600, 1600.1000
 -|-|-
 
 
