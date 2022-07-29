@@ -1,7 +1,7 @@
 #### WinBatchX Beta branch
 ###### WinBatchX is a batch script operating system with over 80 working builds. These builds come through this branch first for early developers and testers.
 
-##### The next release planned is WinBatchX 17.0 (actually skipping 16.1, will be offered as a 'experience update') and is planned for release out of the beta channel by June 2022 (later half of june). This next release has around 40 planned builds for release.
+##### The next release planned is WinBatchX 17.0 (actually skipping 16.1, will be offered as a 'experience update') and is planned for release out of the beta channel by September 2022 (Q1 of september). This next release has around 70 planned builds for release.
 
 
 ###### WinBatchX 17.0's builds may be unstable in July 2022.
@@ -17,13 +17,13 @@
 Build | Branch | Tied release | Status | Download Link |
 ------|--------|--------------|--------|---------------|
 1600.1000 | Release | r16.1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1601-16.1/WinBatchXr1600.1000.zip) |
-1636 | Beta | r17.beta2 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1632-17.0-dev/WinBatchXBuild1632.zip) |
-1635 | Beta | r17.beta2 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1632-17.0-dev/WinBatchXBuild1632.zip) |
-1634 | Beta | r17.beta1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1632-17.0-dev/WinBatchXBuild1632.zip) |
-1633 | Beta | r17.beta1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1632-17.0-dev/WinBatchXBuild1632.zip) |
+1636 | Beta | r17.beta2 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1636/WinBatchXBuild1636.zip) |
+1635 | Beta | r17.beta2 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1635/WinBatchXBuild1635.zip) |
+1634 | Beta | r17.beta1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1634/WinBatchXBuild1634.zip) |
+1633 | Beta | r17.beta1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1633/WinBatchXBuild1633.zip) |
 1632 | Beta | r17.beta1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1632-17.0-dev/WinBatchXBuild1632.zip) |
-1631 | Beta | r17.0alpha1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1632-17.0-dev/WinBatchXBuild1631.zip) |
-1630 | Beta | r17.0beta1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1632-17.0-dev/WinBatchXBuild1630.zip) |
+1631 | Beta | r17.0alpha1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1631-17.0alpha1/WinBatchXBuild1631.zip) |
+1630 | Beta | r17.0beta1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1630-17.0beta.1/WinBatchXBuild1630.zip) |
 
 *Builds mentioned past 1630 are not listed here.*
 
