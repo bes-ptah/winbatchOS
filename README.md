@@ -4,7 +4,7 @@
 ##### The next release planned is WinBatchX 17.0 (actually skipping 16.1, will be offered as a 'experience update') and is planned for release out of the beta channel by June 2022 (later half of june). This next release has around 40 planned builds for release.
 
 
-###### WinBatchX 17.0's builds may be unstable between March and May 2022.
+###### WinBatchX 17.0's builds may be unstable in July 2022.
 
 ###### (!) Important: To understand a release number-
 
@@ -16,8 +16,12 @@
 ***
 Build | Branch | Tied release | Status | Download Link |
 ------|--------|--------------|--------|---------------|
-1600.1000 | Beta | r16.1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1601-16.1/WinBatchXr1600.1000.zip) |
-1632 | Beta | r16.9dev1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1632-17.0-dev/WinBatchXBuild1632.zip) |
+1600.1000 | Release | r16.1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1601-16.1/WinBatchXr1600.1000.zip) |
+1636 | Beta | r17.beta2 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1632-17.0-dev/WinBatchXBuild1632.zip) |
+1635 | Beta | r17.beta2 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1632-17.0-dev/WinBatchXBuild1632.zip) |
+1634 | Beta | r17.beta1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1632-17.0-dev/WinBatchXBuild1632.zip) |
+1633 | Beta | r17.beta1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1632-17.0-dev/WinBatchXBuild1632.zip) |
+1632 | Beta | r17.beta1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1632-17.0-dev/WinBatchXBuild1632.zip) |
 1631 | Beta | r17.0alpha1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1632-17.0-dev/WinBatchXBuild1631.zip) |
 1630 | Beta | r17.0beta1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1632-17.0-dev/WinBatchXBuild1630.zip) |
 
