@@ -13,7 +13,7 @@
 ***
 Branch | Latest Release | Status
 -|-|-
-Beta | 1633 (17.0beta1) | These builds are completely unstable, but give it a try!
+Beta | 1636 (17.0beta1) | These builds are completely unstable, but give it a try!
 General Release | 16.0(b1600.0) | Use this if you are using it in a production enviroment, or if you want a first-hand try.
 ***
 
@@ -21,7 +21,7 @@ General Release | 16.0(b1600.0) | Use this if you are using it in a production e
 **All beta releases are public. Superdev releases are not public as of right now. More builds are coming to the betas!**
 
 
-Beta | 17.0 Beta | Builds 1600-1633
+Beta | 17.0 Beta | Builds 1600-1637
 -|-|-
 
 General Releases | ~~15.5~~(EOL), 16.0, 16.1 | 1600, 1600.1000
