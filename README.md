@@ -16,7 +16,7 @@
 ***
 Branch | Latest Release | Status
 -|-|-
-Beta | 1636 (17.0beta1) | These builds are completely unstable, but give it a try!
+Beta | 1638 (17.0Dev1) | These builds are getting much more stable, but are in early development.
 General Release | 16.0(b1600.0) | Use this if you are using it in a production enviroment, or if you want a first-hand try.
 Server | Coming soon | These releases are meant for an minimal, running desktop envrioment.
 ***
@@ -24,7 +24,7 @@ Server | Coming soon | These releases are meant for an minimal, running desktop 
 **More builds are being released in beta!**
 
 
-Beta | 17.0 Beta | Builds 1600-1637
+Beta | 17.0 Beta | Builds 1600-1638
 -|-|-
 
 General Releases | ~~15.5, 16.0~~ (EOL), 16.1 | 1600, 1600.1000
