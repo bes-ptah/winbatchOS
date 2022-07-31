@@ -17,11 +17,12 @@
 Build | Branch | Tied release | Status | Download Link |
 ------|--------|--------------|--------|---------------|
 1600.1000 | Release | r16.1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1601-16.1/WinBatchXr1600.1000.zip) |
-1636 | Beta | r17.beta2 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1636/WinBatchXBuild1636.zip) |
-1635 | Beta | r17.beta2 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1635/WinBatchXBuild1635.zip) |
-1634 | Beta | r17.beta1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1634/WinBatchXBuild1634.zip) |
-1633 | Beta | r17.beta1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1633/WinBatchXBuild1633.zip) |
-1632 | Beta | r17.beta1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1632-17.0-dev/WinBatchXBuild1632.zip) |
+1638 | Beta | r17.dev1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1638/WinBatchXBuild1638.zip) |
+1636 | Beta | r17.beta2 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1636/WinBatchXBuild1636.zip) |
+1635 | Beta | r17.beta2 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1635/WinBatchXBuild1635.zip) |
+1634 | Beta | r17.beta1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1634/WinBatchXBuild1634.zip) |
+1633 | Beta | r17.beta1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1633/WinBatchXBuild1633.zip) |
+1632 | Beta | r17.beta1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1632-17.0-dev/WinBatchXBuild1632.zip) |
 1631 | Beta | r17.0alpha1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1631-17.0alpha1/WinBatchXBuild1631.zip) |
 1630 | Beta | r17.0beta1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1630-17.0beta.1/WinBatchXBuild1630.zip) |
 
