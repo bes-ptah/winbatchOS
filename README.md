@@ -1,69 +1,47 @@
-# WinBatchX
-#### WinBatchX is a successful operating system in batch script made for any windows release (NT 6.1+) that shows a working GUI, desktop and buttons inside the command line. Over 100 builds have tested this for about a year now. The latest release is 16.1 - The Windows ModernPC (10X) Update. The previewing release is the 17.0 release.
+#### WinBatchX Beta branch
+###### WinBatchX is a batch script operating system with over 80 working builds. These builds come through this branch first for early developers and testers.
 
-#### ( ! ) Tested with the latest Insider build; Windows 11 Insider Release Build 25174
-#### ( ! ) We don't support 32-bit operating systems because some of our GUI programs are 64-bit only.
-
-#### ( ! ) WinBatchX 16.0 has ended release support and 16.1 is it's sucessor.
+##### The next release planned is WinBatchX 17.0 (actually skipping 16.1, will be offered as a 'experience update') and is planned for release out of the beta channel by September 2022 (Q1 of september). This next release has around 70 planned builds for release.
 
 
-###### Our next release, WinBatchX 17.0, will be released between late June 2022.
+###### WinBatchX 17.0's builds may be unstable in July 2022.
 
-###### WinBatchX 17.0's builds may be stable between April and May 2022.
-
-
-
-***
-Branch | Latest Release | Status
--|-|-
-Alpha | ~1680 (Dev - No Version) | These builds are extremely unstable and have possible ideas on the next WinBatchX Version.
-Beta | 1638 (17.0Dev1) | These builds are getting much more stable, but are in early development.
-General Release | 16.0(b1600.0) | Use this if you are using it in a production enviroment, or if you want a first-hand try.
-Server | Coming soon | These releases are meant for an minimal, running desktop envrioment.
-***
-
-**More builds are being released in beta!**
-*No Builds are currently being released in the Alpha Channel.*
-
-Alpha | 17.0 Alpha | Builds ~1680-1700
--|-|-
-
-Beta | 17.0 Beta | Builds 1600-1638
--|-|-
-
-General Releases | ~~15.5, 16.0~~ (EOL), 16.1 | 1600, 1600.1000
--|-|-
-
-
-***
-
-
-[The beta branch link](https://github.com/bes-ptah/WinBatchX/tree/beta)
-
-
-**Note:
-**
-From here we will release WinBatchX builds through the "beta" branch. You will need to go there to see the new latest builds after 17.0's release.
-***
-
-###### To understand a release number:
+###### (!) Important: To understand a release number-
 
 ###### (build)-(version release)-(beta, dev)(release beta/dev number version)
 ###### 1738-16.91-beta0
 
-#### Any build or release NOT stated here is no longer supported for any bug, error or issue. We have updated update.bat to show you that infomation (If you are using b1558+).
-#### Any build above b1558 is always supported for any security issues that arrise, but that may change later on.
 
+
+***
+Build | Branch | Tied release | Status | Download Link |
+------|--------|--------------|--------|---------------|
+1600.1000 | Release | r16.1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1601-16.1/WinBatchXr1600.1000.zip) |
+1638 | Beta | r17.dev1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1638/WinBatchXBuild1638.zip) |
+1636 | Beta | r17.beta2 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1636/WinBatchXBuild1636.zip) |
+1635 | Beta | r17.beta2 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1635/WinBatchXBuild1635.zip) |
+1634 | Beta | r17.beta1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1634/WinBatchXBuild1634.zip) |
+1633 | Beta | r17.beta1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1633/WinBatchXBuild1633.zip) |
+1632 | Beta | r17.beta1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1632-17.0-dev/WinBatchXBuild1632.zip) |
+1631 | Beta | r17.0alpha1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1631-17.0alpha1/WinBatchXBuild1631.zip) |
+1630 | Beta | r17.0beta1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1630-17.0beta.1/WinBatchXBuild1630.zip) |
+
+*Builds mentioned past 1630 are not listed here.*
+
+
+
+
+#### As always, only the last 4 builds from the latest beta build are supported for bugs or errored features to be fixed. All builds from 1558-16.1-beta2 and up are always supported for security faults and fixes.
+
+### Please note: Windows Version 19H1 is not supported now on WinBatchX. Windows 10 Version 1909 or higher are supported.
 
 #### ( ! ) This is open-source so even your copy (or your custom build) of WinBatchX is allowed to pull releases from this build.
-#### ( ! ) If you are using Windows 10 1909 or lower, we don't support those versions offically anymore. These are very old releases and you should most likely update to the most recent WINDOWS version (Windows 10 21H2, or Windows 11 October 2021).
 
+##### To pull builds into this branch (beta):
 
-#### Note: WinBatchX's latest updates has moved to the wiki page. [Click this link to get over there.](https://github.com/bes-ptah/WinBatchX/wiki)
-#### Note: WinBatchX's Support Page has moved to the wiki page. [Click this link to get over there.](https://github.com/bes-ptah/WinBatchX/wiki/Support-Page)
-***
+Copy this link to your update system:
 
-
+> https://github.com/bes-ptah/WinBatchX/archive/refs/heads/beta.zip
 
 
 
