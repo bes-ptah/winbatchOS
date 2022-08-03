@@ -1,7 +1,7 @@
 # WinBatchX
-#### WinBatchX is a successful operating system in batch script made for any windows release (NT 6.1+) that shows a working GUI, desktop and buttons inside the command line. Over 100 builds have tested this for about a year now. The latest release is 16.0 - The Windows ModernPC (10X) Update. It's update (16.1) is recieved as an 'addon'. The previewing release is the 17.0 release.
+#### WinBatchX is a successful operating system in batch script made for any windows release (NT 6.1+) that shows a working GUI, desktop and buttons inside the command line. Over 100 builds have tested this for about a year now. The latest release is 16.1 - The Windows ModernPC (10X) Update. The previewing release is the 17.0 release.
 
-#### ( ! ) Tested with the latest Insider build; Windows 11 Insider Release Build 25169
+#### ( ! ) Tested with the latest Insider build; Windows 11 Insider Release Build 25174
 #### ( ! ) We don't support 32-bit operating systems because some of our GUI programs are 64-bit only.
 
 #### ( ! ) WinBatchX 16.0 has ended release support and 16.1 is it's sucessor.
@@ -16,13 +16,17 @@
 ***
 Branch | Latest Release | Status
 -|-|-
+Canary | ~1680 (Dev - No Version) | These builds are extremely unstable and have possible ideas on the next WinBatchX Version.
 Beta | 1638 (17.0Dev1) | These builds are getting much more stable, but are in early development.
 General Release | 16.0(b1600.0) | Use this if you are using it in a production enviroment, or if you want a first-hand try.
 Server | Coming soon | These releases are meant for an minimal, running desktop envrioment.
 ***
 
 **More builds are being released in beta!**
+*No Builds are currently being released in the Canary Channel.*
 
+Canary | 17.0 Alpha | Builds ~1680-1700
+-|-|-
 
 Beta | 17.0 Beta | Builds 1600-1638
 -|-|-
