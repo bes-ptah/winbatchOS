@@ -7,7 +7,7 @@ Alpha | Developers | Builds ~1680-1700
 Beta | 17.0 Beta | Builds 1600-1639
 -|-|-
 
-General Releases | ~~15.5, 16.0~~ (EOL), 16.1, 16.2(General Beta) | 1600(16.0), 1600.1000(16.1), 1637(16.2)
+General Releases | 16.1, 16.2(General Beta) | 1600.1000(16.1), 1637(16.2)
 -|-|-
 
 Extra | 14.1 | (There isnt a version build! May use 1400)
