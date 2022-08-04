@@ -49,20 +49,27 @@ IF %_build%==1633 set update.exe=0x00 &set update-status-action.exe=0x00 &call n
 
 
 
+
+
+
+
 rem Builds 1634+ are beta WBX-17 Builds
 rem (!) Note the way updates are recieved are now changed.
 
 rem _WBXCore-update = (0 = up to date) (1 = not up to date) (2 = need to update, out of support) (3 = unknown error)
 rem _WBXCore-updatemessage = (message for the latest release, or build)
 rem _WBXCore-updatealert = (message for anything - major bug problems etc)
-IF %_build%==1634 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=A newer build is in github" &set "_WBXCore-updatealert=This is not the latest build. The latest build is 1636." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1635 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=A newer build is in github" &set "_WBXCore-updatealert=This is not the latest build. The latest build is 1636." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1636 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=A newer build is in github" &set "_WBXCore-updatealert=This is not the latest build. The latest build is 1636." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+
+IF %_build%==1634 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=A newer build is in github" &set "_WBXCore-updatealert=Check WinBatchX's github for more infomation on upgrading WinBatchX!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1635 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=A newer build is in github" &set "_WBXCore-updatealert=Check WinBatchX's github for more infomation on upgrading WinBatchX!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1636 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=A newer build is in github" &set "_WBXCore-updatealert=Check WinBatchX's github for more infomation on upgrading WinBatchX!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 rem 1637 is not a build
 
 rem 17.0 Developer Builds, major changes
-IF %_build%==1638 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date!" &set "_WBXCore-updatealert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1639 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date!" &set "_WBXCore-updatealert=You are on the beta channel. Note- you may get unstable experiences with this build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1638 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Newer Builds are in github!" &set "_WBXCore-updatealert=This is not the latest build. The latest build is 1639." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1639 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date!" &set "_WBXCore-updatealert=You are on the beta channel. Automatic updates are coming soon in 1640" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+
+IF %_build%==1640 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date!" &set "_WBXCore-updatealert=WinBatchX will update your version to the latest!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 rem Builds 1670+ are "release testing" WBX-17 builds
 rem Build  1700 is 17.0's release
