@@ -17,7 +17,7 @@
 Branch | Latest Release | Status
 -|-|-
 Alpha | ~1680 (Dev - No Version) | These builds are extremely unstable and have possible ideas on the next WinBatchX Version.
-Beta | 1638 (17.0Dev1) | These builds are getting much more stable, but are in early development.
+Beta | 1639 (17.0Dev2) | These builds are getting much more stable, but are in early development.
 General Release | 16.0(b1600.0) | Use this if you are using it in a production enviroment, or if you want a first-hand try.
 Server | Coming soon | These releases are meant for an minimal, running desktop envrioment.
 ***
@@ -28,10 +28,10 @@ Server | Coming soon | These releases are meant for an minimal, running desktop 
 Alpha | 17.0 Alpha | Builds ~1680-1700
 -|-|-
 
-Beta | 17.0 Beta | Builds 1600-1638
+Beta | 17.0 Beta | Builds 1600-1639
 -|-|-
 
-General Releases | ~~15.5, 16.0~~ (EOL), 16.1 | 1600, 1600.1000
+General Releases | ~~15.5, 16.0~~ (EOL), 16.1, 16.2(General Beta) | 1600(16.0), 1600.1000(16.1), 1637(16.2)
 -|-|-
 
 
