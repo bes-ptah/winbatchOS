@@ -1,6 +1,9 @@
 cd ..
 cd ..
-IF %_build%==
+IF %_build%==1600.2525 IF %selectsetting%==4 goto :WBX-16.0
+IF %_build%==1637 IF %selectsetting%==4 goto :WBX-16.0
+
+:WBX-16.0
 CALL Button 40 20 f0 "WinBatchX 17.0, NI Version 11" X _Button_Boxes _Button_Hover
 CALL Button 40 13 f0 "Do you want to install a new version?" X _Button_Boxes _Button_Hover
 CALL Button 80 13 f3 "Yes" 85 13 fr "No" X _Button_Boxes _Button_Hover
