@@ -83,7 +83,7 @@ exit /b
 :WBX-16.0
 cd ..
 cd ..
-CALL Button 40 17 f7 "WinBatchX 17.0, NI Version 11" X _Button_Boxes _Button_Hover
+CALL Button 40 17 7f "WinBatchX 17.0, NI Version 11" X _Button_Boxes _Button_Hover
 CALL Button 40 13 f0 "Do you want to install a new version?" X _Button_Boxes _Button_Hover
 CALL Button 100 13 f3 "Yes" 115 13 f4 "No" X _Button_Boxes _Button_Hover
 
