@@ -1,7 +1,7 @@
 cd ..
 cd ..
-IF %_build%==1600.2525 &IF %selectsetting%==4 goto :WBX-16.0
-IF %_build%==1637 &IF %selectsetting%==4 goto :WBX-16.0
+IF %_build%==1600.2525 IF %SETTINGS.EXE%==on goto :WBX-16.0
+IF %_build%==1637 IF %SETTINGS.EXE%==on goto :WBX-16.0
 cd winbatchx-main &cd update &exit /b
 
 :WBX-16.0
