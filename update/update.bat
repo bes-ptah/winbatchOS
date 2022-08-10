@@ -29,7 +29,8 @@ rem 16.1 release:
 IF %_build%==1600.1000 set update.exe=0x00 &set update-status-action.exe=0x02 &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 rem 16.2 release:
-IF %_build%==1600.2525 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &call upgrade.bat &del upgrade.bat &exit /b
+IF %_build%==1600.2525 IF %SETTINGS.EXE%==on goto :WBX-16.0
+IF %_build%==1600.2525 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 
 rem Builds 1601+ are 16.0 updates/fixes + will be added to WBX 16.1
@@ -78,6 +79,20 @@ exit /b
 
 
 
+
+:WBX-16.0
+cd ..
+cd ..
+CALL Button 40 20 f0 "WinBatchX 17.0, NI Version 11" X _Button_Boxes _Button_Hover
+CALL Button 40 13 f0 "Do you want to install a new version?" X _Button_Boxes _Button_Hover
+CALL Button 100 13 f3 "Yes" 105 13 f4 "No" X _Button_Boxes _Button_Hover
+
+GetInput /M %_BOX% %_Button_Boxes%
+SET _SELECTION=%Errorlevel%
+
+IF %Errorlevel%==1 GOTO :UPGRADECORE
+IF %Errorlevel%==2 cd winbatchx-main &cd update &exit /b
+cd winbatchx-main &cd update &exit /b
 
 
 
