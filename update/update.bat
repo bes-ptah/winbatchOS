@@ -43,16 +43,6 @@ IF %_build% GTR 1601 IF %_build% LSS 1632 set update.exe=0x01 &set update-status
 IF %_build%==1633 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 
-
-
-
-
-
-
-
-
-
-
 rem Builds 1634+ are beta WBX-17 Builds
 rem (!) Note the way updates are recieved are now changed.
 
@@ -69,13 +59,15 @@ rem 17.0 Developer Builds, major changes
 IF %_build%==1638 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Newer Builds are in github!" &set "_WBXCore-updatealert=This is not the latest build. The latest build is 1639." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 IF %_build%==1639 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date!" &set "_WBXCore-updatealert=You are on the beta channel. Automatic updates are coming soon in 1640" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
+
+rem 17.0 Release!
 IF %_build%==1640 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date!" &set "_WBXCore-updatealert=WinBatchX will update your version to the latest!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
-rem Builds 1670+ are "release testing" WBX-17 builds
-rem Build  1700 is 17.0's release
+rem Builds 1640+ 
+rem Build  1700 is 17.01's release
 
 
-rem 18.0... Build 2000
+rem 18.0... Unknown right now!
 
 
 
