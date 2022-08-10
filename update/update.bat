@@ -91,8 +91,8 @@ GetInput /M %_BOX% %_Button_Boxes%
 SET _SELECTION=%Errorlevel%
 
 IF %Errorlevel%==1 GOTO :UPGRADECORE
-IF %Errorlevel%==2 cd winbatchx-main &cd update &set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &del upgrade.bat &exit /b
-cd winbatchx-main &cd update &set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %Errorlevel%==2 cd WinBatchX-main &cd update &set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &del upgrade.bat &exit /b
+cd WinBatchX-main &cd update &set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 
 
