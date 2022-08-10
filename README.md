@@ -1,4 +1,6 @@
 > 17.0 is released as a minor version! 17.0 ships with NI kernel 11 and Quantum Kernel 0.5. Use 16.1/16.2 if you're planning to use WinBatchX as stable as possible.
+
+> A recent bug has been found in WinBatchX 16.0, and 16.1 affecting upgrading builds. No fix will be applied, but will be fixed interally via the update system.
 # WinBatchX
 ##### WinBatchX is a successful operating system in batch script made for any windows release (NT 6.1+) that shows a working Windows computer inside the command line. By using GUI tools and image displayers, an operating system was made over the next possible release. Over 100 builds have tested it's usability. We're open sourced, so you can grab your own copy and recode it! The latest release is now 17.0 - Windows 11 Pre-Update. The previewing release is the 17.01 release. The develpoping release is the 18.0 Release (Quantum Kernel is in progress!)
 
