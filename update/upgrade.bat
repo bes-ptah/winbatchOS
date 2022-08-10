@@ -2,6 +2,7 @@ cd ..
 cd ..
 IF %_build%==1600.2525 IF %selectsetting%==4 goto :WBX-16.0
 IF %_build%==1637 IF %selectsetting%==4 goto :WBX-16.0
+cd winbatchx-main &cd update &exit /b
 
 :WBX-16.0
 CALL Button 40 20 f0 "WinBatchX 17.0, NI Version 11" X _Button_Boxes _Button_Hover
