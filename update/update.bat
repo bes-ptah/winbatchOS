@@ -22,15 +22,11 @@ IF %_build%==1576 set update.exe=0x02 &set update-status-action.exe=0x02 &del ne
 IF %_build%==1578 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 rem 16.0 release - Check the EoR (End of Release) in wiki page.
-IF %_build%==1600 set update.exe=0x01 &set update-status-action.exe=0x00 &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1600 set update.exe=0x01 &set update-status-action.exe=0x00 &del news.bat &del readme.md &call upgrade.bat &del upgrade.bat &exit /b
 
 
 rem 16.1 release beta builds:
 IF %_build%==1600.1000 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1600.1500 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1600.2525 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1600.6000 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1600.7575 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 
 rem Build 1600.10000 is the initial 16.1 release (and only)
@@ -38,14 +34,10 @@ IF %_build%==1600.10000 set update.exe=0x00 &set update-status-action.exe=0x00 &
 
 rem Builds 1601+ are 16.0 updates/fixes + will be added to WBX 16.1
 rem Builds 1615+ are prerelease WBX-17 Builds
-IF %_build% GTR 1601 IF %_build% LSS 1632 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
-
-IF %_build%==1633 set update.exe=0x00 &set update-status-action.exe=0x00 &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
-
+IF %_build% GTR 1601 IF %_build% LSS 1633 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 rem Builds 1634+ are beta WBX-17 Builds
 rem (!) Note the way updates are recieved are now changed.
-
 rem _WBXCore-update = (0 = up to date) (1 = not up to date) (2 = need to update, out of support) (3 = unknown error)
 rem _WBXCore-updatemessage = (message for the latest release, or build)
 rem _WBXCore-updatealert = (message for anything - major bug problems etc)
@@ -53,7 +45,8 @@ rem _WBXCore-updatealert = (message for anything - major bug problems etc)
 IF %_build%==1634 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=A newer build is in github" &set "_WBXCore-updatealert=Check WinBatchX's github for more infomation on upgrading WinBatchX!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 IF %_build%==1635 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=A newer build is in github" &set "_WBXCore-updatealert=Check WinBatchX's github for more infomation on upgrading WinBatchX!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 IF %_build%==1636 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=A newer build is in github" &set "_WBXCore-updatealert=Check WinBatchX's github for more infomation on upgrading WinBatchX!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
-rem 1637 is not a build
+
+rem Build 1637 is 16.2's release
 
 rem 17.0 Developer Builds, major changes
 IF %_build%==1638 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Newer Builds are in github!" &set "_WBXCore-updatealert=This is not the latest build. The latest build is 1639." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
@@ -63,11 +56,11 @@ IF %_build%==1639 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Newer Bui
 rem 17.0 Release!
 IF %_build%==1640 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=WinBatchX 17.01 will release with bug fixes!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
-rem Builds 1640+ 
-rem Build  1700 is 17.01's release
+rem Builds 1650 is 17.01's release
+rem Build  1658 is 17.02's release
 
 
-rem 18.0... Unknown right now!
+rem 18.0... Build 2000?
 
 
 
