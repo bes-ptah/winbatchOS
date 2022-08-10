@@ -1,13 +1,14 @@
+
 # WinBatchX
 ##### WinBatchX is a successful operating system in batch script made for any windows release (NT 6.1+) that shows a working Windows computer inside the command line. By using GUI tools and image displayers, an operating system was made over the next possible release. Over 100 builds have tested it's usability. We happen to be open-sourced. The latest release is 16.1 - The Windows ModernPC (10X) Update. The previewing release is the 17.0 release.
 
-Alpha | Developers | Builds ~1680-1700
+Alpha | 0.5 Quantum Kernel | Builds 1650-1660
 -|-|-
 
-Beta | 17.0 Beta | Builds 1600-1639
+Beta | 17.01 | Builds 1641-1650
 -|-|-
 
-General Releases | **17.0** 16.1, 16.2(General Beta) | 1600.1000(16.1), 1637(16.2), 1640(**17.0**)
+General Releases | 17.0 16.1, 16.2(General Beta) | 1600.1000(16.1), 1637(16.2), 1640(17.0)
 -|-|-
 
 Extra | 14.1 | (There isnt a version build! May use 1400)
