@@ -1,4 +1,6 @@
-
+IF %_build%==1600.2525 &IF %SETTINGS.EXE%==on goto :WBX-16.0
+IF %_build%==1638 &IF %SETTINGS.EXE%==on goto :WBX-16.0
+exit /b
 
 :WBX-16.0
 cd ..
