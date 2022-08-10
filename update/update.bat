@@ -29,7 +29,7 @@ rem 16.1 release:
 IF %_build%==1600.1000 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 rem 16.2 release:
-IF %_build%==1600.2525 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &call upgrade.bat &del upgrade.bat &exit /b
+IF %_build%==1600.2525 set update.exe=0x02 &set update-status-action.exe=0x00 &del news.bat &del readme.md &call upgrade.bat &del upgrade.bat &exit /b
 
 
 rem Builds 1601+ are 16.0 updates/fixes + will be added to WBX 16.1
