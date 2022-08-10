@@ -9,6 +9,7 @@ SET _SELECTION=%Errorlevel%
 
 IF %Errorlevel%==1 GOTO :UPGRADECORE
 IF %Errorlevel%==2 cd winbatchx-main &cd update &exit /b
+cd winbatchx-main &cd update &exit /b
 
 
 
