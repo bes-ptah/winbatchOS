@@ -17,18 +17,13 @@ rem 15.5 Update - Check the EoR (End of Release) in wiki page.
 IF %_build%==1572 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 :: Build 1574+ "release testing" stage for 16.0 releases
-IF %_build%==1574 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1576 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1578 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build% GTR 1574 IF %_build% LSS 1578 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 rem 16.0 release - Check the EoR (End of Release) in wiki page.
 IF %_build%==1600 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &del upgrade.bat &exit /b
-
-
-rem 16.1 release:
+rem 16.1 release - Check the EoR (End of Release) in wiki page.
 IF %_build%==1600.1000 set update.exe=0x00 &set update-status-action.exe=0x02 &del news.bat &del readme.md &del upgrade.bat &exit /b
-
-rem 16.2 release:
+rem 16.2 release - Check the EoR (End of Release) in wiki page.
 IF %_build%==1600.2525 IF %selectsetting%==4 goto :WBX-16.0 &del news.bat &del readme.md &del upgrade.bat &exit /b
 IF %_build%==1600.2525 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &del upgrade.bat &exit /b
 
@@ -36,6 +31,11 @@ IF %_build%==1600.2525 set update.exe=0x01 &set update-status-action.exe=0x01 &d
 rem Builds 1601+ are 16.0 updates/fixes + will be added to WBX 16.1
 rem Builds 1615+ are prerelease WBX-17 Builds
 IF %_build% GTR 1601 IF %_build% LSS 1633 set update.exe=0x01 &set update-status-action.exe=0x01 &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+
+
+
+
+
 
 rem Builds 1634+ are beta WBX-17 Builds
 rem (!) Note the way updates are recieved are now changed.
@@ -54,11 +54,13 @@ IF %_build%==1638 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Newer Bui
 IF %_build%==1639 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Newer Builds are in github!" &set "_WBXCore-updatealert=You are on the beta channel. Automatic updates are coming soon in 1640" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 
-rem 17.0 Release!
+rem 17.0 release - Check the EoR (End of Release) in wiki page.
 IF %_build%==1640 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=WinBatchX 17.01 will release with bug fixes!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
-rem Builds 1650 is 17.01's release
+rem Build  1650 is 17.01's release
 rem Build  1658 is 17.02's release
+
+IF %_build%==1660 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=WinBatchX 17.01 will release with bug fixes!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 
 rem 18.0... Build 2000?
