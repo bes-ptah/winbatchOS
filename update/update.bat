@@ -18,7 +18,7 @@ IF %_build%==1572 set update.exe=0x01 &set update-status-action.exe=0x01 &del ne
 
 :: Build 1574+ "release testing" stage for 16.0 releases
 IF %_build% GTR 1574 IF %_build% LSS 1578 set update.exe=0x02 &set update-status-action.exe=0x02 &del news.bat &del readme.md &del upgrade.bat &exit /b
-
+echo test
 rem 16.0 release - Check the EoR (End of Release) in wiki page.
 IF %_build%==1600 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &del upgrade.bat &exit /b
 rem 16.1 release - Check the EoR (End of Release) in wiki page.
@@ -27,7 +27,7 @@ rem 16.2 release - Check the EoR (End of Release) in wiki page.
 IF %_build%==1600.2525 IF %selectsetting%==4 goto :WBX-16.0 &del news.bat &del readme.md &del upgrade.bat &exit /b
 IF %_build%==1600.2525 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &del upgrade.bat &exit /b
 
-echo test
+
 
 rem Builds 1601+ are 16.0 updates/fixes + will be added to WBX 16.1
 rem Builds 1615+ are prerelease WBX-17 Builds
