@@ -24,7 +24,7 @@ IF %_build%==1600 set update.exe=0x01 &set update-status-action.exe=0x01 &del ne
 rem 16.1 release - Check the EoR (End of Release) in wiki page.
 IF %_build%==1600.1000 set update.exe=0x00 &set update-status-action.exe=0x02 &del news.bat &del readme.md &del upgrade.bat &exit /b
 rem 16.2 release - Check the EoR (End of Release) in wiki page.
-::IF %_build%==1600.2525 IF %selectsetting%==4 goto :WBX-16.0 &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1600.2525 IF %selectsetting%==4 goto :WBX-16.0 &del news.bat &del readme.md &del upgrade.bat &exit /b
 IF %_build%==1600.2525 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 
@@ -93,7 +93,7 @@ CALL Button 100 13 f3 "Yes" 115 13 f4 "No" X _Button_Boxes _Button_Hover
 GetInput /M %_BOX% %_Button_Boxes%
 SET _SELECTION=%Errorlevel%
 
-IF %Errorlevel%==1 GOTO :UPGRADECORE
+IF %Errorlevel%==1 goto :WBX-16.0
 IF %Errorlevel%==2 cd WinBatchX-main &cd update &set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &del upgrade.bat &exit /b
 cd WinBatchX-main &cd update &set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &del upgrade.bat &exit /b
 
