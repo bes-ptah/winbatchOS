@@ -64,7 +64,17 @@ IF %_build%==1640 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up
 rem Build  1650 is 17.01's release
 rem Build  1658 is 17.02's release
 
-IF %_build%==1660 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=WinBatchX 17.01 will release with bug fixes!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+
+
+
+
+
+rem QUANTUM KERNEL 0.5, WINBATCHX 18
+IF %_build%==1660 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Auto-installation can happen start WBX-1665." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1661 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=Upgrade available" &set "_WBXCore-updatealert=Auto-installation can happen start WBX-1665." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1662 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Auto-installation can happen start WBX-1665." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1663 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Auto-installation can happen start WBX-1665." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1664 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Auto-installation can happen start WBX-1665." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 
 rem 18.0... Build 2000?
