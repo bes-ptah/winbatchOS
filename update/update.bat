@@ -6,8 +6,6 @@ rem 0x01 Not latest release.
 rem 0x02 Unsupported.
 rem 0x03 Unknown Error.
 
-
-
 rem 15.6 release - EoR January 2023
 IF %_build%==1582 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &del upgrade.bat &exit /b
 
@@ -27,20 +25,10 @@ rem 18.0 release - Check the EoR (End of Release) in wiki page.
 rem (!) just a random number, do not expect that number
 IF %_build%==1800 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=For more infomation, open widgets." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
-
 rem Exit codes: (for 17.0ER- dev)
 rem _WBXCore-update = (0 = up to date) (1 = not up to date) (2 = need to update, out of support) (3 = unknown error)
 rem _WBXCore-updatemessage = (message for the latest release, or build)
 rem _WBXCore-updatealert = (message for anything - major bug problems etc)
-
-
-
-
-
-
-
-
-
 
 rem QUANTUM KERNEL 0.5, WINBATCHX 18
 IF %_build%==1660 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Auto-installation can happen starting WBX-1665." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
@@ -48,14 +36,6 @@ IF %_build%==1661 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=Upgrade a
 IF %_build%==1662 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Auto-installation can happen starting WBX-1665." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 IF %_build%==1663 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Auto-installation can happen starting WBX-1665." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 IF %_build%==1664 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Auto-installation can happen starting WBX-1665." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
-
-
-rem 18.0... Build 2000?
-
-
-
-
-
 
 SET update.exe=0x02
 SET update-status-action.exe=0x02
@@ -66,11 +46,6 @@ del news.bat
 del upgrade.bat
 del readme.md
 exit /b
-
-
-
-
-
 
 :WBX-16.0
 cd ..
@@ -85,6 +60,3 @@ SET _SELECTION=%Errorlevel%
 IF %Errorlevel%==1 upgrade.bat
 IF %Errorlevel%==2 cd WinBatchX-main &cd update &set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &del upgrade.bat &exit /b
 cd WinBatchX-main &cd update &set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &del upgrade.bat &exit /b
-
-
-
