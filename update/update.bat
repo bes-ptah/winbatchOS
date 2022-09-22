@@ -47,7 +47,7 @@ del upgrade.bat
 del readme.md
 exit /b
 
-:WBX-16.0
+:WBX-UPGRADE
 cd ..
 cd ..
 CALL Button 40 17 7f "WinBatchX 17.0, NI Version 11" X _Button_Boxes _Button_Hover
