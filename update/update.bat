@@ -17,12 +17,11 @@ IF %_build%==1600.1000 set update.exe=0x00 &set update-status-action.exe=0x02 &d
 
 rem 16.2 release - Check the EoR (End of Release) in wiki page.
 IF %_build%==1641 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1641.100 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1641.200 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &del upgrade.bat &exit /b
 
-IF %_build%==1641 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &del upgrade.bat &exit /b
-
-IF %_build%==1641 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &del upgrade.bat &exit /b
-
-IF %_build%==1641 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &del upgrade.bat &exit /b
+rem FINAL 16.2 release:
+IF %_build%==1641.1000 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 rem 17.0 release - Check the EoR (End of Release) in wiki page.
 IF %_build%==1640 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=For more infomation, open widgets." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
