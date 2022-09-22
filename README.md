@@ -1,4 +1,4 @@
-> The new website! https://sites.google.com/view/winbatchx/home
+> [The new website!](https://sites.google.com/view/winbatchx/home)
 
 # WinBatchX
 ##### WinBatchX is a successful operating system in batch script made for any windows release (NT 6.1+) that shows a working Windows computer inside the command line. By using GUI tools and image displayers, an operating system was made over the next possible release. Over 100 builds have tested it's usability. We're open sourced, so you can grab your own copy and recode it! The latest release is now 17.0 - Windows 11 Pre-Update. The previewing release is the 17.01 release. The develpoping release is the 18.0 Release (Quantum Kernel is in progress!)
