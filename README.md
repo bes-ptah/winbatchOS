@@ -8,15 +8,15 @@
 Alpha | 0.5 Quantum Kernel | Builds 1701+
 -|-|-
 
-Beta | 17.01 | Builds 1641-1650
+Beta | 16.2 | Builds 1641-1650
 -|-|-
-Beta | 17.02 | Builds 1650-1660
+Beta | 15.6 | Builds 1582-1598
 
 
 General Releases | 17.0(minor), 16.1, 16.2(General Beta) | 1600.1000(16.1), 1637(16.2), 1640(17.0)
 -|-|-
 
-Server | 1.0 | Coming soon?
+Server | 18.S | 1651-1659
 -|-|-
 
 #### ( ! ) Tested with the latest Insider build; Windows 11 Insider Release Build 25197
@@ -30,8 +30,8 @@ Server | 1.0 | Coming soon?
 ***
 Branch | Latest Release | Status
 -|-|-
-Alpha | 1701+ (Dev - No Version) | These builds are extremely unstable and have possible ideas on the next WinBatchX Version.
-Beta | 1641 (17.01beta1) | These builds are getting much more stable, but are in early development.
+Alpha | 1660+ (Dev - No Version) | These builds are extremely unstable and have possible ideas on the next WinBatchX Version.
+Beta | 1641 (16.2beta) | These builds are getting much more stable, but are in early development.
 General Release | 16.1(b1600.1000) | Use this if you are using it in a production enviroment, or if you want a first-hand try.
 Server | Coming soon | These releases are meant for an minimal, running desktop envrioment.
 ***
