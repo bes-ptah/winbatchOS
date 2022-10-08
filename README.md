@@ -1,11 +1,10 @@
 > [The new website!](https://sites.google.com/view/winbatchx/home)
 
 # WinBatchX
-##### WinBatchX is a successful operating system in batch script made for any windows release (NT 6.1+) that shows a working Windows computer inside the command line. By using GUI tools and image displayers, an operating system was made over the next possible release. Over 100 builds have tested it's usability. We're open sourced, so you can grab your own copy and recode it! The latest release is now 17.0 - Windows 11 Pre-Update. The previewing release is the 17.01 release. The develpoping release is the 18.0 Release (Quantum Kernel is in progress!)
+##### WinBatchX is a successful operating system in batch script made for any windows release (Windows Kernel NT 6.1+) that shows a working Windows computer inside the command line. By using GUI tools and image displayers, an operating system was made over the next possible release. Over 100 builds have tested it's usability. We're open sourced, so you can grab your own copy and recode it! The latest release is now 17.0 - Windows 11 Pre-Update. The previewing release is the 17.01 release. The develpoping release is the 18.0 Release (Quantum Kernel is in progress!)
 
-> The release cycle has reset for alpha!
-
-Alpha | 0.5 Quantum Kernel | Builds 1701+
+> Alpha builds are releasing every 2-3 weeks at this time. This will speed up by the end of october to 
+Alpha | 0.5 Quantum Kernel | Builds 1660+
 -|-|-
 
 Beta | 16.2 | Builds 1641-1650
@@ -13,7 +12,7 @@ Beta | 16.2 | Builds 1641-1650
 Beta | 15.6 | Builds 1582-1598
 
 
-General Releases | 17.0(minor), 16.1, 16.2(General Beta) | 1600.1000(16.1), 1637(16.2), 1640(17.0)
+General Releases | 17.0(minor), 16.1, 16.2 | 1600.1000(16.1), 1637(16.2), 1640(17.0)
 -|-|-
 
 Server | 18.S | 1651-1659
