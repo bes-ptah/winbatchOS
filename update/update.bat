@@ -37,8 +37,8 @@ rem _WBXCore-updatealert = (message for anything - major bug problems etc)
 
 rem QUANTUM KERNEL 0.5, WINBATCHX 18
 IF %_build%==1660 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Upgrade available" &set "_WBXCore-updatealert=Auto-installation can happen starting WBX-1665." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1661 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Auto-installation can happen starting WBX-1665." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1662 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Auto-installation can happen starting WBX-1665." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1661 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Auto-installation can happen starting WBX-1665." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1662 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Auto-installation can happen starting WBX-1665." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 IF %_build%==1663 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Auto-installation can happen starting WBX-1665." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 IF %_build%==1664 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Auto-installation can happen starting WBX-1665." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
