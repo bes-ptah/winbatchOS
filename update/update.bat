@@ -47,6 +47,9 @@ rem (!) just a random number, do not expect that number
 IF %_build%==1800 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=For more infomation, open widgets." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 
+rem 18.S Preview Builds
+IF %_build%==1210 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=Your build is up to date. More info at https://github.com/bes-ptah/winbatchx" &del news.bat &del readme.md &del upgrade.bat &exit /b
+
 
 
 
