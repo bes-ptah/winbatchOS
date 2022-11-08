@@ -11,7 +11,6 @@
 ***
 Build | Branch | Tied release | Status | Download Link |
 ------|--------|--------------|--------|---------------|
-
 1665 | Beta | 18.alpha4 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1665/WBX_BUILD_1665.zip)
 1664 | Beta | 18.alpha2 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1664/WBX_BUILD_1664.zip)
 1663 | Beta | 18.alpha1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1663/WBX_BUILD_1663.zip)
