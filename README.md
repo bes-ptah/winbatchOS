@@ -9,13 +9,16 @@
 ###### (!) Important: To understand a release number-
 
 ###### (build)-(version release)-(beta, dev)(release beta/dev number version)
-###### 1738-16.91-beta0
+###### 1772
 
+> A high number of 18.0 builds were excluded from official release due to lots of bugs and errors. They were added all together in builds 1660-1665. Normal development has now started in builds 1770+.
 
 
 ***
 Build | Branch | Tied release | Status | Download Link |
 ------|--------|--------------|--------|---------------|
+1772 | Beta | r17.beta2 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1772/WBX_BUILD_1772.zip) |
+1770 | Beta | 18.beta5  | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1770/WBX_BUILD_1770.zip) |
 1600.1000 | Release | r16.1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1601-16.1/WinBatchXr1600.1000.zip) |
 1638 | Beta | r17.dev1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1638/WinBatchXBuild1638.zip) |
 1636 | Beta | r17.beta2 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1636/WinBatchXBuild1636.zip) |
