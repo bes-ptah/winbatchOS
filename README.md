@@ -12,12 +12,12 @@
 Build | Branch | Tied release | Status | Download Link |
 ------|--------|--------------|--------|---------------|
 
-1665 | Beta | 18.alpha4 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1665/WBX_BUILD_1665.zip) |
-1664 | Beta | 18.alpha2 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1664/WBX_BUILD_1664.zip) |
-1663 | Beta | 18.alpha1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1663/WBX_BUILD_1663.zip) |
-1662 | Beta | Q0.5      | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1662/WBX_BUILD_1662.zip) |
-1661 | Beta | Q0.5      | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1661/WBX_BUILD_1661.zip) |
-1660 | Beta | Q0.5      | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1660/WBX_BUILD_1660.zip) |
+1665 | Beta | 18.alpha4 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1665/WBX_BUILD_1665.zip)
+1664 | Beta | 18.alpha2 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1664/WBX_BUILD_1664.zip)
+1663 | Beta | 18.alpha1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1663/WBX_BUILD_1663.zip)
+1662 | Beta | Q0.5      | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1662/WBX_BUILD_1662.zip)
+1661 | Beta | Q0.5      | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1661/WBX_BUILD_1661.zip)
+1660 | Beta | Q0.5      | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1660/WBX_BUILD_1660.zip)
 
 *No other builds exist in the alpha channel. They may be in the beta or main branches.*
 
