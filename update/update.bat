@@ -42,8 +42,10 @@ IF %_build%==1664 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up
 rem Beta builds
 IF %_build%==1770 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=None." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 IF %_build%==1772 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Working on in-place upgrades." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1774 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Working on in-place upgrades." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1776 set "_WBXCore-update=2" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Working on in-place upgrades." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1774 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Working on in-place upgrades." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+rem Preview builds
+IF %_build%==1776 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Working on in-place upgrades." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1778 set "_WBXCore-update=2" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Working on in-place upgrades." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 
 
