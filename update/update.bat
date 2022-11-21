@@ -30,28 +30,28 @@ rem FINAL 16.2 release:
 IF %_build%==1641.1000 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 rem 17.0 release - Check the EoR (End of Release) in wiki page.
-IF %_build%==1640 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=For more infomation, open widgets." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1640 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=Upgrade available" &set "_WBXCore-updatealert=For more infomation, open widgets." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 rem QUANTUM KERNEL 0.5, WINBATCHX 18
 rem Alpha builds
-IF %_build%==1660 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Upgrade available" &set "_WBXCore-updatealert=Pick up the latest build from WinBatchX's github!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1661 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Upgrade available" &set "_WBXCore-updatealert=Pick up the latest build from WinBatchX's github!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1662 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Upgrade available" &set "_WBXCore-updatealert=Pick up the latest build from WinBatchX's github!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1663 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Pick up the latest build from WinBatchX's github!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1664 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Pick up the latest build from WinBatchX's github!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1660 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Upgrade available" &set "_WBXCore-updatealert=WinBatchX 18 released!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1661 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Upgrade available" &set "_WBXCore-updatealert=WinBatchX 18 released!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1662 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Upgrade available" &set "_WBXCore-updatealert=WinBatchX 18 released!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1663 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Upgrade available" &set "_WBXCore-updatealert=WinBatchX 18 released!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1664 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Upgrade available" &set "_WBXCore-updatealert=WinBatchX 18 released!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 rem Beta builds
-IF %_build%==1770 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=None." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1772 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Working on in-place upgrades." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1774 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Working on in-place upgrades." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1770 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Upgrade available" &set "_WBXCore-updatealert=WinBatchX 18 released!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1772 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Upgrade available" &set "_WBXCore-updatealert=WinBatchX 18 released!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1774 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Upgrade available" &set "_WBXCore-updatealert=WinBatchX 18 released!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 rem Preview builds
-IF %_build%==1776 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Working on in-place upgrades." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
-IF %_build%==1778 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Working on in-place upgrades." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1776 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Upgrade available" &set "_WBXCore-updatealert=WinBatchX 18 released!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1778 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Upgrade available" &set "_WBXCore-updatealert=WinBatchX 18 released!" &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 
 
 rem 18.0 release - Check the EoR (End of Release) in wiki page.
 rem (!) just a random number, do not expect that number
-IF %_build%==1800 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=For more infomation, open widgets." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1800 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Test" &set "_WBXCore-updatealert=For more infomation, open widgets." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 
 rem 18.S Preview Builds
