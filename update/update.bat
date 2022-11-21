@@ -51,7 +51,7 @@ IF %_build%==1778 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Upgrade a
 
 rem 18.0 release - Check the EoR (End of Release) in wiki page.
 rem (!) just a random number, do not expect that number
-IF %_build%==1800 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Test" &set "_WBXCore-updatealert=For more infomation, open widgets." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1800 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're on WinBatchX's latest release!" &set "_WBXCore-updatealert=For more infomation, open widgets." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 
 rem 18.S Preview Builds
