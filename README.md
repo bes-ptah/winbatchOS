@@ -11,7 +11,7 @@
 
 ##### As we have released WinBatchX 18, WinBatchX 16 releases and below will be supported until November 31, 2022. WinBatchX 17 is also ending support by December 31, 2022.
 
-Alpha | 19.0 | Builds 1210+
+Alpha | 19.0 | Builds 1810+
 -|-|-
 
 Beta | WinBatchX 18.1 | Builds 1810(18.1)
