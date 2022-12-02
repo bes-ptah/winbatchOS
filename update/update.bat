@@ -16,7 +16,7 @@ rem 15.6 release - EoR January 2023
 IF %_build%==1582 set update.exe=0x00 &set update-status-action.exe=0x00 &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 rem 16.0 release - Check the EoR (End of Release) in wiki page.
-IF %_build%==1600 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &del upgrade.bat &goto :WBX-UPGRADE &exit /b
+IF %_build%==1600 set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 rem 17.0 release - Check the EoR (End of Release) in wiki page.
 IF %_build%==1640 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=Upgrade available" &set "_WBXCore-updatealert=For more infomation, open widgets." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
@@ -49,17 +49,3 @@ del news.bat
 del upgrade.bat
 del readme.md
 exit /b
-
-:WBX-UPGRADE
-cd ..
-cd ..
-CALL Button 40 17 7f "WinBatchX 17.0, NI Version 11" X _Button_Boxes _Button_Hover
-CALL Button 40 13 f0 "Do you want to install a new version?" X _Button_Boxes _Button_Hover
-CALL Button 100 13 f3 "Yes" 115 13 f4 "No" X _Button_Boxes _Button_Hover
-
-GetInput /M %_BOX% %_Button_Boxes%
-SET _SELECTION=%Errorlevel%
-
-IF %Errorlevel%==1 upgrade.bat
-IF %Errorlevel%==2 cd WinBatchX-main &cd update &set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &del upgrade.bat &exit /b
-cd WinBatchX-main &cd update &set update.exe=0x01 &set update-status-action.exe=0x01 &del news.bat &del readme.md &del upgrade.bat &exit /b
