@@ -1,4 +1,4 @@
-> [WinBatchX's website](https://sites.google.com/view/winbatchx/home)
+> WinBatchX 16 and 16.1 are now not supported. 
 
 # WinBatchX
 
@@ -20,6 +20,9 @@ General Releases | WinBatchX 18.0 | Builds 1800(18.0)
 #### We are not releasing 18.S at this time!
 
 ##### Any release or build under WinBatchX 18.0's release will not be supported. All WinBatchX releases can upgrade to 18.0, and must to recieve updates. The NI kernel will not be supported by December 2022.
+
+[WinBatchX's website](https://sites.google.com/view/winbatchx/home)
+
 
 #### ( ! ) Was tested with Windows 11 Insider Release Build 25252
 #### ( ! ) We don't support 32-bit operating systems because some of our GUI programs are 64-bit only.
