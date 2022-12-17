@@ -35,6 +35,10 @@ IF %_build%==1802.1000 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You'
 
 rem 18.S Preview Builds
 IF %_build%==1210 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=Your build is up to date. More info at https://github.com/bes-ptah/winbatchx" &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1702 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Notreleased. More info at https://github.com/bes-ptah/winbatchx" &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1704 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Notreleased. More info at https://github.com/bes-ptah/winbatchx" &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1706 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=Test. More info at https://github.com/bes-ptah/winbatchx" &del news.bat &del readme.md &del upgrade.bat &exit /b
+
 
 
 
