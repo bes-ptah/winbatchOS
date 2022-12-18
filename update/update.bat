@@ -28,8 +28,9 @@ IF %_build%==1800 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're on
 
 
 rem WinBatchX 19 preview builds
-IF %_build%==1802.1000 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=You are on a developer build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1802.1000 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=A newer build is available" &set "_WBXCore-updatealert=You are on a developer build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 IF %_build%==1804.1000 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=You are on a developer build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1806.1000 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=You are on a developer build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 
 
