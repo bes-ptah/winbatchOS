@@ -1,4 +1,4 @@
-> WinBatchX 16 and 16.1 are now not supported. 
+> We're currently testing the master branch. The main branch had significant problems earlier when copying files, so updates may not be working is usual.
 
 # WinBatchX
 
