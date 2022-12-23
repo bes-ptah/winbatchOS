@@ -5,9 +5,6 @@
 
 
 
-> A high number of 18.0 builds were excluded from official release due to lots of bugs and errors. They were added all together in builds 1660-1665. Normal development has now started in builds 1770+.
-
-
 ***
 Build | Branch | Tied release | Status | Download Link |
 ------|--------|--------------|--------|---------------|
