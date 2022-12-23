@@ -25,15 +25,6 @@ Build | Branch | Tied release | Status | Download Link |
 
 #### Only the last build is supported for bugs or errored features to be fixed. All other builds are security-only fixes.
 
-### Please note: Windows Version 19H1 is not supported now on WinBatchX. Windows 10 Version 1909 or higher are supported.
-
-#### ( ! ) This is open-source so even your copy (or your custom build) of WinBatchX is allowed to pull releases from this build.
-
-##### To pull builds into this branch (beta):
-
-Copy this link to your update system:
-
-> https://github.com/bes-ptah/WinBatchX/archive/refs/heads/alpha.zip
 
 
 
