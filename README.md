@@ -1,5 +1,3 @@
-> We're currently testing the master branch. The main branch had significant problems earlier when copying files, so updates may not be working is usual.
-
 # WinBatchX
 
 WinBatchX is a successful operating system in batch script inside any supported Windows Release. Over 100 builds have been released since WinBatchX's start in January 2020. The latest release is 18.0 - The Windows 11 Update. The latest stable build is currently 1800 (r18.0!), and our previewing release is 18.1 (1850).
@@ -7,12 +5,13 @@ WinBatchX is a successful operating system in batch script inside any supported 
 ---
 ##### As we have released WinBatchX 18, WinBatchX 16 releases and below will be supported until November 31, 2022. WinBatchX 17 is also ending support by December 31, 2022.
 
-Alpha | WinBatchX 19.0 | No Builds
+Alpha | WinBatchX 18.1 Preview | 1806
 -|-|-
+Alpha | WinBatchX 19.0 (Undeveloped) | 1822
 
-Beta | WinBatchX 18.1 | Builds 1660,1661,1662,1663,1664,1665,1770,1772,1774,1776,1778,1780
+Beta | WinBatchX 18.1 Preview | Builds 1802,1804,1808,1810
 -|-|-
-
+Beta | WinBatchX 18.0 Beta/Preview | Builds 1660,1661,1662,1663,1664,1665,1770,1772,1774,1776,1778,1780
 
 General Releases | WinBatchX 18.0 | Builds 1800(18.0)
 -|-|-
