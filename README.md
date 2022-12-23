@@ -1,7 +1,7 @@
 #### WinBatchX Alpha branch
 ###### WinBatchX is a batch script operating system with over 80 working builds. These builds come through this branch first for early developers and testers.
 
-##### The next release planned is WinBatchX 18.0 and is planned for release out of the beta channel by November 15, 2022 . This next release has around 20 planned builds for release.
+##### The next release planned is WinBatchX 18.1 and is planned for release out of the beta channel by January 2023 . This next release has around 10 planned builds for release.
 
 
 
@@ -11,6 +11,7 @@
 ***
 Build | Branch | Tied release | Status | Download Link |
 ------|--------|--------------|--------|---------------|
+1806 | Beta | 18_1Prev0 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1806/18.1806.zip)
 1665 | Beta | 18.alpha4 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1665/WBX_BUILD_1665.zip)
 1664 | Beta | 18.alpha2 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1664/WBX_BUILD_1664.zip)
 1663 | Beta | 18.alpha1 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1663/WBX_BUILD_1663.zip)
