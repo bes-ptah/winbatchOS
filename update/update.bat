@@ -34,7 +34,7 @@ IF %_build%==1806.1000 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You'
 IF %_build%==1808.1000 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=You are on a developer build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 rem Unreleased
-IF %_build%==1810.1000 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=You are on a developer build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==1810.2525 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=You are on a developer build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 IF %_build%==1812.1000 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=You are on a developer build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 IF %_build%==1814.1000 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=You are on a developer build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 IF %_build%==1816.1000 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=You are on a developer build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
@@ -59,7 +59,8 @@ IF %_build%==1704 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=Notreleas
 SET update.exe=0x02
 SET update-status-action.exe=0x02
 set "_WBXCore-update=1"
-set "_WBXCore-updatemessage=Newer Builds are in github!"
+set "_WBXCore-updatemessage=Your build may not be up-to-date."
+set "_WBXCore-updatealert=Check WinBatchX's github for more infomation. Your build could not recieve updates."
 call news.bat
 del news.bat
 del upgrade.bat
