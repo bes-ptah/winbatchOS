@@ -5,7 +5,6 @@ rem Not released to the Alpha Channel yet
 rem Quantum Kernel 0.9 - Build 10000
 rem =====================================
 
-
 rem =====================================
 rem The unlicense below is used for this 
 rem "batch" software. Also in LICENSE.txt.
@@ -219,34 +218,27 @@ set "_WBX-MEMORY-S2L50=EOF"
 
 
 rem MEMORY LOADER:
+set _WBX-MEMORY-EXECUTE=2
 
 :LOAD.EXE
-for /l %%a in (0,1,64) do (cls &&set "_WBX-MEMORY-S%%a=0"
-	call insertphoto 0 0 85 bootimage.bmp
-	rem Start preloading memory lines:
-	for /l %%b in (0,1,64) do (set "_WBX-MEMORY-S%%aL%%b=0" &&cls &&echo Preloading Set: %%a/64 &&echo Preloading Lines: %%b/64)
+
+
+
+for /l %%a in (0,1,64) do (
+set /A "_WBX-MEMORY-TEMP=%_WBX-MEMORY-TEMP%+1"
+%_WBX-MEMORY-S%_WBX-MEMORY-EXECUTE%L%_WBX-MEMORY-TEMP%
 )
 
 
 
 
-
-
-
-
-
-
-
+for /l %%a in (0,1,64) do (
+%_WBX-MEMORY-S_%_WBX-MEMORY-EXECUTE%-L_%%a
+)
 
 rem testing:
 rem call insertphoto 770 600 100 loading-dot.bmp
 rem call insertphoto 770 600 100 loading-blank.bmp
-
-
-
-
-
-
 
 
 
@@ -272,12 +264,6 @@ set _WBX-MEMORY-2=0
 set _WBX-MEMORY-2=0
 set _WBX-MEMORY-2=0
 set _WBX-MEMORY-2=0
-
-
-
-
-
-
 
 
 
@@ -315,15 +301,6 @@ Call Text 102 12 %THEMEcolor% %_WBX-TASKBAR-DATE% X _Button_Boxes _Button_Hover
 
 
 
-
-
-
-
-
-
-
-
-
 :LOGIN.LOOP
 call insertphoto 0 0 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
 call insertphoto 0 5 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
@@ -331,15 +308,6 @@ call insertphoto 0 10 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%
 call insertphoto 0 15 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
 call insertphoto 0 20 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
 call insertphoto 0 25 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
-
-
-
-
-
-
-
-
-
 
 
 
@@ -416,13 +384,6 @@ rem 15
 			SET _TASKMGR.EXE=0
 
 			SET _TIPS.EXE=0
-
-
-
-
-
-
-
 
 
 
@@ -589,8 +550,6 @@ exit /b
 :: call WBXFS -file "file.extension"
 
 :: coming soon!
-
-
 
 
 
