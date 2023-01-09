@@ -4,7 +4,7 @@ rem Flag: BetaBuild
 rem Not released to the Alpha Channel yet
 rem Quantum Kernel 0.9 - Build 10000
 rem =====================================
-
+ 
 
 rem =====================================
 rem The unlicense below is used for this 
