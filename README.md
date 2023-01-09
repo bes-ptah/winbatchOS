@@ -5,15 +5,15 @@ WinBatchX is a successful operating system in batch script inside any supported 
 ---
 ##### As we have released WinBatchX 18, WinBatchX 16 releases and below will be supported until November 31, 2022. WinBatchX 17 is also ending support by December 31, 2022.
 
-Alpha | WinBatchX 18.1 Preview | 1806
+Alpha | WinBatchX 22.0 Preview | 22.0.10000 (This build will never be released.)
 -|-|-
-Alpha | WinBatchX 19.0 (Undeveloped) | 1822
+Alpha | WinBatchX 23.0 (Undeveloped) | 23.0.10000
 
-Beta | WinBatchX 18.1 Preview | Builds 1802,1804,1808,1810
+Beta | WinBatchX 18.1 Preview | Builds 1802,1804,1808,1810,1812
 -|-|-
 Beta | WinBatchX 18.0 Beta/Preview | Builds 1660,1661,1662,1663,1664,1665,1770,1772,1774,1776,1778,1780
 
-General Releases | WinBatchX 18.0 | Builds 1800(18.0)
+General Releases | WinBatchX 18.0, WinBatchX 17.1, WinBatchX 18.1 (Unreleased) | Builds 1800(18.0), 1814 (17.1), 1820 (18.2)
 -|-|-
 
 #### We are not releasing 18.S at this time!
