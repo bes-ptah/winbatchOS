@@ -1,6 +1,6 @@
 rem  WinBatchX Desktop 2023 (Revision1)
 rem  Released to the Alpha Channel
-rem  Quantum Kernel 0.9 - Build 10000
+rem  Quantum Kernel 0.9 - Build 22.0.10000
 
 rem THIS BUILDS IS UNSTABLE AND DOES NOT WORK WITH CURRENT SETTINGS ON ANY WINBATCHX DRIVE
 
