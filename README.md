@@ -1,3 +1,5 @@
+> WinBatchX 19 and WinBatchX 23 Build 10000, was released on Febuary 20, 2023. The data below is outdated, and WinBatchX 23 is a developers build.
+
 # WinBatchX
 
 WinBatchX is a successful operating system in batch script inside any supported Windows Release. Over 100 builds have been released since WinBatchX's start in January 2020. The latest release is 18.0 - The Windows 11 Update. The latest stable build is currently 1800 (r18.0!), and our previewing release is 18.1 (1850).
