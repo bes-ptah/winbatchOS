@@ -49,6 +49,14 @@ IF %_build%==1818.9000 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You'
 rem 18.1 Release - Check the EoR (End of Release) in wiki page.
 IF %_build%==1820.1000 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=You are on a developer build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
+rem 19.0 Release - Febuary 2023 - Check the EoR (End of Release) in wiki page.
+  IF %_build%==1900.151 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=You are on a developer build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+
+rem 19.0 Release - March 2023 - Check the EoR (End of Release) in wiki page.
+  IF %_build%==1920.191 set "_WBXCore-update=1" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=You are on a developer build." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+
+
+
 
 IF %_sysbuild%==23.0.10000.100 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=Many changes were in this build, not everything is compitable." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
