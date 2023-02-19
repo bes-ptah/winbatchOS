@@ -1,8 +1,7 @@
-> winbatchOS 16 and 16.1 are now not supported. 
 
 # winbatchOS
 
-winbatchOS is a successful operating system in batch script inside any supported Windows Release. Over 100 builds have been released since winbatchOS's start in January 2020. The latest release is 18.0 - The Windows 11 Update. The latest stable build is currently 1800 (r18.0!), and our previewing release is 18.1 (1850).
+winbatchOS is a successful operating system in batch script inside any supported Windows Release. Over 100 builds have been released since WinBatchX's start in January 2020. The latest release is 19.0 - The Windows 11 Update. The latest stable build is currently 1800 (r18.0!), and our previewing release is 18.1 (1850).
 
 ---
 ##### As we have released winbatchOS 18, winbatchOS 16 releases and below will be supported until November 31, 2022. winbatchOS 17 is also ending support by December 31, 2022.
