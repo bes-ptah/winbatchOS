@@ -1,1 +1,189 @@
-Working on it
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="keywords" content="html, css bootstrap, mega menu, navbar, large dropdown, menu CSS examples" />
+	<meta name="description" content="Bootstrap 5 navbar megamenu examples with simple css demo code" />  
+
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"crossorigin="anonymous"></script>
+
+<style type="text/css">
+.navbar .megamenu{ padding: 1rem; }
+/* ============ desktop view ============ */
+@media all and (min-width: 992px) {
+	
+	.navbar .has-megamenu{position:static!important;}
+	.navbar .megamenu{left:0; right:0; width:100%; margin-top:0;  }
+	
+}	
+/* ============ desktop view .end// ============ */
+
+
+/* ============ mobile view ============ */
+@media(max-width: 991px){
+	.navbar.fixed-top .navbar-collapse, .navbar.sticky-top .navbar-collapse{
+		overflow-y: auto;
+	    max-height: 90vh;
+	    margin-top:10px;
+	}
+}
+/* ============ mobile view .end// ============ */
+</style>
+
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function(){
+        /////// Prevent closing from click inside dropdown
+        document.querySelectorAll('.dropdown-menu').forEach(function(element){
+        	element.addEventListener('click', function (e) {
+        		e.stopPropagation();
+        	});
+        })
+    }); 
+	// DOMContentLoaded  end
+</script>
+
+</head>
+<body>
+
+	<header class="section-header">
+	</header>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+<div class="container-fluid">
+	<a class="navbar-brand" href="#">winbatchOS</a>
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"  aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="main_nav">
+		<ul class="navbar-nav">
+			<li class="nav-item dropdown has-megamenu">
+				<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Downloads  </a>
+				<div class="dropdown-menu megamenu" role="menu">
+                    <br>
+                    <p class="text-muted"> All versions of winbatchOS are under the Microsoft Public License (Ms-PL) effective March 1st, 2023. </p>
+                    <br>
+					<div class="row g-3">
+						<div class="col-lg-3 col-6">
+							<div class="col-megamenu">
+								<h6 class="title">winbatchOS Desktop</h6>
+								<ul class="list-unstyled">
+                                    <br>
+                                    Try out and install WinBatchOS in a USB or ISO! WinBatchOS Desktop is made possible with Windows Recovery Environment (WINPE)
+
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <p class="text-muted"> Alpha Builds: </p>
+                                    <a href="https://github.com/bes-ptah/winbatchOS/tree/master" class="btn btn-outline-danger"> 23.0 Alpha</a>
+                                    <br>
+								</ul>
+							</div>  <!-- col-megamenu.// -->
+						</div><!-- end col-3 -->
+						<div class="col-lg-3 col-6">
+							<div class="col-megamenu">
+								<h6 class="title">winbatchOS Core</h6>
+								<ul class="list-unstyled">
+                                    <br>
+									The Core Image for WinBatchOS that can be executed within your Windows 10/11 desktop environment.
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <p class="text-muted"> Latest Release: </p>
+                                    <a href="https://github.com/bes-ptah/winbatchOS/tree/master" class="btn btn-success"> 19.0, 2302</a>
+                                    <br>
+                                    <br>
+                                    <p class="text-muted"> Previous Releases: </p>
+                                    <a href="https://github.com/bes-ptah/winbatchOS/tree/master" class="btn btn-outline-dark"> 18.0 </a>
+                                    <a href="https://github.com/bes-ptah/winbatchOS/tree/master" class="btn btn-outline-dark"> 17.1 </a>
+                                    <a href="https://github.com/bes-ptah/winbatchOS/tree/master" class="btn btn-outline-dark"> 17.0 </a>
+                                    <br>
+                                    <br>
+                                    <p class="text-muted"> Alpha Builds: </p>
+                                    <a href="https://github.com/bes-ptah/winbatchOS/tree/master" class="btn btn-outline-danger"> 23.0 Alpha</a>
+                                    <br>
+								</ul>
+							</div>  <!-- col-megamenu.// -->
+						</div><!-- end col-3 -->
+						<div class="col-lg-3 col-6">
+							<div class="col-megamenu">
+								<h6 class="title">winbatchOS Server</h6>
+								<ul class="list-unstyled">
+                                    <br>
+									The minialistic desktop used in server enterprises and production with security improvements. This edition of winbatchOS is not available.
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <p class="text-muted"> Alpha Builds: </p>
+                                    <a href="https://github.com/bes-ptah/winbatchOS/tree/master" class="btn btn-outline-danger"> 23.0 Alpha</a>
+                                    <br>
+								</ul>
+							</div>  <!-- col-megamenu.// -->
+						</div>    
+						<div class="col-lg-3 col-6">
+							<div class="col-megamenu">
+								<h6 class="title">WinBatchX</h6>
+								<ul class="list-unstyled">
+                                    <br>
+									The predecessor to winbatchOS under the unlicense license.
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <p class="text-muted"> Previous Releases: </p>
+                                    <a href="https://github.com/bes-ptah/winbatchOS/tree/master" class="btn btn-outline-dark"> 18.0 </a>
+                                    <a href="https://github.com/bes-ptah/winbatchOS/tree/master" class="btn btn-outline-dark"> 17.1 </a>
+                                    <a href="https://github.com/bes-ptah/winbatchOS/tree/master" class="btn btn-outline-dark"> 17.0 </a>
+                                    <br>
+								</ul>
+							</div>  <!-- col-megamenu.// -->
+						</div><!-- end col-3 -->
+					</div><!-- end row --> 
+				</div> <!-- dropdown-mega-menu.// -->
+			</li>
+		</ul>
+		<ul class="navbar-nav ms-auto">
+			<li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
+			<li class="nav-item dropdown">
+				<a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown"> Dropdown right </a>
+			    <ul class="dropdown-menu dropdown-menu-end">
+				  <li><a class="dropdown-item" href="#"> Submenu item 1</a></li>
+				  <li><a class="dropdown-item" href="#"> Submenu item 2 </a></li>
+			    </ul>
+			</li>
+		</ul>
+	</div> <!-- navbar-collapse.// -->
+</div> <!-- container-fluid.// -->
+</nav>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<div class="container mt-5">
+    <div class="row">
+    
+      
+        <section class="section-content py-5">
+
+			<p class="text-muted"> Work in progress! </p>
+
+			<a href="https://github.com/bes-ptah/winbatchOS/tree/master" class="btn btn-primary"> &laquo Back to github</a>
+
+		</section>
+      
+  </div>
+</div>
+
+
+
+    
+    
+</body>
+</html>
