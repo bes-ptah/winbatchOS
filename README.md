@@ -18,7 +18,7 @@ Beta | WinBatchX 18.0 Beta/Preview | Builds 1660,1661,1662,1663,1664,1665,1770,1
 General Releases | WinBatchX 18.0, WinBatchX 17.1, WinBatchX 18.1, WinBatchX 19 Version 2302 | Builds 1800(18.0), 1814 (17.1), 1820 (18.2), 1900.151 (19 Version 2302)
 -|-|-
 
-[winbatchOS's website](https://sites.google.com/view/winbatchOS/home)
+[winbatchOS's website](bes-ptah.github.io/winbatchOS/)
 
 
 #### ( ! ) We don't support 32-bit operating systems because some of our GUI programs are 64-bit only. They may still work on these platforms.
