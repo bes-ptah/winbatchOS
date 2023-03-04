@@ -1,100 +1,84 @@
-rem =====================================
-rem WinBatchX Desktop 2023 Beta (Rev0.5)
-rem Flag: BetaBuild
-rem Not released to the Alpha Channel yet
-rem Quantum Kernel 0.95 - Build 10000
-rem =====================================
-rem The unlicense below is used for this 
-rem "batch" software. Also in LICENSE.txt.
-rem =====================================
-rem Unlicense License
-rem - 
-rem This is free and unencumbered software
-rem released into the public domain.
-rem 
-rem Anyone is free to copy, modify, 
-rem publish, use, compile, sell, or
-rem distribute this software, either in 
-rem source code form or as a compiled
-rem binary, for any purpose, commercial
-rem or non-commercial, and by any means.
-rem 
-rem In jurisdictions that recognize 
-rem copyright laws, the author or authors 
-rem of this software dedicate any and all 
-rem copyright interest in the software to 
-rem the public domain. We make this 
-rem dedication for the benefit of the 
-rem public at large and to the detriment 
-rem of our heirs and successors. We intend
-rem this dedication to be an overt act of 
-rem relinquishment in perpetuity of all 
-rem present and future rights to this 
-rem software under copyright law.
-rem
-rem THE SOFTWARE IS PROVIDED "AS IS", 
-rem WITHOUT WARRANTY OF ANY KIND, EXPRESS 
-rem OR IMPLIED, INCLUDING BUT NOT LIMITED 
-rem TO THE WARRANTIES OF MERCHANTABILITY,
-rem FITNESS FOR A PARTICULAR PURPOSE AND 
-rem NONINFRINGEMENT. IN NO EVENT SHALL THE 
-rem AUTHORS BE LIABLE FOR ANY CLAIM, 
-rem DAMAGES OR OTHER LIABILITY, WHETHER 
-rem IN AN ACTION OF CONTRACT, TORT OR 
-rem OTHERWISE, ARISING FROM, OUT OF OR IN
-rem CONNECTION WITH THE SOFTWARE OR THE 
-rem USE OR OTHER DEALINGS IN THE SOFTWARE.
-rem 
-rem For more information, please refer 
-rem to <https://unlicense.org>
-rem =====================================
+rem ==================================================================================
+rem WinBatchOS 23 Beta 2 (Rev1)
+rem Flag: Unreleased-Rev2
+rem Channel: Alpha
+rem Quantum Kernel 1.0RCT - 23.0.10008.100
+rem ==================================================================================
+rem The Microsoft Public License goes into effect as of March 1st, 2023.
+rem If you do not accept the license, do not use the software(WinBatchOS).
+rem ==================================================================================
 
+
+rem ==================================================================================
+rem Microsoft Public License (Ms-PL)
+rem.
+rem This license governs use of the accompanying software. If you use the
+rem software, you accept this license. If you do not accept the license, do not
+rem use the software.
+rem.
+rem 1.  Definitions
+rem The terms "reproduce," "reproduction," "derivative works," and "distribution"
+rem have the same meaning here as under U.S. copyright law. A "contribution" is
+rem the original software, or any additions or changes to the software. A
+rem "contributor" is any person that distributes its contribution under this
+rem license. "Licensed patents" are a contributor's patent claims that read
+rem directly on its contribution.
+rem. 
+rem 2.  Grant of Rights
+rem      (A) Copyright Grant- Subject to the terms of this license, including the
+rem      license conditions and limitations in section 3, each contributor grants
+rem      you a non-exclusive, worldwide, royalty-free copyright license to
+rem      reproduce its contribution, prepare derivative works of its contribution,
+rem      and distribute its contribution or any derivative works that you create.
+rem.
+rem      (B) Patent Grant- Subject to the terms of this license, including the
+rem      license conditions and limitations in section 3, each contributor grants
+rem      you a non-exclusive, worldwide, royalty-free license under its licensed
+rem      patents to make, have made, use, sell, offer for sale, import, and/or
+rem      otherwise dispose of its contribution in the software or derivative works
+rem      of the contribution in the software.
+rem.
+rem 3.  Conditions and Limitations
+rem      (A) No Trademark License- This license does not grant you rights to use
+rem      any contributors' name, logo, or trademarks.
+rem.
+rem      (B) If you bring a patent claim against any contributor over patents that
+rem      you claim are infringed by the software, your patent license from such
+rem      contributor to the software ends automatically.
+rem.
+rem      (C) If you distribute any portion of the software, you must retain all
+rem      copyright, patent, trademark, and attribution notices that are present in
+rem      the software.
+rem.
+rem      (D) If you distribute any portion of the software in source code form,
+rem      you may do so only under this license by including a complete copy of
+rem      this license with your distribution. If you distribute any portion of the
+rem      software in compiled or object code form, you may only do so under a
+rem      license that complies with this license.
+rem.
+rem      (E) The software is licensed "as-is." You bear the risk of using it. The
+rem      contributors give no express warranties, guarantees, or conditions. You
+rem      may have additional consumer rights under your local laws which this
+rem      license cannot change. To the extent permitted under your local laws, the
+rem      contributors exclude the implied warranties of merchantability, fitness
+rem      for a particular purpose and non-infringement.
+rem ==================================================================================
 @Echo off
-If /i "%~1" == "" (goto :bootWBX.exe)
-If /i "%~1" == "start" (goto :BOOT.EXE)
-If /i "%~1" == "startre" (call WINBATCHX/RECOVERY.BAT)
-
-
-rem Find the Windows Version.
-rem We're only supporting Windows 10, Version 22H2 and Windows 11 from here.
-rem If you are using Windows 7 there are some features that are disabled.
-
-For /f "tokens=1,2 delims=." %%A in ('ver') do (
-	For /f "tokens=4" %%C in ("%%A") do (
-		Set _Ver=%%C.%%B
-	)
-)
-
-If /i "%_Ver%" == "4.0" (Set _winver-winbatchx=NT 4.0)
-If /i "%_Ver%" == "5.1" (Set _winver-winbatchx=XP)
-If /i "%_Ver%" == "6.0" (Set _winver-winbatchx=Vista)
-If /i "%_Ver%" == "6.1" (Set _winver-winbatchx=7)
-If /i "%_Ver%" == "6.2" (Set _winver-winbatchx=8)
-If /i "%_Ver%" == "6.3" (Set _winver-winbatchx=8.1)
-If /i "%_Ver%" == "10.0" (Set _winver-winbatchx=10)
-
-If /i "%_winver-winbatchx%" == "" (Set _winver-winbatchx=Unknown)
-
-:: architecture of os
-IF Not Defined ProgramFiles(x86) (Set _Type=x86) ELSE (Set _Type=x64)
-
-
-:bootWBX.exe
-start WinBatchX start
-endlocal
-exit /b
+IF "%~1" == "" start WinBatchOS start &&endlocal &&exit /b
+IF "%~1" == "start" goto :boot.exe
+IF "%~1" == "startre" call winbatchos/RECOVERY.BAT
 
 
 :BOOT.EXE
-cd WINBATCHX
+cd winbatchOS
 tar -xf SystemFiles.zip
 
 
 rem Set up command line accessibility for users
 rem who accidently 'outphoto' the imaged os.
 setlocal EnableExtensions EnableDelayedExpansion
-mode 213,60
 mode 1000,1000
+mode 211,60
 chcp 437 > nul
 
 cls
@@ -107,14 +91,12 @@ PIXELDRAW /refresh 0f
 
 
 rem ==================================
-rem Boot Load WinBatchX Desktop 2023:
+rem Boot Load winbatchOS Desktop 2023:
 rem More simpler now, as most are in
 rem services, yay!
 rem ==================================
 rem 1. Set General Variables
-rem 2. Start WBXFS - filesystem
-rem 3. Start up 'OS Critical' Services
-rem 4. Start all other apps/services
+rem 2. Start up 'OS Critical' Services
 rem ==================================
 timeout /T 0 /NOBREAK > nul
 cls
@@ -122,286 +104,45 @@ PIXELDRAW /refresh 0f
 timeout /T 2 /NOBREAK > nul
 call insertphoto 0 0 85 bootimage.bmp
 echo ??
+echo %_build%.Q%_quantum-ver%
 
 rem 1
-rem Set General Variables 
-SET "_WBX-OS=WinBatchX Desktop"
-SET "_quantum-ver=0.95"
-SET "_version=2023 RCTB 1"
-SET "_build=10000.50"
+rem Set General Variables
+SET "_WBX-OS=WinBatchOS"
+SET "_quantum-ver=1.0rc1"
+SET "_version=23 Beta 1"
 
-rem RCTB = Release Candinate Test Build
+rem + Build 10006.100 REMINDER: _build variable is to be deprecated in a future build
+SET "_build=10006.100"
 
 rem Includes all techinal build info
-SET "_sysbuild=23.0.10000.100"
-
-rem CALL Services/TIMEDATE.bat
-rem CALL Services/PERSONALIZATION.bat
-rem CALL Services/SECURITY.bat
-rem CALL Services/WBXUPDATE.bat
-
-
-
-rem THIS IS IMPORTED!!
-
-
-rem  3.
-rem set variables
-
-SET _WBX-TIMETEMP1=0
-SET _WBX-TIMETEMP2=0
-SET _WBX-TIMETEMP3=0
-
-SET _WBX-DATETEMP1=%DATE:~-10,2%
-SET _WBX-DATETEMP2=%DATE:~7,-5%
-SET _WBX-DATETEMP3=%DATE:~-4%
-
-
-
-rem This is here for the GUI on calendar and notification center
-rem Most author's comments are untouched.
-
-rem  Xp batch for generating calendars
-rem  Chances look good for win 2000 and above(untested)
-rem  By Judago, August 2009
-
-
-
-rem  The current codepage is stored in variable %CodePage%,
-rem  then changed to 850 to facilitate box drawing characters.....
-
-SETLOCAL ENABLEDELAYEDEXPANSION
-
-:loop-cal
-FOR %%Z IN (jan feb mar apr may jun jul aug sep oct nov dec year day leap noleap length test) DO SET %%Z=
-
-set "year=%DATE:~-4%"
-
-IF NOT DEFINED year (
-
-	CHCP %CodePage% >NUL 2>&1
-	EXIT /B
-)
-
-
-SET test=!year!
-FOR /l %%Z IN (0 1 9) DO IF DEFINED test SET "test=!test:%%Z=!"
-IF DEFINED test CLS&GOTO loop-cal
-:zero
-IF NOT DEFINED year (
-	:error-cal
-	cls
-	echo The year entered can not be accepted.
-	echo.
-	pause
-	CLS
-	GOTO loop-cal
-)
-
-IF "%year:~0,1%"=="0" SET year=%year:~1%&&GOTO zero
-
-
-IF /I "!processor_architecture!"=="x86" (
-	IF !year! gtr 1717986917 GOTO :error-cal
-) else (
-	IF NOT "!processor_architecture:64=!"=="!processor_architecture!" (
-		IF !year! gtr 7378697629483820645 GOTO :error-cal
-	)
-)
-
-
-SET /A day=(year + year / 4) - (year / 100 - year / 400)
-SET /A leap=year %% 400
-SET /A noleap=year %% 100
-IF !leap! GTR 0 (
-	IF !noleap! NEQ 0 SET /A leap=year %% 4
-)
-IF %leap%==0 SET /A day-=1
-SET /A day%%=7
-
-
-FOR %%U IN (jan feb mar apr may jun jul aug sep oct nov dec) DO (
-	FOR %%V IN (jan mar may jul aug oct dec) DO IF /I %%U==%%V SET length=31
-	FOR %%W IN (apr jun sep nov) DO IF /I %%U==%%W SET length=30
-	IF /I %%U==feb (
-		IF !leap!==0 (
-			SET length=29
-		) else (
-			SET length=28
-		)
-	)
-	FOR /l %%X IN (1 1 !day!) DO SET "%%U=!%%U!   "
-	FOR /l %%Y IN (1 1 !length!) DO (
-		IF %%Y lss 10 (
-			SET "%%U=!%%U!%%Y  "
-		) else (
-			SET "%%U=!%%U!%%Y "
-		)
-	)
-	FOR /l %%Z IN (!length! 1 54) DO IF "!%%U:~110!"=="" SET "%%U=!%%U! "
-	SET /A day=^(day + length^) %% 7
-)
-
-
-rem  4.
-rem set variables
-SET _WBX-TIMETEMP1=0
-SET _WBX-TIMETEMP2=0
-SET _WBX-TIMETEMP3=0
-
-rem do calculations
-set _WBX-TIMETEMP1=%Time:~0,-9%
-set _WBX-TIMETEMP2=%Time:~3,-6%
-
-rem find the time, am or pm, via the _WBX-TIMETEMP1 (hours)
-IF %_WBX-TIMETEMP1%==12 set _WBX-TIMETEMP1= 1&set _WBX-TIMETEMP3=PM &GOTO :CONTINUEBOOT
-IF %_WBX-TIMETEMP1%==13 set _WBX-TIMETEMP1= 1&set _WBX-TIMETEMP3=PM &GOTO :CONTINUEBOOT
-IF %_WBX-TIMETEMP1%==14 set _WBX-TIMETEMP1= 2&set _WBX-TIMETEMP3=PM &GOTO :CONTINUEBOOT
-IF %_WBX-TIMETEMP1%==15 set _WBX-TIMETEMP1= 3&set _WBX-TIMETEMP3=PM &GOTO :CONTINUEBOOT
-IF %_WBX-TIMETEMP1%==16 set _WBX-TIMETEMP1= 4&set _WBX-TIMETEMP3=PM &GOTO :CONTINUEBOOT
-IF %_WBX-TIMETEMP1%==17 set _WBX-TIMETEMP1= 5&set _WBX-TIMETEMP3=PM &GOTO :CONTINUEBOOT
-IF %_WBX-TIMETEMP1%==18 set _WBX-TIMETEMP1= 6&set _WBX-TIMETEMP3=PM &GOTO :CONTINUEBOOT
-IF %_WBX-TIMETEMP1%==19 set _WBX-TIMETEMP1= 7&set _WBX-TIMETEMP3=PM &GOTO :CONTINUEBOOT
-IF %_WBX-TIMETEMP1%==20 set _WBX-TIMETEMP1= 8&set _WBX-TIMETEMP3=PM &GOTO :CONTINUEBOOT
-IF %_WBX-TIMETEMP1%==21 set _WBX-TIMETEMP1= 9&set _WBX-TIMETEMP3=PM &GOTO :CONTINUEBOOT
-IF %_WBX-TIMETEMP1%==22 set _WBX-TIMETEMP1=10&set _WBX-TIMETEMP3=PM &GOTO :CONTINUEBOOT
-IF %_WBX-TIMETEMP1%==23 set _WBX-TIMETEMP1=11&set _WBX-TIMETEMP3=PM &GOTO :CONTINUEBOOT
-IF %_WBX-TIMETEMP1%==24 set _WBX-TIMETEMP1=12&set _WBX-TIMETEMP3=AM &GOTO :CONTINUEBOOT
-set _WBX-TIMETEMP3=AM
-
-:CONTINUEBOOT
-rem set the variables
-set "_WBX-TASKBAR-TIME=%_WBX-TIMETEMP1%:%_WBX-TIMETEMP2% %_WBX-TIMETEMP3%"
-set "_WBX-TASKBAR-DATE=%_WBX-DATETEMP1%-%_WBX-DATETEMP2%-%DATE:~-7,2%"
-
-
-
-
- 
-set "_WBX-TASKBAR-TIME=%_WBX-TIMETEMP1%:%_WBX-TIMETEMP2% %_WBX-TIMETEMP3%"
-set "_WBX-TASKBAR-DATE=%_WBX-DATETEMP1%-%_WBX-DATETEMP2%-%DATE:~-7,2%"
-
-rem reset temporary variables
-SET _WBX-DATETEMP1=0
-SET _WBX-DATETEMP2=0
-SET _WBX-TIMETEMP1=0
-SET _WBX-TIMETEMP2=0
-SET _WBX-TIMETEMP3=0
-
-
-
-rem 11
-rem Set Default Customizations Right Now
-SET THEME=light
-SET COLORMODE=0
-SET ACCENT.COLOR=3
-SET HIGHLIGHT.WINDOW.BORDERS=b
-SET VOLUME=100
-SET NOTIFICATIONS=0
-SET DO-NOT-DISTURB=0
-
-rem Default Set for background (lock screen)
-SET BACKGROUND.LOCKSCREEN.IMAGE=background-lock
-SET BACKGROUND.LOCKSCREEN.SIZE=77
-SET _TASKBAR.ALIGNMENT=0
-
-rem Default Set for background (desktop)
-SET BACKGROUND.DESKTOP.IMAGE=background
-SET BACKGROUND.DESKTOP.SIZE=100
-SET _HOSTNAME-winbatchx=COMPUTER-0
-
-
-
-rem 12
-rem  Updated in WinBatchX Desktop 2023.
-rem  Where'd it go? The file moved to the SystemData folder
-
-call SystemData/data-system.bat
-
-IF %START-STATUS%==1 Call Text 82 42 0f "Make sure you shut down your computer correctly. You did not shut down properly last time." X _Button_Boxes _Button_Hover
-set START-STATUS=1
-set RESTART-STATUS=0
-
-
-rem write a new data-system.bat file
-(
-  echo SET START-STATUS=%START-STATUS%
-  echo SET FLAG-RECOVERYRESTART=%FLAG-RECOVERYRESTART%
-  echo SET HIBERNATE-STATUS=%HIBERNATE-STATUS%
-  echo SET RESTART-STATUS=%RESTART-STATUS%
-) > SystemData/data-system.bat
-
-
-
-		rem 13
-rem call data-settings.bat
-call SystemData/data-settings.bat
-rem Any conversions from data-settings.bat
-IF %THEME%==light set THEMEcolor=f0
-IF %THEME%==dark set THEMEcolor=0f
-
-IF %THEME%==light set lightTHEMEcolor=f8
-IF %THEME%==dark set lightTHEMEcolor=08
-
-
-
-		rem 14
-call SystemData/data-user.bat
-
-
-rem 17
-rem  Using current updated update service.
-rem  This may not work on older versions (Windows 7/8)
-rem  or newer versions (Windows 11 Dev).
-set "CD_winbatchx=%CD%"
-cd C:\Program Files\Windows Defender
-MpCmdRun -Scan -ScanType 3 -File %CD_winbatchx% > nul
-rem  The 3rd flag tells it as a custom scan.
-rem  Change directory back to WBX-17.
-cd "%CD_winbatchx%"
-
-rem WBXUPDATE
-
-rem  Wget - Retrieves data ONLY for WinBatchX Update.
-rem  Call the 'WGET' service instad of the 'WBXUPDATE' service.
-rem  (Also a copy of the WBXUPDATE service inside this WinBatchX build)
-
-rem  Download it quietly with -q.
-wget -q "https://github.com/bes-ptah/WinBatchX/archive/refs/heads/main.zip" > nul
-
-rem  Unpack it using tar.
-tar -xf main.zip
-
-rem  Enter the directory (always this name)
-cd winbatchx-main
-
-rem  Enter the update directory.
-cd update
-
-rem  Call the program!
-call update.bat
-
-rem  Then remove the old files without a request from user.
-del update.bat > nul
-cd ..
-rmdir update > nul
-del LICENSE
-del README.md
-del _config.yml
-
-rem  Go back to the previous directory.
-cd ..
-
-rem  Remove the update folder
-rmdir winbatchx-main > nul
-
-rem  Also delete the downloaded compressed update file so the command line does not crash on the next update.
-del main.zip
-
-
-
-
-
+SET "_sysbuild=23.0.10006.100"
+
+call Text 100 30 0f "winbatchOS" X _Button_Boxes _Button_Hover
+
+timeout /T 1 /NOBREAK > nul
+
+
+rem 2
+rem Start up 'OS Critical' Services
+cls
+PIXELDRAW /refresh 0f
+cls
+call Text 80 25 0f "Please Wait for the Time & Date Service" X _Button_Boxes _Button_Hover
+CALL Services\TIMEDATE.bat
+cls
+call Text 80 25 0f "Please Wait for the User Profile Service" X _Button_Boxes _Button_Hover
+CALL Services\PERSONALIZATION.bat
+cls
+call Text 80 25 0f "Please Wait for the WinBatchOS Security Service" X _Button_Boxes _Button_Hover
+CALL Services\SECURITY.bat
+cls
+call Text 80 25 0f "Please Wait for the WinBatchOS Update Service" X _Button_Boxes _Button_Hover
+CALL Services\WBXUPDATE.bat
+cls
+call Text 80 25 0f "Please Wait for winbatchOS Containers to start" X _Button_Boxes _Button_Hover
+timeout /T 2 /NOBREAK > nul
+cls
 
 call insertphoto 0 0 85 blankSystemImage.bmp
 timeout /T 0 /NOBREAK > nul
@@ -464,13 +205,9 @@ For /f "Tokens=1,2,3,4* delims=:" %%A in ('Batbox.exe /m') Do (
 	)
 IF %I%==m IF %M%==1 IF %X% GTR 0 IF %Y% GTR 0 IF %X% LSS 211 IF %Y% LSS 58 (
 call insertphoto 0 0 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
-call insertphoto 0 -10 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
 call insertphoto 0 -20 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
-call insertphoto 0 -35 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
 call insertphoto 0 -40 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
-call insertphoto 0 -50 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
 call insertphoto 0 -100 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
-call insertphoto 0 -150 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
 call insertphoto 0 -350 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
 timeout /T 0 /NOBREAK > nul
 IF %_WBX_SETPASSWD%==0 GOTO :WELCOME.EXE
@@ -618,10 +355,10 @@ set _NOTIFICATION.EXE=0
 
 
 rem 7
-rem Default Variables Set for WinBatchX
+rem Default Variables Set for winbatchOS
 SET _ACTIVEAPPLABEL=explorer.exe
 SET _ACTIVEAPPIMAGE=explorer
-SET _ACTIVEAPPTITLE=WinBatchX
+SET _ACTIVEAPPTITLE=winbatchOS
 
 rem Default Variables for windowed mode
 SET _ACTIVEAPPDRAG=
@@ -719,7 +456,10 @@ IF %_WBXCore-update%==1 CALL Text 155 45 f0 "Update Available" 155 46 f0 "A new 
 
 
 
-
+rem Bug Fix before build final release flag
+SET _ACTIVEAPPLABEL=desktop.exe
+SET _ACTIVEAPPIMAGE=explorer
+SET _ACTIVEAPPTITLE=winbatchOS
 
 
 
@@ -836,23 +576,23 @@ rem SERVERRELEASE SOFTWARE;
 
 
 rem QUANTUM KERNEL 1.0-RCT1 PRERELEASE SOFTWARE 
-rem This software is based on the Unlicense License.
+rem This software is based on the Ms-PT License.
 
-rem WINBATCHX 23.0 ARCHITECTURE;
+rem winbatchOS 23.0 ARCHITECTURE;
 
-rem *Note:  Executables that are inside WINBATCHX.BAT have a colon: like :DESKTOP.EXE. (The ':')
+rem *Note:  Executables that are inside winbatchOS.BAT have a colon: like :DESKTOP.EXE. (The ':')
 rem         Others are found in certain folders from the root file.
 
-rem **Note: that all features are executed as an actual winbatchx app.
+rem **Note: that all features are executed as an actual winbatchOS app.
 
 rem SYSTEM.EXE
 rem | 
 rem | - CORESCHEDULER.EXE
-rem   | - SERVICES (They should be in the services folder or an actual, intergerated service on WinBatchX.bat)
+rem   | - SERVICES (They should be in the services folder or an actual, intergerated service on winbatchOS.bat)
 rem     | - User Prefierences        - Services/PERSONALIZATION.BAT
-rem     | - WinBatchX Security       - Services/SECURITY.BAT
+rem     | - winbatchOS Security       - Services/SECURITY.BAT
 rem     | - Time and Date Scheduler  - Services/TIMEDATE.BAT
-rem     | - WinBatchX Update Service - Services/WBXUPDATE.BAT
+rem     | - winbatchOS Update Service - Services/WBXUPDATE.BAT
 rem   | - KERNEL.EXE
 rem   | - BACKGROUND APP PROCESSES
 rem | - DESKTOP                      - :DESKTOP.EXE
@@ -861,6 +601,8 @@ rem   | - DESKTOP BACKGROUND COMPOSE - :DESKTOP.COMPOSE
 rem   | - TASKBAR COMPOSE            - :DESKTOP.TASKBAR
 rem   | - TASKBAR ICON               - :DESKTOP.ICON
 rem   | - DESKTOP FILES              - :DESKTOP.LOOP
+rem   | - DESKTOP CONTEXT MENU       - :DESKTOP.MENU
+rem   | - DESKTOP API CALL- DISPLAY  - :DESKTOP.DISPLAY
 rem | - START MENU                   - :START.EXE
 rem | - SEARCH FEATURE               - :SEARCH.EXE
 rem | - TASK VIEW FEATURE            - :TASKVIEW.EXE
@@ -925,14 +667,14 @@ rem the UI.
 
 rem COMMAND LINE DISPLAYS
 
-rem IN WINBATCHX, there are 2 ways of x-values and y-values when calculating up
+rem IN winbatchOS, there are 2 ways of x-values and y-values when calculating up
 rem the kernel: the 'Xcmd' and 'Ycmd', but there are the 'Xdraw' and 'Ydraw' values, too.
 rem.
 rem By DEFAULT and FALLBACK, we use Xcmd and Ycmd, simply X and Y values, to 
 rem calculate MOST positions on the command line.
 rem.
 rem Xdraw and Ydraw are newer the Xcmd and Ycmd, but they draw more percisely on the
-rem screen. All the features in WinBatchX 23 (Start Menu, Search, Widgets) almost always
+rem screen. All the features in winbatchOS 23 (Start Menu, Search, Widgets) almost always
 rem use Xdraw and Ydraw.
 rem.
 rem Xdraw, Ydraw, Xcmd and Ycmd are just X and Y values on the command line.
@@ -969,37 +711,54 @@ rem for more information.
 cls
 PIXELDRAW /refresh 3f
 timeout /T 2 /NOBREAK > nul
+call :DESKTOP.TASKBAR
+CALL Text 184 53 %THEMEcolor% "%_WBX-OS% %_version%" X _Button_Boxes _Button_Hover
+CALL Text 183 54 %THEMEcolor% "Build %_build% - Q%_quantum-ver%" X _Button_Boxes _Button_Hover
+timeout /T 2 /NOBREAK > nul
+PIXELDRAW /refresh 3f
+call :DESKTOP.TASKBAR
+CALL Text 184 53 %THEMEcolor% "%_WBX-OS% %_version%" X _Button_Boxes _Button_Hover
+CALL Text 183 54 %THEMEcolor% "Build %_build% - Q%_quantum-ver%" X _Button_Boxes _Button_Hover
+timeout /T 1 /NOBREAK > nul
 goto :DESKTOP.EXE
 goto :SYSTEM.EXE
+
+
+
 
 
 rem Everything that is in DESKTOP.EXE is sepreated for your own API! These change at their own risk. Try a actual release for the actual variables, and pull the version being used for each build before running your app.
 :DESKTOP.EXE
 
-rem its better if you dont customize your background with the developer builds right now.
-call insertphoto 0 0 %BACKGROUND.DESKTOP.SIZE% %BACKGROUND.DESKTOP.IMAGE%.%THEME%.bmp
+
+rem Bug Fix before build final release flag
+SET _ACTIVEAPPLABEL=desktop.exe
+SET _ACTIVEAPPIMAGE=explorer
+SET _ACTIVEAPPTITLE=winbatchOS
 
 
-call SystemData/data-variables.bat
-call :DESKTOP.CACHECLEAR
+
+cls
 call :DESKTOP.COMPOSE
+call CoreData\data-variables.bat
+call :DESKTOP.CACHECLEAR
 call :DESKTOP.TASKBAR
 call :DESKTOP.ICON
 call :DESKTOP.LOOP
 
-rem alter this for desktop to clear other app icons
-SET _ACTIVEAPPLABEL=desktop.exe
-SET _ACTIVEAPPIMAGE=explorer
-SET _ACTIVEAPPTITLE=WinBatchX
-
 goto :KERNEL.EXE
 
 
+
+
+
 :DESKTOP.COMPOSE
-call insertphoto 0 0 77 background1.%THEME%.bmp
-call insertphoto 740 0 77 background2.%THEME%.bmp
-call insertphoto 0 462 77 background3.%THEME%.bmp
-call insertphoto 740 462 77 background4.%THEME%.bmp
+call insertphoto 0 0 %BACKGROUND.DESKTOP.SIZE% %BACKGROUND.DESKTOP.IMAGE%.%THEME%.bmp
+
+rem call insertphoto 0 0 77 background1.%THEME%.bmp
+rem call insertphoto 740 0 77 background2.%THEME%.bmp
+rem call insertphoto 0 462 77 background3.%THEME%.bmp
+rem call insertphoto 740 462 77 background4.%THEME%.bmp
 
 rem Build Previews
 
@@ -1008,13 +767,18 @@ rem  This is kept here for accessibility
 CALL Text 180 53 %THEMEcolor% "                             " X _Button_Boxes _Button_Hover
 CALL Text 180 54 %THEMEcolor% "                             " X _Button_Boxes _Button_Hover
 
-CALL Text 180 53 %THEMEcolor% "%_WBX-OS% %_version%" X _Button_Boxes _Button_Hover
-CALL Text 183 54 %THEMEcolor% "Build %_build% - Q%_quantum-ver%" X _Button_Boxes _Button_Hover
-
+CALL Text 184 53 %THEMEcolor% "%_WBX-OS% %_version%" X _Button_Boxes _Button_Hover
+CALL Text 183 54 %THEMEcolor% "%_sysbuild% - Q%_quantum-ver%" X _Button_Boxes _Button_Hover
 exit /b 
 
 
+
+
+
+
+
 :DESKTOP.CACHECLEAR
+set _DESKTOP.EXE=0
 set _START.EXE=0
 set _START-POWERMENU.EXE=0
 set _SEARCH.EXE=0
@@ -1060,12 +824,12 @@ IF %_TASKBAR.ALIGNMENT%==0 (
 	IF %_TASKVIEW.EXE%==0 call insertphoto 740 786 105 taskbar-taskview-off-%THEME%.bmp
 	IF %_WIDGETS.EXE%==0 call insertphoto 15 790 105 taskbar-dashboard-off-%THEME%.bmp
 		rem Widgets
-		CALL Text 7 56 %lightTHEMEcolor% "WinBatchX Update:" X _Button_Boxes _Button_Hover
+		CALL Text 7 56 %lightTHEMEcolor% "winbatchOS Update:" X _Button_Boxes _Button_Hover
 		CALL Text 7 57 %lightTHEMEcolor% "%_WBXCore-updatemessage%" X _Button_Boxes _Button_Hover
 	IF %_APP.EXE%==0 call insertphoto 800 795 12 %_ACTIVEAPPIMAGE%.%THEME%.bmp
 	IF %_APP.EXE%==1 call insertphoto 800 795 12 %_ACTIVEAPPIMAGE%.%THEME%.bmp
 	IF %_TASKBAROVERFLOW.EXE%==0 call insertphoto 850 790 105 taskbar-overflow-off-%THEME%.bmp
-	IF %_ACTION.EXE%==0 call insertphoto 1368 788 95 taskbaricons-off-%THEME%.bmp
+	IF %_ACTION.EXE%==0 call insertphoto 1360 788 95 taskbaricons-off-%THEME%.bmp
 	IF %_NOTIFICATION.EXE%==0 call insertphoto 1405 791 95 timecenter-off-%THEME%.bmp
 	rem =======
 	IF %_START.EXE%==1 call insertphoto 635 786 105 taskbar-start-on-%THEME%.bmp
@@ -1074,7 +838,7 @@ IF %_TASKBAR.ALIGNMENT%==0 (
 	IF %_WIDGETS.EXE%==1 call insertphoto 15 790 105 taskbar-dashboard-on-%THEME%.bmp
 	IF %_APP.EXE%==1 call insertphoto 804 825 120 taskbar-using-%THEME%.bmp
 	rem IF %_TASKBAROVERFLOW.EXE%==1 call insertphoto 850 790 105 taskbar-overflow-on-%THEME%.bmp
-	IF %_ACTION.EXE%==1 call insertphoto 1368 788 95 taskbaricons-on-%THEME%.bmp
+	IF %_ACTION.EXE%==1 call insertphoto 1360 788 95 taskbaricons-on-%THEME%.bmp
 	IF %_NOTIFICATION.EXE%==1 call insertphoto 1405 791 95 timecenter-on-%THEME%.bmp
 )
 
@@ -1084,9 +848,9 @@ IF %_TASKBAR.ALIGNMENT%==1 (
 	IF %_SEARCH.EXE%==0 call insertphoto 65 792 140 taskbar-search-off-%THEME%.bmp
 	IF %_TASKVIEW.EXE%==0 call insertphoto 110 786 105 taskbar-taskview-off-%THEME%.bmp
 	IF %_WIDGETS.EXE%==0 call insertphoto 165 790 105 taskbar-dashboard-off-%THEME%.bmp
-	IF %_APP.EXE%==1 call insertphoto 230 795 12 %_ACTIVEAPPIMAGE%.%THEME%.bmp
+	IF %_APP.EXE%==0 call insertphoto 230 795 12 %_ACTIVEAPPIMAGE%.%THEME%.bmp
 	IF %_TASKBAROVERFLOW.EXE%==0 call insertphoto 280 790 105 taskbar-overflow-off-%THEME%.bmp
-	IF %_ACTION.EXE%==0 call insertphoto 1368 788 95 taskbaricons-off-%THEME%.bmp
+	IF %_ACTION.EXE%==0 call insertphoto 1360 788 95 taskbaricons-off-%THEME%.bmp
 	IF %_NOTIFICATION.EXE%==0 call insertphoto 1405 791 95 timecenter-off-%THEME%.bmp
 	rem =======
 	IF %_START.EXE%==1 call insertphoto 15 786 105 taskbar-start-on-%THEME%.bmp
@@ -1094,12 +858,12 @@ IF %_TASKBAR.ALIGNMENT%==1 (
 	IF %_TASKVIEW.EXE%==1 call insertphoto  790 95 taskbar-taskview-on-%THEME%.bmp
 	IF %_WIDGETS.EXE%==1 call insertphoto 790 105 taskbar-dashboard-on-%THEME%.bmp
 	IF %_TASKBAROVERFLOW.EXE%==1 call insertphoto 840 790 105 taskbar-overflow-on-%THEME%.bmp
-	IF %_ACTION.EXE%==1 call insertphoto 1368 788 95 taskbaricons-on-%THEME%.bmp
+	IF %_ACTION.EXE%==1 call insertphoto 1360 788 95 taskbaricons-on-%THEME%.bmp
 	IF %_NOTIFICATION.EXE%==1 call insertphoto 1405 791 95 timecenter-on-%THEME%.bmp
 )
 
 rem draw time
-CALL Text 201 56 %THEMEcolor% "%_WBX-TASKBAR-TIME%" 199 57 %THEMEcolor% "%_WBX-TASKBAR-DATE%" X _Button_Boxes _Button_Hover
+CALL Text 199 56 %THEMEcolor% "%_WBX-TASKBAR-TIME%" 198 57 %THEMEcolor% "%_WBX-TASKBAR-DATE%" X _Button_Boxes _Button_Hover
 exit /b
 
 
@@ -1123,6 +887,213 @@ exit /b
 
 
 
+
+:DESKTOP.DISPLAY
+rem - Removal of this feature in Q0.9
+rem + Added this feature back in Q1.0beta: reason- using this label keeps the gui more responsive.
+rem   call this feature to get the accurate at the time of the mouse cursor.
+set /A Xdraw=%Xcmd%*7
+set /A Ydraw=%Ycmd%*14
+exit /b
+
+
+
+:DESKTOP.MENU
+set _DESKTOP.EXE=2
+rem THIS LABEL USES THE NEW winbatchOS SDK 19
+rem There is fallback- winbatchOS SDK 16 is still available
+
+call :DESKTOP.DISPLAY
+
+rem Draw the context menu
+call insertphoto %Xdraw% %Ydraw% 260 blank.%THEME%.bmp
+
+rem Round those corners
+
+
+set /A X.TEMP.DESKTOP.MENU=%Xdraw%+2
+set /A Y.TEMP.DESKTOP.MENU=%Ydraw%
+call insertphoto %X.TEMP.DESKTOP.MENU% %Y.TEMP.DESKTOP.MENU% 259 blank.%THEME%.bmp
+
+set /A X.TEMP.DESKTOP.MENU=%Xdraw%
+set /A Y.TEMP.DESKTOP.MENU=%Ydraw%+2
+call insertphoto %X.TEMP.DESKTOP.MENU% %Y.TEMP.DESKTOP.MENU% 260 blank.%THEME%.bmp
+
+set /A X.TEMP.DESKTOP.MENU=%Xdraw%+2
+set /A Y.TEMP.DESKTOP.MENU=%Ydraw%+2
+call insertphoto %X.TEMP.DESKTOP.MENU% %Y.TEMP.DESKTOP.MENU% 260 blank.%THEME%.bmp
+
+
+set /A X.TEMP.DESKTOP.MENU=%Xdraw%+1
+set /A Y.TEMP.DESKTOP.MENU=%Ydraw%-1
+call insertphoto %X.TEMP.DESKTOP.MENU% %Y.TEMP.DESKTOP.MENU% 259 blank.%THEME%.bmp
+
+set /A X.TEMP.DESKTOP.MENU=%Xdraw%+1
+set /A Y.TEMP.DESKTOP.MENU=%Ydraw%+4
+call insertphoto %X.TEMP.DESKTOP.MENU% %Y.TEMP.DESKTOP.MENU% 259 blank.%THEME%.bmp
+
+
+rem Display the menu
+set /A X.TEMP.DESKTOP.MENU=%Xcmd%+4
+set /A Y.TEMP.DESKTOP.MENU=%Ycmd%
+CALL Text %X.TEMP.DESKTOP.MENU% %Y.TEMP.DESKTOP.MENU% %THEMEcolor% "View" X _Button_Boxes _Button_Hover
+
+
+set /A X.TEMP.DESKTOP.MENU=%Xcmd%+4
+set /A Y.TEMP.DESKTOP.MENU=%Ycmd%+2
+CALL Text %X.TEMP.DESKTOP.MENU% %Y.TEMP.DESKTOP.MENU% %THEMEcolor% "Sort by" X _Button_Boxes _Button_Hover
+
+set /A X.TEMP.DESKTOP.MENU=%Xcmd%+4
+set /A Y.TEMP.DESKTOP.MENU=%Ycmd%+4
+CALL Text %X.TEMP.DESKTOP.MENU% %Y.TEMP.DESKTOP.MENU% %THEMEcolor% "Refresh" X _Button_Boxes _Button_Hover
+
+set /A X.TEMP.DESKTOP.MENU=%Xcmd%+4
+set /A Y.TEMP.DESKTOP.MENU=%Ycmd%+7
+CALL Text %X.TEMP.DESKTOP.MENU% %Y.TEMP.DESKTOP.MENU% %THEMEcolor% "New" X _Button_Boxes _Button_Hover
+
+set /A X.TEMP.DESKTOP.MENU=%Xcmd%+4
+set /A Y.TEMP.DESKTOP.MENU=%Ycmd%+10
+CALL Text %X.TEMP.DESKTOP.MENU% %Y.TEMP.DESKTOP.MENU% %THEMEcolor% "Display Settings" X _Button_Boxes _Button_Hover
+
+set /A X.TEMP.DESKTOP.MENU=%Xcmd%+4
+set /A Y.TEMP.DESKTOP.MENU=%Ycmd%+12
+CALL Text %X.TEMP.DESKTOP.MENU% %Y.TEMP.DESKTOP.MENU% %THEMEcolor% "Personalize" X _Button_Boxes _Button_Hover
+
+set /A X.TEMP.DESKTOP.MENU=%Xcmd%+4
+set /A Y.TEMP.DESKTOP.MENU=%Ycmd%+15
+CALL Text %X.TEMP.DESKTOP.MENU% %Y.TEMP.DESKTOP.MENU% %THEMEcolor% "Open in Terminal" X _Button_Boxes _Button_Hover
+
+set /A X.TEMP.DESKTOP.MENU=%Xcmd%+4
+set /A Y.TEMP.DESKTOP.MENU=%Ycmd%+18
+CALL Text %X.TEMP.DESKTOP.MENU% %Y.TEMP.DESKTOP.MENU% %THEMEcolor% "Show more options" X _Button_Boxes _Button_Hover
+
+
+
+
+set /A X1.TEMP.DESKTOP.MENU=%Xcmd%
+set /A Y1.TEMP.DESKTOP.MENU=%Ycmd%
+
+set /A X2.TEMP.DESKTOP.MENU=%Xcmd%+39
+set /A Y2.TEMP.DESKTOP.MENU=%Ycmd%+2
+
+set /A X3.TEMP.DESKTOP.MENU=%X1.TEMP.DESKTOP.MENU%
+set /A Y3.TEMP.DESKTOP.MENU=%Y1.TEMP.DESKTOP.MENU%+2
+
+set /A X4.TEMP.DESKTOP.MENU=%X2.TEMP.DESKTOP.MENU%+39
+set /A Y4.TEMP.DESKTOP.MENU=%Y2.TEMP.DESKTOP.MENU%+2
+
+set /A X5.TEMP.DESKTOP.MENU=%X3.TEMP.DESKTOP.MENU%
+set /A Y5.TEMP.DESKTOP.MENU=%Y3.TEMP.DESKTOP.MENU%+2
+
+set /A X6.TEMP.DESKTOP.MENU=%X4.TEMP.DESKTOP.MENU%+39
+set /A Y6.TEMP.DESKTOP.MENU=%Y4.TEMP.DESKTOP.MENU%+2
+
+set /A X7.TEMP.DESKTOP.MENU=%X5.TEMP.DESKTOP.MENU%
+set /A Y7.TEMP.DESKTOP.MENU=%Y5.TEMP.DESKTOP.MENU%+2
+
+set /A X8.TEMP.DESKTOP.MENU=%X6.TEMP.DESKTOP.MENU%+39
+set /A Y8.TEMP.DESKTOP.MENU=%Y6.TEMP.DESKTOP.MENU%+2
+
+set /A X9.TEMP.DESKTOP.MENU=%X7.TEMP.DESKTOP.MENU%
+set /A Y9.TEMP.DESKTOP.MENU=%Y7.TEMP.DESKTOP.MENU%+2
+
+set /A X10.TEMP.DESKTOP.MENU=%X8.TEMP.DESKTOP.MENU%+39
+set /A Y10.TEMP.DESKTOP.MENU=%Y8.TEMP.DESKTOP.MENU%+3
+
+set /A X11.TEMP.DESKTOP.MENU=%X9.TEMP.DESKTOP.MENU%
+set /A Y11.TEMP.DESKTOP.MENU=%Y9.TEMP.DESKTOP.MENU%+2
+
+set /A X12.TEMP.DESKTOP.MENU=%X10.TEMP.DESKTOP.MENU%+39
+set /A Y12.TEMP.DESKTOP.MENU=%Y10.TEMP.DESKTOP.MENU%+2
+
+set /A X13.TEMP.DESKTOP.MENU=%X11.TEMP.DESKTOP.MENU%
+set /A Y13.TEMP.DESKTOP.MENU=%Y11.TEMP.DESKTOP.MENU%+2
+
+set /A X14.TEMP.DESKTOP.MENU=%X12.TEMP.DESKTOP.MENU%+39
+set /A Y14.TEMP.DESKTOP.MENU=%Y12.TEMP.DESKTOP.MENU%+2
+
+set /A X15.TEMP.DESKTOP.MENU=%X13.TEMP.DESKTOP.MENU%
+set /A Y15.TEMP.DESKTOP.MENU=%Y13.TEMP.DESKTOP.MENU%+2
+
+set /A X16.TEMP.DESKTOP.MENU=%X14.TEMP.DESKTOP.MENU%+39
+set /A Y16.TEMP.DESKTOP.MENU=%Y14.TEMP.DESKTOP.MENU%+3
+
+set /A X17.TEMP.DESKTOP.MENU=%X15.TEMP.DESKTOP.MENU%
+set /A Y17.TEMP.DESKTOP.MENU=%Y15.TEMP.DESKTOP.MENU%+2
+
+set /A X18.TEMP.DESKTOP.MENU=%X16.TEMP.DESKTOP.MENU%+39
+set /A Y18.TEMP.DESKTOP.MENU=%Y16.TEMP.DESKTOP.MENU%+3
+
+exit /b
+
+
+:DESKTOP.MENU.OLD
+set _DESKTOP.EXE=2
+rem This label uses winbatchOS SDK 16
+call list %X% %Y% %THEMEcolor% "View               >" " " "Sort by            >" " " "Refresh" "____________________" " " "New                > " "____________________" " " "Display Settings" " " "Personalize" "____________________" " " "Open in Terminal"
+IF %ERRORLEVEL%==0 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==1 goto :DESKTOP.MENU.VIEW.OLD
+IF %ERRORLEVEL%==2 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==3 goto :DESKTOP.MENU.SORT.OLD
+IF %ERRORLEVEL%==4 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==5 goto :DESKTOP.EXE 
+IF %ERRORLEVEL%==6 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==7 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==8 goto :DESKTOP.MENU.NEW.OLD
+IF %ERRORLEVEL%==9 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==10 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==11 set _SETTINGS.EXE=0 &set _SETTINGS.SECTION=SYSTEM.DISPLAY &goto :SETTINGS.EXE
+IF %ERRORLEVEL%==12 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==13 set _SETTINGS.EXE=0 &set _SETTINGS.SECTION=PERSONALIZATION &goto :SETTINGS.EXE
+IF %ERRORLEVEL%==14 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==15 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==16 goto :TERMINAL.EXE
+goto :DESKTOP.MENU.OLD
+
+
+
+:DESKTOP.MENU.VIEW.OLD
+set /A "Xright=%X%+28"
+call list %Xright% %Y% %THEMEcolor% "Large Icons" "Medium Icons" "Small Icons" "___________________" " " "Show Desktop Icons"
+IF %ERRORLEVEL%==1 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==2 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==3 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==4 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==5 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==6 goto :DESKTOP.EXE
+goto :RIGHTCLICKDESKTOP.VIEW
+
+
+:DESKTOP.MENU.SORT.OLD
+set /A "Xright=%X%+28"
+set /A "Yright=%Y%+3"
+call list %Xright% %Yright% %THEMEcolor% "Name" "Size"
+IF %ERRORLEVEL%==1 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==2 goto :DESKTOP.EXE
+goto :RIGHTCLICKDESKTOP.VIEW
+
+
+:DESKTOP.MENU.NEW.OLD
+set /A "Xright=%X%+28"
+set /A "Yright=%Y%+8"
+call list %Xright% %Yright% %THEMEcolor% "Shortcut" " " "___________________" " " "Not available: Folder"
+IF %ERRORLEVEL%==1 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==2 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==3 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==4 goto :DESKTOP.EXE
+IF %ERRORLEVEL%==5 goto :DESKTOP.EXE
+goto :RIGHTCLICKDESKTOP.VIEW
+
+
+
+
+
+
+
+
+
+
+
 :KERNEL.EXE
 set I=m
 set Button=0
@@ -1138,101 +1109,385 @@ For /F "Delims=: Tokens=1,2,3" %%A in ('Batbox.exe /m') Do (
 
 	set X=%%A
 	set Y=%%B
+
+
+	set Xcmd=%%A
+	set Ycmd=%%B
+	
+	set /A Xdraw=%Xcmd%*7
+	set /A Ydraw=%Ycmd%*14
+
 	title %_WBX-OS% %_version% - Build %_build% - Debug: [%%A] [%%B] [%%C] [%%D]
+	)
+
+IF %_ACTIVEAPPLABEL%==desktop.exe IF %Button%==2 IF %X% Gtr 0 IF %X% Lss 200 IF %Y% Gtr 0 IF %Y% Lss 50 call :DESKTOP.MENU
+
+
+
+IF %_TASKBAR.ALIGNMENT%==0 (
+	rem Start Menu:
+		IF %_START.EXE%==0 IF %Button%==1 IF %X% GTR 91 IF %Y% GTR 55 IF %X% LSS 96 IF %Y% LSS 59 goto :START.EXE
+
+	rem Context Menu for Start:
+		IF %_START.EXE%==0 IF %Button%==2 IF %X% GTR 91 IF %Y% GTR 55 IF %X% LSS 96 IF %Y% LSS 59 goto :START.CONTEXTMENU
+		rem In case it does not open 'in' start:
+		IF %_START.EXE%==1 IF %Button%==2 IF %X% GTR 91 IF %Y% GTR 55 IF %X% LSS 96 IF %Y% LSS 59 goto :START.CONTEXTMENU
+
+	rem Close the Start Menu:
+		IF %_START.EXE%==1 IF %Button%==1 IF %X% GTR 91 IF %Y% GTR 55 IF %X% LSS 96 IF %Y% LSS 59 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
+		IF %_START.EXE%==2 IF %Button%==2 IF %X% GTR 91 IF %Y% GTR 55 IF %X% LSS 96 IF %Y% LSS 59 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
+
+
+	IF %_START.EXE%==1 (
+		IF %Button%==1 IF %X% GTR 67 IF %Y% GTR 15 IF %X% LSS 77 IF %Y% LSS 20 goto :EDGE.EXE
+		IF %Button%==1 IF %X% GTR 81 IF %Y% GTR 15 IF %X% LSS 92 IF %Y% LSS 20 goto :NOTEPAD.EXE
+		IF %Button%==1 IF %X% GTR 94 IF %Y% GTR 15 IF %X% LSS 107 IF %Y% LSS 20 goto :EXPLORER.EXE
+		IF %Button%==1 IF %X% GTR 109 IF %Y% GTR 15 IF %X% LSS 119 IF %Y% LSS 20 goto :SETTINGS.EXE
+		IF %Button%==1 IF %X% GTR 123 IF %Y% GTR 15 IF %X% LSS 133 IF %Y% LSS 20 goto :SECURITY.EXE
+		IF %Button%==1 IF %X% GTR 136 IF %Y% GTR 15 IF %X% LSS 147 IF %Y% LSS 20 goto :CALCULATOR.EXE
+		
+		IF %Button%==2 IF %X% GTR 67 IF %Y% GTR 15 IF %X% LSS 77 IF %Y% LSS 20 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 81 IF %Y% GTR 15 IF %X% LSS 92 IF %Y% LSS 20 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 94 IF %Y% GTR 15 IF %X% LSS 107 IF %Y% LSS 20 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 109 IF %Y% GTR 15 IF %X% LSS 119 IF %Y% LSS 20 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 123 IF %Y% GTR 15 IF %X% LSS 133 IF %Y% LSS 20 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 136 IF %Y% GTR 15 IF %X% LSS 147 IF %Y% LSS 20 goto :START.RIGHTCLICKAPP
+		
+
+		IF %Button%==1 IF %X% GTR 67 IF %Y% GTR 21 IF %X% LSS 77 IF %Y% LSS 26 goto :TERMINAL.EXE
+		IF %Button%==1 IF %X% GTR 81 IF %Y% GTR 21 IF %X% LSS 92 IF %Y% LSS 26 goto :PHOTOS.EXE
+		IF %Button%==1 IF %X% GTR 94 IF %Y% GTR 21 IF %X% LSS 107 IF %Y% LSS 26 goto :PAINT.EXE
+		IF %Button%==1 IF %X% GTR 109 IF %Y% GTR 21 IF %X% LSS 119 IF %Y% LSS 26 goto :CALENDAR.EXE
+		IF %Button%==1 IF %X% GTR 123 IF %Y% GTR 21 IF %X% LSS 133 IF %Y% LSS 26 goto :WINDOWEDTEST.APP
+		IF %Button%==1 IF %X% GTR 136 IF %Y% GTR 21 IF %X% LSS 147 IF %Y% LSS 26 goto :TASKMGR.EXE
+
+		IF %Button%==2 IF %X% GTR 67 IF %Y% GTR 21 IF %X% LSS 77 IF %Y% LSS 26 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 81 IF %Y% GTR 21 IF %X% LSS 92 IF %Y% LSS 26 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 94 IF %Y% GTR 21 IF %X% LSS 107 IF %Y% LSS 26 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 109 IF %Y% GTR 21 IF %X% LSS 119 IF %Y% LSS 26 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 123 IF %Y% GTR 21 IF %X% LSS 133 IF %Y% LSS 26 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 136 IF %Y% GTR 21 IF %X% LSS 147 IF %Y% LSS 26 goto :START.RIGHTCLICKAPP
+
+		rem Power
+		IF %Button%==1 IF %X% GTR 139 IF %Y% GTR 51 IF %X% LSS 145 IF %Y% LSS 53 goto :START.POWER
+	)
+
+	rem Power
+		IF %_START.EXE%==1 IF %Button%==1 IF %X% GTR 139 IF %Y% GTR 51 IF %X% LSS 145 IF %Y% LSS 53 goto :START.POWER
+
+
+	IF %_START.EXE%==2 (
+		rem  Sign Out
+		IF %_START.EXE%==2 IF %Button%==1 IF %X% GTR 137 IF %Y% GTR 44 IF %X% LSS 149 IF %Y% LSS 46 call :DESKTOP.CACHECLEAR &goto :LOGIN.EXE
+		
+		rem  Shut Down
+		IF %_START.EXE%==2 IF %Button%==1 IF %X% GTR 137 IF %Y% GTR 46 IF %X% LSS 149 IF %Y% LSS 48 call :DESKTOP.CACHECLEAR &goto :SHUTDOWN.EXE
+		
+		rem  Restart
+		IF %_START.EXE%==2 IF %Button%==1 IF %X% GTR 137 IF %Y% GTR 48 IF %X% LSS 149 IF %Y% LSS 50 call :DESKTOP.CACHECLEAR &goto :RESTART.EXE
+		
+		rem  Close
+		IF %_START.EXE%==2 IF %Button%==1 IF %X% GTR 63 IF %Y% GTR 7 IF %X% LSS 152 IF %Y% LSS 55 call :DESKTOP.CACHECLEAR &goto :START.EXE
 	)
 
 
 
-rem Start Menu:
-	IF %_START.EXE%==0 IF %Button%==1 IF %X% GTR 91 IF %Y% GTR 55 IF %X% LSS 96 IF %Y% LSS 59 goto :START.EXE
+	rem Search:
+	IF %_SEARCH.EXE%==0 IF %Button%==1 IF %X% GTR 98 IF %Y% GTR 56 IF %X% LSS 103 IF %Y% LSS 59 goto :SEARCH.EXE
 
-rem Context Menu for Start:
-	IF %_START.EXE%==0 IF %Button%==2 IF %X% GTR 91 IF %Y% GTR 55 IF %X% LSS 96 IF %Y% LSS 59 goto :START.CONTEXTMENU
-	rem In case it does not open 'in' start:
-	IF %_START.EXE%==1 IF %Button%==2 IF %X% GTR 91 IF %Y% GTR 55 IF %X% LSS 96 IF %Y% LSS 59 goto :START.CONTEXTMENU
-
-rem Close the Start Menu:
-	IF %_START.EXE%==1 IF %Button%==1 IF %X% GTR 91 IF %Y% GTR 55 IF %X% LSS 96 IF %Y% LSS 59 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
-	IF %_START.EXE%==2 IF %Button%==2 IF %X% GTR 91 IF %Y% GTR 55 IF %X% LSS 96 IF %Y% LSS 59 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
+		rem Close Search:
+		IF %_SEARCH.EXE%==1 IF %Button%==1 IF %X% GTR 98 IF %Y% GTR 56 IF %X% LSS 103 IF %Y% LSS 59 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
 
 
-IF %_START.EXE%==1 (
-	IF %Button%==1 IF %X% GTR 67 IF %Y% GTR 15 IF %X% LSS 77 IF %Y% LSS 20 goto :EDGE.EXE
-	IF %Button%==1 IF %X% GTR 81 IF %Y% GTR 15 IF %X% LSS 92 IF %Y% LSS 20 goto :NOTEPAD.EXE
-	IF %Button%==1 IF %X% GTR 94 IF %Y% GTR 15 IF %X% LSS 107 IF %Y% LSS 20 goto :EXPLORER.EXE
-	IF %Button%==1 IF %X% GTR 109 IF %Y% GTR 15 IF %X% LSS 119 IF %Y% LSS 20 goto :SETTINGS.EXE
-	IF %Button%==1 IF %X% GTR 123 IF %Y% GTR 15 IF %X% LSS 133 IF %Y% LSS 20 goto :SECURITY.EXE
-	IF %Button%==1 IF %X% GTR 136 IF %Y% GTR 15 IF %X% LSS 147 IF %Y% LSS 20 goto :CALCULATOR.EXE
-	
-	IF %Button%==2 IF %X% GTR 67 IF %Y% GTR 15 IF %X% LSS 77 IF %Y% LSS 20 goto :START.RIGHTCLICKAPP
-	IF %Button%==2 IF %X% GTR 81 IF %Y% GTR 15 IF %X% LSS 92 IF %Y% LSS 20 goto :START.RIGHTCLICKAPP
-	IF %Button%==2 IF %X% GTR 94 IF %Y% GTR 15 IF %X% LSS 107 IF %Y% LSS 20 goto :START.RIGHTCLICKAPP
-	IF %Button%==2 IF %X% GTR 109 IF %Y% GTR 15 IF %X% LSS 119 IF %Y% LSS 20 goto :START.RIGHTCLICKAPP
-	IF %Button%==2 IF %X% GTR 123 IF %Y% GTR 15 IF %X% LSS 133 IF %Y% LSS 20 goto :START.RIGHTCLICKAPP
-	IF %Button%==2 IF %X% GTR 136 IF %Y% GTR 15 IF %X% LSS 147 IF %Y% LSS 20 goto :START.RIGHTCLICKAPP
-	
+	rem Task View:
+	IF %_TASKVIEW.EXE%==0 IF %Button%==1 IF %X% GTR 105 IF %Y% GTR 56 IF %X% LSS 111 IF %Y% LSS 59 goto :TASKVIEW.EXE
+		
+		rem Close Task View:
+		IF %_TASKVIEW.EXE%==1 IF %Button%==1 IF %X% GTR 105 IF %Y% GTR 56 IF %X% LSS 111 IF %Y% LSS 59 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
 
-	IF %Button%==1 IF %X% GTR 67 IF %Y% GTR 21 IF %X% LSS 77 IF %Y% LSS 26 goto :TERMINAL.EXE
-	IF %Button%==1 IF %X% GTR 81 IF %Y% GTR 21 IF %X% LSS 92 IF %Y% LSS 26 goto :PHOTOS.EXE
-	IF %Button%==1 IF %X% GTR 94 IF %Y% GTR 21 IF %X% LSS 107 IF %Y% LSS 26 goto :PAINT.EXE
-	IF %Button%==1 IF %X% GTR 109 IF %Y% GTR 21 IF %X% LSS 119 IF %Y% LSS 26 goto :CALENDAR.EXE
-	IF %Button%==1 IF %X% GTR 123 IF %Y% GTR 21 IF %X% LSS 133 IF %Y% LSS 26 goto :WINDOWEDTEST.APP
-	IF %Button%==1 IF %X% GTR 136 IF %Y% GTR 21 IF %X% LSS 147 IF %Y% LSS 26 goto :TASKMGR.EXE
+	rem Widgets:
+	IF %_WIDGETS.EXE%==0 IF %Button%==1 IF %X% GTR 2 IF %Y% GTR 56 IF %X% LSS 28 IF %Y% LSS 59 goto :WIDGETS.EXE
 
-	IF %Button%==2 IF %X% GTR 67 IF %Y% GTR 21 IF %X% LSS 77 IF %Y% LSS 26 goto :START.RIGHTCLICKAPP
-	IF %Button%==2 IF %X% GTR 81 IF %Y% GTR 21 IF %X% LSS 92 IF %Y% LSS 26 goto :START.RIGHTCLICKAPP
-	IF %Button%==2 IF %X% GTR 94 IF %Y% GTR 21 IF %X% LSS 107 IF %Y% LSS 26 goto :START.RIGHTCLICKAPP
-	IF %Button%==2 IF %X% GTR 109 IF %Y% GTR 21 IF %X% LSS 119 IF %Y% LSS 26 goto :START.RIGHTCLICKAPP
-	IF %Button%==2 IF %X% GTR 123 IF %Y% GTR 21 IF %X% LSS 133 IF %Y% LSS 26 goto :START.RIGHTCLICKAPP
-	IF %Button%==2 IF %X% GTR 136 IF %Y% GTR 21 IF %X% LSS 147 IF %Y% LSS 26 goto :START.RIGHTCLICKAPP
+		rem Close Widgets:
+		IF %_WIDGETS.EXE%==1 IF %Button%==1 IF %X% GTR 2 IF %Y% GTR 56 IF %X% LSS 28 IF %Y% LSS 59 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
+)
+
+
+
+
+
+IF %_TASKBAR.ALIGNMENT%==1 (
+	rem Start Menu:
+		IF %_START.EXE%==0 IF %Button%==1 IF %X% GTR 0 IF %Y% GTR 55 IF %X% LSS 7 IF %Y% LSS 59 goto :START.EXE
+
+	rem Context Menu for Start:
+		IF %_START.EXE%==0 IF %Button%==2 IF %X% GTR 0 IF %Y% GTR 55 IF %X% LSS 7 IF %Y% LSS 59 goto :START.CONTEXTMENU
+		rem In case it does not open 'in' start:
+		IF %_START.EXE%==1 IF %Button%==2 IF %X% GTR 0 IF %Y% GTR 55 IF %X% LSS 7 IF %Y% LSS 59 goto :START.CONTEXTMENU
+
+	rem Close the Start Menu:
+		IF %_START.EXE%==1 IF %Button%==1 IF %X% GTR 0 IF %Y% GTR 55 IF %X% LSS 7 IF %Y% LSS 59 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
+		IF %_START.EXE%==2 IF %Button%==2 IF %X% GTR 0 IF %Y% GTR 55 IF %X% LSS 7 IF %Y% LSS 59 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
+
+
+	IF %_START.EXE%==1 (
+		IF %Button%==1 IF %X% GTR 67 IF %Y% GTR 15 IF %X% LSS 77 IF %Y% LSS 20 goto :EDGE.EXE
+		IF %Button%==1 IF %X% GTR 81 IF %Y% GTR 15 IF %X% LSS 92 IF %Y% LSS 20 goto :NOTEPAD.EXE
+		IF %Button%==1 IF %X% GTR 94 IF %Y% GTR 15 IF %X% LSS 107 IF %Y% LSS 20 goto :EXPLORER.EXE
+		IF %Button%==1 IF %X% GTR 109 IF %Y% GTR 15 IF %X% LSS 119 IF %Y% LSS 20 goto :SETTINGS.EXE
+		IF %Button%==1 IF %X% GTR 123 IF %Y% GTR 15 IF %X% LSS 133 IF %Y% LSS 20 goto :SECURITY.EXE
+		IF %Button%==1 IF %X% GTR 136 IF %Y% GTR 15 IF %X% LSS 147 IF %Y% LSS 20 goto :CALCULATOR.EXE
+		
+		IF %Button%==2 IF %X% GTR 67 IF %Y% GTR 15 IF %X% LSS 77 IF %Y% LSS 20 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 81 IF %Y% GTR 15 IF %X% LSS 92 IF %Y% LSS 20 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 94 IF %Y% GTR 15 IF %X% LSS 107 IF %Y% LSS 20 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 109 IF %Y% GTR 15 IF %X% LSS 119 IF %Y% LSS 20 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 123 IF %Y% GTR 15 IF %X% LSS 133 IF %Y% LSS 20 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 136 IF %Y% GTR 15 IF %X% LSS 147 IF %Y% LSS 20 goto :START.RIGHTCLICKAPP
+		
+
+		IF %Button%==1 IF %X% GTR 67 IF %Y% GTR 21 IF %X% LSS 77 IF %Y% LSS 26 goto :TERMINAL.EXE
+		IF %Button%==1 IF %X% GTR 81 IF %Y% GTR 21 IF %X% LSS 92 IF %Y% LSS 26 goto :PHOTOS.EXE
+		IF %Button%==1 IF %X% GTR 94 IF %Y% GTR 21 IF %X% LSS 107 IF %Y% LSS 26 goto :PAINT.EXE
+		IF %Button%==1 IF %X% GTR 109 IF %Y% GTR 21 IF %X% LSS 119 IF %Y% LSS 26 goto :CALENDAR.EXE
+		IF %Button%==1 IF %X% GTR 123 IF %Y% GTR 21 IF %X% LSS 133 IF %Y% LSS 26 goto :WINDOWEDTEST.APP
+		IF %Button%==1 IF %X% GTR 136 IF %Y% GTR 21 IF %X% LSS 147 IF %Y% LSS 26 goto :TASKMGR.EXE
+
+		IF %Button%==2 IF %X% GTR 67 IF %Y% GTR 21 IF %X% LSS 77 IF %Y% LSS 26 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 81 IF %Y% GTR 21 IF %X% LSS 92 IF %Y% LSS 26 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 94 IF %Y% GTR 21 IF %X% LSS 107 IF %Y% LSS 26 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 109 IF %Y% GTR 21 IF %X% LSS 119 IF %Y% LSS 26 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 123 IF %Y% GTR 21 IF %X% LSS 133 IF %Y% LSS 26 goto :START.RIGHTCLICKAPP
+		IF %Button%==2 IF %X% GTR 136 IF %Y% GTR 21 IF %X% LSS 147 IF %Y% LSS 26 goto :START.RIGHTCLICKAPP
+
+		rem Power
+		IF %Button%==1 IF %X% GTR 139 IF %Y% GTR 51 IF %X% LSS 145 IF %Y% LSS 53 goto :START.POWER
+	)
 
 	rem Power
-	IF %Button%==1 IF %X% GTR 139 IF %Y% GTR 51 IF %X% LSS 145 IF %Y% LSS 53 goto :START.POWER
+		IF %_START.EXE%==1 IF %Button%==1 IF %X% GTR 139 IF %Y% GTR 51 IF %X% LSS 145 IF %Y% LSS 53 goto :START.POWER
+
+
+	IF %_START.EXE%==2 (
+		rem  Sign Out
+		IF %_START.EXE%==2 IF %Button%==1 IF %X% GTR 137 IF %Y% GTR 44 IF %X% LSS 149 IF %Y% LSS 46 call :DESKTOP.CACHECLEAR &goto :LOGIN.EXE
+		
+		rem  Shut Down
+		IF %_START.EXE%==2 IF %Button%==1 IF %X% GTR 137 IF %Y% GTR 46 IF %X% LSS 149 IF %Y% LSS 48 call :DESKTOP.CACHECLEAR &goto :SHUTDOWN.EXE
+		
+		rem  Restart
+		IF %_START.EXE%==2 IF %Button%==1 IF %X% GTR 137 IF %Y% GTR 48 IF %X% LSS 149 IF %Y% LSS 50 call :DESKTOP.CACHECLEAR &goto :RESTART.EXE
+		
+		rem  Close
+		IF %_START.EXE%==2 IF %Button%==1 IF %X% GTR 63 IF %Y% GTR 7 IF %X% LSS 152 IF %Y% LSS 55 call :DESKTOP.CACHECLEAR &goto :START.EXE
+	)
+
+
+
+	rem Search:
+	IF %_SEARCH.EXE%==0 IF %Button%==1 IF %X% GTR 8 IF %Y% GTR 56 IF %X% LSS 13 IF %Y% LSS 59 goto :SEARCH.EXE
+
+		rem Close Search:
+		IF %_SEARCH.EXE%==1 IF %Button%==1 IF %X% GTR 8 IF %Y% GTR 56 IF %X% LSS 13 IF %Y% LSS 59 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
+
+
+	rem Task View:
+	IF %_TASKVIEW.EXE%==0 IF %Button%==1 IF %X% GTR 16 IF %Y% GTR 56 IF %X% LSS 21 IF %Y% LSS 59 goto :TASKVIEW.EXE
+		
+		rem Close Task View:
+		IF %_TASKVIEW.EXE%==1 IF %Button%==1 IF %X% GTR 16 IF %Y% GTR 56 IF %X% LSS 21 IF %Y% LSS 59 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
+
+	rem Widgets:
+	IF %_WIDGETS.EXE%==0 IF %Button%==1 IF %X% GTR 23 IF %Y% GTR 56 IF %X% LSS 29 IF %Y% LSS 59 goto :WIDGETS.EXE
+
+		rem Close Widgets:
+		IF %_WIDGETS.EXE%==1 IF %Button%==1 IF %X% GTR 23 IF %Y% GTR 56 IF %X% LSS 29 IF %Y% LSS 59 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
 )
 
-rem Power
-	IF %_START.EXE%==1 IF %Button%==1 IF %X% GTR 139 IF %Y% GTR 51 IF %X% LSS 145 IF %Y% LSS 53 goto :START.POWER
 
+rem Desktop Context Menu:
+IF %_DESKTOP.EXE%==2 (
+	IF %X% GTR %X1.TEMP.DESKTOP.MENU% IF %Y% GTR %Y1.TEMP.DESKTOP.MENU% IF %X% LSS %X2.TEMP.DESKTOP.MENU% IF %Y% LSS %Y2.TEMP.DESKTOP.MENU% echo test1 &goto :DESKTOP.EXE
+	IF %X% GTR %X3.TEMP.DESKTOP.MENU% IF %Y% GTR %Y3.TEMP.DESKTOP.MENU% IF %X% LSS %X4.TEMP.DESKTOP.MENU% IF %Y% LSS %Y4.TEMP.DESKTOP.MENU% echo test2 &goto :DESKTOP.EXE
+	IF %X% GTR %X5.TEMP.DESKTOP.MENU% IF %Y% GTR %Y5.TEMP.DESKTOP.MENU% IF %X% LSS %X6.TEMP.DESKTOP.MENU% IF %Y% LSS %Y6.TEMP.DESKTOP.MENU% echo test3 &goto :DESKTOP.EXE
+	IF %X% GTR %X7.TEMP.DESKTOP.MENU% IF %Y% GTR %Y7.TEMP.DESKTOP.MENU% IF %X% LSS %X8.TEMP.DESKTOP.MENU% IF %Y% LSS %Y8.TEMP.DESKTOP.MENU% echo test4 &goto :DESKTOP.EXE
+	IF %X% GTR %X9.TEMP.DESKTOP.MENU% IF %Y% GTR %Y9.TEMP.DESKTOP.MENU% IF %X% LSS %X10.TEMP.DESKTOP.MENU% IF %Y% LSS %Y10.TEMP.DESKTOP.MENU% goto :ERROR.EXE
+	IF %X% GTR %X11.TEMP.DESKTOP.MENU% IF %Y% GTR %Y11.TEMP.DESKTOP.MENU% IF %X% LSS %X12.TEMP.DESKTOP.MENU% IF %Y% LSS %Y12.TEMP.DESKTOP.MENU% echo test6 &goto :DESKTOP.EXE
+	IF %X% GTR %X13.TEMP.DESKTOP.MENU% IF %Y% GTR %Y13.TEMP.DESKTOP.MENU% IF %X% LSS %X14.TEMP.DESKTOP.MENU% IF %Y% LSS %Y14.TEMP.DESKTOP.MENU% echo test7 &goto :DESKTOP.EXE
+	IF %X% GTR %X15.TEMP.DESKTOP.MENU% IF %Y% GTR %Y15.TEMP.DESKTOP.MENU% IF %X% LSS %X16.TEMP.DESKTOP.MENU% IF %Y% LSS %Y16.TEMP.DESKTOP.MENU% echo test8 &goto :DESKTOP.EXE
+	IF %X% GTR %X17.TEMP.DESKTOP.MENU% IF %Y% GTR %Y17.TEMP.DESKTOP.MENU% IF %X% LSS %X18.TEMP.DESKTOP.MENU% IF %Y% LSS %Y18.TEMP.DESKTOP.MENU% echo test9 &goto :DESKTOP.MENU.OLD
 
-IF %_START.EXE%==2 (
-	rem  Sign Out
-	IF %_START.EXE%==2 IF %Button%==1 IF %X% GTR 137 IF %Y% GTR 44 IF %X% LSS 149 IF %Y% LSS 46 call :DESKTOP.CACHECLEAR &goto :LOGIN.EXE
-	
-	rem  Shut Down
-	IF %_START.EXE%==2 IF %Button%==1 IF %X% GTR 137 IF %Y% GTR 46 IF %X% LSS 149 IF %Y% LSS 48 call :DESKTOP.CACHECLEAR &goto :SHUTDOWN.EXE
-	
-	rem  Restart
-	IF %_START.EXE%==2 IF %Button%==1 IF %X% GTR 137 IF %Y% GTR 48 IF %X% LSS 149 IF %Y% LSS 50 call :DESKTOP.CACHECLEAR &goto :RESTART.EXE
-	
-	rem  Close
-	IF %_START.EXE%==2 IF %Button%==1 IF %X% GTR 63 IF %Y% GTR 7 IF %X% LSS 152 IF %Y% LSS 55 call :DESKTOP.CACHECLEAR &goto :START.EXE
 )
 
 
-
-rem Search:
-IF %_SEARCH.EXE%==0 IF %Button%==1 IF %X% GTR 98 IF %Y% GTR 56 IF %X% LSS 103 IF %Y% LSS 59 goto :SEARCH.EXE
-
-	rem Close Search:
-	IF %_SEARCH.EXE%==1 IF %Button%==1 IF %X% GTR 98 IF %Y% GTR 56 IF %X% LSS 103 IF %Y% LSS 59 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
-
-
-rem Task View:
-IF %_TASKVIEW.EXE%==0 IF %Button%==1 IF %X% GTR 105 IF %Y% GTR 56 IF %X% LSS 111 IF %Y% LSS 59 goto :TASKVIEW.EXE
-	
-	rem Close Task View:
-	IF %_TASKVIEW.EXE%==1 IF %Button%==1 IF %X% GTR 105 IF %Y% GTR 56 IF %X% LSS 111 IF %Y% LSS 59 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
-
-
-
-
-
-
-IF %_ACTIVEAPPTITLE%==WinBatchX IF %Button%==2 IF %X% Gtr 0 IF %X% Lss 200 IF %Y% Gtr 0 IF %Y% Lss 50 GOTO DESKTOP.EXE
 
 
 rem Apps:
 IF %_RUN.EXE%==1 IF %Button%==1 IF %X% GTR 47 IF %Y% GTR 44 IF %X% LSS 52 IF %Y% LSS 46 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
+
+
+
+rem Batch App controls-
+
+rem App closes:
+IF %I%==m IF %M% EQU 1 IF %X% GTR 193 IF %Y% GTR 0 IF %X% LSS 210 IF %Y% LSS 4 goto :DESKTOP.EXE
+
+rem settings revision 4
+	IF %_ACTIVEAPPLABEL%==settings.exe (
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 1 IF %Y% GTR 12 IF %X% LSS 33 IF %Y% LSS 14 goto :SETTINGS.SYSTEM
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 1 IF %Y% GTR 15 IF %X% LSS 33 IF %Y% LSS 17 goto :SETTINGS.PERSONALIZATION
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 1 IF %Y% GTR 18 IF %X% LSS 33 IF %Y% LSS 20 goto :SETTINGS.APPS
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 1 IF %Y% GTR 21 IF %X% LSS 33 IF %Y% LSS 23 goto :SETTINGS.ACCOUNTS
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 1 IF %Y% GTR 24 IF %X% LSS 33 IF %Y% LSS 26 goto :SETTINGS.TIMELANGUAGE
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 1 IF %Y% GTR 27 IF %X% LSS 33 IF %Y% LSS 29 goto :SETTINGS.ACCESSIBILITY
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 1 IF %Y% GTR 30 IF %X% LSS 33 IF %Y% LSS 32 goto :SETTINGS.PRIVACYSECURITY
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 1 IF %Y% GTR 33 IF %X% LSS 33 IF %Y% LSS 35 goto :SETTINGS.UPDATE
+
+
+	rem opening system-specific pages on settings
+	IF %_SETTINGS.SECTION%==SYSTEM IF %I%==m IF %M% EQU 1 IF %X% GTR 58 IF %Y% GTR 16 IF %X% LSS 202 IF %Y% LSS 19 goto :SETTINGS.SYSTEM.DISPLAY
+	IF %_SETTINGS.SECTION%==SYSTEM IF %I%==m IF %M% EQU 1 IF %X% GTR 58 IF %Y% GTR 19 IF %X% LSS 202 IF %Y% LSS 22 goto :SETTINGS.SYSTEM.SOUND
+	IF %_SETTINGS.SECTION%==SYSTEM IF %I%==m IF %M% EQU 1 IF %X% GTR 58 IF %Y% GTR 22 IF %X% LSS 202 IF %Y% LSS 25 goto :SETTINGS.SYSTEM.NOTIFICATION
+	IF %_SETTINGS.SECTION%==SYSTEM IF %I%==m IF %M% EQU 1 IF %X% GTR 58 IF %Y% GTR 28 IF %X% LSS 202 IF %Y% LSS 31 goto :SETTINGS.SYSTEM.POWER
+	IF %_SETTINGS.SECTION%==SYSTEM IF %I%==m IF %M% EQU 1 IF %X% GTR 58 IF %Y% GTR 31 IF %X% LSS 202 IF %Y% LSS 34 goto :SETTINGS.SYSTEM.STORAGE
+	IF %_SETTINGS.SECTION%==SYSTEM IF %I%==m IF %M% EQU 1 IF %X% GTR 58 IF %Y% GTR 34 IF %X% LSS 202 IF %Y% LSS 37 goto :SETTINGS.SYSTEM.MULTITASKING
+	IF %_SETTINGS.SECTION%==SYSTEM IF %I%==m IF %M% EQU 1 IF %X% GTR 58 IF %Y% GTR 37 IF %X% LSS 202 IF %Y% LSS 40 goto :SETTINGS.SYSTEM.TROUBLESHOOT
+	IF %_SETTINGS.SECTION%==SYSTEM IF %I%==m IF %M% EQU 1 IF %X% GTR 58 IF %Y% GTR 40 IF %X% LSS 202 IF %Y% LSS 43 goto :SETTINGS.SYSTEM.RECOVERY
+	IF %_SETTINGS.SECTION%==SYSTEM IF %I%==m IF %M% EQU 1 IF %X% GTR 58 IF %Y% GTR 43 IF %X% LSS 202 IF %Y% LSS 46 goto :SETTINGS.SYSTEM.CLIPBOARD
+	IF %_SETTINGS.SECTION%==SYSTEM IF %I%==m IF %M% EQU 1 IF %X% GTR 58 IF %Y% GTR 46 IF %X% LSS 202 IF %Y% LSS 49 goto :SETTINGS.SYSTEM.ABOUT
+
+	IF %_SETTINGS.SECTION%==PERSONALIZATION IF %I%==m IF %M% EQU 1 IF %X% GTR 58 IF %Y% GTR 45 IF %X% LSS 202 IF %Y% LSS 48 goto :SETTINGS.PERSONALIZATION.TASKBAR
+
+	rem closing system-based pages on settings
+	IF %_SETTINGS.SECTION%==SYSTEM.DISPLAY IF %I%==m IF %M% EQU 1 IF %X% GTR 56 IF %Y% GTR 4 IF %X% LSS 63 IF %Y% LSS 6 goto :SETTINGS.SYSTEM
+	IF %_SETTINGS.SECTION%==SYSTEM.SOUND IF %I%==m IF %M% EQU 1 IF %X% GTR 56 IF %Y% GTR 4 IF %X% LSS 63 IF %Y% LSS 6 goto :SETTINGS.SYSTEM
+	IF %_SETTINGS.SECTION%==SYSTEM.NOTIFICATION IF %I%==m IF %M% EQU 1 IF %X% GTR 56 IF %Y% GTR 4 IF %X% LSS 63 IF %Y% LSS 6 goto :SETTINGS.SYSTEM
+	IF %_SETTINGS.SECTION%==SYSTEM.POWER IF %I%==m IF %M% EQU 1 IF %X% GTR 56 IF %Y% GTR 4 IF %X% LSS 63 IF %Y% LSS 6 goto :SETTINGS.SYSTEM
+	IF %_SETTINGS.SECTION%==SYSTEM.STORAGE IF %I%==m IF %M% EQU 1 IF %X% GTR 56 IF %Y% GTR 4 IF %X% LSS 63 IF %Y% LSS 6 goto :SETTINGS.SYSTEM
+	IF %_SETTINGS.SECTION%==SYSTEM.MULTITASKING IF %I%==m IF %M% EQU 1 IF %X% GTR 56 IF %Y% GTR 4 IF %X% LSS 63 IF %Y% LSS 6 goto :SETTINGS.SYSTEM
+	IF %_SETTINGS.SECTION%==SYSTEM.TROUBLESHOOT IF %I%==m IF %M% EQU 1 IF %X% GTR 56 IF %Y% GTR 4 IF %X% LSS 63 IF %Y% LSS 6 goto :SETTINGS.SYSTEM
+	IF %_SETTINGS.SECTION%==SYSTEM.RECOVERY IF %I%==m IF %M% EQU 1 IF %X% GTR 56 IF %Y% GTR 4 IF %X% LSS 63 IF %Y% LSS 6 goto :SETTINGS.SYSTEM
+	IF %_SETTINGS.SECTION%==SYSTEM.CLIPBOARD IF %I%==m IF %M% EQU 1 IF %X% GTR 56 IF %Y% GTR 4 IF %X% LSS 63 IF %Y% LSS 6 goto :SETTINGS.SYSTEM
+	IF %_SETTINGS.SECTION%==SYSTEM.ABOUT IF %I%==m IF %M% EQU 1 IF %X% GTR 56 IF %Y% GTR 4 IF %X% LSS 63 IF %Y% LSS 6 goto :SETTINGS.SYSTEM
+
+	IF %_SETTINGS.SECTION%==PERSONALIZATION.TASKBAR IF %I%==m IF %M% EQU 1 IF %X% GTR 56 IF %Y% GTR 4 IF %X% LSS 63 IF %Y% LSS 6 goto :SETTINGS.PERSONALIZATION
+
+
+
+	rem SYSTEM.DISPLAY
+	IF %_SETTINGS.SECTION%==SYSTEM.DISPLAY IF %I%==m IF %M% EQU 1 IF %X% GTR 122 IF %Y% GTR 8 IF %X% LSS 127 IF %Y% LSS 10 CALL Text 65 8 f0 "                                                                  " X _Button_Boxes _Button_Hover
+
+		rem SYSTEM.RECOVERY
+		IF %_SETTINGS.SECTION%==SYSTEM.RECOVERY IF %I%==m IF %M% EQU 1 IF %X% GTR 160 IF %Y% GTR 14 IF %X% LSS 178 IF %Y% LSS 16 goto :SETTINGS.RECOVERY.RESET
+
+		rem For Yes/No question on popup!
+		IF %_SETTINGS.SECTION%==SYSTEM.RECOVERY.RESET IF %I%==m IF %M% EQU 1 IF %X% GTR 92 IF %Y% GTR 31 IF %X% LSS 108 IF %Y% LSS 35 goto :RESET.EXE
+		IF %_SETTINGS.SECTION%==SYSTEM.RECOVERY.RESET IF %I%==m IF %M% EQU 1 IF %X% GTR 130 IF %Y% GTR 31 IF %X% LSS 146 IF %Y% LSS 35 goto :SETTINGS.RECOVERY
+	
+
+	IF %_SETTINGS.SECTION%==PERSONALIZATION IF %I%==m IF %M% EQU 1 IF %X% GTR 56 IF %Y% GTR 4 IF %X% LSS 63 IF %Y% LSS 6 goto :SETTINGS.PERSONALIZATION
+
+
+		IF %_SETTINGS.SECTION%==PERSONALIZATION.TASKBAR IF %I%==m IF %M% EQU 1 IF %X% GTR 121 IF %Y% GTR 23 IF %X% LSS 129 IF %Y% LSS 26 (
+			set M=0
+			IF %_TASKBAR.ALIGNMENT%==1 set _TASKBAR.ALIGNMENT=0
+			IF %_TASKBAR.ALIGNMENT%==0 set _TASKBAR.ALIGNMENT=1
+
+			call :SETTINGS.REWRITECONFIG
+			call :DESKTOP.TASKBAR
+			call :DESKTOP.ICON
+			goto :SETTINGS.PERSONALIZATION.TASKBAR
+		)
+
+	)
+
+	IF %_SETTINGS.SECTION%==ACCOUNTS IF %I%==m IF %M% EQU 1 IF %X% GTR 65 IF %Y% GTR 17 IF %X% LSS 193 IF %Y% LSS 19 goto :SETTINGS.ACCOUNTS.PROFILE
+	IF %_SETTINGS.SECTION%==ACCOUNTS IF %I%==m IF %M% EQU 1 IF %X% GTR 65 IF %Y% GTR 20 IF %X% LSS 193 IF %Y% LSS 23 goto :SETTINGS.ACCOUNTS.SIGNIN
+	
+	IF %_SETTINGS.SECTION%==ACCOUNTS.PROFILE IF %I%==m IF %M% EQU 1 IF %X% GTR 55 IF %Y% GTR 4 IF %X% LSS 65 IF %Y% LSS 6 goto :SETTINGS.ACCOUNTS
+	IF %_SETTINGS.SECTION%==ACCOUNTS.SIGNIN IF %I%==m IF %M% EQU 1 IF %X% GTR 151 IF %Y% GTR 21 IF %X% LSS 157 IF %Y% LSS 24 goto :SETTINGS.ACCOUNTS
+	
+	
+	IF %_SETTINGS.SECTION%==ACCOUNTS.SIGNIN IF %I%==m IF %M% EQU 1 IF %X% GTR 92 IF %Y% GTR 31 IF %X% LSS 108 IF %Y% LSS 35 goto :SETTINGS.ACCOUNTS.SIGNIN.CHANGEPASSWORD
+	IF %_SETTINGS.SECTION%==ACCOUNTS.SIGNIN IF %I%==m IF %M% EQU 1 IF %X% GTR 130 IF %Y% GTR 31 IF %X% LSS 146 IF %Y% LSS 35 goto :SETTINGS.ACCOUNTS
+	
+	
+	IF %_SETTINGS.SECTION%==ACCOUNTS.SIGNIN.CHANGEPASSWORD.DONE IF %I%==m IF %M% EQU 1 IF %X% GTR 130 IF %Y% GTR 31 IF %X% LSS 146 IF %Y% LSS 35 goto :SETTINGS.ACCOUNTS
+	
+	IF %_SETTINGS.SECTION%==UPDATE IF %I%==m IF %M% EQU 1 IF %X% GTR 152 IF %Y% GTR 8 IF %X% LSS 172 IF %Y% LSS 12 goto :SETTINGS.UPDATE.WGET
+)
+	
+	rem PAINT
+	IF %_PAINT.EXE%==1 (
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 7 IF %X% LSS 178 IF %Y% GTR 10 IF %Y% LSS 53 CALL Text %X% %Y% %_PAINT.COLOR%0 " " X _Button_Boxes _Button_Hover &goto :KERNEL.EXE
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 21 IF %X% LSS 25 IF %Y% GTR 5 IF %Y% LSS 7 set "_PAINT.COLOR=0" &goto :KERNEL.EXE
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 25 IF %X% LSS 30 IF %Y% GTR 5 IF %Y% LSS 7 set "_PAINT.COLOR=4" &goto :KERNEL.EXE
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 31 IF %X% LSS 35 IF %Y% GTR 5 IF %Y% LSS 7 set "_PAINT.COLOR=c" &goto :KERNEL.EXE
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 36 IF %X% LSS 40 IF %Y% GTR 5 IF %Y% LSS 7 set "_PAINT.COLOR=6" &goto :KERNEL.EXE
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 41 IF %X% LSS 45 IF %Y% GTR 5 IF %Y% LSS 7 set "_PAINT.COLOR=e" &goto :KERNEL.EXE
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 46 IF %X% LSS 50 IF %Y% GTR 5 IF %Y% LSS 7 set "_PAINT.COLOR=a" &goto :KERNEL.EXE
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 51 IF %X% LSS 55 IF %Y% GTR 5 IF %Y% LSS 7 set "_PAINT.COLOR=2" &goto :KERNEL.EXE
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 56 IF %X% LSS 60 IF %Y% GTR 5 IF %Y% LSS 7 set "_PAINT.COLOR=b" &goto :KERNEL.EXE
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 61 IF %X% LSS 65 IF %Y% GTR 5 IF %Y% LSS 7 set "_PAINT.COLOR=3" &goto :KERNEL.EXE
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 66 IF %X% LSS 70 IF %Y% GTR 5 IF %Y% LSS 7 set "_PAINT.COLOR=9" &goto :KERNEL.EXE
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 71 IF %X% LSS 75 IF %Y% GTR 5 IF %Y% LSS 7 set "_PAINT.COLOR=1" &goto :KERNEL.EXE
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 76 IF %X% LSS 80 IF %Y% GTR 5 IF %Y% LSS 7 set "_PAINT.COLOR=5" &goto :KERNEL.EXE
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 81 IF %X% LSS 85 IF %Y% GTR 5 IF %Y% LSS 7 set "_PAINT.COLOR=d" &goto :KERNEL.EXE
+	)
+
+	rem TERMINAL
+	IF %_TERMINAL.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 90 IF %Y% GTR 30 IF %X% LSS 106 IF %Y% LSS 32 goto :TERMINAL.START
+	IF %_TERMINAL.EXE%==1 IF %I%==m IF %M% EQU 0 IF %X% GTR 0 IF %X% LSS 200 IF %Y% GTR 0 IF %Y% LSS 55 CALL ButtonBorder 90 30 0f "Open Terminal" X _Button_Boxes _Button_Hover
+	IF %_TERMINAL.EXE%==1 IF %I%==m IF %M% EQU 0 IF %X% GTR 90 IF %Y% GTR 30 IF %X% LSS 106 IF %Y% LSS 32 CALL ButtonBorder 90 30 03 "Open Terminal" X _Button_Boxes _Button_Hover
+
+
+	rem  SECURITY!
+	IF %_SECURITY.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 14 IF %Y% GTR 7 IF %X% LSS 30 IF %Y% LSS 10 call :SECURITY.SCAN &goto :SECURITY.EXE
+
+
+	rem  PHOTOS
+
+	rem  Import
+	IF %_PHOTOS.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 172 IF %Y% GTR 0 IF %X% LSS 184 IF %Y% LSS 2 call :PHOTOS.SAVEFILEDIALOG &goto :PHOTOS.EXE
+	
+	rem  Settings
+	IF %_PHOTOS.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 188 IF %Y% GTR 0 IF %X% LSS 195 IF %Y% LSS 2 call :PHOTOS.SAVEFILEDIALOG &goto :PHOTOS.EXE
+	
+
+
+
+	rem FILE EXPLORER
+
+	IF %_EXPLORER.EXE%==1 (
+		rem Home
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 2 IF %X% LSS 39 IF %Y% GTR 9 IF %Y% LSS 12 goto :EXPLORER.EXE
+
+
+
+		rem Desktop
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 2 IF %X% LSS 39 IF %Y% GTR 13 IF %Y% LSS 15 goto :EXPLORER.DESKTOP
+
+		rem Documents
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 2 IF %X% LSS 39 IF %Y% GTR 15 IF %Y% LSS 18 goto :EXPLORER.DOCUMENTS
+
+		rem Downloads
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 2 IF %X% LSS 39 IF %Y% GTR 18 IF %Y% LSS 21 goto :EXPLORER.DOWNLOADS
+
+		rem Music
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 2 IF %X% LSS 39 IF %Y% GTR 21 IF %Y% LSS 24 goto :EXPLORER.MUSIC
+
+		rem Pictures
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 2 IF %X% LSS 39 IF %Y% GTR 24 IF %Y% LSS 27 goto :EXPLORER.PICTURES
+
+		rem Videos
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 2 IF %X% LSS 39 IF %Y% GTR 28 IF %Y% LSS 30 goto :EXPLORER.VIDEOS
+
+
+
+		rem Disk 1 (Default)
+		IF %I%==m IF %M% EQU 1 IF %X% GTR 2 IF %X% LSS 39 IF %Y% GTR 31 IF %Y% LSS 33 goto :EXPLORER.DISK1
+	)
+
 goto :KERNEL.EXE
 
 
@@ -1243,6 +1498,12 @@ goto :KERNEL.EXE
 rem Start Menu Version 22.0.10000
 :START.EXE
 
+
+IF %_TASKBAR.ALIGNMENT%==1 goto :START.LEFT
+IF %_TASKBAR.ALIGNMENT%==0 goto :START.CENTER
+
+
+:START.CENTER
 set _START.EXE=1
 call :DESKTOP.ICON
 
@@ -1325,8 +1586,107 @@ rem Lastly, Text Start:
 
 	CALL Text 76 51 %lightTHEMEcolor% "%_WBX_USERNAME%" X _Button_Boxes _Button_Hover
 
-	rem CALL Text 75 35 %THEMEcolor% "Recommended" 75 38 %THEMEcolor% "Get Started" 75 39 %THEMEcolor% "Welcome to WinBatchX" 75 41 %THEMEcolor% "Coming soon." X _Button_Boxes _Button_Hover
+	rem CALL Text 75 35 %THEMEcolor% "Recommended" 75 38 %THEMEcolor% "Get Started" 75 39 %THEMEcolor% "Welcome to winbatchOS" 75 41 %THEMEcolor% "Coming soon." X _Button_Boxes _Button_Hover
 goto :KERNEL.EXE
+
+
+
+
+
+
+
+
+:START.LEFT
+set _START.EXE=1
+call :DESKTOP.ICON
+
+rem  The least to make are sharp corners rounded (3px):
+call insertphoto 4 100 600 blank.%THEME%.bmp
+
+call insertphoto 8 96 592 blank.%THEME%.bmp
+call insertphoto 8 112 592 blank.%THEME%.bmp
+
+call insertphoto 52 96 592 blank.%THEME%.bmp
+call insertphoto 52 112 590 blank.%THEME%.bmp
+
+
+CALL Text 5 7 %lightTHEMEcolor% "                                                                                  " X _Button_Boxes _Button_Hover
+CALL Text 5 8 %lightTHEMEcolor% "                                                                                  " X _Button_Boxes _Button_Hover
+CALL Text 5 9 %lightTHEMEcolor% "                                                                                  " X _Button_Boxes _Button_Hover
+
+rem First, Outline Start:
+	rem Start Menu Outline Rounded:
+	rem Top
+	PIXELDRAW /dl /p 8 96 664 96 /c 8
+	rem Left
+	PIXELDRAW /dl /p 4 112 4 776 /c 8
+	rem Right
+	PIXELDRAW /dl /p 668 112 668 776 /c 8
+	rem Bottom
+	PIXELDRAW /dl /p 8 776 664 776 /c 8
+	rem Line border for bottom/up menu
+	PIXELDRAW /dl /p 4 700 668 700 /c 8
+
+	rem Search Bar Outline Rounded:
+	rem Top
+	PIXELDRAW /dl /p 35 113 639 113 /c 7
+	rem Left
+	PIXELDRAW /dl /p 33 115 33 150 /c 7
+	rem Right
+	PIXELDRAW /dl /p 640 115 640 150 /c 7
+	rem Bottom
+	PIXELDRAW /dl /p 34 152 639 152 /c 9
+
+	rem All Apps Outline Rounded:
+	rem Top
+	PIXELDRAW /dl /p 545 180 628 180 /c 7
+	rem Left
+	PIXELDRAW /dl /p 543 182 543 200 /c 7
+	rem Right
+	PIXELDRAW /dl /p 630 182 630 200 /c 7
+	rem Bottom
+	PIXELDRAW /dl /p 545 202 628 202 /c 8
+
+rem Second, Draw Start:
+	rem Search icon
+	call insertphoto 50 120 140 taskbar-searchbar-top.bmp
+
+	rem The start menu is 2x6, no longer 2x5
+	rem The delta is 97 (Each one is approximently 97, 97 is the magic number)
+	call insertphoto 45 225 15 edge.%THEME%.bmp
+	call insertphoto 152 225 15 notepad.%THEME%.bmp
+	call insertphoto 269 225 15 explorer.%THEME%.bmp
+	call insertphoto 376 225 15 settings.%THEME%.bmp
+	call insertphoto 483 225 15 security.%THEME%.bmp
+	call insertphoto 590 225 15 calculator.%THEME%.bmp
+
+	call insertphoto 45 310 15 terminal.%THEME%.bmp
+	call insertphoto 152 310 15 photos.%THEME%.bmp
+	call insertphoto 269 310 15 paint.%THEME%.bmp
+	call insertphoto 376 310 15 calendar.%THEME%.bmp
+	call insertphoto 483 310 17 batchinstaller-%THEME%.bmp
+	call insertphoto 590 310 15 taskmgr.%THEME%.bmp
+
+	rem Self-explaintory:
+	call insertphoto 48 720 12 profile-icon.bmp
+	call insertphoto 600 725 125 ui.power.bmp
+
+
+rem Lastly, Text Start:
+	CALL Text 11 8 %lightTHEMEcolor% "Type here to search" X _Button_Boxes _Button_Hover
+	CALL Text 4 12 %THEMEcolor% "Pinned" 76 12 %THEMEcolor% " All Apps > " X _Button_Boxes _Button_Hover
+	CALL Text 4 33 %THEMEcolor% "Recomended" 4 35 %lightTHEMEcolor% "To show your recent files and apps, turn them on in Settings." 4 36 %lightTHEMEcolor% "To find other batch apps not built-in, look in the All apps section." X _Button_Boxes _Button_Hover
+
+	CALL Text 5 18 %lightTHEMEcolor% "Edge" 19 18 %lightTHEMEcolor% "Notepad" 33 18 %lightTHEMEcolor% "File Explorer" 51 18 %lightTHEMEcolor% "Settings" 66 18 %lightTHEMEcolor% "Security" 80 18 %lightTHEMEcolor% "Calculator" X _Button_Boxes _Button_Hover
+	CALL Text 4 24 %lightTHEMEcolor% "Terminal" 19 24 %lightTHEMEcolor% "Photos" 37 24 %lightTHEMEcolor% "Paint" 51 24 %lightTHEMEcolor% "Calendar" 67 24 %lightTHEMEcolor% "WINAPP" 80 24 %lightTHEMEcolor% "Task Manager"  X _Button_Boxes _Button_Hover
+
+	CALL Text 11 51 %lightTHEMEcolor% "%_WBX_USERNAME%" X _Button_Boxes _Button_Hover
+
+	rem CALL Text 75 35 %THEMEcolor% "Recommended" 75 38 %THEMEcolor% "Get Started" 75 39 %THEMEcolor% "Welcome to winbatchOS" 75 41 %THEMEcolor% "Coming soon." X _Button_Boxes _Button_Hover
+goto :KERNEL.EXE
+
+
+
 
 
 
@@ -1401,7 +1761,7 @@ goto :START.RIGHTCLICKAPP
 
 
 :START.CONTEXTMENU
-call list 85 28 %THEMEcolor% "Installed Apps" " " "Power Options" " " "System" " " "NIFS Management" " " "WinBatchX Management" " " "Terminal" " " "Task Manager" " " "Settings" " " "File Explorer" " " "Search" " " "Run" "_____________________" " " "Shut down" " " "Desktop"
+call list 85 28 %THEMEcolor% "Installed Apps" " " "Power Options" " " "System" " " "NIFS Management" " " "winbatchOS Management" " " "Terminal" " " "Task Manager" " " "Settings" " " "File Explorer" " " "Search" " " "Run" "_____________________" " " "Shut down" " " "Desktop"
 
 IF %ERRORLEVEL%==0 set _SETTINGS.EXE=0 &set _SETTINGS.SECTION=APPS.INSTALLED &goto :SETTINGS.EXE
 IF %ERRORLEVEL%==1 set _SETTINGS.EXE=0 &set _SETTINGS.SECTION=SYSTEM.POWER &goto :SETTINGS.EXE
@@ -1554,6 +1914,81 @@ goto :KERNEL.EXE
 
 
 
+:WIDGETS.EXE
+	set _WIDGETS.EXE=1
+	call :DESKTOP.TASKBAR
+	call :DESKTOP.ICON
+
+
+	call insertphoto 30 30 650 blank.%THEME%.bmp
+
+	rem  Left Side of GUI
+	call insertphoto 29 31 50 blank.%THEME%.bmp
+	call insertphoto 29 33 646 blank.%THEME%.bmp
+
+
+	rem  Right Side of GUI
+	call insertphoto 655 31 50 blank.%THEME%.bmp
+	call insertphoto 35 33 646 blank.%THEME%.bmp
+
+	rem Top
+	PIXELDRAW /dl /p 31 30 703 30 /c 7
+	rem Left
+	PIXELDRAW /dl /p 29 32 29 755 /c 7
+	rem Right
+	PIXELDRAW /dl /p 705 32 705 755 /c 7
+	rem Bottom
+	PIXELDRAW /dl /p 31 757 703 757 /c 7
+
+	call Text 45 2 %THEMEcolor% "%_WBX-TASKBAR-TIME% " X _Button_Boxes _Button_Hover
+
+
+
+	call Text 10 5 %THEMEcolor% "___________________________________      _________________________________" X _Button_Boxes _Button_Hover
+
+
+
+	call Text 10 8 %THEMEcolor% "Latest winbatchOS Release:" X _Button_Boxes _Button_Hover
+	call Text 10 10 %THEMEcolor% "%Newest-Version-Release%" X _Button_Boxes _Button_Hover
+	call Text 10 14 %THEMEcolor% "%Newest-Version-Release-Link%" X _Button_Boxes _Button_Hover
+
+
+	rem call Text 54 8 %THEMEcolor% "Tips" X _Button_Boxes _Button_Hover
+	rem call Text 54 10 %THEMEcolor% "This widget is in beta" X _Button_Boxes _Button_Hover
+
+
+
+
+
+	call Text 10 15 %THEMEcolor% "___________________________________      _________________________________" X _Button_Boxes _Button_Hover
+
+
+
+
+	call Text 10 18 %THEMEcolor% "Latest winbatchOS Beta Build Release:" X _Button_Boxes _Button_Hover
+	call Text 10 20 %THEMEcolor% "%Newest-Build-Release%" X _Button_Boxes _Button_Hover
+	call Text 10 24 %THEMEcolor% "%Newest-Build-Release-Link%" X _Button_Boxes _Button_Hover
+
+
+	rem call Text 54 18 %THEMEcolor% "Calendar" X _Button_Boxes _Button_Hover
+	rem call Text 54 20 %THEMEcolor% "This widget will be in 18.1." X _Button_Boxes _Button_Hover
+
+
+
+	call Text 10 25 %THEMEcolor% "___________________________________      _________________________________" X _Button_Boxes _Button_Hover
+	call Text 10 28 %THEMEcolor% "__________________________________________________________________________" X _Button_Boxes _Button_Hover
+
+
+
+	call Text 10 31 %THEMEcolor% "Special News" X _Button_Boxes _Button_Hover
+	call Text 10 32 %THEMEcolor% "%Special-News%" X _Button_Boxes _Button_Hover
+
+
+
+	call Text 10 38 %THEMEcolor% "__________________________________________________________________________" X _Button_Boxes _Button_Hover
+
+	goto :KERNEL.EXE
+
 
 
 
@@ -1602,9 +2037,8 @@ rem )
 
 
 
-
+rem Calculator will ABSOLUTELY use 50 digits of Pi
 rem pi=3.14159265358979323846264338327950288419716939937510
-rem pi=3.14159265358979323846264338327950
 
 
 
@@ -1634,7 +2068,6 @@ goto :WINDOWEDTEST.LOOP
 
 
 
-
 :SHUTDOWN.EXE
 cls
 PIXELDRAW /refresh 00
@@ -1650,7 +2083,7 @@ rem write a new data-system.bat file
   echo SET FLAG-RECOVERYRESTART=%FLAG-RECOVERYRESTART%
   echo SET HIBERNATE-STATUS=%HIBERNATE-STATUS%
   echo SET RESTART-STATUS=%RESTART-STATUS%
-) > data-system.bat
+) > CoreData\data-system.bat
 
 exit
 goto :SHUTDOWN.EXE
@@ -1681,9 +2114,12 @@ rem write a new data-system.bat file
   echo SET FLAG-RECOVERYRESTART=%FLAG-RECOVERYRESTART%
   echo SET HIBERNATE-STATUS=%HIBERNATE-STATUS%
   echo SET RESTART-STATUS=%RESTART-STATUS%
-) > data-system.bat
+) > CoreData\data-system.bat
 
-start kernelreboot reboot
+cd ..
+call winbatchOS.bat
+exit
+
 goto :SHUTDOWN.EXE
 
 
@@ -1740,7 +2176,7 @@ call insertphoto 25 622 10 batchinstaller-%THEME%.bmp
 call insertphoto 340 625 120 UI.context.close.explorer.bmp
 
 CALL Text 6 44 %THEMEcolor% "Run" X _Button_Boxes _Button_Hover
-CALL Text 8 47 %lightTHEMEcolor% "Type the name of a program or executable," 8 48 %lightTHEMEcolor% "and WinBatchX will open it for you." X _Button_Boxes _Button_Hover
+CALL Text 8 47 %lightTHEMEcolor% "Type the name of a program or executable," 8 48 %lightTHEMEcolor% "and winbatchOS will open it for you." X _Button_Boxes _Button_Hover
 
 call insertphoto 80 720 30 blank.white.bmp
 call insertphoto 100 720 30 blank.white.bmp
@@ -2025,36 +2461,9 @@ goto :KERNEL.EXE
 :DISKWRITE.EXE
 
 :: WBXFS 2000
-:: This software is based on the Unlicense License.
+:: This software is based on the Ms-PT License.
 
-:: Unlicense License (also in ../LICENSE.txt)
-:: - 
-:: This is free and unencumbered software released into the public domain.
-::
-:: Anyone is free to copy, modify, publish, use, compile, sell, or
-:: distribute this software, either in source code form or as a compiled
-:: binary, for any purpose, commercial or non-commercial, and by any
-:: means.
-::
-:: In jurisdictions that recognize copyright laws, the author or authors
-:: of this software dedicate any and all copyright interest in the
-:: software to the public domain. We make this dedication for the benefit
-:: of the public at large and to the detriment of our heirs and
-:: successors. We intend this dedication to be an overt act of
-:: relinquishment in perpetuity of all present and future rights to this
-:: software under copyright law.
-::
-:: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-:: EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-:: MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-:: IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-:: OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-:: ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-:: OTHER DEALINGS IN THE SOFTWARE.
-:: 
-:: For more information, please refer to <https://unlicense.org>
-
-:: WBXFS: WinBatchX's New Interface File System
+:: WBXFS: winbatchOS's New Interface File System
 :: Note: This file system may contain bugs.
 
 @ECHO OFF
@@ -2075,7 +2484,7 @@ set WBXFS_BUILDVERSION=2000
 If /i "%~1" == "/?" (goto :WBXFShelp)
 If /i "%~1" == "help" (goto :WBXFShelp)
 
-If /i "%~1" == "ver" (echo. &&echo WBXFS &&echo Version %WBXFS_VERSION%, Build %WBXFS_BUILDVERSION%. WBXFS is under the Unlicense License. &&echo.)
+If /i "%~1" == "ver" (echo. &&echo WBXFS &&echo Version %WBXFS_VERSION%, Build %WBXFS_BUILDVERSION%. WBXFS is under the Ms-PT License. &&echo.)
 If /i "%~1" == "write" (goto :WBXFSwrite)
 If /i "%~1" == "remove" (goto :WBXFSremove)
 If /i "%~1" == "load" (goto :WBXFSload)
@@ -2325,36 +2734,80 @@ exit /b
 
 
 
+rem  Notepad App
 
+:NOTEPAD.EXE
+set _APP.EXE=1
 
+IF %_NOTEPAD.EXE%==1 goto :NOTEPAD.LOOP
+set _ACTIVEAPPLABEL=notepad.exe
+set _ACTIVEAPPIMAGE=notepad
+SET _ACTIVEAPPTITLE=Notepad
 
 
+set _NOTEPAD.EXE=1
+call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blankloadapp.light.bmp &call insertphoto 7 0 147 blankloadapp.light.bmp &call insertphoto 7 35 147 blankloadapp.light.bmp
 
+PIXELDRAW /dr 0 0 /rd 1490 783 /c 0
 
+call insertphoto 730 330 40 notepad.light.bmp
+ 
+call insertphoto 1450 9 110 WindowedButtons.bmp
 
+timeout /NOBREAK /T 0 > nul
 
+rem  call insertphoto 0 0 %BACKGROUND-SIZE% %background%.bmp
 
 
+:NOTEPAD.LOOP
 
+call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blankloadapp.light.bmp &call insertphoto 7 0 147 blankloadapp.light.bmp &call insertphoto 7 35 147 blankloadapp.light.bmp
 
+PIXELDRAW /dr 0 0 /rd 1490 783 /c 0
 
+call insertphoto 25 12 8 notepad.light.bmp
 
+call insertphoto 1450 9 110 WindowedButtons.bmp
 
+call insertphoto 1452 38 115 UI.setting.bmp
 
 
+CALL Text 8 0 f0 "Notepad Beta" X _Button_Boxes _Button_Hover
 
+PIXELDRAW /dl /p 0 65 1490 65 /c 0
 
 
+CALL Text 1 2 f8 "File    Edit    View" X _Button_Boxes _Button_Hover
+rem  For saving paint (later, in the works)-- test: nircmd savescreenshot "shot.png" 50 50 300 200
 
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+rem  PIXELDRAW /refresh 00
 
+set _ACTIVEAPPLABEL=notepad.exe
 
+call Text 1 5 f0 "Start Typing... (type 'exit' to exit)                 " X _Button_Boxes _Button_Hover
 
+call Text 1 7 f0 " " X _Button_Boxes _Button_Hover
 
+set /p notepadkey1=
+IF %notepadkey1%==exit goto :DESKTOP.EXE
 
+call Text 1 7 f0 " " X _Button_Boxes _Button_Hover
 
+set /p file=Enter a file name: 
+call Text 1 7 f0 " " X _Button_Boxes _Button_Hover
 
+set /p extension=Enter a file extension: 
 
+(
+  echo %notepadkey1%
+) > ../%file%.%extension%
 
+call Text 1 5 fa "File Saved. It is in the main folder (the folder behind the system folder)" X _Button_Boxes _Button_Hover
+timeout /T 5 > nul
+call :DESKTOP.CACHECLEAR
+goto :DESKTOP.EXE
 
 
 
@@ -2389,44 +2842,99 @@ exit /b
 
 
 
+rem  Paint App
 
+:PAINT.EXE
+set _APP.EXE=1
 
+IF %_PAINT.EXE%==1 goto :PAINT.LOOP
+set _ACTIVEAPPLABEL=paint.exe
+set _ACTIVEAPPIMAGE=paint
+SET _ACTIVEAPPTITLE=Paint
 
 
+set _PAINT.EXE=1
+call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blankloadapp.light.bmp &call insertphoto 7 0 147 blankloadapp.light.bmp &call insertphoto 7 35 147 blankloadapp.light.bmp
 
+PIXELDRAW /dr 0 0 /rd 1490 783 /c 0
 
+call insertphoto 730 330 40 paint.light.bmp
 
+call insertphoto 1450 9 110 WindowedButtons.bmp
 
+timeout /NOBREAK /T 0 > nul
 
+rem  call insertphoto 0 0 %BACKGROUND-SIZE% %background%.bmp
 
 
+rem  PIXELDRAW /refresh 00
 
+:PAINT.LOOP
+call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blankloadapp.light.bmp &call insertphoto 7 0 147 blankloadapp.light.bmp &call insertphoto 7 35 147 blankloadapp.light.bmp
 
+PIXELDRAW /dr 0 0 /rd 1490 783 /c 0
 
+call insertphoto 25 12 8 paint.light.bmp
 
+call insertphoto 1450 9 110 WindowedButtons.bmp
 
+call insertphoto 145 38 115 ui.save.bmp
 
+call insertphoto 205 38 115 ui.undo.bmp
+call insertphoto 245 38 115 ui.redo.bmp
 
+call insertphoto 1452 38 115 UI.setting.bmp
 
 
+CALL Text 8 0 f0 "Paint - Untitled" 25 0 f7 "BETA" X _Button_Boxes _Button_Hover
 
+PIXELDRAW /dl /p 0 65 1490 65 /c 0
 
 
+CALL Text 1 2 f0 "File" X _Button_Boxes _Button_Hover
+CALL Text 9 2 f0 "View" X _Button_Boxes _Button_Hover
 
+PIXELDRAW /dl /p 0 135 1490 135 /c 0
 
 
+CALL Text 20 5 00 "    " X _Button_Boxes _Button_Hover
+CALL Text 20 6 00 "    " X _Button_Boxes _Button_Hover
 
+CALL Text 25 5 44 "    " X _Button_Boxes _Button_Hover
+CALL Text 25 6 44 "    " X _Button_Boxes _Button_Hover
 
+CALL Text 30 5 cc "    " X _Button_Boxes _Button_Hover
+CALL Text 30 6 cc "    " X _Button_Boxes _Button_Hover
 
+CALL Text 35 5 66 "    " X _Button_Boxes _Button_Hover
+CALL Text 35 6 66 "    " X _Button_Boxes _Button_Hover
 
+CALL Text 40 5 ee "    " X _Button_Boxes _Button_Hover
+CALL Text 40 6 ee "    " X _Button_Boxes _Button_Hover
 
+CALL Text 45 5 aa "    " X _Button_Boxes _Button_Hover
+CALL Text 45 6 aa "    " X _Button_Boxes _Button_Hover
 
+CALL Text 50 5 22 "    " X _Button_Boxes _Button_Hover
+CALL Text 50 6 22 "    " X _Button_Boxes _Button_Hover
 
+CALL Text 55 5 bb "    " X _Button_Boxes _Button_Hover
+CALL Text 55 6 bb "    " X _Button_Boxes _Button_Hover
 
+CALL Text 60 5 33 "    " X _Button_Boxes _Button_Hover
+CALL Text 60 6 33 "    " X _Button_Boxes _Button_Hover
 
+CALL Text 65 5 99 "    " X _Button_Boxes _Button_Hover
+CALL Text 65 6 99 "    " X _Button_Boxes _Button_Hover
 
+CALL Text 70 5 11 "    " X _Button_Boxes _Button_Hover
+CALL Text 70 6 11 "    " X _Button_Boxes _Button_Hover
 
+CALL Text 75 5 55 "    " X _Button_Boxes _Button_Hover
+CALL Text 75 6 55 "    " X _Button_Boxes _Button_Hover
 
+CALL Text 80 5 dd "    " X _Button_Boxes _Button_Hover
+CALL Text 80 6 dd "    " X _Button_Boxes _Button_Hover
 
 
 
@@ -2435,9 +2943,15 @@ exit /b
 
 
 
+CALL Text 50 7 f0 "Color" X _Button_Boxes _Button_Hover
 
+call insertphoto 50 150 120 blankloadapp.white.bmp
 
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+set _ACTIVEAPPLABEL=paint.exe
 
+goto :KERNEL.EXE
 
 
 
@@ -2498,53 +3012,156 @@ exit /b
 
 
 
+rem  Settings App
 
+:SETTINGS.EXE
+set _APP.EXE=1
+set _ACTIVEAPPLABEL=settings.exe
+set _ACTIVEAPPIMAGE=settings
+SET "_ACTIVEAPPTITLE=Settings Beta"
+IF %_SETTINGS.EXE%==1 goto :SETTINGS.LOOP
 
+set _SETTINGS.SECTION=SYSTEM
 
+set _SETTINGS.EXE=1
+call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blankloadapp.light.bmp &call insertphoto 7 0 147 blankloadapp.light.bmp &call insertphoto 7 35 147 blankloadapp.light.bmp
 
+PIXELDRAW /dr 0 0 /rd 1490 783 /c f
+PIXELDRAW /dr 0 0 /rd 1490 784 /c f
+PIXELDRAW /dr 0 0 /rd 1490 785 /c f
+PIXELDRAW /dl /p 0 785 1490 785 /c 8
 
+call insertphoto 730 330 40 Settings.light.bmp
 
+call insertphoto 1450 9 110 WindowedButtons.bmp
 
+timeout /NOBREAK /T 2 > nul
 
+:SETTINGS.LOOP
+call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blankloadapp.light.bmp &call insertphoto 7 0 147 blankloadapp.light.bmp &call insertphoto 7 35 147 blankloadapp.light.bmp
 
+PIXELDRAW /dr 0 0 /rd 1490 783 /c f
+PIXELDRAW /dr 0 0 /rd 1490 784 /c f
+PIXELDRAW /dr 0 0 /rd 1490 785 /c f
+PIXELDRAW /dl /p 0 785 1490 785 /c 8
+rem  PIXELDRAW /dl /p 0 35 1490 35 /c 8
 
+rem  Theres no icon in the settings app
+rem  call insertphoto 25 12 8 settings.bmp
+call insertphoto 25 12 110 ui.left.bmp
+call insertphoto 1450 9 110 WindowedButtons.bmp
+CALL Text 8 0 f0 "Settings" X _Button_Boxes _Button_Hover
 
+call :SETTINGS.NAVIGATION
 
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+set _ACTIVEAPPLABEL=settings.exe
 
+IF %_SETTINGS.SECTION%==SYSTEM goto :SETTINGS.SYSTEM
 
+IF %_SETTINGS.SECTION%==SYSTEM.DISPLAY goto :SETTINGS.SYSTEM.DISPLAY
+IF %_SETTINGS.SECTION%==SYSTEM.SOUND goto :SETTINGS.SYSTEM.SOUND
+IF %_SETTINGS.SECTION%==SYSTEM.NOTIFICATION goto :SETTINGS.SYSTEM.NOTIFICATION
+IF %_SETTINGS.SECTION%==SYSTEM.POWER goto :SETTINGS.SYSTEM.POWER
+IF %_SETTINGS.SECTION%==SYSTEM.STORAGE goto :SETTINGS.SYSTEM.STORAGE
+IF %_SETTINGS.SECTION%==SYSTEM.MULTITASKING goto :SETTINGS.SYSTEM.MULTITASKING
+IF %_SETTINGS.SECTION%==SYSTEM.TROUBLESHOOT goto :SETTINGS.SYSTEM.TROUBLESHOOT
+IF %_SETTINGS.SECTION%==SYSTEM.RECOVERY goto :SETTINGS.SYSTEM.RECOVERY
+IF %_SETTINGS.SECTION%==SYSTEM.CLIPBOARD goto :SETTINGS.SYSTEM.CLIPBOARD
+IF %_SETTINGS.SECTION%==SYSTEM.ABOUT goto :SETTINGS.SYSTEM.ABOUT
 
+IF %_SETTINGS.SECTION%==PERSONALIZATION goto :SETTINGS.PERSONALIZATION
 
+IF %_SETTINGS.SECTION%==PERSONALIZATION.TASKBAR goto :SETTINGS.PERSONALIZATION.TASKBAR
 
+IF %_SETTINGS.SECTION%==APPS goto :SETTINGS.APPS
 
+IF %_SETTINGS.SECTION%==ACCOUNTS goto :SETTINGS.ACCOUNTS
 
+IF %_SETTINGS.SECTION%==TIMELANGUAGE goto :SETTINGS.TIMELANGUAGE
 
+IF %_SETTINGS.SECTION%==ACCESSIBILITY goto :SETTINGS.ACCESSIBILITY
 
+IF %_SETTINGS.SECTION%==PRIVACYSECURITY goto :SETTINGS.SYSTEM.PRIVACYSECURITY
 
+IF %_SETTINGS.SECTION%==UPDATE goto :SETTINGS.UPDATE
 
+goto :SETTINGS.SYSTEM
 
 
 
 
 
+:SETTINGS.SYSTEM
+set _SETTINGS.SECTION=SYSTEM
+call :SETTINGS.NAVIGATION
 
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp 
 
+CALL Text 55 4 f0 "System" X _Button_Boxes _Button_Hover
 
 
+PIXELDRAW /dr 399 99 /rd 196 104 /c f
+call insertphoto 400 100 10 "%BACKGROUND.DESKTOP.IMAGE%.%THEME%.bmp"
 
+call insertphoto 1040 126 150 settings-update-icon.bmp
 
+CALL Text 152 8 f0 "winbatchOS Update" X _Button_Boxes _Button_Hover
+CALL Text 152 9 f8 "%_WBXCore-updatemessage%" X _Button_Boxes _Button_Hover
 
 
+CALL Text 85 6 f0 "%_HOSTNAME-winbatchOS%" X _Button_Boxes _Button_Hover
+CALL Text 85 8 f7 "Reset PC (Soon)" X _Button_Boxes _Button_Hover
+CALL Text 85 10 f3 "Rename" X _Button_Boxes _Button_Hover
 
+rem magic number: 43
+PIXELDRAW /dr 400 230 /rd 800 40 /c 7
+CALL Text 65 16 f0 "Display" X _Button_Boxes _Button_Hover
+CALL Text 65 17 f8 "Zoom Size, image display, system responsiveness" X _Button_Boxes _Button_Hover
 
+PIXELDRAW /dr 400 273 /rd 800 40 /c 7
+CALL Text 65 19 f0 "Sound" X _Button_Boxes _Button_Hover
+CALL Text 65 20 f8 "Volume, troubleshooting" X _Button_Boxes _Button_Hover
 
+PIXELDRAW /dr 400 316 /rd 800 40 /c 7
+CALL Text 65 22 f0 "Notifications" X _Button_Boxes _Button_Hover
+CALL Text 65 23 f8 "Alerts from your apps and pc" X _Button_Boxes _Button_Hover
 
+PIXELDRAW /dr 400 359 /rd 800 40 /c 7
+CALL Text 65 25 f7 "Focus" X _Button_Boxes _Button_Hover
+CALL Text 65 26 f7 "Notifications, user rules" X _Button_Boxes _Button_Hover
 
+PIXELDRAW /dr 400 402 /rd 800 40 /c 7
+CALL Text 65 28 f0 "Power" X _Button_Boxes _Button_Hover
+CALL Text 65 29 f8 "Startup settings, Shutdown, Services" X _Button_Boxes _Button_Hover
 
+PIXELDRAW /dr 400 445 /rd 800 40 /c 7
+CALL Text 65 31 f0 "Storage" X _Button_Boxes _Button_Hover
+CALL Text 65 32 f8 "Manage filesystem" X _Button_Boxes _Button_Hover
 
+PIXELDRAW /dr 400 488 /rd 800 40 /c 7
+CALL Text 65 34 f0 "Single/Multi Window Settings" X _Button_Boxes _Button_Hover
+CALL Text 65 35 f8 "Side-to-side apps, full apps, windowed apps, desktops" X _Button_Boxes _Button_Hover
 
+PIXELDRAW /dr 400 531 /rd 800 40 /c 7
+CALL Text 65 37 f7 "Troubleshoot" X _Button_Boxes _Button_Hover
+CALL Text 65 38 f7 "Fix problems" X _Button_Boxes _Button_Hover
 
+PIXELDRAW /dr 400 574 /rd 800 40 /c 7
+CALL Text 65 40 f0 "Recovery" X _Button_Boxes _Button_Hover
+CALL Text 65 41 f8 "Advanced Startup, Recovery Enviroment" X _Button_Boxes _Button_Hover
 
+PIXELDRAW /dr 400 617 /rd 800 40 /c 7
+CALL Text 65 43 f7 "Clipboard" X _Button_Boxes _Button_Hover
+CALL Text 65 44 f7 "Copy, Cut, Paste, Clear, History" X _Button_Boxes _Button_Hover
 
+PIXELDRAW /dr 400 660 /rd 800 40 /c 7
+CALL Text 65 46 f8 "About" X _Button_Boxes _Button_Hover
+CALL Text 65 47 f8 "Device infomation, winbatchOS and windows version" X _Button_Boxes _Button_Hover
+goto :KERNEL.EXE
 
 
 
@@ -2566,9 +3183,2317 @@ exit /b
 
 
 
+:SETTINGS.SYSTEM.DISPLAY
+set _SETTINGS.SECTION=SYSTEM.DISPLAY
+call :SETTINGS.NAVIGATION
 
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp 
 
+CALL Text 55 4 f3 "System" 61 4 f0 "   >   Display" X _Button_Boxes _Button_Hover
 
+rem magic number: 43
+PIXELDRAW /dr 450 124 /rd 500 20 /c 7
+CALL Text 65 8 f0 "These settings apply only to the command line display." X _Button_Boxes _Button_Hover
+CALL Text 122 8 3f " Ok " X _Button_Boxes _Button_Hover
 
-rem END OF WINBATCHX CODE
-rem WinBatchX.
+PIXELDRAW /dr 450 180 /rd 800 40 /c 7
+CALL Text 65 12 f3 "Animation Effects" X _Button_Boxes _Button_Hover
+CALL ButtonBorder 159 13 f3 "Off (Disabled)" X _Button_Boxes _Button_Hover
+CALL Text 65 13 f0 "Try clearing up other apps on your Windows PC to see possible changes." X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 450 230 /rd 800 40 /c 7
+CALL Text 65 16 f3 "Display Resolution" X _Button_Boxes _Button_Hover
+CALL ButtonBorder 150 17 f3 "1920x1080 (recommended)" X _Button_Boxes _Button_Hover
+CALL Text 65 17 f8 "Scale of winbatchOS based on your screen resolution" X _Button_Boxes _Button_Hover
+goto :KERNEL.EXE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:SETTINGS.SYSTEM.SOUND
+set _SETTINGS.SECTION=SYSTEM.SOUND
+call :SETTINGS.NAVIGATION
+
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp 
+
+CALL Text 55 4 f3 "System" 61 4 f0 "   >   Sound" X _Button_Boxes _Button_Hover
+
+rem magic number: 43
+PIXELDRAW /dr 450 150 /rd 800 40 /c 7
+CALL Text 65 10 f3 "Volume" X _Button_Boxes _Button_Hover
+CALL ButtonBorder 130 11 f3 "               Unavailable                " X _Button_Boxes _Button_Hover
+CALL Text 65 11 f0 "This feature is unavailable on winbatchOS 18." X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 450 205 /rd 800 120 /c 7
+CALL Text 65 14 f8 "Sounds enabled:" X _Button_Boxes _Button_Hover
+CALL Text 65 15 f7 "Toggle these on or off" X _Button_Boxes _Button_Hover
+
+CALL Text 65 17 f8 "Windows Sound on startup" X _Button_Boxes _Button_Hover
+CALL Text 65 19 f8 "Notification Sounds" X _Button_Boxes _Button_Hover
+CALL Text 65 21 f8 "User account control sounds" X _Button_Boxes _Button_Hover
+
+CALL ButtonBorder 65 40 f0 "For more audio/sound settings, open Windows Settings to configure them." X _Button_Boxes _Button_Hover
+goto :KERNEL.EXE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:SETTINGS.SYSTEM.NOTIFICATION
+set _SETTINGS.SECTION=SYSTEM.NOTIFICATION
+call :SETTINGS.NAVIGATION
+
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp 
+
+CALL Text 55 4 f3 "System" 61 4 f0 "   >   Notifications" X _Button_Boxes _Button_Hover
+
+rem magic number: 43
+PIXELDRAW /dr 450 150 /rd 800 40 /c 7
+CALL Text 65 10 f3 "Notifications" X _Button_Boxes _Button_Hover
+CALL Text 65 11 f3 "Updates from external apps on winbatchOS" X _Button_Boxes _Button_Hover
+CALL ButtonBorder 170 11 f0 "Yes" X _Button_Boxes _Button_Hover
+
+
+PIXELDRAW /dr 450 205 /rd 800 40 /c 7
+CALL Text 65 14 f3 "Do Not Disturb" X _Button_Boxes _Button_Hover
+CALL Text 65 15 f3 "Notifications will go to the notification center" X _Button_Boxes _Button_Hover
+CALL Text 161 15 f8 "Not available" X _Button_Boxes _Button_Hover
+
+
+PIXELDRAW /dr 450 255 /rd 800 320 /c 7
+CALL Text 65 18 f3 "Notifications from apps or scripts" X _Button_Boxes _Button_Hover
+CALL Text 65 19 f0 "Based on all current or past app senders" X _Button_Boxes _Button_Hover
+
+CALL ButtonBorder 160 19 f0 "Not available" X _Button_Boxes _Button_Hover
+
+
+goto :KERNEL.EXE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:SETTINGS.SYSTEM.POWER
+set _SETTINGS.SECTION=SYSTEM.POWER
+call :SETTINGS.NAVIGATION
+
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp 
+
+CALL Text 55 4 f3 "System" 61 4 f0 "   >   Power" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 450 150 /rd 800 40 /c 7
+CALL Text 65 10 f3 "Startup" X _Button_Boxes _Button_Hover
+CALL Text 65 11 f0 "winbatchOS 18 does not have a recovery environment." X _Button_Boxes _Button_Hover
+CALL ButtonBorder 160 11 f0 "0 seconds" X _Button_Boxes _Button_Hover
+
+
+goto :KERNEL.EXE
+
+
+
+
+
+
+
+
+
+
+
+
+
+:SETTINGS.SYSTEM.STORAGE
+set _SETTINGS.SECTION=SYSTEM.STORAGE
+call :SETTINGS.NAVIGATION
+
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp 
+
+CALL Text 55 4 f3 "System" 61 4 f0 "   >   Storage" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 100 /rd 800 300 /c 7
+CALL Text 57 7 f8 "winbatchOS File System" 80 7 f3 "BETA" X _Button_Boxes _Button_Hover
+
+CALL Text 60 12 f8 "winbatchOS 19 is currently supporting an expermential file system named WBXFS (winbatchOS FileSystem). It is" X _Button_Boxes _Button_Hover
+CALL Text 60 13 f8 "expermential and some features are incomplete. Report bugs to winbatchOS's wiki page." X _Button_Boxes _Button_Hover
+CALL Text 60 15 f8 "There is no way to use it on winbatchOS graphically right now." X _Button_Boxes _Button_Hover
+
+
+CALL Text 60 22 f0 "winbatchOS Disk 1" X _Button_Boxes _Button_Hover
+goto :KERNEL.EXE
+
+
+
+
+
+
+
+
+
+:SETTINGS.SYSTEM.MULTITASKING
+set _SETTINGS.SECTION=SYSTEM.MULTITASKING
+call :SETTINGS.NAVIGATION
+
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp 
+
+CALL Text 55 4 f3 "System" 61 4 f0 "   >   Window Settings" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 450 150 /rd 800 40 /c 7
+CALL Text 65 10 f3 "Windowed Mode on all apps is not set up in this build of winbatchOS." X _Button_Boxes _Button_Hover
+CALL Text 65 11 f8 "It is still in beta." X _Button_Boxes _Button_Hover
+goto :KERNEL.EXE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:SETTINGS.SYSTEM.TROUBLESHOOT
+set _SETTINGS.SECTION=SYSTEM.TROUBLESHOOT
+call :SETTINGS.NAVIGATION
+
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp 
+
+CALL Text 55 4 f3 "System" 61 4 f0 "   >   Troubleshoot" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 450 150 /rd 800 40 /c 7
+CALL Text 65 10 f3 "Troubleshooting is not available on alpha builds of winbatchOS right now. Report a bug," X _Button_Boxes _Button_Hover
+CALL Text 65 11 f3 "or upgrade to the next build to see more changes or fixes." X _Button_Boxes _Button_Hover
+
+goto :KERNEL.EXE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:SETTINGS.SYSTEM.RECOVERY
+set _SETTINGS.SECTION=SYSTEM.RECOVERY
+call :SETTINGS.NAVIGATION
+
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp 
+
+CALL Text 55 4 f3 "System" 61 4 f0 "   >   Recovery" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 450 150 /rd 800 40 /c 7
+CALL Text 65 10 f8 "Restart to the winbatchOS recovery enviroment" X _Button_Boxes _Button_Hover
+CALL Text 65 11 f8 "Unavailable" X _Button_Boxes _Button_Hover
+CALL ButtonBorder 160 11 f8 "Get Started" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 450 205 /rd 800 40 /c 7
+CALL Text 65 14 f3 "Reset your winbatchOS Computer" X _Button_Boxes _Button_Hover
+CALL Text 65 15 f3 "Before trying this option, try troubleshooting the issue" X _Button_Boxes _Button_Hover
+CALL ButtonBorder 160 14 f3 "Reset winbatchOS" X _Button_Boxes _Button_Hover
+
+
+goto :KERNEL.EXE
+
+
+
+
+
+
+:SETTINGS.RECOVERY.RESET
+set _SETTINGS.SECTION=SYSTEM.RECOVERY.RESET
+
+
+rem  THIS IS A POP-UP
+rem  Clear the center up
+PIXELDRAW /dr 578 304 /rd 525 275 /c 8
+call insertphoto 580 305 240 blank.bmp
+call insertphoto 581 306 240 blank.bmp
+call insertphoto 579 309 240 blank.bmp
+call insertphoto 650 305 240 blank.bmp
+call insertphoto 651 306 240 blank.bmp
+call insertphoto 649 309 240 blank.bmp
+call insertphoto 750 305 240 blank.bmp
+call insertphoto 751 306 240 blank.bmp
+call insertphoto 749 309 240 blank.bmp
+call insertphoto 850 305 240 blank.bmp
+call insertphoto 851 306 240 blank.bmp
+call insertphoto 849 309 240 blank.bmp
+rem  call insertphoto 1075 315 130 UI.context.close.bmp
+
+CALL Text 83 22 f0 "Reset winbatchOS" X _Button_Boxes _Button_Hover
+CALL Text 83 25 f0 "Are you sure you want to reset and powerwash?" X _Button_Boxes _Button_Hover
+
+CALL Text 83 27 f4 "This feature is only on winbatchOS Build 1806 until later." X _Button_Boxes _Button_Hover
+CALL Text 83 28 f3 "Get winbatchOS Build 1806 in the alpha channel for reseting" X _Button_Boxes _Button_Hover
+
+call insertphoto 650 450 40 UI.buttonblue.bmp
+call insertphoto 649 451 40 UI.buttonblue.bmp
+call insertphoto 651 454 40 UI.buttonblue.bmp
+
+call insertphoto 920 450 40 UI.buttongray.bmp
+call insertphoto 919 451 40 UI.buttongray.bmp
+call insertphoto 921 454 40 UI.buttongray.bmp
+CALL Text 93 32 38 "Reset" X _Button_Boxes _Button_Hover
+CALL Text 133 32 f0 "Cancel" X _Button_Boxes _Button_Hover
+
+
+goto :KERNEL.EXE
+
+
+
+
+
+
+
+
+
+
+
+
+
+:SETTINGS.SYSTEM.CLIPBOARD
+set _SETTINGS.SECTION=SYSTEM.CLIPBOARD
+call :SETTINGS.NAVIGATION
+
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp 
+
+CALL Text 55 4 f3 "System" 61 4 f0 "   >   Clipboard" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 450 150 /rd 800 40 /c 7
+CALL Text 65 10 f3 "Clipboard is still incomplete" X _Button_Boxes _Button_Hover
+goto :KERNEL.EXE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:SETTINGS.SYSTEM.ABOUT
+set _SETTINGS.SECTION=SYSTEM.ABOUT
+
+:: Find the Windows Version
+
+For /f "tokens=1,2 delims=." %%A in ('ver') do (
+	For /f "tokens=4" %%C in ("%%A") do (
+		Set _Ver=%%C.%%B
+	)
+)
+
+If /i "%_Ver%" == "4.0" (Set _winver-winbatchOS=NT 4.0)
+If /i "%_Ver%" == "5.1" (Set _winver-winbatchOS=XP)
+If /i "%_Ver%" == "6.0" (Set _winver-winbatchOS=Vista)
+If /i "%_Ver%" == "6.1" (Set _winver-winbatchOS=7)
+If /i "%_Ver%" == "6.2" (Set _winver-winbatchOS=8)
+If /i "%_Ver%" == "6.3" (Set _winver-winbatchOS=8.1)
+If /i "%_Ver%" == "10.0" (Set _winver-winbatchOS=10/11)
+
+If /i "%_winver-winbatchOS%" == "" (Set _winver-winbatchOS=Unknown)
+
+:: architecture of os
+IF Not Defined ProgramFiles(x86) (Set _Type=x86) ELSE (Set _Type=x64)
+
+
+call :SETTINGS.NAVIGATION
+
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp 
+
+PIXELDRAW /dr 450 95 /rd 800 40 /c 7
+CALL Text 55 4 f3 "System" 61 4 f0 "   >   About" X _Button_Boxes _Button_Hover
+CALL Text 65 6 f0 "%_HOSTNAME-winbatchOS%" 166 6 f3 "Rename PC" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 450 140 /rd 800 120 /c 7
+CALL Text 65 10 f3 "Windows Infomation" 170 10 f8 "Copy" X _Button_Boxes _Button_Hover
+
+CALL Text 65 12 f0 "Windows" 80 12 f8 "%_winver-winbatchOS%" X _Button_Boxes _Button_Hover
+CALL Text 65 13 f0 "Architecture" 80 13 f8 "%_Type%" X _Button_Boxes _Button_Hover
+
+CALL Text 65 15 f8 "The infomation above may not be accurate." X _Button_Boxes _Button_Hover
+
+
+
+PIXELDRAW /dr 450 265 /rd 800 90 /c 7
+
+call insertphoto 460 280 25 ui.wbxicon.bmp
+
+CALL Text 75 20 f0 "winbatchOS" 100 20 f8 "%_version%" X _Button_Boxes _Button_Hover
+CALL Text 75 21 f0 "Build " 100 21 f8 "%_build%" X _Button_Boxes _Button_Hover
+CALL Text 75 22 f0 "Kernel Version" 100 22 f8 "%_quantum-ver%" X _Button_Boxes _Button_Hover
+
+CALL Text 65 2 f8 " Microsoft Public License (Ms-PL)" X _Button_Boxes _Button_Hover
+CALL Text 65 3 f8 "." X _Button_Boxes _Button_Hover
+CALL Text 65 4 f8 " This license governs use of the accompanying software. If you use the" X _Button_Boxes _Button_Hover
+CALL Text 65 5 f8 " software, you accept this license. If you do not accept the license, do not" X _Button_Boxes _Button_Hover
+CALL Text 65 6 f8 " use the software." X _Button_Boxes _Button_Hover
+CALL Text 65 7 f8 "." X _Button_Boxes _Button_Hover
+CALL Text 65 8 f8 " 1.  Definitions" X _Button_Boxes _Button_Hover
+CALL Text 65 9 f8 " The terms 'reproduce,' 'reproduction,' 'derivative works,' and 'distribution'" X _Button_Boxes _Button_Hover
+CALL Text 65 10 f8 " have the same meaning here as under U.S. copyright law. A 'contribution' is" X _Button_Boxes _Button_Hover
+CALL Text 65 11 f8 " the original software, or any additions or changes to the software. A" X _Button_Boxes _Button_Hover
+CALL Text 65 12 f8 " 'contributor' is any person that distributes its contribution under this" X _Button_Boxes _Button_Hover
+CALL Text 65 13 f8 " license. 'Licensed patents' are a contributor's patent claims that read" X _Button_Boxes _Button_Hover
+CALL Text 65 14 f8 " directly on its contribution." X _Button_Boxes _Button_Hover
+CALL Text 65 15 f8 ". " X _Button_Boxes _Button_Hover
+CALL Text 65 16 f8 " 2.  Grant of Rights" X _Button_Boxes _Button_Hover
+CALL Text 65 17 f8 "      (A) Copyright Grant- Subject to the terms of this license, including the" X _Button_Boxes _Button_Hover
+CALL Text 65 18 f8 "      license conditions and limitations in section 3, each contributor grants" X _Button_Boxes _Button_Hover
+CALL Text 65 19 f8 "      you a non-exclusive, worldwide, royalty-free copyright license to" X _Button_Boxes _Button_Hover
+CALL Text 65 20 f8 "      reproduce its contribution, prepare derivative works of its contribution," X _Button_Boxes _Button_Hover
+CALL Text 65 21 f8 "      and distribute its contribution or any derivative works that you create." X _Button_Boxes _Button_Hover
+CALL Text 65 22 f8 "." X _Button_Boxes _Button_Hover
+CALL Text 65 23 f8 "      (B) Patent Grant- Subject to the terms of this license, including the" X _Button_Boxes _Button_Hover
+CALL Text 65 24 f8 "      license conditions and limitations in section 3, each contributor grants" X _Button_Boxes _Button_Hover
+CALL Text 65 25 f8 "      you a non-exclusive, worldwide, royalty-free license under its licensed" X _Button_Boxes _Button_Hover
+CALL Text 65 26 f8 "      patents to make, have made, use, sell, offer for sale, import, and/or" X _Button_Boxes _Button_Hover
+CALL Text 65 27 f8 "      otherwise dispose of its contribution in the software or derivative works" X _Button_Boxes _Button_Hover
+CALL Text 65 28 f8 "      of the contribution in the software." X _Button_Boxes _Button_Hover
+CALL Text 65 29 f8 "." X _Button_Boxes _Button_Hover
+CALL Text 65 30 f8 " 3.  Conditions and Limitations" X _Button_Boxes _Button_Hover
+CALL Text 65 31 f8 "      (A) No Trademark License- This license does not grant you rights to use" X _Button_Boxes _Button_Hover
+CALL Text 65 32 f8 "      any contributors' name, logo, or trademarks." X _Button_Boxes _Button_Hover
+CALL Text 65 33 f8 "." X _Button_Boxes _Button_Hover
+CALL Text 65 34 f8 "      (B) If you bring a patent claim against any contributor over patents that" X _Button_Boxes _Button_Hover
+CALL Text 65 35 f8 "      you claim are infringed by the software, your patent license from such" X _Button_Boxes _Button_Hover
+CALL Text 65 36 f8 "      contributor to the software ends automatically." X _Button_Boxes _Button_Hover
+CALL Text 65 37 f8 "." X _Button_Boxes _Button_Hover
+CALL Text 65 38 f8 "      (C) If you distribute any portion of the software, you must retain all" X _Button_Boxes _Button_Hover
+CALL Text 65 39 f8 "      copyright, patent, trademark, and attribution notices that are present in" X _Button_Boxes _Button_Hover
+CALL Text 65 40 f8 "      the software." X _Button_Boxes _Button_Hover
+CALL Text 65 41 f8 "." X _Button_Boxes _Button_Hover
+CALL Text 65 42 f8 "      (D) If you distribute any portion of the software in source code form," X _Button_Boxes _Button_Hover
+CALL Text 65 43 f8 "      you may do so only under this license by including a complete copy of" X _Button_Boxes _Button_Hover
+CALL Text 65 44 f8 "      this license with your distribution. If you distribute any portion of the" X _Button_Boxes _Button_Hover
+CALL Text 65 45 f8 "      software in compiled or object code form, you may only do so under a" X _Button_Boxes _Button_Hover
+CALL Text 65 46 f8 "      license that complies with this license." X _Button_Boxes _Button_Hover
+CALL Text 65 47 f8 "." X _Button_Boxes _Button_Hover
+CALL Text 65 48 f8 "      (E) The software is licensed 'as-is.' You bear the risk of using it. The" X _Button_Boxes _Button_Hover
+CALL Text 65 49 f8 "      contributors give no express warranties, guarantees, or conditions. You" X _Button_Boxes _Button_Hover
+CALL Text 65 50 f8 "      may have additional consumer rights under your local laws which this" X _Button_Boxes _Button_Hover
+CALL Text 65 51 f8 "      license cannot change. To the extent permitted under your local laws, the" X _Button_Boxes _Button_Hover
+CALL Text 65 52 f8 "      contributors exclude the implied warranties of merchantability, fitness" X _Button_Boxes _Button_Hover
+CALL Text 65 53 f8 "      for a particular purpose and non-infringement." X _Button_Boxes _Button_Hover
+
+CALL Text 65 55 f8 "The license above was slightly changed to adjust to the winbatchOS Environment." X _Button_Boxes _Button_Hover
+
+
+
+
+
+rem Bug check to prevent wrong errors at next startup of the settings page
+rem also part of privacy of a computer
+
+set _Ver=0.0
+set _Type=x00
+set _winver-winbatchOS=0
+
+goto :KERNEL.EXE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:SETTINGS.PERSONALIZATION
+set _SETTINGS.SECTION=PERSONALIZATION
+call :SETTINGS.NAVIGATION
+
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp
+
+CALL Text 55 4 f0 "Personalization" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 399 99 /rd 386 242 /c 8
+call insertphoto 400 100 20 "%BACKGROUND.DESKTOP.IMAGE%.%THEME%.bmp"
+
+CALL Text 112 6 f0 "Select a theme to apply" X _Button_Boxes _Button_Hover
+	
+CALL ButtonBorder 125 14 f8 "Not available." X _Button_Boxes _Button_Hover
+
+rem magic number: 43
+PIXELDRAW /dr 400 385 /rd 800 40 /c 7
+CALL Text 65 27 f8 "Background" X _Button_Boxes _Button_Hover
+CALL Text 65 28 f8 "Default Image, Solid color" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 428 /rd 800 40 /c 7
+CALL Text 65 30 f3 "Color" X _Button_Boxes _Button_Hover
+CALL Text 65 31 f3 "Accent color, transparency effects, light/dark theme" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 471 /rd 800 40 /c 7
+CALL Text 65 33 f3 "Themes" X _Button_Boxes _Button_Hover
+CALL Text 65 34 f3 "Create, manage" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 514 /rd 800 40 /c 7
+CALL Text 65 36 f3 "Lock screen" X _Button_Boxes _Button_Hover
+CALL Text 65 37 f3 "Default image, app Notifications" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 557 /rd 800 40 /c 7
+CALL Text 65 39 f8 "Touch Keyboard" X _Button_Boxes _Button_Hover
+CALL Text 65 40 f8 "Themes, size, " X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 600 /rd 800 40 /c 7
+CALL Text 65 42 f8 "Start" X _Button_Boxes _Button_Hover
+CALL Text 65 43 f8 "Pinned, Recomended, Folders" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 643 /rd 800 40 /c 7
+CALL Text 65 45 f3 "Taskbar" X _Button_Boxes _Button_Hover
+CALL Text 65 46 f3 "Taskbar alignment, hide/show taskbar" X _Button_Boxes _Button_Hover
+
+goto :KERNEL.EXE
+
+
+
+
+:SETTINGS.PERSONALIZATION.TASKBAR
+set _SETTINGS.SECTION=PERSONALIZATION.TASKBAR
+call :SETTINGS.NAVIGATION
+
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp 
+
+CALL Text 55 4 f3 "Personalization" 70 4 f0 "   >   Taskbar" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 140 /rd 800 180 /c 7
+CALL Text 65 10 f3 "Taskbar Items" X _Button_Boxes _Button_Hover
+CALL Text 65 11 f8 "Show certain icons on the taskbar" X _Button_Boxes _Button_Hover
+
+CALL Text 65 13 fc "The settings below are not available yet on winbatchOS." X _Button_Boxes _Button_Hover
+CALL Text 65 14 f7 "Search" X _Button_Boxes _Button_Hover
+CALL Text 65 16 f7 "Task View" X _Button_Boxes _Button_Hover
+CALL Text 65 18 f7 "Widgets" X _Button_Boxes _Button_Hover
+CALL Text 65 20 f7 "Taskbar Overflow" X _Button_Boxes _Button_Hover
+
+IF %_TASKBAR.ALIGNMENT%==0 CALL ButtonBorder 120 24 f3 "Center" X _Button_Boxes _Button_Hover
+IF %_TASKBAR.ALIGNMENT%==1 CALL ButtonBorder 120 24 f3 "Left" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 330 /rd 800 40 /c 7
+CALL Text 65 23 f3 "Taskbar Alignment" X _Button_Boxes _Button_Hover
+CALL Text 65 24 f8 "Toggle the button on the right." X _Button_Boxes _Button_Hover
+
+goto :KERNEL.EXE
+
+
+
+
+
+
+
+
+
+
+
+
+
+:SETTINGS.APPS
+set _SETTINGS.SECTION=APPS
+call :SETTINGS.NAVIGATION
+
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp
+
+CALL Text 55 4 f0 "Apps" X _Button_Boxes _Button_Hover
+
+rem magic number: 43
+PIXELDRAW /dr 400 90 /rd 800 40 /c 7
+CALL Text 65 6 f8 "Installed Apps" X _Button_Boxes _Button_Hover
+CALL Text 65 7 f8 "Manage apps on winbatchOS" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 133 /rd 800 40 /c 7
+CALL Text 65 9 f8 "Advanced App Settings" X _Button_Boxes _Button_Hover
+CALL Text 65 10 f8 "Choose where apps are coming from, uninstall updates" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 176 /rd 800 40 /c 7
+CALL Text 65 12 f8 "Default apps" X _Button_Boxes _Button_Hover
+CALL Text 65 13 f8 "Default app opening for files" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 219 /rd 800 40 /c 7
+CALL Text 65 15 f8 "Optional features" X _Button_Boxes _Button_Hover
+CALL Text 65 16 f8 "Extra functionality for winbatchOS" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 262 /rd 800 40 /c 7
+CALL Text 65 18 f8 "Apps for websites" X _Button_Boxes _Button_Hover
+CALL Text 65 19 f8 "Websites that can run in an app instead of a browser" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 305 /rd 800 40 /c 7
+CALL Text 65 21 f8 "Startup" X _Button_Boxes _Button_Hover
+CALL Text 65 22 f8 "Apps auto-start when you start winbatchOS" X _Button_Boxes _Button_Hover
+goto :KERNEL.EXE
+
+
+
+
+
+
+
+
+
+
+
+:SETTINGS.ACCOUNTS
+set _SETTINGS.SECTION=ACCOUNTS
+call :SETTINGS.NAVIGATION
+
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp
+
+CALL Text 55 4 f0 "Accounts" X _Button_Boxes _Button_Hover
+
+call insertphoto 400 115 20 profile-icon.bmp
+
+CALL Text 65 8 f0 "%_WBX_USERNAME%" X _Button_Boxes _Button_Hover
+CALL Text 65 9 f0 "Local Account" X _Button_Boxes _Button_Hover
+
+
+CALL Text 55 15 f0 "Account Settings" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 245 /rd 800 40 /c 7
+CALL Text 65 17 f3 "Your info" X _Button_Boxes _Button_Hover
+CALL Text 65 18 f3 "Change username, profile photo" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 288 /rd 800 40 /c 7
+CALL Text 65 20 f3 "Sign-in Options" X _Button_Boxes _Button_Hover
+CALL Text 65 21 f3 "Change password" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 331 /rd 800 40 /c 7
+CALL Text 65 23 f7 "Other users" X _Button_Boxes _Button_Hover
+CALL Text 65 24 f7 "Currently disabled" X _Button_Boxes _Button_Hover
+
+goto :KERNEL.EXE
+
+
+:SETTINGS.ACCOUNTS.PROFILE
+set _SETTINGS.SECTION=ACCOUNTS.PROFILE
+call :SETTINGS.NAVIGATION
+
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp
+
+CALL Text 55 4 f3 "Accounts" 63 4 f0 "   >   Profile photo" X _Button_Boxes _Button_Hover
+
+CALL Text 65 8 f0 "%_USERNAME-winbatchOS%" X _Button_Boxes _Button_Hover
+CALL Text 65 9 f0 "Local Account" X _Button_Boxes _Button_Hover
+
+
+CALL Text 65 15 f0 "Edit your profile photo" X _Button_Boxes _Button_Hover
+
+CALL Text 65 17 f0 "Edit using paint" X _Button_Boxes _Button_Hover
+CALL Text 65 18 f7 "Use paint to edit your profile photo" X _Button_Boxes _Button_Hover
+
+CALL Text 65 20 f0 "Manually edit your photo" X _Button_Boxes _Button_Hover
+CALL Text 65 21 f0 "Use your favorite paint app and edit 'profile-icon.bmp' inside /NI/BMP/. " X _Button_Boxes _Button_Hover
+goto :KERNEL.EXE
+
+:SETTINGS.ACCOUNTS.SIGNIN
+set _SETTINGS.SECTION=ACCOUNTS.SIGNIN
+
+rem  THIS IS A POP-UP
+rem  Clear the center of the accounts
+PIXELDRAW /dr 578 304 /rd 525 275 /c 8
+call insertphoto 580 305 240 blank.bmp
+call insertphoto 581 306 240 blank.bmp
+call insertphoto 579 309 240 blank.bmp
+call insertphoto 650 305 240 blank.bmp
+call insertphoto 651 306 240 blank.bmp
+call insertphoto 649 309 240 blank.bmp
+call insertphoto 750 305 240 blank.bmp
+call insertphoto 751 306 240 blank.bmp
+call insertphoto 749 309 240 blank.bmp
+call insertphoto 850 305 240 blank.bmp
+call insertphoto 851 306 240 blank.bmp
+call insertphoto 849 309 240 blank.bmp
+call insertphoto 1075 315 130 UI.context.close.bmp
+
+CALL Text 83 22 f0 "Change password" X _Button_Boxes _Button_Hover
+CALL Text 83 25 f0 "Are you sure you want to change your password?" X _Button_Boxes _Button_Hover
+
+call insertphoto 650 450 40 UI.buttonblue.bmp
+call insertphoto 649 451 40 UI.buttonblue.bmp
+call insertphoto 651 454 40 UI.buttonblue.bmp
+
+call insertphoto 920 450 40 UI.buttongray.bmp
+call insertphoto 919 451 40 UI.buttongray.bmp
+call insertphoto 921 454 40 UI.buttongray.bmp
+CALL Text 93 32 3f "Yes" X _Button_Boxes _Button_Hover
+CALL Text 133 32 f0 "No" X _Button_Boxes _Button_Hover
+
+goto :KERNEL.EXE
+
+:SETTINGS.ACCOUNTS.SIGNIN.CHANGEPASSWORD
+set _SETTINGS.SECTION=ACCOUNTS.SIGNIN.CHANGEPASSWORD
+rem  THIS IS A POP-UP
+rem  Clear the center of the accounts
+PIXELDRAW /dr 578 304 /rd 525 275 /c 8
+
+rem shouldnt be this long
+call insertphoto 580 305 240 blank.bmp
+call insertphoto 581 306 240 blank.bmp
+call insertphoto 579 309 240 blank.bmp
+call insertphoto 650 305 240 blank.bmp
+call insertphoto 651 306 240 blank.bmp
+call insertphoto 649 309 240 blank.bmp
+call insertphoto 750 305 240 blank.bmp
+call insertphoto 751 306 240 blank.bmp
+call insertphoto 749 309 240 blank.bmp
+call insertphoto 850 305 240 blank.bmp
+call insertphoto 851 306 240 blank.bmp
+call insertphoto 849 309 240 blank.bmp
+
+
+CALL Text 83 22 f0 "Change password" X _Button_Boxes _Button_Hover
+
+CALL Text 90 25 f0 "Type your password here. Press ENTER to continue." X _Button_Boxes _Button_Hover
+CALL Text 90 26 f0 "Type 'NONE' in caps to not set a password." X _Button_Boxes _Button_Hover
+
+
+call insertphoto 650 400 45 UI.buttonbrightwhite.bmp
+call insertphoto 649 401 45 UI.buttonbrightwhite.bmp
+call insertphoto 651 404 45 UI.buttonbrightwhite.bmp
+
+call insertphoto 690 400 45 UI.buttonbrightwhite.bmp
+call insertphoto 689 401 45 UI.buttonbrightwhite.bmp
+call insertphoto 691 404 45 UI.buttonbrightwhite.bmp
+
+call insertphoto 730 400 45 UI.buttonbrightwhite.bmp
+call insertphoto 729 401 45 UI.buttonbrightwhite.bmp
+call insertphoto 731 404 45 UI.buttonbrightwhite.bmp
+
+call insertphoto 870 400 45 UI.buttonbrightwhite.bmp
+call insertphoto 869 401 45 UI.buttonbrightwhite.bmp
+call insertphoto 871 404 45 UI.buttonbrightwhite.bmp
+
+call insertphoto 810 400 45 UI.buttonbrightwhite.bmp
+call insertphoto 809 401 45 UI.buttonbrightwhite.bmp
+call insertphoto 811 404 45 UI.buttonbrightwhite.bmp
+
+call insertphoto 850 400 45 UI.buttonbrightwhite.bmp
+call insertphoto 849 401 45 UI.buttonbrightwhite.bmp
+call insertphoto 851 404 45 UI.buttonbrightwhite.bmp
+
+call insertphoto 890 400 45 UI.buttonbrightwhite.bmp
+call insertphoto 889 401 45 UI.buttonbrightwhite.bmp
+call insertphoto 891 404 45 UI.buttonbrightwhite.bmp
+
+PIXELDRAW /dl /p 651 399 1007 399 /c 7
+
+PIXELDRAW /dl /p 650 400 650 446 /c 7
+
+PIXELDRAW /dl /p 1008 400 1008 446 /c 7
+
+PIXELDRAW /dl /p 651 447 1007 447 /c 3
+
+rem Set cursor for typing
+BatBOX /g 94 30 /d ""
+set /p _WBX_PASSWORD=
+
+SET _WBX_SETPASSWD=1
+IF %_WBX_PASSWORD%==NONE SET _WBX_SETPASSWD=0
+
+(
+  echo SET _WBX_USERNAME=%_WBX_USERNAME%
+  echo SET _WBX_SETPASSWD=%_WBX_SETPASSWD%
+  echo SET _WBX_PASSWORD=%_WBX_PASSWORD%
+) > data-user.bat
+
+:SETTINGS.ACCOUNTS.SIGNIN.CHANGEPASSWORD.DONE
+set _SETTINGS.SECTION=ACCOUNTS.SIGNIN.CHANGEPASSWORD.DONE
+rem  THIS IS A POP-UP
+rem  Clear the center of the accounts
+PIXELDRAW /dr 578 304 /rd 525 275 /c 8
+
+rem shouldnt be this long
+call insertphoto 580 305 240 blank.bmp
+call insertphoto 581 306 240 blank.bmp
+call insertphoto 579 309 240 blank.bmp
+call insertphoto 650 305 240 blank.bmp
+call insertphoto 651 306 240 blank.bmp
+call insertphoto 649 309 240 blank.bmp
+call insertphoto 750 305 240 blank.bmp
+call insertphoto 751 306 240 blank.bmp
+call insertphoto 749 309 240 blank.bmp
+call insertphoto 850 305 240 blank.bmp
+call insertphoto 851 306 240 blank.bmp
+call insertphoto 849 309 240 blank.bmp
+
+CALL Text 90 25 f0 "Your password has been changed." X _Button_Boxes _Button_Hover
+CALL Text 90 25 f0 "Please use your new password to login next time." X _Button_Boxes _Button_Hover
+
+
+call insertphoto 920 450 40 UI.buttongray.bmp
+call insertphoto 919 451 40 UI.buttongray.bmp
+call insertphoto 921 454 40 UI.buttongray.bmp
+CALL Text 133 32 f0 "Okay" X _Button_Boxes _Button_Hover
+
+
+goto :KERNEL.EXE
+
+
+:SETTINGS.TIMELANGUAGE
+set _SETTINGS.SECTION=TIMELANGUAGE
+call :SETTINGS.NAVIGATION
+
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp
+CALL Text 55 4 f0 "Time & Language" X _Button_Boxes _Button_Hover
+
+CALL Text 55 10 f0 "%_WBX-TASKBAR-TIME%" X _Button_Boxes _Button_Hover
+CALL Text 55 11 f0 "%_WBX-TASKBAR-DATE%" X _Button_Boxes _Button_Hover
+
+CALL Text 55 15 f0 "To change your time settings, go to Windows Settings." X _Button_Boxes _Button_Hover
+
+goto :KERNEL.EXE
+
+
+:SETTINGS.ACCESSIBILITY
+set _SETTINGS.SECTION=ACCESSIBILITY
+call :SETTINGS.NAVIGATION
+
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp
+CALL Text 55 4 f0 "Accessibility" X _Button_Boxes _Button_Hover
+CALL Text 55 7 f3 "Accessibility will not be a main feature on winbatchOS 18." X _Button_Boxes _Button_Hover
+goto :KERNEL.EXE
+
+
+:SETTINGS.PRIVACYSECURITY
+set _SETTINGS.SECTION=PRIVACYSECURITY
+call :SETTINGS.NAVIGATION
+
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp
+CALL Text 55 4 f0 "Privacy & Security" X _Button_Boxes _Button_Hover
+goto :KERNEL.EXE
+
+
+
+:SETTINGS.UPDATE
+set _SETTINGS.SECTION=UPDATE
+call :SETTINGS.NAVIGATION
+
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
+call insertphoto 380 50 110 blankloadapp.light.bmp 
+call insertphoto 380 210 110 blankloadapp.light.bmp
+
+call insertphoto 400 100 110 settings.ui.update.bmp
+
+CALL Text 55 4 f0 "winbatchOS Update" X _Button_Boxes _Button_Hover
+
+CALL Text 70 7 f0 "%_WBXCore-updatemessage%" X _Button_Boxes _Button_Hover
+CALL Text 70 9 f8 "%_WBX-OS% %_version%" X _Button_Boxes _Button_Hover
+CALL Text 70 10 f8 "Version 2212" X _Button_Boxes _Button_Hover
+CALL Text 70 11 f8 "OS Build %_build%" X _Button_Boxes _Button_Hover
+
+call insertphoto 1070 125 40 UI.buttonblue.bmp
+call insertphoto 1069 126 41 UI.buttonblue.bmp
+call insertphoto 1071 129 40 UI.buttonblue.bmp
+call insertphoto 1100 125 40 UI.buttonblue.bmp
+call insertphoto 1099 126 41 UI.buttonblue.bmp
+call insertphoto 1101 129 40 UI.buttonblue.bmp
+CALL Text 152 9 3f "Check for updates" X _Button_Boxes _Button_Hover
+
+
+CALL Text 55 15 f0 "More Options" X _Button_Boxes _Button_Hover
+
+rem magic number: 43
+PIXELDRAW /dr 400 250 /rd 800 40 /c 7
+
+CALL Text 65 17 f8 "Pause updates" X _Button_Boxes _Button_Hover
+CALL Text 65 18 f8 "Disabled" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 293 /rd 800 40 /c 7
+
+CALL Text 65 20 f8 "Update history" X _Button_Boxes _Button_Hover
+CALL Text 65 21 f8 " " X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 336 /rd 800 40 /c 7
+
+CALL Text 65 23 f3 "Advanced Options" X _Button_Boxes _Button_Hover
+CALL Text 65 24 f3 "Optional Updates, System Servers" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dr 400 379 /rd 800 40 /c 7
+
+CALL Text 65 26 f3 "winbatchOS Preview Builds" X _Button_Boxes _Button_Hover
+CALL Text 65 27 f3 "Download and preview beta builds of winbatchOS" X _Button_Boxes _Button_Hover
+
+rem  note stuff
+
+rem  call insertphoto 380 600 100 UI.buttongray.bmp
+rem  call insertphoto 379 601 100 UI.buttongray.bmp
+rem  call insertphoto 381 604 100 UI.buttongray.bmp
+
+rem  call insertphoto 580 600 100 UI.buttongray.bmp
+rem  call insertphoto 579 601 100 UI.buttongray.bmp
+rem  call insertphoto 581 604 100 UI.buttongray.bmp
+
+rem  call insertphoto 780 600 100 UI.buttongray.bmp
+rem  call insertphoto 779 601 100 UI.buttongray.bmp
+rem  call insertphoto 781 604 100 UI.buttongray.bmp
+
+rem  call insertphoto 980 600 100 UI.buttongray.bmp
+rem  call insertphoto 979 601 100 UI.buttongray.bmp
+rem  call insertphoto 981 604 100 UI.buttongray.bmp
+
+PIXELDRAW /dr 400 600 /rd 800 100 /c 7
+
+CALL Text 60 43 f0 "Notice:" X _Button_Boxes _Button_Hover
+CALL Text 65 45 f0 "%_WBXCore-updatealert%" X _Button_Boxes _Button_Hover
+goto :KERNEL.EXE
+
+
+
+
+
+
+
+
+
+
+
+
+
+:SETTINGS.UPDATE.WGET
+rem  Update Manager - wget
+
+rem  Set Variable for _link= (Universal)
+SET "_Link=https://github.com/bes-ptah/winbatchOS/archive/refs/heads/main.zip"
+
+rem  download it quietly using -q. It won't spam the command line.
+wget -q "%_Link%" > nul
+
+rem  Unpack it (This is why Windows 1809 and higher is recommended, or use tar yourself)
+tar -xf main.zip
+
+rem  Enter the directory (always this name)
+cd winbatchOS-main
+
+rem  Enter the update directory
+cd update
+
+rem  CALL the program
+call update.bat
+
+rem  Then remove the old files.
+del update.bat
+
+cd ..
+
+rem  delete it without a request from user. (or we screw the display screen up)
+rmdir update > nul
+
+del LICENSE
+del README.md
+del _config.yml
+
+rem  go back into the system directory.
+cd ..
+
+rem  remove the folder itself.
+rmdir winbatchOS-main > nul
+
+rem  delete the zip file downloaded so the next download update wont crash the cmd line.
+del main.zip
+
+goto :SETTINGS.UPDATE
+
+
+
+
+
+
+
+
+
+
+
+
+
+rem ALWAYS call this program, never go into it!
+:SETTINGS.REWRITECONFIG
+
+
+
+(
+  echo SET COLORMODE=%COLORMODE%
+
+  echo SET NOTIFICATIONS=%NOTIFICATIONS%
+  echo SET DO-NOT-DISTURB=%DO-NOT-DISTURB%
+
+  echo SET VOLUME=%VOLUME%
+
+  echo SET ACCENT.COLOR=%ACCENT.COLOR%
+  echo SET THEME=%THEME%
+  echo SET HIGHLIGHT.WINDOW.BORDERS=%HIGHLIGHT.WINDOW.BORDERS%
+  echo SET _TASKBAR.ALIGNMENT=%_TASKBAR.ALIGNMENT%
+
+  echo SET BACKGROUND.LOCKSCREEN.IMAGE=%BACKGROUND.LOCKSCREEN.IMAGE%
+  echo SET BACKGROUND.LOCKSCREEN.SIZE=%BACKGROUND.LOCKSCREEN.SIZE%
+  echo SET BACKGROUND.DESKTOP.IMAGE=%BACKGROUND.DESKTOP.IMAGE%
+  echo SET BACKGROUND.DESKTOP.SIZE=%BACKGROUND.DESKTOP.SIZE%
+
+  echo SET _HOSTNAME-winbatchOS=%_HOSTNAME-winbatchOS%
+) > CoreData\data-settings.bat
+exit /b
+
+
+
+
+
+
+
+
+
+
+:SETTINGS.NAVIGATION
+rem  Load left app stuff here
+call insertphoto 30 60 20 profile-icon.bmp
+CALL Text 12 4 f3 "%_WBX_USERNAME%" X _Button_Boxes _Button_Hover
+CALL Text 12 5 f0 "Local Account" X _Button_Boxes _Button_Hover
+
+rem Load icons first!
+call insertphoto 40 180 120 settings-system-icon.bmp
+
+
+call insertphoto 40 220 120 settings-personalization-icon.bmp
+
+
+call insertphoto 40 262 120 settings-apps-icon.bmp
+
+
+call insertphoto 40 304 120 settings-account-icon.bmp
+
+
+call insertphoto 40 346 120 settings-timelanguage-icon.bmp
+
+
+call insertphoto 40 388 120 settings-accessibility-icon.bmp
+
+
+call insertphoto 40 430 120 settings-security-icon.bmp
+
+
+call insertphoto 40 473 120 settings-update-icon.bmp
+
+
+
+rem Load names
+
+rem Top:
+PIXELDRAW /dl /p 25 134 242 134 /c 7
+
+rem Left:
+PIXELDRAW /dl /p 23 136 23 160 /c 7
+
+rem Right:
+PIXELDRAW /dl /p 244 136 244 160 /c 7
+
+rem Bottom:
+PIXELDRAW /dl /p 25 162 242 162 /c 9
+
+call insertphoto 20 177 120 settings-blank-navigation-icon.bmp
+IF %_SETTINGS.SECTION%==SYSTEM call insertphoto 20 177 120 settings-side-navigation-icon.bmp
+call insertphoto 20 220 120 settings-blank-navigation-icon.bmp
+IF %_SETTINGS.SECTION%==PERSONALIZATION call insertphoto 20 220 120 settings-side-navigation-icon.bmp
+call insertphoto 20 260 120 settings-blank-navigation-icon.bmp
+IF %_SETTINGS.SECTION%==APPS call insertphoto 20 260 120 settings-side-navigation-icon.bmp
+call insertphoto 20 299 120 settings-blank-navigation-icon.bmp
+IF %_SETTINGS.SECTION%==ACCOUNTS call insertphoto 20 299 120 settings-side-navigation-icon.bmp
+call insertphoto 20 344 120 settings-blank-navigation-icon.bmp
+IF %_SETTINGS.SECTION%==TIMELANGUAGE call insertphoto 20 344 120 settings-side-navigation-icon.bmp
+call insertphoto 20 386 120 settings-blank-navigation-icon.bmp
+IF %_SETTINGS.SECTION%==ACCESSIBILITY call insertphoto 20 386 120 settings-side-navigation-icon.bmp
+call insertphoto 20 427 120 settings-blank-navigation-icon.bmp
+IF %_SETTINGS.SECTION%==SECURITY call insertphoto 20 427 120 settings-side-navigation-icon.bmp
+call insertphoto 20 472 120 settings-blank-navigation-icon.bmp
+IF %_SETTINGS.SECTION%==UPDATE call insertphoto 20 472 120 settings-side-navigation-icon.bmp
+
+
+call insertphoto 220 138 110 taskbar-searchbar-top.bmp
+
+
+CALL Text 2 9 f8 "Find a setting" X _Button_Boxes _Button_Hover
+
+
+CALL Text 9 12 f0 "System" X _Button_Boxes _Button_Hover
+CALL Text 9 15 f0 "Personalization" X _Button_Boxes _Button_Hover
+CALL Text 9 18 f0 "Apps" X _Button_Boxes _Button_Hover
+CALL Text 9 21 f0 "Accounts" X _Button_Boxes _Button_Hover
+CALL Text 9 24 f0 "Time & Lauguage" X _Button_Boxes _Button_Hover
+CALL Text 9 27 f0 "Accessibility" X _Button_Boxes _Button_Hover
+CALL Text 9 30 f0 "Privacy & Security" X _Button_Boxes _Button_Hover
+CALL Text 9 33 f0 "winbatchOS Update" X _Button_Boxes _Button_Hover
+
+exit /b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rem  winbatchOS Edge - There is no official license yet. 
+rem  Respectivly is 'outbranched' from Microsoft Edge.
+:EDGE.EXE
+set _APP.EXE=1
+IF %_EDGE.EXE%==1 goto :EDGE.LOOP
+set _ACTIVEAPPLABEL=edge
+set _ACTIVEAPPIMAGE=edge
+SET _ACTIVEAPPTITLE=Edge
+
+
+set _EDGE.EXE=1
+call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blankloadapp.light.bmp &call insertphoto 7 0 147 blankloadapp.light.bmp &call insertphoto 7 35 147 blankloadapp.light.bmp
+
+PIXELDRAW /dr 0 0 /rd 1490 783 /c 0
+
+call insertphoto 730 330 40 edge.light.bmp
+ 
+call insertphoto 1450 9 110 WindowedButtons.bmp
+
+timeout /NOBREAK /T 0 > nul
+
+rem  call insertphoto 0 0 %BACKGROUND-SIZE% %background%.bmp
+
+
+:EDGE.LOOP
+
+call insertphoto 0 38 147 blankloadapp.white.bmp &call insertphoto 0 38 147 blankloadapp.white.bmp &call insertphoto 7 38 147 blankloadapp.white.bmp &call insertphoto 7 38 147 blankloadapp.white.bmp
+
+
+
+call insertphoto 40 15 41 UI.buttonbrightwhite.bmp
+call insertphoto 60 15 41 UI.buttonbrightwhite.bmp
+call insertphoto 80 15 41 UI.buttonbrightwhite.bmp
+call insertphoto 100 15 41 UI.buttonbrightwhite.bmp
+call insertphoto 120 15 41 UI.buttonbrightwhite.bmp
+
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+set _ACTIVEAPPLABEL=edge.exe
+
+call insertphoto 1450 9 110 WindowedButtons.bmp
+
+
+Call insertphoto 16 20 120 edge.tabs.bmp
+
+Call insertphoto 57 20 120 edge.newtab.bmp
+Call insertphoto 180 26 120 UI.context.close.explorer.bmp
+CALL Text 10 1 f0 "New Tab" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dl /p 0 100 1490 100 /c 0
+
+
+
+
+PIXELDRAW /dl /p 0 100 1490 100 /c 7
+
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+
+
+
+goto :KERNEL.EXE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rem  Explorer App
+rem  Based on Windows Insider Build 22621
+:EXPLORER.EXE
+set _APP.EXE=1
+rem  If you want to replicate the actual app of explorer (Win32)
+
+IF %_EXPLORER.EXE%==1 goto :EXPLORER.LOOP
+set _ACTIVEAPPLABEL=explorer.exe
+set _ACTIVEAPPIMAGE=explorer
+SET "_ACTIVEAPPTITLE=File Explorer"
+
+set _EXPLORER.EXE=1
+call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blankloadapp.light.bmp &call insertphoto 7 0 147 blankloadapp.light.bmp &call insertphoto 7 35 147 blankloadapp.light.bmp
+
+PIXELDRAW /dr 0 0 /rd 1490 783 /c 0
+
+call insertphoto 730 330 40 explorer.light.bmp
+
+call insertphoto 1450 9 110 WindowedButtons.bmp
+
+timeout /NOBREAK /T 0 > nul
+:EXPLORER.LOOP
+call insertphoto 0 35 147 blankloadapp.white.bmp &call insertphoto 0 35 147 blankloadapp.white.bmp &call insertphoto 7 35 147 blankloadapp.white.bmp &call insertphoto 7 35 147 blankloadapp.white.bmp
+
+
+
+call insertphoto 20 15 41 UI.buttonbrightwhite.bmp
+call insertphoto 40 15 41 UI.buttonbrightwhite.bmp
+call insertphoto 60 15 41 UI.buttonbrightwhite.bmp
+call insertphoto 80 15 41 UI.buttonbrightwhite.bmp
+call insertphoto 100 15 41 UI.buttonbrightwhite.bmp
+
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+set _ACTIVEAPPLABEL=explorer.exe
+
+call insertphoto 1450 9 110 WindowedButtons.bmp
+
+Call insertphoto 35 20 80 explorer.home.bmp
+Call insertphoto 180 26 120 UI.context.close.explorer.bmp
+CALL Text 8 1 f0 "Home" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dl /p 0 100 1490 100 /c 0
+
+rem  Command Bar
+Call insertphoto 20 67 120 explorer.top.new.bmp
+CALL Text 5 4 f0 "New" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dl /p 90 60 90 90 /c 7
+Call insertphoto 120 67 120 explorer.top.cut.bmp
+Call insertphoto 180 67 120 explorer.top.copy.bmp
+Call insertphoto 240 67 120 explorer.top.paste.bmp
+Call insertphoto 300 67 120 explorer.top.rename.bmp
+Call insertphoto 360 67 120 explorer.top.share.bmp
+Call insertphoto 420 67 120 explorer.top.trash.bmp
+
+PIXELDRAW /dl /p 480 60 480 90 /c 7
+
+CALL Text 72 4 f0 "Sort" X _Button_Boxes _Button_Hover
+
+CALL Text 82 4 f0 "View" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dl /p 630 60 630 90 /c 7
+
+Call insertphoto 640 55 100 taskbar-overflow-off-light.bmp
+
+
+
+
+
+PIXELDRAW /dl /p 0 100 1490 100 /c 7
+
+rem  Navigation Pane
+PIXELDRAW /dl /p 300 100 300 783 /c 7
+
+Call insertphoto 35 145 80 explorer.home.bmp
+CALL Text 9 10 f0 "Home" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dl /p 20 180 280 180 /c 7
+
+Call insertphoto 35 190 100 explorer.desktop.nav.bmp
+CALL Text 9 13 f0 "Desktop" X _Button_Boxes _Button_Hover
+
+Call insertphoto 35 233 100 explorer.documents.nav.bmp
+CALL Text 9 16 f0 "Documents" X _Button_Boxes _Button_Hover
+
+Call insertphoto 35 275 100 explorer.downloads.nav.bmp
+CALL Text 9 19 f0 "Downloads" X _Button_Boxes _Button_Hover
+
+Call insertphoto 35 317 100 explorer.music.nav.bmp
+CALL Text 9 22 f0 "Music" X _Button_Boxes _Button_Hover
+
+Call insertphoto 35 358 100 explorer.pictures.nav.bmp
+CALL Text 9 25 f0 "Pictures" X _Button_Boxes _Button_Hover
+
+Call insertphoto 35 400 100 explorer.videos.nav.bmp
+CALL Text 9 28 f0 "Videos" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dl /p 20 432 280 432 /c 7
+
+rem  Displayed Part
+
+CALL Text 44 10 f0 "File Explorer is not updated for winbatchOS 18. Upgrade to winbatchOS 18.1 for a updated file explorer and other released apps." X _Button_Boxes _Button_Hover
+rem CALL Text 44 10 f0 "Quick Access" X _Button_Boxes _Button_Hover
+
+ rem Call insertphoto 320 180 100 explorer.desktop.folder.bmp
+ rem CALL Text 45 16 f0 "Desktop" X _Button_Boxes _Button_Hover
+
+ rem Call insertphoto 420 180 100 explorer.documents.folder.bmp
+ rem CALL Text 59 16 f0 "Documents" X _Button_Boxes _Button_Hover
+
+ rem Call insertphoto 520 180 100 explorer.downloads.folder.bmp
+ rem CALL Text 73 16 f0 "Downloads" X _Button_Boxes _Button_Hover
+
+ rem Call insertphoto 620 180 100 explorer.music.folder.bmp
+ rem CALL Text 89 16 f0 "Music" X _Button_Boxes _Button_Hover
+
+ rem Call insertphoto 720 180 100 explorer.pictures.folder.bmp
+ rem CALL Text 102 16 f0 "Pictures" X _Button_Boxes _Button_Hover
+
+ rem Call insertphoto 820 180 100 explorer.videos.folder.bmp
+ rem CALL Text 117 16 f0 "Videos" X _Button_Boxes _Button_Hover
+
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+
+goto :KERNEL.EXE
+goto :EXPLORER.EXE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rem  Security
+
+:SECURITY.EXE
+set _APP.EXE=1
+IF %_SECURITY.EXE%==1 goto :SECURITY.LOOP
+set _ACTIVEAPPLABEL=security.exe
+set _ACTIVEAPPIMAGE=security
+SET "_ACTIVEAPPTITLE=winbatchOS Security"
+
+set _SECURITY.EXE=1
+call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blankloadapp.light.bmp &call insertphoto 7 0 147 blankloadapp.light.bmp &call insertphoto 7 35 147 blankloadapp.light.bmp
+
+PIXELDRAW /dr 0 0 /rd 1490 783 /c 0
+
+call insertphoto 730 330 40 security.light.bmp
+
+call insertphoto 1450 9 110 WindowedButtons.bmp
+
+timeout /NOBREAK /T 0 > nul
+:SECURITY.LOOP
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+set _ACTIVEAPPLABEL=security.exe
+call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blankloadapp.light.bmp &call insertphoto 7 0 147 blankloadapp.light.bmp &call insertphoto 7 35 147 blankloadapp.light.bmp
+
+call insertphoto 1450 9 110 WindowedButtons.bmp
+
+rem  call insertphoto 1452 38 115 UI.setting.bmp
+
+Call insertphoto 20 10 8 security.light.bmp
+CALL Text 6 0 f0 "winbatchOS Security" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dl /p 0 35 1490 35 /c 0
+
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+CALL Text 14 3 f3 "Scan your system to make sure your computer is up-to-date with alerts." X _Button_Boxes _Button_Hover
+CALL Text 14 4 f0 "This uses the Windows Security Command Line tool to scan winbatchOS." X _Button_Boxes _Button_Hover
+
+call insertphoto 100 100 40 UI.buttonblue.bmp
+call insertphoto 99 101 41 UI.buttonblue.bmp
+call insertphoto 101 104 40 UI.buttonblue.bmp
+
+CALL Text 14 7 3f "Scan Now" X _Button_Boxes _Button_Hover
+
+
+CALL Text 14 12 f0 "Windows will tell you if your operating system has encountered an issue." X _Button_Boxes _Button_Hover
+
+
+
+goto :KERNEL.EXE
+goto :SECURITY.LOOP
+
+
+
+
+:SECURITY.SCAN
+rem  9.1.
+set "CD_winbatchOS=%CD%"
+cd C:\Program Files\Windows Defender
+MpCmdRun -Scan -ScanType 3 -File %CD_winbatchOS% > nul
+rem  The 3rd flag tells it as a custom scan.
+rem  Change directory back to WBX-17.
+cd "%CD_winbatchOS%"
+exit /b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rem  Calculator App (Rev2)
+rem  THIS IS A GUI APP that is in development!
+
+:CALCULATOR.EXE
+
+rem App declare variables
+set _APP.EXE=1
+
+set _ACTIVEAPPLABEL=calculator.exe
+set _ACTIVEAPPIMAGE=calculator
+SET _ACTIVEAPPTITLE=Calculator
+
+call :COMPOSE.EXE
+call :GUICOMPOSE.EXE
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+
+set M=0
+set WIN2=0
+
+
+:CALCULATOR.GUI
+set M=0
+IF %I%==m IF %M% EQU 0 IF %X% GTR 0 IF %Y% GTR 0 IF %X% LSS 200 IF %Y% LSS 50 set WIN2=n
+
+rem changed it for a possible bug fix!
+call :COMPOSE.EXE
+
+rem  THIS DOES NOT REALLY WORK YET
+rem  CALL BOX %_CALCULATOR.X% %_CALCULATOR.Y% 35 66 - - f0  1
+
+CALL BOX %_CALCULATOR.X% %_CALCULATOR.Y% 15 36 - - f3  1
+
+rem Window Title
+set /A _CALCULATOR.X1="%_CALCULATOR.X%+2"
+set /A _CALCULATOR.Y1="%_CALCULATOR.Y%-1"
+
+
+
+set /A _CALCULATOR.X2="%_CALCULATOR.X%-20"
+set /A _CALCULATOR.Y2="%_CALCULATOR.Y%-5"
+
+set /A _CALCULATOR.X3="%_CALCULATOR.X%+20"
+set /A _CALCULATOR.Y3="%_CALCULATOR.Y%+5"
+
+
+
+rem ???? the end of the desk?
+set /A _CALCULATOR.X4="%_CALCULATOR.X%+35"
+set /A _CALCULATOR.Y4="%_CALCULATOR.Y%+66"
+
+
+
+
+
+
+rem Control button (Close only)
+set /A _CALCULATOR.X5="%_CALCULATOR.X%+28"
+set /A _CALCULATOR.Y5="%_CALCULATOR.Y%-1"
+
+rem for Control Input
+set /A _CALCULATOR.X5A="%_CALCULATOR.X%+24"
+set /A _CALCULATOR.Y5A="%_CALCULATOR.Y%-3"
+
+set /A _CALCULATOR.X5B="%_CALCULATOR.X%+32"
+set /A _CALCULATOR.Y5B="%_CALCULATOR.Y%+4"
+
+
+
+
+
+rem Show results on calculator
+set /A _CALCULATOR.X6="%_CALCULATOR.X%+2"
+set /A _CALCULATOR.Y6="%_CALCULATOR.Y%+1"
+
+set /A _CALCULATOR.X6A="%_CALCULATOR.X%+12"
+set /A _CALCULATOR.Y6A="%_CALCULATOR.Y%+1"
+
+
+set /A _CALCULATOR.X7="%_CALCULATOR.X%+2"
+set /A _CALCULATOR.Y7="%_CALCULATOR.Y%+2"
+
+set /A _CALCULATOR.X8="%_CALCULATOR.X%+2"
+set /A _CALCULATOR.Y8="%_CALCULATOR.Y%+3"
+
+set /A _CALCULATOR.X9="%_CALCULATOR.X%+2"
+set /A _CALCULATOR.Y9="%_CALCULATOR.Y%+4"
+
+
+
+
+
+
+rem 1 2 3 4 5 6 7 8 9 + - = buttons
+set /A _CALCULATOR.X10="%_CALCULATOR.X%+2"
+set /A _CALCULATOR.Y10="%_CALCULATOR.Y%+7"
+
+set /A _CALCULATOR.X11="%_CALCULATOR.X%+2"
+set /A _CALCULATOR.Y11="%_CALCULATOR.Y%+9"
+
+set /A _CALCULATOR.X12="%_CALCULATOR.X%+2"
+set /A _CALCULATOR.Y12="%_CALCULATOR.Y%+11"
+
+
+
+
+
+CALL Text %_CALCULATOR.X1% %_CALCULATOR.Y1% f3 " Calculator " %_CALCULATOR.X5% %_CALCULATOR.Y5% f3 " X " X _Button_Boxes _Button_Hover
+
+
+rem  SET "_CALCULATOR.DIGIT1=0"
+rem  SET "_CALCULATOR.DIGIT2=0"
+rem  SET "_CALCULATOR.OPERAT=+"
+
+
+CALL Text %_CALCULATOR.X6% %_CALCULATOR.Y6% f3 "Result:  " %_CALCULATOR.X6A% %_CALCULATOR.Y6A% f0 "%_CALCULATOR.FINAL%" X _Button_Boxes _Button_Hover
+CALL Text %_CALCULATOR.X7% %_CALCULATOR.Y7% f8 "X:  %_CALCULATOR.DIGIT1%" X _Button_Boxes _Button_Hover
+CALL Text %_CALCULATOR.X8% %_CALCULATOR.Y8% f8 "Y:  %_CALCULATOR.DIGIT2%" X _Button_Boxes _Button_Hover
+CALL Text %_CALCULATOR.X9% %_CALCULATOR.Y9% f8 "Operator:  %_CALCULATOR.OPERAT%" X _Button_Boxes _Button_Hover
+
+
+rem  CALL ButtonBorder %_CALCULATOR.X8% %_CALCULATOR.Y8% f0 " Ok " X _Button_Boxes _Button_Hover
+
+CALL ButtonBorder %_CALCULATOR.X10% %_CALCULATOR.Y10% f8 "  7 |  8 |  9 |     -" X _Button_Boxes _Button_Hover
+CALL ButtonBorder %_CALCULATOR.X11% %_CALCULATOR.Y11% f8 "  4 |  5 |  6 |     +" X _Button_Boxes _Button_Hover
+CALL ButtonBorder %_CALCULATOR.X12% %_CALCULATOR.Y12% f8 "  1 |  2 |  3 |     =" X _Button_Boxes _Button_Hover
+
+
+
+
+	rem test
+	call insertphoto 118 224 100 UI.buttongray.bmp
+	CALL Text 15 15 %THEMEcolor% "Test" X _Button_Boxes _Button_Hover
+
+	call insertphoto 328 644 100 UI.buttongray.bmp
+	CALL Text 45 45 %THEMEcolor% "Test" X _Button_Boxes _Button_Hover
+	
+	call insertphoto 72 132 100 UI.buttongray.bmp
+	CALL Text 9 9 %THEMEcolor% "Test" X _Button_Boxes _Button_Hover
+
+goto :KERNEL.EXE
+
+
+
+
+
+
+
+rem  Calendar App
+rem  (The calculating day thing is imported from 16.0)
+
+
+:CALENDAR.EXE
+set _APP.EXE=1
+IF %_CALENDAR.EXE%==1 goto :CALENDAR.LOOP
+set _ACTIVEAPPLABEL=calendar.exe
+set _ACTIVEAPPIMAGE=calendar
+SET _ACTIVEAPPTITLE=Calendar
+
+set _CALENDAR.EXE=1
+call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blankloadapp.light.bmp &call insertphoto 7 0 147 blankloadapp.light.bmp &call insertphoto 7 35 147 blankloadapp.light.bmp
+
+PIXELDRAW /dr 0 0 /rd 1490 783 /c 0
+
+call insertphoto 730 330 40 calendar.light.bmp
+
+call insertphoto 1450 9 110 WindowedButtons.bmp
+
+timeout /NOBREAK /T 0 > nul
+:CALENDAR.LOOP
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+set _ACTIVEAPPLABEL=calendar.exe
+call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blankloadapp.light.bmp &call insertphoto 7 0 147 blankloadapp.light.bmp &call insertphoto 7 35 147 blankloadapp.light.bmp
+
+call insertphoto 1450 9 110 WindowedButtons.bmp
+
+rem  call insertphoto 1452 38 115 UI.setting.bmp
+
+Call insertphoto 20 10 8 calendar.light.bmp
+CALL Text 6 0 f0 "Calendar - %year%" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dl /p 0 35 1490 35 /c 0
+
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+
+rem  This is the orginial CALENDAR.EXE, in a graphical interface.
+rem  With premission of the open-source license, we are allowed to use other pieces of code.
+rem  This stil works in Windows 10/11!
+rem  Most Author's comments are untouched.
+rem  ========================================================================================
+
+
+rem  Xp batch for generating calendars
+rem  Chances look good for win 2000 and above(untested)
+rem  By Judago, August 2009
+
+
+
+rem  The current codepage is stored in variable %CodePage%,
+rem  then changed to 850 to facilitate box drawing characters.....
+
+SETLOCAL ENABLEDELAYEDEXPANSION
+
+rem  The results are displayed below using substrings of each month's 
+rem  variable.
+
+
+rem  Edited portion of calendar
+
+
+
+
+Call Text 12 10 f0 "January" X _Button_Boxes _Button_Hover
+Call Text 8 12 f0 "%JAN:~0,20%" X _Button_Boxes _Button_Hover
+Call Text 8 14 f0 "%JAN:~21,20%" X _Button_Boxes _Button_Hover
+Call Text 8 16 f0 "%JAN:~42,20%" X _Button_Boxes _Button_Hover
+Call Text 8 18 f0 "%JAN:~63,20%" X _Button_Boxes _Button_Hover
+Call Text 8 20 f0 "%JAN:~84,20%" X _Button_Boxes _Button_Hover
+Call Text 8 22 f0 "%JAN:~105%" X _Button_Boxes _Button_Hover
+
+Call Text 42 10 f0 "February" X _Button_Boxes _Button_Hover
+Call Text 38 12 f0 "%FEB:~0,20%" X _Button_Boxes _Button_Hover
+Call Text 38 14 f0 "%FEB:~21,20%" X _Button_Boxes _Button_Hover
+Call Text 38 16 f0 "%FEB:~42,20%" X _Button_Boxes _Button_Hover
+Call Text 38 18 f0 "%FEB:~63,20%" X _Button_Boxes _Button_Hover
+Call Text 38 20 f0 "%FEB:~84,20%" X _Button_Boxes _Button_Hover
+Call Text 38 22 f0 "%FEB:~105%" X _Button_Boxes _Button_Hover
+
+Call Text 72 10 f0 "March" X _Button_Boxes _Button_Hover
+Call Text 68 12 f0 "%MAR:~0,20%" X _Button_Boxes _Button_Hover
+Call Text 68 14 f0 "%MAR:~21,20%" X _Button_Boxes _Button_Hover
+Call Text 68 16 f0 "%MAR:~42,20%" X _Button_Boxes _Button_Hover
+Call Text 68 18 f0 "%MAR:~63,20%" X _Button_Boxes _Button_Hover
+Call Text 68 20 f0 "%MAR:~84,20%" X _Button_Boxes _Button_Hover
+Call Text 68 22 f0 "%MAR:~105%" X _Button_Boxes _Button_Hover
+
+Call Text 102 10 f0 "April" X _Button_Boxes _Button_Hover
+Call Text 98 12 f0 "%APR:~0,20%" X _Button_Boxes _Button_Hover
+Call Text 98 14 f0 "%APR:~21,20%" X _Button_Boxes _Button_Hover
+Call Text 98 16 f0 "%APR:~42,20%" X _Button_Boxes _Button_Hover
+Call Text 98 18 f0 "%APR:~63,20%" X _Button_Boxes _Button_Hover
+Call Text 98 20 f0 "%APR:~84,20%" X _Button_Boxes _Button_Hover
+Call Text 98 22 f0 "%APR:~105%" X _Button_Boxes _Button_Hover
+
+Call Text 132 10 f0 "May" X _Button_Boxes _Button_Hover
+Call Text 128 12 f0 "%MAY:~0,20%" X _Button_Boxes _Button_Hover
+Call Text 128 14 f0 "%MAY:~21,20%" X _Button_Boxes _Button_Hover
+Call Text 128 16 f0 "%MAY:~42,20%" X _Button_Boxes _Button_Hover
+Call Text 128 18 f0 "%MAY:~63,20%" X _Button_Boxes _Button_Hover
+Call Text 128 20 f0 "%MAY:~84,20%" X _Button_Boxes _Button_Hover
+Call Text 128 22 f0 "%MAY:~105%" X _Button_Boxes _Button_Hover
+
+Call Text 162 10 f0 "June" X _Button_Boxes _Button_Hover
+Call Text 158 12 f0 "%JUN:~0,20%" X _Button_Boxes _Button_Hover
+Call Text 158 14 f0 "%JUN:~21,20%" X _Button_Boxes _Button_Hover
+Call Text 158 16 f0 "%JUN:~42,20%" X _Button_Boxes _Button_Hover
+Call Text 158 18 f0 "%JUN:~63,20%" X _Button_Boxes _Button_Hover
+Call Text 158 20 f0 "%JUN:~84,20%" X _Button_Boxes _Button_Hover
+Call Text 158 22 f0 "%JUN:~105%" X _Button_Boxes _Button_Hover
+
+Call Text 12 30 f0 "July" X _Button_Boxes _Button_Hover
+Call Text 8 32 f0 "%JUL:~0,20%" X _Button_Boxes _Button_Hover
+Call Text 8 34 f0 "%JUL:~21,20%" X _Button_Boxes _Button_Hover
+Call Text 8 36 f0 "%JUL:~42,20%" X _Button_Boxes _Button_Hover
+Call Text 8 38 f0 "%JUL:~63,20%" X _Button_Boxes _Button_Hover
+Call Text 8 40 f0 "%JUL:~84,20%" X _Button_Boxes _Button_Hover
+Call Text 8 42 f0 "%JUL:~105%" X _Button_Boxes _Button_Hover
+
+Call Text 42 30 f0 "August" X _Button_Boxes _Button_Hover
+Call Text 38 32 f0 "%AUG:~0,20%" X _Button_Boxes _Button_Hover
+Call Text 38 34 f0 "%AUG:~21,20%" X _Button_Boxes _Button_Hover
+Call Text 38 36 f0 "%AUG:~42,20%" X _Button_Boxes _Button_Hover
+Call Text 38 38 f0 "%AUG:~63,20%" X _Button_Boxes _Button_Hover
+Call Text 38 40 f0 "%AUG:~84,20%" X _Button_Boxes _Button_Hover
+Call Text 38 42 f0 "%AUG:~105%" X _Button_Boxes _Button_Hover
+
+Call Text 72 30 f0 "September" X _Button_Boxes _Button_Hover
+Call Text 68 32 f0 "%SEP:~0,20%" X _Button_Boxes _Button_Hover
+Call Text 68 34 f0 "%SEP:~21,20%" X _Button_Boxes _Button_Hover
+Call Text 68 36 f0 "%SEP:~42,20%" X _Button_Boxes _Button_Hover
+Call Text 68 38 f0 "%SEP:~63,20%" X _Button_Boxes _Button_Hover
+Call Text 68 40 f0 "%SEP:~84,20%" X _Button_Boxes _Button_Hover
+Call Text 68 42 f0 "%SEP:~105%" X _Button_Boxes _Button_Hover
+
+Call Text 102 30 f0 "October" X _Button_Boxes _Button_Hover
+Call Text 98 32 f0 "%OCT:~0,20%" X _Button_Boxes _Button_Hover
+Call Text 98 34 f0 "%OCT:~21,20%" X _Button_Boxes _Button_Hover
+Call Text 98 36 f0 "%OCT:~42,20%" X _Button_Boxes _Button_Hover
+Call Text 98 38 f0 "%OCT:~63,20%" X _Button_Boxes _Button_Hover
+Call Text 98 40 f0 "%OCT:~84,20%" X _Button_Boxes _Button_Hover
+Call Text 98 42 f0 "%OCT:~105%" X _Button_Boxes _Button_Hover
+
+Call Text 132 30 f0 "November" X _Button_Boxes _Button_Hover
+Call Text 128 32 f0 "%NOV:~0,20%" X _Button_Boxes _Button_Hover
+Call Text 128 34 f0 "%NOV:~21,20%" X _Button_Boxes _Button_Hover
+Call Text 128 36 f0 "%NOV:~42,20%" X _Button_Boxes _Button_Hover
+Call Text 128 38 f0 "%NOV:~63,20%" X _Button_Boxes _Button_Hover
+Call Text 128 40 f0 "%NOV:~84,20%" X _Button_Boxes _Button_Hover
+Call Text 128 42 f0 "%NOV:~105%" X _Button_Boxes _Button_Hover
+
+Call Text 162 30 f0 "December" X _Button_Boxes _Button_Hover
+Call Text 158 32 f0 "%DEC:~0,20%" X _Button_Boxes _Button_Hover
+Call Text 158 34 f0 "%DEC:~21,20%" X _Button_Boxes _Button_Hover
+Call Text 158 36 f0 "%DEC:~42,20%" X _Button_Boxes _Button_Hover
+Call Text 158 38 f0 "%DEC:~63,20%" X _Button_Boxes _Button_Hover
+Call Text 158 40 f0 "%DEC:~84,20%" X _Button_Boxes _Button_Hover
+Call Text 158 42 f0 "%DEC:~105%" X _Button_Boxes _Button_Hover
+
+
+goto :KERNEL.EXE
+goto :CALENDAR.LOOP
+
+
+
+
+
+
+
+
+
+
+
+
+:CLOCK.EXE
+goto :DESKTOP.EXE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rem  Task Manager App
+:TASKMGR.EXE
+set _APP.EXE=1
+set _ACTIVEAPPLABEL=taskmgr.exe
+set _ACTIVEAPPIMAGE=taskmgr
+SET _ACTIVEAPPTITLE=Task Manager
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+
+IF %_TASKMGR.EXE%==1 goto :TASKMGR.LOOP
+set _ACTIVEAPPLABEL=taskmgr.exe
+set _ACTIVEAPPIMAGE=taskmgr
+SET _ACTIVEAPPTITLE=Task Manager
+
+set _TASKMGR.EXE=1
+call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blankloadapp.light.bmp &call insertphoto 7 0 147 blankloadapp.light.bmp &call insertphoto 7 35 147 blankloadapp.light.bmp
+
+PIXELDRAW /dr 0 0 /rd 1490 783 /c 0
+
+call insertphoto 730 330 40 taskmgr.light.bmp
+
+call insertphoto 1450 9 110 WindowedButtons.bmp
+
+timeout /NOBREAK /T 0 > nul
+:TASKMGR.LOOP
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+set _ACTIVEAPPLABEL=taskmgr.exe
+call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blankloadapp.light.bmp &call insertphoto 7 0 147 blankloadapp.light.bmp &call insertphoto 7 35 147 blankloadapp.light.bmp
+
+call insertphoto 1450 9 110 WindowedButtons.bmp
+
+rem  call insertphoto 1452 38 115 UI.setting.bmp
+
+
+Call insertphoto 60 10 8 taskmgr.light.bmp
+CALL Text 12 0 f0 "Task Manager" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dl /p 57 35 1490 35 /c 7
+
+
+rem  Navigation Pane
+PIXELDRAW /dl /p 55 37 55 783 /c 7
+Call insertphoto 20 15 100 UI.lines.bmp
+Call insertphoto 20 45 100 ui.appbox.bmp
+Call insertphoto 19 75 100 ui.performance.bmp
+Call insertphoto 20 755 100 ui.setting.bmp
+
+
+
+rem Search on top:
+call insertphoto 487 10 100 taskbar-searchbar-top.bmp
+CALL Text 72 0 f8 "Search" X _Button_Boxes _Button_Hover
+
+rem  Outline for Search Bar:
+
+rem  Top
+PIXELDRAW /dl /p 482 5 1012 5 /c 7
+
+rem  Left
+PIXELDRAW /dl /p 478 7 478 30 /c 7
+
+rem  Right
+PIXELDRAW /dl /p 1014 7 1014 30 /c 7
+
+rem  Bottom
+PIXELDRAW /dl /p 482 31 1012 31 /c 7
+
+
+rem  Main Window
+CALL Text 10 3 f0 "Processes (7)" X _Button_Boxes _Button_Hover
+CALL Text 90 3 f0 "Executables listed below are not in order." X _Button_Boxes _Button_Hover
+
+CALL Text 193 3 f0 "+ Start New Task" X _Button_Boxes _Button_Hover
+PIXELDRAW /dl /p 55 85 1491 85 /c 7
+
+CALL Text 10 7 f0 " Name                                          Status             Size" X _Button_Boxes _Button_Hover
+PIXELDRAW /dl /p 60 125 1485 125 /c 7
+CALL Text 10 9 f0 "Apps (1)" X _Button_Boxes _Button_Hover
+
+
+rem Task Manager - running! :D
+CALL insertphoto 95 165 8 %_ACTIVEAPPIMAGE%.light.bmp
+rem Current running app (use the 'api' rather than saying task manager)
+CALL Text 16 11 f0 "%_ACTIVEAPPTITLE%" X _Button_Boxes _Button_Hover
+rem say the app is currently running, 'active' being shown on the screen
+CALL Text 57 11 f0 "Active" X _Button_Boxes _Button_Hover
+rem now variables
+CALL Text 77 11 f0 "2G" X _Button_Boxes _Button_Hover
+
+
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+
+goto :KERNEL.EXE
+
+
+
+
+
+
+
+rem  Photos App
+:PHOTOS.EXE
+set _APP.EXE=1
+set _ACTIVEAPPLABEL=photos.exe
+set _ACTIVEAPPIMAGE=photos
+SET _ACTIVEAPPTITLE=Photos
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+
+IF %_PHOTOS.EXE%==1 goto :PHOTOS.LOOP
+set _ACTIVEAPPLABEL=photos.exe
+set _ACTIVEAPPIMAGE=photos
+SET _ACTIVEAPPTITLE=Photos
+
+set _PHOTOS.EXE=1
+call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blankloadapp.light.bmp &call insertphoto 7 0 147 blankloadapp.light.bmp &call insertphoto 7 35 147 blankloadapp.light.bmp
+
+PIXELDRAW /dr 0 0 /rd 1490 783 /c 0
+
+call insertphoto 730 330 40 photos.light.bmp
+
+call insertphoto 1450 9 110 WindowedButtons.bmp
+
+timeout /NOBREAK /T 0 > nul
+:PHOTOS.LOOP
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+set _ACTIVEAPPLABEL=photos.exe
+call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blankloadapp.light.bmp &call insertphoto 7 0 147 blankloadapp.light.bmp &call insertphoto 7 35 147 blankloadapp.light.bmp
+
+call insertphoto 1450 9 110 WindowedButtons.bmp
+
+
+
+Call insertphoto 20 10 8 photos.light.bmp
+CALL Text 6 0 f0 "Photos" X _Button_Boxes _Button_Hover
+
+
+
+
+call insertphoto 445 10 100 taskbar-searchbar-top.bmp
+CALL Text 66 0 f8 "Search" X _Button_Boxes _Button_Hover
+
+rem  Outline for Search Bar:
+
+rem  Top
+PIXELDRAW /dl /p 440 5 1050 5 /c 8
+
+rem  Left
+PIXELDRAW /dl /p 438 7 438 30 /c 8
+
+rem  Right
+PIXELDRAW /dl /p 1052 7 1052 30 /c 8
+
+rem  Bottom
+PIXELDRAW /dl /p 441 31 1052 31 /c 8
+
+
+
+Call insertphoto 1210 8 100 ui.photos.import.bmp
+CALL Text 175 0 f8 "Import" X _Button_Boxes _Button_Hover
+
+
+call insertphoto 1330 10 115 UI.setting.bmp
+
+
+
+
+PIXELDRAW /dl /p 0 35 1490 35 /c 0
+
+
+rem  Navigation Pane
+PIXELDRAW /dl /p 55 35 55 783 /c 0
+Call insertphoto 20 45 100 UI.lines.bmp
+Call insertphoto 18 75 100 ui.photos.all.bmp
+
+rem  Main Window
+Call insertphoto 80 50 130 ui.photos.all.bmp
+CALL Text 15 3 f0 "All Photos" X _Button_Boxes _Button_Hover
+
+CALL Text 15 7 f0 "To show a photo, click on the top-right button named 'Import'. " X _Button_Boxes _Button_Hover
+
+CALL Text 15 9 f0 "%_PHOTOS.SOURCE%" X _Button_Boxes _Button_Hover
+
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+
+goto :KERNEL.EXE
+
+
+
+
+:PHOTOS.SAVEFILEDIALOG
+Set _PHOTOS.SOURCE=0
+For /f "Tokens=1,2,3,4* delims=:" %%A in ('savefiledialog "winbatchOS Photos: Find image.." "" "Images (*.*)"') Do (
+	Set _PHOTOS.SOURCE=%%A
+	title winbatchOS 18 [Source: %%A ]
+)
+exit /b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rem Terminal App
+:TERMINAL.EXE
+set _APP.EXE=1
+set _ACTIVEAPPLABEL=terminal.exe
+set _ACTIVEAPPIMAGE=terminal
+SET _ACTIVEAPPTITLE=Terminal
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+
+IF %_TERMINAL.EXE%==1 goto :TERMINAL.LOOP
+set _ACTIVEAPPLABEL=terminal.exe
+set _ACTIVEAPPIMAGE=terminal
+SET _ACTIVEAPPTITLE=Terminal
+
+set _TERMINAL.EXE=1
+call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blankloadapp.light.bmp &call insertphoto 7 0 147 blankloadapp.light.bmp &call insertphoto 7 35 147 blankloadapp.light.bmp
+
+PIXELDRAW /dr 0 0 /rd 1490 783 /c 0
+
+call insertphoto 730 330 40 terminal.light.bmp
+
+call insertphoto 1450 9 110 WindowedButtons.bmp
+
+timeout /NOBREAK /T 0 > nul
+:TERMINAL.LOOP
+cls
+rem for command line to focus back into the desktop
+CALL Text 8 -1 0f "Terminal" 17 -1 03 "BETA" X _Button_Boxes _Button_Hover
+
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+set _ACTIVEAPPLABEL=terminal.exe
+call insertphoto 0 0 147 blankloadapp.dark.bmp &call insertphoto 0 35 147 blankloadapp.dark.bmp &call insertphoto 7 0 147 blankloadapp.dark.bmp &call insertphoto 7 35 147 blankloadapp.dark.bmp
+
+call insertphoto 1450 9 110 WindowedButtons.bmp
+
+PIXELDRAW /dr 0 0 /rd 1490 783 /c f
+
+call insertphoto 25 12 8 Terminal.dark.bmp
+
+call insertphoto 1450 9 110 WindowedButtons.bmp
+
+
+
+CALL Text 8 0 0f "Terminal" 17 0 03 "BETA" X _Button_Boxes _Button_Hover
+
+PIXELDRAW /dl /p 0 35 1490 35 /c f
+
+call :DESKTOP.TASKBAR
+call :DESKTOP.ICON
+
+CALL ButtonBorder 90 30 0f "Open Terminal" X _Button_Boxes _Button_Hover
+
+
+CALL Text 60 25 0f "You will not be able to use any of the GUI features while opening Terminal." X _Button_Boxes _Button_Hover
+CALL Text 60 26 0f "To exit, type 'exit' during the login process, OR type exit on the prompt." X _Button_Boxes _Button_Hover
+
+goto :KERNEL.EXE
+
+
+
+
+
+
+
+
+
+
+
+:TERMINAL.START
+CALL Text 0 2 0f "Opening winbatchOS Terminal" X _Button_Boxes _Button_Hover
+echo.
+echo winbatchOS %_version%, Build %_build%
+echo Kernel Version %_quantum-ver%
+echo.
+
+:TERMINAL.LOGIN
+echo User premission required.
+echo If you want to exit, type 'exit' now.
+echo User: %_WBX_USERNAME%
+echo.
+SET _PASS=0
+SET /p _PASS=Password:
+IF %_WBX_PASSWORD%==%_PASS% goto :TERMINAL.SYSTEMLOOP
+IF %_PASS%==exit GOTO :TERMINAL.LOOP
+IF %_PASS%==0 GOTO :TERMINAL.LOGIN
+goto :TERMINAL.LOGIN
+
+:TERMINAL.SYSTEMLOOP
+set WBXprompt=0
+set /p WBXprompt=%_WBX_USERNAME%@%_HOSTNAME-winbatchOS%: 
+IF %WBXprompt%==0 goto :TERMINAL.SYSTEMLOOP
+IF %WBXprompt%==cls goto :TERMINAL.CLS
+IF %WBXprompt%==help goto :TERMINAL.HELP
+IF %WBXprompt%==exit goto :TERMINAL.EXIT
+IF %WBXprompt%==ver goto :TERMINAL.VER
+IF %WBXprompt%==wbxinstall goto :TERMINAL.WBXINSTALL
+
+echo.
+echo The command '%WBXprompt%' does not exist.
+echo.
+goto :TERMINAL.SYSTEMLOOP
+
+
+rem list of commands here
+	:TERMINAL.CLS
+	cls
+	goto :TERMINAL.SYSTEMLOOP
+	
+	:TERMINAL.EXIT
+	echo.
+	echo.
+	echo The terminal app is finished. winbatchOS will try to start the desktop again.
+	pause
+	goto :TERMINAL.LOOP
+
+
+	:TERMINAL.HELP 
+	echo.
+	echo Help commands-
+	echo Please note the capilization of the commands.
+	echo.
+	echo cls
+	echo exit
+	echo help
+	echo ver
+	echo wbxinstall
+	echo.
+	goto :TERMINAL.SYSTEMLOOP
+
+
+	:TERMINAL.VER 
+	echo.
+	echo winbatchOS %_version%, Build %_build%
+	echo Kernel Version %_quantum-ver%
+	echo.
+	goto :TERMINAL.SYSTEMLOOP
+
+	:TERMINAL.WBXINSTALL 
+	echo.
+	echo This feature is not enabled or is imcomplete.
+	echo.
+	goto :TERMINAL.SYSTEMLOOP
+
+
+
+
+
+
+
+:ERROR.EXE
+cls
+:ERROR.LOOP
+rem Set a clock up to 10
+IF %_ERROR.EXE%==100 set _ERROR.EXE=1 &goto :SYSTEM.EXE
+
+color 3f
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo    ==[WBXERROR]==================================================================[-  []  X]=
+echo    =                                                                                       =
+echo    =  winbatchOS ran into a problem and needs to restart. We're going to try to recover     =
+echo    =  the state it is in right now as much as possible, then we'll restart for you.        =
+echo    =                                                                                       =
+echo    =  [Restarting in a few moments]                                                        =
+echo    =  [Error Code: Unknown]                                                                =
+echo    =  [winbatchOS SDK 16 Window]                                                            =
+echo    =                                                                                       =
+echo    =========================================================================================
+set /A _ERROR.EXE=%_ERROR.EXE%+1
+goto :ERROR.LOOP
+
+
+
+
+
+rem END OF winbatchOS CODE
+rem winbatchOS.
