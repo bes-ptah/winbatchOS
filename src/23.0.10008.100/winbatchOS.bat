@@ -1,6 +1,6 @@
 rem ==================================================================================
 rem WinBatchOS 23 Beta 2 (Rev1)
-rem Flag: Released-QRev2
+rem Flag: Not-Final-Release-QRev2
 rem Channel: Alpha
 rem Quantum Kernel 1.0RCT - 23.0.10008.100
 rem ==================================================================================
