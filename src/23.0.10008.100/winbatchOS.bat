@@ -100,12 +100,12 @@ rem 1
 rem Set General Variables
 SET "_WbOS=WinBatchOS"
 SET "_quantum-ver=1.0rc2"
-SET "_version=23 Beta 1"
+SET "_version=12 Beta 1"
 
 rem - Build 10006.100 REMINDER: _build variable is now deprecated
 
 rem Includes all techinal build info
-SET "_sysbuild=23.0.10006.100"
+SET "_sysbuild=12.0.10006.100"
 
 
 rem 2

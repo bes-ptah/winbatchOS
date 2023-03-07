@@ -13,6 +13,9 @@ SET _ACTIVEAPPTITLE=Edge
 call :KERNEL.API.APPSTART
 
 set _EDGE.EXE=1
+set _EDGE.VERSION=13
+set _EDGE.OS=WbOS
+
 call insertphoto 0 0 147 blankloadapp.%THEME%.bmp &call insertphoto 0 35 147 blankloadapp.%THEME%.bmp &call insertphoto 7 0 147 blankloadapp.%THEME%.bmp &call insertphoto 7 35 147 blankloadapp.%THEME%.bmp
 
 PIXELDRAW /dr 0 0 /rd 1490 783 /c 0
@@ -53,6 +56,7 @@ CALL Text 10 1 %THEMEcolor% "New Tab" X _Button_Boxes _Button_Hover
 
 PIXELDRAW /dl /p 0 100 1490 100 /c 0
 
+CALL Text 10 1 %THEMEcolor% "Edge Version 1.5" X _Button_Boxes _Button_Hover
 
 
 
