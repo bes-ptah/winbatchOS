@@ -2,7 +2,7 @@ rem ============================================================================
 rem WinBatchOS 11 Beta 1 (Rev1)
 rem Flag: Not-Final-Release-QRev2
 rem Channel: Alpha
-rem Quantum Kernel 1.0RCT - 12.0.10008.100
+rem Quantum Kernel 1.0RCT - 12.1.10008.100
 rem ==================================================================================
 rem The Microsoft Public License goes into effect as of March 1st, 2023.
 rem If you do not accept the license, do not use the software(WinBatchOS).
@@ -100,7 +100,7 @@ rem 1
 rem Set General Variables
 SET "_WbOS=WinBatchOS"
 SET "_quantum-ver=1.0rc2"
-SET "_version=11 Canary 1"
+SET "_version=11 "
 
 rem - Build 10006.100 REMINDER: _build variable is now deprecated
 
