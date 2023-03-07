@@ -7,7 +7,7 @@ rem  Respectivly is 'outbranched' from Microsoft Edge.
 :EDGE.EXE
 set _APP.EXE=1
 IF %_EDGE.EXE%==1 goto :EDGE.LOOP
-set _ACTIVEAPPLABEL=edge
+set _ACTIVEAPPLABEL=edge.exe
 set _ACTIVEAPPIMAGE=edge
 SET _ACTIVEAPPTITLE=Edge
 call :KERNEL.API.APPSTART
