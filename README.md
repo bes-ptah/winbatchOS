@@ -1,4 +1,6 @@
-> WinBatchX 19 and WinBatchX 23 Build 10000, was released on Febuary 20, 2023. The data below is outdated, and winbatchOS 23 is a developers build.
+> WinBatchX 19, Version 2202, was released on Febuary 20, 2023.
+
+> Recent changes happened to winbatchOS's builds for this year.
 
 # winbatchOS
 
