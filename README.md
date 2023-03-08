@@ -7,13 +7,8 @@ WinBatchX was our predecessor to WinBatchOS, and laid down many of the rules, po
 
 ---
 
-Alpha | winbatchOS 22.0 Preview | 22.0.10000 (This build will never be released.)
+Canary | winbatchOS 11.0 Preview | 23.0.10000 (This build will never be released.)
 -|-|-
-Alpha | winbatchOS 23.0 (Undeveloped) | 23.0.10000
-
-Beta | WinBatchX 18.1 Preview | Builds 1802,1804,1808,1810,1812
--|-|-
-Beta | WinBatchX 18.0 Beta/Preview | Builds 1660,1661,1662,1663,1664,1665,1770,1772,1774,1776,1778,1780
 
 General Releases | WinBatchX 18.0, WinBatchX 17.1, WinBatchX 18.1, WinBatchX 19 Version 2302 | Builds 1800(18.0), 1814 (17.1), 1820 (18.2), 1900.151 (19 Version 2302)
 -|-|-
