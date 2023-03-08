@@ -16,18 +16,12 @@ General Releases | WinBatchX 18.0, WinBatchX 17.1, WinBatchX 18.1, WinBatchX 19 
 -|-|-
 
 [winbatchOS's website](bes-ptah.github.io/winbatchOS/)
-
-
-#### ( ! ) We don't support 32-bit operating systems because some of our GUI programs are 64-bit only. They may still work on these platforms.
-
 ***
 
 
 ***
 
-[The alpha branch link](https://github.com/bes-ptah/winbatchOS/tree/alpha)
-
-[The beta branch link](https://github.com/bes-ptah/winbatchOS/tree/beta)
+[The canary branch link](https://github.com/bes-ptah/winbatchOS/tree/canary)
 
 [The retired WinBatchX link](https://github.com/bes-ptah/winbatchx/)
 
