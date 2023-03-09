@@ -57,6 +57,46 @@ rem      license cannot change. To the extent permitted under your local laws, t
 rem      contributors exclude the implied warranties of merchantability, fitness
 rem      for a particular purpose and non-infringement.
 rem ==================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @Echo off
 IF "%~1" == "" start WinBatchOS start &&endlocal &&exit /b
 IF "%~1" == "start" goto :boot.exe
@@ -128,6 +168,284 @@ FOR %%A In (CoreData\hibernationfile.bat) DO call CoreData\hibernationfile.bat &
 
 
 call insertphoto 0 0 85 blankSystemImage.bmp
+
+goto :LOGIN.EXE
+
+
+rem Built-In File System for Disking
+rem WinbatchOS File System v1
+
+:WbOS/SERVICES/WBXUPDATE.BAT
+rem WBXUPDATE
+
+rem  Wget - Retrieves data ONLY for WinBatchX Update.
+rem  Call the 'WGET' service instad of the 'WBXUPDATE' service.
+rem  (Also a copy of the WBXUPDATE service inside this WinBatchX build)
+
+rem  Download it quietly with -q.
+wget -q "https://github.com/bes-ptah/WinBatchOS/archive/refs/heads/main.zip" > nul
+
+rem  Unpack it using tar.
+tar -xf main.zip
+
+rem  Enter the directory (always this name)
+cd winbatchos-main
+
+rem  Enter the update directory.
+cd update
+
+rem  Call the program!
+call update.bat
+
+rem  Then remove the old files without a request from user.
+del update.bat > nul
+cd ..
+rmdir update > nul
+del LICENSE
+del README.md
+del _config.yml
+
+rem  Go back to the previous directory.
+cd ..
+
+rem  Remove the update folder
+rmdir winbatchos-main > nul
+
+rem  Also delete the downloaded compressed update file so the command line does not crash on the next update.
+del main.zip
+goto :OS_FILESYSTEM_ENDOFFILE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 :LOGIN.EXE
