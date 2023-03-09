@@ -1,6 +1,6 @@
 rem ==================================================================================
 rem WinBatchOS 11 Beta 2 (Rev1)
-rem Flag: Final_Release_NI_11
+rem Flag: Final_Release_NI_11 (not actually final)
 rem Channel: Alpha
 rem Quantum Kernel 1.0RCT - 23.0.10008.100
 rem ==================================================================================
