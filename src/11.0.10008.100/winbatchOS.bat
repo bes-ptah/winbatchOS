@@ -1,14 +1,8 @@
 rem ==================================================================================
 rem WinBatchOS 11 Beta 2 (Rev1)
 rem Flag: Final_Release_NI_11 (not actually final)
-rem Channel: Alpha
-rem Quantum Kernel 1.0RCT - 23.0.10008.100
-rem ==================================================================================
-rem The Microsoft Public License goes into effect as of March 1st, 2023.
-rem If you do not accept the license, do not use the software(WinBatchOS).
-rem ==================================================================================
-
-
+rem Channel: Canary
+rem Quantum Kernel 1.0RC1 - 11.0.10008.100
 rem ==================================================================================
 rem Microsoft Public License (Ms-PL)
 rem.
@@ -99,7 +93,7 @@ call insertphoto 0 0 77 bootimage.bmp
 rem 1
 rem Set General Variables
 SET "_WbOS=WinBatchOS"
-SET "_version=23 Beta 1"
+SET "_version=11 Beta 1"
 SET "_build=11.0.10008.100"
 SET "_quantum-ver=1.0rc2"
 SET "_ni-ver=11.0"
@@ -140,12 +134,6 @@ call insertphoto 0 0 85 blankSystemImage.bmp
 cls
 PIXELDRAW /refresh 3f
 call insertphoto 0 0 85 blankSystemImage.bmp
-call insertphoto 0 0 %BACKGROUND.DESKTOP.SIZE% %BACKGROUND.DESKTOP.IMAGE%.%THEME%.bmp
-call insertphoto 0 25 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
-call insertphoto 0 20 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
-call insertphoto 0 15 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
-call insertphoto 0 10 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
-call insertphoto 0 5 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
 call insertphoto 0 0 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
 
 Call Typo - 95 3 ff "%Time:~0,-6%"
