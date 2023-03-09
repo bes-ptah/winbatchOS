@@ -149,7 +149,7 @@ rem 2
 rem Start up 'OS Critical' Services
 
 call Text 83 38 0f "Please Wait for the Time & Date Service                 " X _Button_Boxes _Button_Hover
-CALL Services\TIMEDATE.bat
+CALL :WbOS/SERVICES/TIMEDATE.BAT
 
 call Text 83 38 0f "Please Wait for the User Profile Service                " X _Button_Boxes _Button_Hover
 CALL Services\PERSONALIZATION.bat
@@ -158,7 +158,7 @@ call Text 83 38 0f "Please Wait for the WinBatchOS Security Service         " X 
 CALL Services\SECURITY.bat
 
 call Text 83 38 0f "Please Wait for the WinBatchOS Update Service           " X _Button_Boxes _Button_Hover
-CALL Services\WBXUPDATE.bat
+CALL :WbOS/SERVICES/WBXUPDATE.BAT
 
 call Text 83 38 0f "Please Wait for the Desktop Text Maginification Service " X _Button_Boxes _Button_Hover
 Call Load "Pixcel.fo" "ASCII.DB"
