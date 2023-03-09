@@ -376,7 +376,7 @@ rem.
 
 
 
-SET _ACTIVEAPP
+SET _ACTIVEAPP=
 rem Default Variables for windowed mode
 set _WBX-DESKTOP-1=0
 
