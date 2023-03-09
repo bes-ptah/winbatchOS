@@ -206,6 +206,33 @@ goto :LOGIN.EXE
 rem Built-In File System for Disking
 rem WinbatchOS File System v1
 
+
+rem WinBatchOS File System (WbFS)
+rem Directory Tree
+
+rem diskC-
+rem WbOS/
+rem | SERVICES/ 
+rem    | - WBXUPDATE.BAT
+rem    | - TIMEDATE.BAT
+rem | NIKERNEL/
+rem    | - (old NI kernel dev)
+
+rem | NIGUI/
+rem    | - (old NI kernel dev)
+rem | NI/
+rem    | - (old NI kernel dev)
+
+
+
+
+
+
+
+
+
+
+
 :WbOS/SERVICES/WBXUPDATE.BAT
 rem WBXUPDATE
 
