@@ -6,7 +6,7 @@ rem _WBXCore-updatemessage = (message for the latest release, or build)
 rem _WBXCore-updatealert = (message for anything - major bug problems etc)
 
 
-IF %_build%==11.0.10008.100 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=OS BUILD 11.0.10008.100." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
+IF %_build%==11.0.10008.100 set "_WBXCore-update=0" &set "_WBXCore-updatemessage=You're up to date" &set "_WBXCore-updatealert=You're on the latest build for winbatchOS Canary." &call news.bat &del news.bat &del readme.md &del upgrade.bat &exit /b
 
 
 
