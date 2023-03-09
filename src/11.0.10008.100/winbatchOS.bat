@@ -177,6 +177,32 @@ call insertphoto 0 0 85 blankSystemImage.bmp
 goto :LOGIN.EXE
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 rem Built-In File System for Disking
 rem WinbatchOS File System v1
 
