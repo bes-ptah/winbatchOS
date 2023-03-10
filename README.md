@@ -1,29 +1,34 @@
 #### WinBatchX Beta branch
-###### WinBatchX is a batch script operating system with over 80 working builds. These builds come through this branch first for early developers and testers.
+###### WinBatchX is a batch script operating system with over 120 working builds. These builds come through this branch first for early developers and testers.
 
-##### The next release planned is WinBatchX 18.1. It's currently in preview!
+##### The next release planned is WinBatchOS 11. It's currently in the canary channel.
 
 ###### (!) Important: To understand a release number-
 
 ###### (build)-(version release)-(beta, dev)(release beta/dev number version)
 ###### 1772
 
+
+
 ### WinBatchX 18.1 Builds leading up to it's release
+
+WinBatchX released 7 builds in the canary channel for WinBatchX Beta 18 and/or WinBatchX Preview 18.
 
 ***
 Build | Branch | Tied release | Status | Download Link |
 ------|--------|--------------|--------|---------------|
-1810 | Beta | 18_1Prev0 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1810/18.1810.zip) |
+1816 | General | 18_1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1810/18.1816.zip) |
+1814 | Beta | 18_1Prev3 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1810/18.1814.zip) |
+1812 | Beta | 18_1Prev2 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1810/18.1812.zip) |
+1810 | Beta | 18_1Prev1 | 0x00 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1810/18.1810.zip) |
 1808 | Beta | 18_1Prev0 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1808/18.1808.zip) |
 1804 | Beta | 18Rev3 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1804/18.1804.zip) |
 1802 | Beta | 18Rev2 | 0x01 | [Download](https://github.com/bes-ptah/WinBatchX/releases/download/1802/18.1802.zip) |
 
 
-
-
 ### WinBatchX 18.0 Builds up to it's release
 
-WinBatchX released 17 builds in the beta channel for WinBatchX Beta 18 and/or WinBatchX Preview 18.
+WinBatchX released 17 builds in the canary channel for WinBatchX Beta 18 and/or WinBatchX Preview 18.
 
 ***
 Build | Branch | Tied release | Status | Download Link |
@@ -46,21 +51,7 @@ Build | Branch | Tied release | Status | Download Link |
 
 *Builds mentioned past 1630 are not listed here.*
 
-
-> A high number of 18.0 builds were excluded from official release due to lots of bugs and errors. They were added all together in builds 1660-1665. Normal development has now started in builds 1770+.
-
 #### As always, only the last 4 builds from the latest beta build are supported for bugs or errored features to be fixed. All builds from 1558-16.1-beta2 and up are always supported for security faults and fixes.
-
-### Please note: Windows Version 19H1 is not supported now on WinBatchX. Windows 10 Version 1909 or higher are supported.
-
-#### ( ! ) This is open-source so even your copy (or your custom build) of WinBatchX is allowed to pull releases from this build.
-
-##### To pull builds into this branch (beta):
-
-Copy this link to your update system:
-
-> https://github.com/bes-ptah/WinBatchX/archive/refs/heads/beta.zip
-
 
 
 
