@@ -208,17 +208,18 @@ rem WinBatchOS File System (WbFS)
 rem Directory Tree
 
 rem diskA-
+rem Programs/
+rem | - (Programs here)
+rem Users/
+rem | - (Users + Settings Here)
 rem WbOS/
-rem | SERVICES/ 
-rem    | - WBXUPDATE.BAT
-rem    | - TIMEDATE.BAT
-rem | NIKERNEL/
-rem    | - (old NI kernel dev)
-
-rem | NIGUI/
-rem    | - (old NI kernel dev)
-rem | NI/
-rem    | - (old NI kernel dev)
+rem 	| SERVICES/ 
+rem    		| - WBXUPDATE.BAT
+rem    		| - TIMEDATE.BAT
+rem 	| KERNEL/
+rem   		 | - all .bat files in WINBATCHOS\
+rem 	| NI/
+rem    		 | - (old NI kernel dev)
 
 
 
@@ -238,8 +239,8 @@ rem  | OS Release                    | 11.0              |
 rem  | Channel                       | Canary            |
 rem  | Flags                         | Unreleased        |
 rem  | NI Kernel Version             | 11.0              |
-rem  | Quantum Kernel Graphics       | 1.0               |
-rem  | Build Release                 | 10008.100         |
+rem  | Quantum Kernel Version        | 1.0               |
+rem  | Build Release                 | 10010.100         |
 rem  | Installed Updates:            | 0                 |
 rem  | Last Security Update Patch    | None              |
 rem  |-------------------------------|-------------------|
