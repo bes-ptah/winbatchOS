@@ -2250,7 +2250,7 @@ rem Lastly, Text Start:
 	CALL Text 69 33 %THEMEcolor% "Recomended" 69 35 %lightTHEMEcolor% "To show your recent files and apps, turn them on in Settings." 69 36 %lightTHEMEcolor% "To find other batch apps not built-in, look in the All apps section." X _Button_Boxes _Button_Hover
 
 	CALL Text 69 18 %lightTHEMEcolor% "Edge" 82 18 %lightTHEMEcolor% "Notepad" 93 18 %lightTHEMEcolor% "File Explorer" 109 18 %lightTHEMEcolor% "Settings" 123 18 %lightTHEMEcolor% "Security" 136 18 %lightTHEMEcolor% "Calculator" X _Button_Boxes _Button_Hover
-	CALL Text 68 24 %lightTHEMEcolor% "Terminal" 82 24 %lightTHEMEcolor% "Photos" 97 24 %lightTHEMEcolor% "Paint" 109 24 %lightTHEMEcolor% "Calendar" 123 24 %lightTHEMEcolor% "WbOS-Windowed" 136 24 %lightTHEMEcolor% "Task Manager"  X _Button_Boxes _Button_Hover
+	CALL Text 68 24 %lightTHEMEcolor% "Terminal" 82 24 %lightTHEMEcolor% "Photos" 97 24 %lightTHEMEcolor% "Paint" 109 24 %lightTHEMEcolor% "Calendar" 122 24 %lightTHEMEcolor% "WbOS-Windowed" 136 24 %lightTHEMEcolor% "Task Manager"  X _Button_Boxes _Button_Hover
 
 	CALL Text 76 51 %lightTHEMEcolor% "%_WBX_USERNAME%" X _Button_Boxes _Button_Hover
 
