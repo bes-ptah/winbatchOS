@@ -135,9 +135,9 @@ rem Set General Variables
 SET "_WbOS=WinBatchOS"
 SET "_version=11 Beta 1"
 SET "_build=11.0.10010.100"
+
 SET "_quantum-ver=1.0rc2"
 SET "_ni-ver=11.0"
-SET "_ni-SDK=11"
 
 
 rem 2
