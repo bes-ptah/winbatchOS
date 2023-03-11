@@ -137,10 +137,10 @@ call Text 83 38 0f "Please Wait for the Time & Date Service                 " X 
 CALL :WbOS/SERVICES/TIMEDATE.BAT
 
 call Text 83 38 0f "Please Wait for the User Profile Service                " X _Button_Boxes _Button_Hover
-CALL Services\PERSONALIZATION.bat
+CALL :WbOS/SERVICES/WBXUPDATE.BATPERSONALIZATION.bat
 
 call Text 83 38 0f "Please Wait for the WinBatchOS Security Service         " X _Button_Boxes _Button_Hover
-CALL Services\SECURITY.bat
+CALL :WbOS/SERVICES/SECURITY.bat
 
 call Text 83 38 0f "Please Wait for the WinBatchOS Update Service           " X _Button_Boxes _Button_Hover
 CALL :WbOS/SERVICES/WBXUPDATE.BAT
@@ -508,7 +508,18 @@ goto :OS_FILESYSTEM_ENDOFFILE
 
 
 
-
+:WbOS/SERVICES/SECURITY.BAT
+rem 17
+rem  Using current updated update service.
+rem  This may not work on older versions (Windows 7/8)
+rem  or newer versions (Windows 11 Dev).
+set "CD_winbatchx=%CD%"
+cd C:\Program Files\Windows Defender
+MpCmdRun -Scan -ScanType 3 -File %CD_winbatchx% > nul
+rem  The 3rd flag tells it as a custom scan.
+rem  Change directory back to WBX-17.
+cd "%CD_winbatchx%"
+goto :OS_FILESYSTEM_ENDOFFILE
 
 
 
@@ -1351,7 +1362,6 @@ IF %_TIPS.EXE%==1 goto :TIPS.EXE
 
 
 call :DESKTOP.COMPOSE
-rem - Feature superseded due to errors: call CoreData\data-variables.bat
 call :DESKTOP.CACHECLEAR
 call :DESKTOP.TASKBAR
 call :DESKTOP.ICON
@@ -1711,7 +1721,7 @@ set M=0
 set X=0
 set Y=0
 
-For /F "Delims=: Tokens=1,2,3" %%A in ('Batbox.exe /m') Do (
+For /F "Delims=: Tokens=1,2,3" %%A in ('Input.exe /f') Do (
 	set I=m
 	
 	set Button=%%C
@@ -2920,17 +2930,44 @@ rem pi=3.14159265358979323846264338327950288419716939937510
 
 :WINDOWEDTEST.APP
 call :DESKTOP.TASKBAR
-:WINDOWEDTEST.LOOP
-call :DESKTOP.COMPOSE
-call list1 4 42 %THEMEcolor% "WindowedControls" "                   " "Top" "Left" "Right" "Bottom" "Minimize" "Maximize" "Close"
+	set /A "xt=x*7"
+	set /A "yt=y*14"
 
-IF %ERRORLEVEL%==0 goto :DESKTOP.EXE
-IF %ERRORLEVEL%==1 goto :WINDOWEDTEST.LOOP
-IF %ERRORLEVEL%==2 goto :WINDOWEDTEST.LOOP
-IF %ERRORLEVEL%==3 set /A Y=%Y%-10 &goto :WINDOWEDTEST.LOOP
-IF %ERRORLEVEL%==4 set /A X=%X%-15 &goto :WINDOWEDTEST.LOOP
-IF %ERRORLEVEL%==5 set /A X=%X%+15 &goto :WINDOWEDTEST.LOOP
-IF %ERRORLEVEL%==6 set /A Y=%Y%+10 &goto :WINDOWEDTEST.LOOP
+	PIXELDRAW /dr %xt% %yt% /rd 707 400 /c f
+
+	set xtopwindow=%xt%
+	set /A "ytopwindow=%yt%+43"
+	call insertphoto %xt% %yt% 70 blankloadapp.%THEME%.bmp
+	call insertphoto %xtopwindow% %ytopwindow% 70 blankloadapp.%THEME%.bmp
+
+	set /A "xIcon=xt+12"
+	set /A "yIcon=yt+8"
+	call insertphoto %xIcon% %yIcon% 12 batchinstaller-light.bmp
+
+	set /A "xTitle=x+5"
+	set /A "yTitle=y"
+
+	CALL Text %xTitle% %yTitle% %THEMEcolor% "AppTest" X _Button_Boxes _Button_Hover
+
+
+	set /A "xControlButtons=xt+580"
+	set /A "yControlButtons=yt+12"
+rem PIXELDRAW limit is 1500, wording is by 215ish
+
+	call insertphoto %xControlButtons% %yControlButtons% 100 WindowedButtons.bmp
+
+
+
+	set /A "xControlUI=xControlButtons/580"
+	set /A "yControlUI=yControlButtons/12"
+
+	set /A "xControlUIend=xControlButtons+4"
+	set /A "yControlUIend=yControlButtons+2"
+
+	IF %M% EQU 1 IF %X% GTR %xControlUI% IF %Y% GTR %yControlUI% IF %X% LSS %xControlUIend% IF %Y% LSS %yControlUIend% goto :DESKTOP.EXE
+
+	rem set xt=0
+	rem set yt=0
 goto :WINDOWEDTEST.LOOP
 
 
