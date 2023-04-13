@@ -1,13 +1,125 @@
-ECHO OFF
+
+rem WinBatchOS Server 11 (Rev2Final) - Build 1212 Q1.1
+rem This software is licensed under the Microsoft Public License (Ms-PL).
+
+
+rem Microsoft Public License (Ms-PL)
+rem.
+rem This license governs use of the accompanying software. If you use the
+rem software, you accept this license. If you do not accept the license, do not
+rem use the software.
+rem.
+rem 1.  Definitions
+rem The terms "reproduce," "reproduction," "derivative works," and "distribution"
+rem have the same meaning here as under U.S. copyright law. A "contribution" is
+rem the original software, or any additions or changes to the software. A
+rem "contributor" is any person that distributes its contribution under this
+rem license. "Licensed patents" are a contributor's patent claims that read
+rem directly on its contribution.
+rem. 
+rem 2.  Grant of Rights
+rem      (A) Copyright Grant- Subject to the terms of this license, including the
+rem      license conditions and limitations in section 3, each contributor grants
+rem      you a non-exclusive, worldwide, royalty-free copyright license to
+rem      reproduce its contribution, prepare derivative works of its contribution,
+rem      and distribute its contribution or any derivative works that you create.
+rem.
+rem      (B) Patent Grant- Subject to the terms of this license, including the
+rem      license conditions and limitations in section 3, each contributor grants
+rem      you a non-exclusive, worldwide, royalty-free license under its licensed
+rem      patents to make, have made, use, sell, offer for sale, import, and/or
+rem      otherwise dispose of its contribution in the software or derivative works
+rem      of the contribution in the software.
+rem.
+rem 3.  Conditions and Limitations
+rem      (A) No Trademark License- This license does not grant you rights to use
+rem      any contributors' name, logo, or trademarks.
+rem.
+rem      (B) If you bring a patent claim against any contributor over patents that
+rem      you claim are infringed by the software, your patent license from such
+rem      contributor to the software ends automatically.
+rem.
+rem      (C) If you distribute any portion of the software, you must retain all
+rem      copyright, patent, trademark, and attribution notices that are present in
+rem      the software.
+rem.
+rem      (D) If you distribute any portion of the software in source code form,
+rem      you may do so only under this license by including a complete copy of
+rem      this license with your distribution. If you distribute any portion of the
+rem      software in compiled or object code form, you may only do so under a
+rem      license that complies with this license.
+rem.
+rem      (E) The software is licensed "as-is." You bear the risk of using it. The
+rem      contributors give no express warranties, guarantees, or conditions. You
+rem      may have additional consumer rights under your local laws which this
+rem      license cannot change. To the extent permitted under your local laws, the
+rem      contributors exclude the implied warranties of merchantability, fitness
+rem      for a particular purpose and non-infringement.
+
+
+
+
+rem  +++
+rem  |-------------------------------|-------------------|
+rem  | OS Specifics:                 |                   |
+rem  |-------------------------------|-------------------|
+rem  | Virtual Disk Version          | Unavailable       |
+rem  | Stacks                        | Unavailable       |
+rem  | Graphics                      | Unavailable       |
+rem  | Linux Envirnoment             | Unavailable       |
+rem  | OS Name                       | winbatchOS Server |
+rem  | OS Release                    | 11.S              |
+rem  | Channel                       | Stable            |
+rem  | Flags                         | RTM-Rev2          |
+rem  | Quantum Kernel Version        | 1.1beta1          |
+rem  | NI Kernel Version             | 11.Sbeta1         |
+rem  | Build Release                 | 1212.100          |
+rem  | Installed Updates:            | 0                 |
+rem  | Last Security Update Patch    | None              |
+rem  |-------------------------------|-------------------|
+rem  +++
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rem This build will overwrite any changes in the current Qkernel version before 1.1.
+
+
+
+@Echo off
+IF "%~1" == "" start WinBatchOS start &&endlocal &&exit /b
+IF "%~1" == "start" goto :boot.exe
+IF "%~1" == "startre" call winbatchos/RECOVERY.BAT
+
+
+:BOOT.EXE
 cls
 cd System
+
 FOR %%A In (batbox.exe Getlen.bat Box.bat GetInput.exe cmdmenusel.exe ) DO (IF Not Exist "%%A" (goto HALT-error))
+
 setlocal disableDelayedExpansion
+
 set q=^"
 echo(
 echo(
 
 echo.
+
 PROMPT $G
 mode 50,10
 timeout /T 1 /NOBREAK > nul
