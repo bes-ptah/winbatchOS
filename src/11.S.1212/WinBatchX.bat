@@ -66,6 +66,7 @@ rem  |-------------------------------|-------------------|
 rem  | Virtual Disk Version          | Unavailable       |
 rem  | Stacks                        | Unavailable       |
 rem  | Graphics                      | Unavailable       |
+rem  | Java Envirnoment              | Unavailable       |
 rem  | Linux Envirnoment             | Unavailable       |
 rem  | OS Name                       | winbatchOS Server |
 rem  | OS Release                    | 11.S              |
