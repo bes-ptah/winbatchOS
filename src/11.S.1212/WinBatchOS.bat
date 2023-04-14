@@ -125,18 +125,11 @@ PROMPT $G
 mode 50,10
 timeout /T 1 /NOBREAK > nul
 mode 240,60
-Title WinBatchX Operating System
-
-:boot
-:bootsector
+Title WinBatchOS Operating System
 
 set ver-win=18.S
-set quantum_ver=v0.6TRIM
-
-rem changed it for pulling builds from update page
+set quantum_ver=v1.1TRIM
 set "_build=1212"
-
-rem for compatibility
 set "_version=18.S"
 
 
@@ -170,8 +163,7 @@ set PASSWORD=bes
 set ACTIVEAPP=DESKTOP.EXE
 
 cls
-call :c 03 "WinBatchX is starting.." /n
-call :c 03 "[DEBUG] the quantum kernel does not support 14.1!" /n
+call :c 03 "WinBatchOS is starting.." /n
 echo [SYSTEM] You can safely ingore this message if you are using 18.S.
 
 
