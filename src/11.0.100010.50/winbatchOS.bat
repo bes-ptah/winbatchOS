@@ -1275,6 +1275,37 @@ goto :SYSTEM.EXE
 :CORESCHEDULER.EXE
 
 
+rem | GPT - Process Table |
+rem |---------------------|
+rem | Task Name           |
+rem | 
+rem |
+rem |
+rem |
+rem |
+
+
+
+rem process 1
+
+
+rem process 2
+
+
+rem process 3
+
+
+
+
+rem 7
+rem Default Variables Set for winbatchOS
+SET _ACTIVEAPPLABEL=explorer.exe
+SET _ACTIVEAPPIMAGE=explorer
+SET _ACTIVEAPPTITLE=winbatchOS
+
+
+
+
 goto :CORESCHEDULER.EXE
 
 
