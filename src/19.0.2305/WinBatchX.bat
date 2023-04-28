@@ -450,13 +450,8 @@ rem load the ascii letters from pixcel.fo!
 rem not available on this build.
 
 
-
-rem stop boot logo
-timeout /T 0 /NOBREAK > nul
 cls
 PIXELDRAW /refresh 00
-rem cmdwiz showcursor 0
-timeout /T 1 /NOBREAK > nul
 GOTO :WBX-LOGIN.EXE
 
 
@@ -473,8 +468,6 @@ rem clear the screen
 cls
 PIXELDRAW /refresh 00
 call ButtonHeight0 100 25 0f "Please Wait" X _Button_Boxes _Button_Hover
-
-timeout /T 2 /NOBREAK > nul
 
 rem clear the screen
 cls
@@ -667,7 +660,6 @@ call insertphoto 740 260 60 profile-icon.bmp
 call ButtonHeight0 112 29 %THEMEcolor% "%_WBX_USERNAME% " X _Button_Boxes _Button_Hover
 call ButtonHeight0 106 32 %THEMEcolor% "Preparing WinBatchX" X _Button_Boxes _Button_Hover
 
-timeout /T 1 /NOBREAK > nul
 
 
 call insertphoto 0 0 %BACKGROUND.DESKTOP.SIZE% %BACKGROUND.DESKTOP.IMAGE%.%THEME%.bmp
@@ -3184,7 +3176,7 @@ PIXELDRAW /dr 450 265 /rd 800 90 /c 7
 
 call insertphoto 460 280 25 ui.wbxicon.bmp
 
-CALL ButtonHeight0 75 20 f0 "WinBatchX" 100 20 f8 "%_version%" X _Button_Boxes _Button_Hover
+CALL ButtonHeight0 75 20 f0 "WinBatchX" 100 20 f8 "%_version% Version 2305" X _Button_Boxes _Button_Hover
 CALL ButtonHeight0 75 21 f0 "Build " 100 21 f8 "%_build%" X _Button_Boxes _Button_Hover
 CALL ButtonHeight0 75 22 f0 "Kernel Version" 100 22 f8 "%_quantum-ver%" X _Button_Boxes _Button_Hover
 
@@ -3581,7 +3573,7 @@ CALL ButtonHeight0 55 4 f0 "WinBatchX Update" X _Button_Boxes _Button_Hover
 
 CALL ButtonHeight0 70 7 f0 "%_WBXCore-updatemessage%" X _Button_Boxes _Button_Hover
 CALL ButtonHeight0 70 8 f0 "%_WBX-OS% %_version%" X _Button_Boxes _Button_Hover
-CALL ButtonHeight0 70 9 f0 "Version 2212" X _Button_Boxes _Button_Hover
+CALL ButtonHeight0 70 9 f0 "Version 2305" X _Button_Boxes _Button_Hover
 CALL ButtonHeight0 70 10 f0 "OS Build %_build%" X _Button_Boxes _Button_Hover
 call insertphoto 1270 125 40 UI.buttonblue.bmp
 call insertphoto 1269 126 41 UI.buttonblue.bmp
