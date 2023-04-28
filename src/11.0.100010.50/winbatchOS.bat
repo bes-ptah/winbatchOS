@@ -1278,9 +1278,12 @@ goto :SYSTEM.EXE
 rem | GPT - Process Table |
 rem |---------------------|
 rem | Task Name           |
-rem | 
-rem |
-rem |
+rem | Process ID          |
+rem | Priority            |
+rem |--------|------------|
+rem | memory | max        |
+rem |        | min        |
+rem |--------|------------|
 rem |
 rem |
 
