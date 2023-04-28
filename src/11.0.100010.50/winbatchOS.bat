@@ -1275,27 +1275,62 @@ goto :SYSTEM.EXE
 :CORESCHEDULER.EXE
 
 
-rem | GPT - Process Table |
-rem |---------------------|
-rem | Task Name           |
-rem | Process ID          |
-rem | Priority            |
-rem |--------|------------|
-rem | memory | max        |
-rem |        | min        |
-rem |--------|------------|
-rem |
-rem |
+rem |-------------------------|
+rem | GPT - Process Table     |
+rem |-------------------------|
+rem |Task Name                |
+rem |Process ID               |
+rem |------------|------------|
+rem |Priority    |            |
+rem |------------|------------|
+rem | memory     | max        |
+rem |            | min        |
+rem |------------|------------|
+rem |                         |
+rem |-------------------------|
 
+
+
+rem some examples
+
+
+rem when you switch the id number;
+rem
+rem | example: set ID=5 |
+rem All variables that depend on it will also switch to that ID.
+rem
 
 
 rem process 1
+set PROCESS%_ID%=1
+set ID=20
+
+
+
+set ID=5
+
+rem all processes switch to that task
+set MAX_MEM=1024
+
 
 
 rem process 2
 
 
+
+
+
+
+
 rem process 3
+
+
+
+
+
+
+
+
 
 
 
