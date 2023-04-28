@@ -230,7 +230,7 @@ rem  |-------------------------------|-------------------|
 rem  | OS Specifics:                 |                   |
 rem  |-------------------------------|-------------------|
 rem  | Virtual Disk Version          | 1.0               |
-rem  | Stacks                        | Unavailable       |
+rem  | Processor                     | 0.1       |
 rem  | Graphics                      | Unavailable       |
 rem  | Linux Envirnoment             | Unavailable       |
 rem  | OS Name                       | winbatchOS Core   |
