@@ -1,6 +1,6 @@
-rem  WinBatchX 19.0 Beta 2
-rem  Build 1852
-rem  Quantum Kernel 0.83
+rem  WinBatchX 19.0 Beta 10 - Version 2305
+rem  Build 1900.251
+rem  Quantum Kernel 1.0rc1
 
 rem  The unlicense below is used for this "batch" software. Also in LICENSE.txt.
 
@@ -46,24 +46,18 @@ endlocal
 exit /b
 
 :WBX-STARTUP.EXE
-
 rem  Use windows commands to adjust for WinBatchX
 setlocal
 mode 213,60
 chcp 437 > nul
-
 rem  Enter the System Directory
 cd System
-
 rem Unzip the BMP folder
 tar -xf BMP.zip
-
 rem  clear up the cmd line
 cls
-PIXELDRAW /refresh 00
 rem cmdwiz showcursor 0
 call insertphoto 0 0 85 bootimage.bmp
-
 rem  1. General Variables
 rem  2. Record Boot Time
 rem  3. Date Variables
@@ -85,9 +79,9 @@ rem  10. ASCII Load
 
 rem  1.
 SET "_WBX-OS=WinBatchX"
-SET "_quantum-ver=0.99"
+SET "_quantum-ver=1.0rc1"
 SET "_version=19 Beta 2"
-SET "_build=1900.151"
+SET "_build=1900.251"
 
 
 
