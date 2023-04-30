@@ -106,7 +106,7 @@ SET "_WbOS=WinBatchOS"
 SET "_version=23"
 SET "_quantum-ver=1.0"
 SET "_ni-ver=10.3"
-
+set "_TERMINAL.EXE=0"
 
 call Text 1 3 0f "[ PROG ] Waiting for the TimeDate Service to start                 " X _Button_Boxes _Button_Hover
 CALL :WbOS/SERVICES/TIMEDATE.BAT
@@ -124,6 +124,8 @@ rem this is terminal.exe in case
 call :WbOS/BIN/wbsh
 timeout /T 1 /NOBREAK > NUL
 call Text 1 5 0f "[  OK  ] Started /bin/terminal.         " X _Button_Boxes _Button_Hover
+
+:LINE128
 
 rem this is the installer
 call :WbOS/BIN/init-cloud
@@ -369,11 +371,10 @@ goto :OS_FILESYSTEM_ENDOFFILE
 rem Terminal App
 rem Really cut-down terminal from traditional ones
 :WbOS/BIN/wbsh
+IF %_TERMINAL.EXE%==0 goto :LINE128
 
-
-rem DO NTO REQUEST AN API STARTUP
-
-
+rem DO NOT REQUEST AN API STARTUP!!
+rem Only this variable SHOULD be set;
 set _TERMINAL.EXE=1
 
 :TERMINAL.LOOP
