@@ -83,54 +83,58 @@ rem services, yay!
 rem ==================================
 rem 1. Set General Variables
 rem 2. Start up 'OS Critical' Services
-rem 3. Check Hibernation File
 rem ==================================
 cls
+
 call Text 83 38 0f "Please Wait for winbatchOS to start" X _Button_Boxes _Button_Hover
 
-PIXELDRAW /refresh 3f
-call insertphoto 0 0 77 bootimage.bmp
+
+rem load initial filesystem HERE into memory, use recovery filesystem
+
+call Text 83 38 0f "                                   " X _Button_Boxes _Button_Hover
+
+
+
+
+
+
+call Text 1 1 0f "[ DATA ] Installer for winbatchOS 23, Dual Kernel.                 " X _Button_Boxes _Button_Hover
 
 rem 1
 rem Set General Variables
 SET "_WbOS=WinBatchOS"
-SET "_version=11 Beta 1"
-SET "_build=11.0.10010.100"
-SET "_quantum-ver=1.0rc2"
-SET "_ni-ver=11.0"
-SET "_ni-SDK=11"
+SET "_version=23"
+SET "_quantum-ver=1.0"
+SET "_ni-ver=10.3"
 
 
-rem 2
-rem Start up 'OS Critical' Services
-call Text 83 38 0f "Please Wait for the WinBatchOS File System to initalize " X _Button_Boxes _Button_Hover
-
-
-call Text 83 38 0f "Please Wait for the Time & Date Service                 " X _Button_Boxes _Button_Hover
+call Text 1 3 0f "[ PROG ] Waiting for the TimeDate Service to start                 " X _Button_Boxes _Button_Hover
 CALL :WbOS/SERVICES/TIMEDATE.BAT
-
-call Text 83 38 0f "Please Wait for the User Profile Service                " X _Button_Boxes _Button_Hover
-CALL Services\PERSONALIZATION.bat
-
-call Text 83 38 0f "Please Wait for the WinBatchOS Security Service         " X _Button_Boxes _Button_Hover
-CALL Services\SECURITY.bat
-
-call Text 83 38 0f "Please Wait for the WinBatchOS Update Service           " X _Button_Boxes _Button_Hover
-CALL :WbOS/SERVICES/WBXUPDATE.BAT
-
-call Text 83 38 0f "Please Wait for winbatchOS Containers to start          " X _Button_Boxes _Button_Hover
-
-
-rem 3
-rem Check Hibernation File
-FOR %%A In (CoreData\hibernationfile.bat) DO call CoreData\hibernationfile.bat && del CoreData\hibernationfile.bat &&GOTO :SYSTEM.EXE
+timeout /T 1 /NOBREAK > NUL
+call Text 1 3 0f "[  OK  ] Started /WbOS/SERVICES/TIMEDATE.BAT.                 " X _Button_Boxes _Button_Hover
 
 
 
-call insertphoto 0 0 85 blankSystemImage.bmp
+call Text 1 4 0f "[ PROG ] Waiting for the Update Service to start          " X _Button_Boxes _Button_Hover
+rem meant to be an offline stand-alone installer, so no update service
+call Text 1 4 0f "[  OK  ] Skipped /WbOS/SERVICES/UPDATE.BAT.          " X _Button_Boxes _Button_Hover
 
-goto :LOGIN.EXE
 
+rem this is terminal.exe in case
+call :WbOS/BIN/wbsh
+timeout /T 1 /NOBREAK > NUL
+call Text 1 5 0f "[  OK  ] Started /bin/terminal.         " X _Button_Boxes _Button_Hover
+
+rem this is the installer
+call :WbOS/BIN/init-cloud
+timeout /T 1 /NOBREAK > NUL
+call Text 1 6 0f "[  OK  ] Started /bin/init-cloud.         " X _Button_Boxes _Button_Hover
+
+timeout /T 5 /NOBREAK > nul
+call Text 1 7 0f "[  OK  ] Reached Target Shutdown.         " X _Button_Boxes _Button_Hover
+timeout /T 5 /NOBREAK > NUL
+echo exit()
+exit /b
 
 
 
@@ -193,60 +197,18 @@ rem  | Graphics                      | Unavailable       |
 rem  | Linux Envirnoment             | Unavailable       |
 rem  | OS Name                       | winbatchOS Core   |
 rem  | OS Release                    | 11.0              |
-rem  | Channel                       | Canary            |
+rem  | Channel                       | Final RTM         |
 rem  | Flags                         | Unreleased        |
 rem  | NI Kernel Version             | 23.0              |
 rem  | Quantum Kernel Graphics       | 1.0               |
 rem  | Build Release                 | 10008.100         |
-rem  | Installed Updates:            | 0                 |
+rem  | Installed Updates:            | 1                 |
 rem  | Last Security Update Patch    | None              |
 rem  |-------------------------------|-------------------|
 rem  +++
 
 
 
-
-
-
-:WbOS/SERVICES/WBXUPDATE.BAT
-rem WBXUPDATE
-
-rem  Wget - Retrieves data ONLY for WinBatchX Update.
-rem  Call the 'WGET' service instad of the 'WBXUPDATE' service.
-rem  (Also a copy of the WBXUPDATE service inside this WinBatchX build)
-
-rem  Download it quietly with -q.
-wget -q "https://github.com/bes-ptah/WinBatchOS/archive/refs/heads/main.zip" > nul
-
-rem  Unpack it using tar.
-tar -xf main.zip
-
-rem  Enter the directory (always this name)
-cd winbatchos-main
-
-rem  Enter the update directory.
-cd update
-
-rem  Call the program!
-call update.bat
-
-rem  Then remove the old files without a request from user.
-del update.bat > nul
-cd ..
-rmdir update > nul
-del LICENSE
-del README.md
-del _config.yml
-
-rem  Go back to the previous directory.
-cd ..
-
-rem  Remove the update folder
-rmdir winbatchos-main > nul
-
-rem  Also delete the downloaded compressed update file so the command line does not crash on the next update.
-del main.zip
-goto :OS_FILESYSTEM_ENDOFFILE
 
 
 
@@ -356,14 +318,6 @@ FOR %%U IN (jan feb mar apr may jun jul aug sep oct nov dec) DO (
 
 
 
-
-
-
-
-
-
-
-
 rem  4.
 rem set variables
 SET _WBX-TIMETEMP1=0
@@ -413,91 +367,22 @@ goto :OS_FILESYSTEM_ENDOFFILE
 
 
 rem Terminal App
-:TERMINAL.EXE
-set _APP.EXE=1
-set _ACTIVEAPPLABEL=terminal.exe
-set _ACTIVEAPPIMAGE=terminal
-SET _ACTIVEAPPTITLE=Terminal
-call :KERNEL.API.BUILTIN.APPSTART
+rem Really cut-down terminal from traditional ones
+:WbOS/BIN/wbsh
 
-IF %_TERMINAL.EXE%==1 goto :TERMINAL.LOOP
-set _ACTIVEAPPLABEL=terminal.exe
-set _ACTIVEAPPIMAGE=terminal
-SET _ACTIVEAPPTITLE=Terminal
+
+rem DO NTO REQUEST AN API STARTUP
+
 
 set _TERMINAL.EXE=1
-call insertphoto 0 0 147 blankloadapp.%THEME%.bmp &call insertphoto 0 35 147 blankloadapp.%THEME%.bmp &call insertphoto 7 0 147 blankloadapp.%THEME%.bmp &call insertphoto 7 35 147 blankloadapp.%THEME%.bmp
 
-PIXELDRAW /dr 0 0 /rd 1490 783 /c 0
-
-call insertphoto 730 330 40 terminal.%THEME%.bmp
-
-call insertphoto 1350 9 100 WindowedButtons.%THEME%.bmp
-
-timeout /NOBREAK /T 0 > nul
 :TERMINAL.LOOP
 cls
-rem for command line to focus back into the desktop
-CALL Text 8 -1 0f "Terminal" 17 -1 03 "BETA" X _Button_Boxes _Button_Hover
-
-call :DESKTOP.TASKBAR
-call :DESKTOP.ICON
-set _ACTIVEAPPLABEL=terminal.exe
-call insertphoto 0 0 147 blankloadapp.dark.bmp &call insertphoto 0 35 147 blankloadapp.dark.bmp &call insertphoto 7 0 147 blankloadapp.dark.bmp &call insertphoto 7 35 147 blankloadapp.dark.bmp
-
-call insertphoto 1350 9 100 WindowedButtons.%THEME%.bmp
-
-PIXELDRAW /dr 0 0 /rd 1490 783 /c f
-
-call insertphoto 25 12 8 Terminal.dark.bmp
-
-call insertphoto 1350 9 100 WindowedButtons.%THEME%.bmp
-
-
-
-CALL Text 8 0 0f "Terminal" 17 0 03 "BETA" X _Button_Boxes _Button_Hover
-
-PIXELDRAW /dl /p 0 35 1490 35 /c f
-
-call :DESKTOP.TASKBAR
-call :DESKTOP.ICON
-
-CALL Text 90 30 0f "Open Terminal" X _Button_Boxes _Button_Hover
-
-
-CALL Text 60 25 0f "You will not be able to use any of the GUI features while opening Terminal." X _Button_Boxes _Button_Hover
-CALL Text 60 26 0f "To exit, type 'exit' during the login process, OR type exit on the prompt." X _Button_Boxes _Button_Hover
-
-goto :KERNEL.EXE
-
-
-
-
-
-
-
-
-
-
-
-:TERMINAL.START
 CALL Text 0 2 0f "Opening winbatchOS Terminal" X _Button_Boxes _Button_Hover
 echo.
-echo winbatchOS %_version%, Build %_build%
+echo winbatchOS %_version%, Manual Build 1900.251
 echo Kernel Version %_quantum-ver%
 echo.
-
-:TERMINAL.LOGIN
-echo User premission required.
-echo If you want to exit, type 'exit' now.
-echo User: %_WBX_USERNAME%
-echo.
-SET _PASS=0
-SET /p _PASS=Password:
-IF %_WBX_PASSWORD%==%_PASS% goto :TERMINAL.SYSTEMLOOP
-IF %_PASS%==exit GOTO :TERMINAL.LOOP
-IF %_PASS%==0 GOTO :TERMINAL.LOGIN
-goto :TERMINAL.LOGIN
 
 :TERMINAL.SYSTEMLOOP
 set WBXprompt=0
@@ -523,9 +408,9 @@ rem list of commands here
 	:TERMINAL.EXIT
 	echo.
 	echo.
-	echo The terminal app is finished. winbatchOS will try to start the desktop again.
+	echo Return-to-installer()
 	pause
-	goto :TERMINAL.LOOP
+	goto :WbOS/BIN/init-cloud
 
 
 	:TERMINAL.HELP 
@@ -565,7 +450,7 @@ rem list of commands here
 cls
 :ERROR.LOOP
 rem Set a clock up to 10
-IF %_ERROR.EXE%==100 set _ERROR.EXE=1 &goto :SYSTEM.EXE
+IF %_ERROR.EXE%==100 set _ERROR.EXE=1 &goto :BOOT.EXE
 
 color 3f
 echo.
@@ -576,14 +461,14 @@ echo.
 echo.
 echo.
 echo.
-echo    ==[WBXERROR]==================================================================[-  []  X]=
+echo    ==[WBXERROR]=============================================================================
 echo    =                                                                                       =
-echo    =  winbatchOS ran into a problem and needs to restart. We're going to try to recover     =
+echo    =  winbatchOS ran into a problem and needs to restart. We're going to try to recover    =
 echo    =  the state it is in right now as much as possible, then we'll restart for you.        =
 echo    =                                                                                       =
 echo    =  [Restarting in a few moments]                                                        =
 echo    =  [Error Code: Unknown]                                                                =
-echo    =  [winbatchOS SDK 16 Window]                                                            =
+echo    =  [winbatchOS SDK 16 Window]                                                           =
 echo    =                                                                                       =
 echo    =========================================================================================
 set /A _ERROR.EXE=%_ERROR.EXE%+1
