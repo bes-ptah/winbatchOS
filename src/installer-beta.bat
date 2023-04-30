@@ -214,6 +214,39 @@ rem  +++
 
 
 
+:OS_FILESYSTEM_ENDOFFILE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:WbOS/BIN/init-cloud
+rem (program insert here)
+goto :OS_FILESYSTEM_ENDOFFILE
+
+
+
+
 
 
 
