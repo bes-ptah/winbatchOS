@@ -2,72 +2,97 @@ rem  WinBatchX 19.0 Beta 10 - Version 2305
 rem  Build 1900.251
 rem  Quantum Kernel 1.0rc1
 
-rem + UNLICENSE
-rem       Unlicense License
-rem       - 
-rem       This is free and unencumbered software released into the public domain.
-rem      
-rem       Anyone is free to copy, modify, publish, use, compile, sell, or
-rem       distribute this software, either in source code form or as a compiled
-rem       binary, for any purpose, commercial or non-commercial, and by any
-rem       means.
-rem      
-rem       In jurisdictions that recognize copyright laws, the author or authors
-rem       of this software dedicate any and all copyright interest in the
-rem       software to the public domain. We make this dedication for the benefit
-rem       of the public at large and to the detriment of our heirs and
-rem       successors. We intend this dedication to be an overt act of
-rem       relinquishment in perpetuity of all present and future rights to this
-rem       software under copyright law.
-rem      
-rem       THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-rem       EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-rem       MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-rem       IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-rem       OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-rem       ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-rem       OTHER DEALINGS IN THE SOFTWARE.
-rem       
-rem       For more information, please refer to <https://unlicense.org>
+rem  The unlicense below is used for this "batch" software. Also in LICENSE.txt.
 
-rem + BOOT.LOG
-rem       1. General Variables
-rem       2. Record Boot Time
-rem       3. Date Variables
-rem       4. Time Variables
-rem       5. data-system.bat
-rem       6. data-settings.bat
-rem       7. data-user.bat
-rem       8. Quantum Kernel Variables:
-rem        8.1: Kernel Variables
-rem        8.2: Windowed Mode Variables
-rem        8.3: Start WBXFS
-rem        8.4: App Variables
-rem       9. Fetch Updates
-rem       9.1: Security check
-rem       10. ASCII Load
+rem  Unlicense License
+rem  - 
+rem  This is free and unencumbered software released into the public domain.
+rem 
+rem  Anyone is free to copy, modify, publish, use, compile, sell, or
+rem  distribute this software, either in source code form or as a compiled
+rem  binary, for any purpose, commercial or non-commercial, and by any
+rem  means.
+rem 
+rem  In jurisdictions that recognize copyright laws, the author or authors
+rem  of this software dedicate any and all copyright interest in the
+rem  software to the public domain. We make this dedication for the benefit
+rem  of the public at large and to the detriment of our heirs and
+rem  successors. We intend this dedication to be an overt act of
+rem  relinquishment in perpetuity of all present and future rights to this
+rem  software under copyright law.
+rem 
+rem  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+rem  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+rem  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+rem  IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+rem  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+rem  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+rem  OTHER DEALINGS IN THE SOFTWARE.
+rem  
+rem  For more information, please refer to <https://unlicense.org>
 
+
+
+rem This code contains the last updated notes and comments for this release.
 @Echo off
-IF "%~1" == "" start WinBatchOS start &&endlocal &&exit /b
-IF "%~1" == "start" goto :boot.exe
-IF "%~1" == "startre" goto :boot.exe
+If /i "%~1" == "" (goto :bootWBX.exe)
+If /i "%~1" == "start" (goto :WBX-STARTUP.EXE)
 
-:boot.exe
+:bootWBX.exe
+start WinBatchX start
+echo You can find WinBatchX in a window named 'WinBatchX'.
+endlocal
+exit /b
+
+:WBX-STARTUP.EXE
+rem  Use windows commands to adjust for WinBatchX
 setlocal
 mode 213,60
 chcp 437 > nul
+rem  Enter the System Directory
 cd System
+rem Unzip the BMP folder
 tar -xf BMP.zip
+rem  clear up the cmd line
 cls
-echo Starting WinBatchX..
+rem cmdwiz showcursor 0
+call insertphoto 0 0 85 bootimage.bmp
+rem  1. General Variables
+rem  2. Record Boot Time
+rem  3. Date Variables
+rem  4. Time Variables
+rem  5. data-system.bat
+rem  6. data-settings.bat
+rem  7. data-user.bat
+rem  8. Quantum Kernel Variables:
+rem   8.1: Kernel Variables
+rem   8.2: Windowed Mode Variables
+rem   8.3: Start WBXFS 
+rem        (beta virtual filesystem from NIFS!)
+rem   8.4: App Variables
+rem  9. Fetch Updates
+rem  9.1: Security check
+rem  10. ASCII Load
+
+
+
+rem  1.
 SET "_WBX-OS=WinBatchX"
 SET "_quantum-ver=1.0rc1"
 SET "_version=19 Beta 2"
 SET "_build=1900.251"
 
+
+
+rem  2.
 SET _DATESTART=%DATE%
 SET _TIMESTART=%TIME%
 SET "_BOOTTIME=%_DATESTART% at %_TIMESTART%"
+
+
+
+rem  3.
+rem set variables
 
 SET _WBX-TIMETEMP1=0
 SET _WBX-TIMETEMP2=0
@@ -76,6 +101,20 @@ SET _WBX-TIMETEMP3=0
 SET _WBX-DATETEMP1=%DATE:~-10,2%
 SET _WBX-DATETEMP2=%DATE:~7,-5%
 SET _WBX-DATETEMP3=%DATE:~-4%
+
+
+
+rem This is here for the GUI on calendar and notification center
+rem Most author's comments are untouched.
+
+rem  Xp batch for generating calendars
+rem  Chances look good for win 2000 and above(untested)
+rem  By Judago, August 2009
+
+
+
+rem  The current codepage is stored in variable %CodePage%,
+rem  then changed to 850 to facilitate box drawing characters.....
 
 SETLOCAL ENABLEDELAYEDEXPANSION
 
@@ -150,13 +189,26 @@ FOR %%U IN (jan feb mar apr may jun jul aug sep oct nov dec) DO (
 )
 
 
+
+
+
+
+
+
+
+
+
+rem  4.
+rem set variables
 SET _WBX-TIMETEMP1=0
 SET _WBX-TIMETEMP2=0
 SET _WBX-TIMETEMP3=0
 
+rem do calculations
 set _WBX-TIMETEMP1=%Time:~0,-9%
 set _WBX-TIMETEMP2=%Time:~3,-6%
 
+rem find the time, am or pm, via the _WBX-TIMETEMP1 (hours)
 IF %_WBX-TIMETEMP1%==12 set _WBX-TIMETEMP1= 1&set _WBX-TIMETEMP3=PM &GOTO :CONTINUEBOOT
 IF %_WBX-TIMETEMP1%==13 set _WBX-TIMETEMP1= 1&set _WBX-TIMETEMP3=PM &GOTO :CONTINUEBOOT
 IF %_WBX-TIMETEMP1%==14 set _WBX-TIMETEMP1= 2&set _WBX-TIMETEMP3=PM &GOTO :CONTINUEBOOT
@@ -173,24 +225,43 @@ IF %_WBX-TIMETEMP1%==24 set _WBX-TIMETEMP1=12&set _WBX-TIMETEMP3=AM &GOTO :CONTI
 set _WBX-TIMETEMP3=AM
 
 :CONTINUEBOOT
+rem set the variables
 set "_WBX-TASKBAR-TIME=%_WBX-TIMETEMP1%:%_WBX-TIMETEMP2% %_WBX-TIMETEMP3%"
 set "_WBX-TASKBAR-DATE=%_WBX-DATETEMP1%-%_WBX-DATETEMP2%-%DATE:~-7,2%"
 
+rem reset temporary variables
 SET _WBX-DATETEMP1=0
 SET _WBX-DATETEMP2=0
 SET _WBX-TIMETEMP1=0
 SET _WBX-TIMETEMP2=0
 SET _WBX-TIMETEMP3=0
 
+
+
+
+
+
+
+
+
+
+
+
+rem  5.
+rem reset variables
 set START-STATUS=0
 set FLAG-RECOVERYRESTART=0
 set HIBERNATE-STATUS=0
 set RESTART-STATUS=0
 
+rem call data-system.bat
 call data-system.bat
+rem  new flags, maybe?
+IF %START-STATUS%==1 Call ButtonHeight0 72 42 0f "Make sure you shut down your computer correctly. You did not shut down properly last time." X _Button_Boxes _Button_Hover
 set START-STATUS=1
 set RESTART-STATUS=0
 
+rem write a new data-system.bat file
 (
   echo SET START-STATUS=%START-STATUS%
   echo SET FLAG-RECOVERYRESTART=%FLAG-RECOVERYRESTART%
@@ -198,6 +269,19 @@ set RESTART-STATUS=0
   echo SET RESTART-STATUS=%RESTART-STATUS%
 ) > data-system.bat
 
+
+
+
+
+
+
+
+
+
+
+rem  6.
+
+rem make sure default settings are set here
 SET THEME=light
 SET COLORMODE=0
 SET ACCENT.COLOR=3
@@ -205,6 +289,7 @@ SET HIGHLIGHT.WINDOW.BORDERS=b
 SET VOLUME=100
 SET NOTIFICATIONS=0
 SET DO-NOT-DISTURB=0
+
 
 SET BACKGROUND.LOCKSCREEN.IMAGE=background-lock
 SET BACKGROUND.LOCKSCREEN.SIZE=77
@@ -214,12 +299,23 @@ SET BACKGROUND.DESKTOP.IMAGE=background
 SET BACKGROUND.DESKTOP.SIZE=100
 SET _HOSTNAME-winbatchx=COMPUTER-0
 
+
+
+rem call data-settings.bat
 call data-settings.bat
 IF %THEME%==light set THEMEcolor=f0
 IF %THEME%==dark set THEMEcolor=0f
 
+rem  7. 
+rem call data-user.bat
 call data-user.bat
 
+
+
+rem  8.
+rem Quantum Kernel Variables
+
+rem default variables!:
 set _START.EXE=0
 set _START-POWERMENU.EXE=0
 set _SEARCH.EXE=0
@@ -230,8 +326,17 @@ set _TASKBAROVERFLOW.EXE=0
 set _ACTION.EXE=0
 set _NOTIFICATION.EXE=0
 
+
+rem  8.1
+
+rem LOCKSCREEN.EXE variables:
+rem 0 = off
+rem 1 = on
+rem 2 = loginloop
 SET _LOCKSCREEN.EXE=0
 
+
+rem  8.2
 SET _ACTIVEAPPLABEL=explorer.exe
 SET _ACTIVEAPPIMAGE=explorer
 SET _ACTIVEAPPTITLE=WinBatchX
@@ -240,6 +345,22 @@ SET _ACTIVEAPPDRAG=
 SET _ACTIVEAPP.X=
 SET _ACTIVEAPP.Y=
 
+
+rem  8.3
+
+rem CALL NIFS.BAT
+
+
+
+rem  8.4
+
+rem code:
+rem 0 = off
+rem 1 = on!
+rem 2 = windowed
+rem 3 = minimized
+
+rem all the apps, in a alphabetical order-
 SET _BATCHINSTALLER.EXE=0
 
 SET _CALCULATOR.EXE=0
@@ -279,28 +400,54 @@ SET _TASKMGR.EXE=0
 
 SET _TIPS.EXE=0
 
+
+rem  9.
+rem  WBX UpdateCheck - wget 2.0
+rem  Retrieves data for WinBatchX Update.
+rem We don't use %_LINK% anymore as it can be easily changed.
+rem  download it quietly using -q. It won't spam the command line.
 wget -q "https://github.com/bes-ptah/WinBatchX/archive/refs/heads/main.zip" > nul
+rem  Unpack it (This is why Windows 1809 and higher is recommended, or use tar yourself)
 tar -xf main.zip
+rem  Enter the directory (always this name)
 cd winbatchx-main
+rem  Enter the update directory
 cd update
+rem  CALL the program
+rem  (!) the variables are new for 17.0
 call update.bat
+rem  Then remove the old files.
 del update.bat
 cd ..
+rem  delete it without a request from user.
 rmdir update > nul
 del LICENSE
 del README.md
 del _config.yml
+rem  go back into the system directory.
 cd ..
+rem  remove the folder itself.
 rmdir winbatchx-main > nul
+rem  delete the zip file downloaded so the next download update wont crash the cmd line.
 del main.zip
 IF %_WBXCore-update%==1 set "UPDATE-USERFIND=System is up to date."
 IF %_WBXCore-update%==2 set "UPDATE-USERFIND=There is a new update."
 IF %_WBXCore-update%==3 set "UPDATE-USERFIND=System Update Failed."
 
+
+rem  9.1.
 set "CD_winbatchx=%CD%"
 cd C:\Program Files\Windows Defender
 MpCmdRun -Scan -ScanType 3 -File %CD_winbatchx% > nul
+rem  The 3rd flag tells it as a custom scan.
+rem  Change directory back to WBX-17.
 cd "%CD_winbatchx%"
+
+
+rem  10.
+rem load the ascii letters from pixcel.fo!
+rem not available on this build.
+
 
 cls
 PIXELDRAW /refresh 00
@@ -316,22 +463,22 @@ GOTO :WBX-LOGIN.EXE
 :LOCKSCREEN.EXE
 set _LOCKSCREEN.EXE=1
 
-
+rem clear the screen
 cls
 PIXELDRAW /refresh 00
 call ButtonHeight0 100 25 0f "Please Wait" X _Button_Boxes _Button_Hover
 
-
+rem clear the screen
 cls
 PIXELDRAW /refresh 00
 call insertphoto 0 0 %BACKGROUND.DESKTOP.SIZE% %BACKGROUND.DESKTOP.IMAGE%.%THEME%.bmp
 call insertphoto 0 0 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
 
-
+rem make it look like the windows 11 lock screen! (kind-of, the command line does not support fonts)
 Call Typo - 95 3 ff %_WBX-TASKBAR-TIME%
 Call ButtonHeight0 102 12 %THEMEcolor% %_WBX-TASKBAR-DATE% X _Button_Boxes _Button_Hover
 
-
+rem GUI for power!
 call insertphoto 1380 770 40 UI.buttonmica.bmp
 call insertphoto 1379 771 41 UI.buttonmica.bmp
 call insertphoto 1381 774 40 UI.buttonmica.bmp
@@ -353,7 +500,7 @@ IF %I%==k goto :WBX-LOCKSCREEN.INPUT
 IF %I%==m IF %M%==1 IF %_LOCKSCREEN.EXE%==1 IF %X% GTR 197 IF %Y% GTR 54 IF %X% LSS 211 IF %Y% LSS 57 goto :WBX-LOGIN.POWER
 IF %I%==m IF %M%==1 IF %X% GTR 0 IF %Y% GTR 0 IF %X% LSS 211 IF %Y% LSS 58 goto :WBX-LOGIN.LOOP
 
-
+rem IF %I%==k IF %_LOCKSCREEN.EXE%==0
 goto :WBX-LOCKSCREEN.INPUT
 
 
@@ -404,7 +551,7 @@ call insertphoto 0 0 %BACKGROUND.DESKTOP.SIZE% %BACKGROUND.DESKTOP.IMAGE%.%THEME
 call insertphoto 0 0 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
 
 
-
+rem gui rounding for profile
 call insertphoto 739 259 125 blank.%THEME%.bmp
 call insertphoto 740 258 135 blank.%THEME%.bmp
 call insertphoto 765 258 125 blank.%THEME%.bmp
@@ -417,11 +564,11 @@ call insertphoto 740 276 125 blank.%THEME%.bmp
 call insertphoto 765 276 125 blank.%THEME%.bmp
 
 
-
+rem profile photo
 call insertphoto 740 260 60 profile-icon.bmp
 
 
-
+rem password GUI
 call insertphoto 700 450 40 blank.dark.bmp
 call insertphoto 730 449 40 blank.dark.bmp
 call insertphoto 760 449 40 blank.dark.bmp
@@ -430,7 +577,7 @@ call insertphoto 820 449 40 blank.dark.bmp
 call insertphoto 850 449 40 blank.dark.bmp
 call insertphoto 887 449 40 blank.dark.bmp
 
-
+rem  Round the Main Pasword GUI
 call insertphoto 701 449 40 blank.dark.bmp
 call insertphoto 701 451 40 blank.dark.bmp
 call insertphoto 730 451 40 blank.dark.bmp
@@ -442,14 +589,14 @@ call insertphoto 887 451 40 blank.dark.bmp
 call insertphoto 889 450 39 blank.dark.bmp
 call insertphoto 889 451 39 blank.dark.bmp
 
-
-
+rem BORDER the Main Passowrd GUI
+rem  Top
 PIXELDRAW /dl /p 702 449 930 449 /c 8
-
+rem  Left Side
 PIXELDRAW /dl /p 700 449 700 493 /c 8
-
+rem  Right Side
 PIXELDRAW /dl /p 932 449 932 493 /c 8
-
+rem  Bottom
 PIXELDRAW /dl /p 702 493 930 493 /c b
 
 
@@ -464,7 +611,7 @@ SET _PASS=0
 SET /p _PASS=
 IF %_WBX_PASSWORD%==%_PASS% GOTO :WBX-LOGINLOAD.EXE
 
-
+rem  (!) Soon it will be possible to click and type at the same time on WinBatchX, like on login. I have not added the shutdown or restart buttons.
 
 
 
@@ -482,16 +629,16 @@ goto :WBX-LOGIN.INPUT
 
 
 :WBX-LOGINLOAD.EXE
-
+rem clear the screen
 cls
 PIXELDRAW /refresh 00
 
 
 call insertphoto 0 0 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
 
+rem call insertphoto 0 0 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
 
-
-
+rem gui rounding for profile
 call insertphoto 739 259 125 blank.%THEME%.bmp
 call insertphoto 740 258 135 blank.%THEME%.bmp
 call insertphoto 765 258 125 blank.%THEME%.bmp
@@ -504,10 +651,10 @@ call insertphoto 740 276 125 blank.%THEME%.bmp
 call insertphoto 765 276 125 blank.%THEME%.bmp
 
 
-
+rem profile photo
 call insertphoto 740 260 60 profile-icon.bmp
 
-
+rem preparing message
 call insertphoto 740 260 60 profile-icon.bmp
 call ButtonHeight0 112 29 %THEMEcolor% "%_WBX_USERNAME% " X _Button_Boxes _Button_Hover
 call ButtonHeight0 106 32 %THEMEcolor% "Preparing WinBatchX" X _Button_Boxes _Button_Hover
@@ -523,7 +670,7 @@ call :DESKTOP.EXE
 goto :SYSTEM.EXE
 
 
-
+rem compose desktop:
 	:COMPOSE.EXE
 	call insertphoto 0 0 77 background1.%THEME%.bmp
 	call insertphoto 740 0 77 background2.%THEME%.bmp
@@ -540,7 +687,7 @@ goto :SYSTEM.EXE
 
 
 
-
+rem CLEAR-CACHE:
 
 	:CLEARCACHE.EXE
 	SET _BATCHINSTALLER.EXE=0
@@ -568,11 +715,11 @@ goto :SYSTEM.EXE
 	exit /b
 
 
+rem TASKBAR:
 
 
 
-
-
+rem CLEAR TASKBAR:
 	:TASKBARCLEAR.EXE
 	set _START.EXE=0
 	set _SEARCH.EXE=0
@@ -584,7 +731,7 @@ goto :SYSTEM.EXE
 	exit /b
 
 
-
+rem DRAW TASKBAR:
 	:TASKBARDRAW.EXE 
 	call insertphoto 30 785 1000 taskbar.%THEME%.bmp
 	call insertphoto 0 785 1000 taskbar.%THEME%.bmp
@@ -593,12 +740,12 @@ goto :SYSTEM.EXE
 	exit /b
 
 
-
+rem ICON TASKBAR:
 	:TASKBARICON.EXE
 
-	
-	
-	
+	rem _TASKBAR.ALIGNMENT:
+	rem 0=center
+	rem 1=left
 
 
 
@@ -610,16 +757,16 @@ goto :SYSTEM.EXE
 		IF %_WIDGETS.EXE%==0 call insertphoto 15 790 105 taskbar-dashboard-off-%THEME%.bmp
 		IF %_APP.EXE%==0 call insertphoto 800 795 12 %_ACTIVEAPPIMAGE%.%THEME%.bmp
 		IF %_APP.EXE%==1 call insertphoto 800 795 12 %_ACTIVEAPPIMAGE%.%THEME%.bmp
-		
+		rem IF %_TASKBAROVERFLOW.EXE%==0 call insertphoto 850 790 105 taskbar-overflow-off-%THEME%.bmp
 		IF %_ACTION.EXE%==0 call insertphoto 1368 788 95 taskbaricons-off-%THEME%.bmp
 		IF %_NOTIFICATION.EXE%==0 call insertphoto 1405 791 95 timecenter-off-%THEME%.bmp
-		
+		rem =======
 		IF %_START.EXE%==1 call insertphoto 635 786 105 taskbar-start-on-%THEME%.bmp
 		IF %_SEARCH.EXE%==1 call insertphoto 687 789 95 taskbar-search-on-%THEME%.bmp
 		IF %_TASKVIEW.EXE%==1 call insertphoto 740 790 95 taskbar-taskview-on-%THEME%.bmp
 		IF %_WIDGETS.EXE%==1 call insertphoto 15 790 105 taskbar-dashboard-on-%THEME%.bmp
 		IF %_APP.EXE%==1 call insertphoto 804 825 120 taskbar-using-%THEME%.bmp
-		
+		rem IF %_TASKBAROVERFLOW.EXE%==1 call insertphoto 850 790 105 taskbar-overflow-on-%THEME%.bmp
 		IF %_ACTION.EXE%==1 call insertphoto 1368 788 95 taskbaricons-on-%THEME%.bmp
 		IF %_NOTIFICATION.EXE%==1 call insertphoto 1405 791 95 timecenter-on-%THEME%.bmp
 	)
@@ -631,39 +778,39 @@ goto :SYSTEM.EXE
 		IF %_TASKVIEW.EXE%==0 call insertphoto 110 786 105 taskbar-taskview-off-%THEME%.bmp
 		IF %_WIDGETS.EXE%==0 call insertphoto 165 790 105 taskbar-dashboard-off-%THEME%.bmp
 		IF %_APP.EXE%==1 call insertphoto 230 795 12 %_ACTIVEAPPIMAGE%.%THEME%.bmp
-		
+		rem IF %_TASKBAROVERFLOW.EXE%==0 call insertphoto 280 790 105 taskbar-overflow-off-%THEME%.bmp
 		IF %_ACTION.EXE%==0 call insertphoto 1368 788 95 taskbaricons-off-%THEME%.bmp
 		IF %_NOTIFICATION.EXE%==0 call insertphoto 1405 791 95 timecenter-off-%THEME%.bmp
-		
+		rem =======
 		IF %_START.EXE%==1 call insertphoto 15 786 105 taskbar-start-on-%THEME%.bmp
 		IF %_SEARCH.EXE%==1 call insertphoto 62 789 95 taskbar-search-on-%THEME%.bmp
 		IF %_TASKVIEW.EXE%==1 call insertphoto  790 95 taskbar-taskview-on-%THEME%.bmp
 		IF %_WIDGETS.EXE%==1 call insertphoto 790 105 taskbar-dashboard-on-%THEME%.bmp
-		
+		rem IF %_TASKBAROVERFLOW.EXE%==1 call insertphoto 840 790 105 taskbar-overflow-on-%THEME%.bmp
 		IF %_ACTION.EXE%==1 call insertphoto 1368 788 95 taskbaricons-on-%THEME%.bmp
 		IF %_NOTIFICATION.EXE%==1 call insertphoto 1405 791 95 timecenter-on-%THEME%.bmp
 	)
 
 
-	
-	
+	rem ======
+	rem draw time
 	CALL ButtonHeight0 201 56 %THEMEcolor% "%_WBX-TASKBAR-TIME%" 199 57 %THEMEcolor% "%_WBX-TASKBAR-DATE%" X _Button_Boxes _Button_Hover
 
 	exit /b
 
 
 
+::Some UI testing on the desktop for b1634
+
+::call insertphoto 100 100 40 UI.buttonblue.bmp
+::call insertphoto 99 101 41 UI.buttonblue.bmp
+::call insertphoto 101 104 40 UI.buttonblue.bmp
 
 
 
-
-
-
-
-
-
-
-
+::call insertphoto 100 100 40 UI.buttonwhite.bmp
+::call insertphoto 99 101 41 UI.buttonwhite.bmp
+::call insertphoto 101 104 40 UI.buttonwhite.bmp
 
 
 
@@ -671,7 +818,7 @@ goto :SYSTEM.EXE
 :DESKTOP.EXE
 cls
 set _APP.EXE=0
-
+rem its better if you dont customize your background with the developer builds right now.
 call insertphoto 0 0 %BACKGROUND.DESKTOP.SIZE% %BACKGROUND.DESKTOP.IMAGE%.%THEME%.bmp
 
 
@@ -694,7 +841,7 @@ IF %_TIPS.EXE%==1 goto :TIPS.EXE
 
 
 
-
+rem alter this for desktop to clear other app icons
 SET _ACTIVEAPPLABEL=explorer.exe
 SET _ACTIVEAPPIMAGE=explorer
 SET _ACTIVEAPPTITLE=WinBatchX
@@ -707,16 +854,16 @@ call :COMPOSE.EXE
 	PIXELDRAW /dr 50 15 /rd 65 65 /c 7
 
 
-
-
-
+rem Build Previews
+rem CALL ButtonHeight0 190 53 %THEMEcolor% "WinBatchX %_version%" X _Button_Boxes _Button_Hover
+rem CALL ButtonHeight0 189 54 %THEMEcolor% "Build %_build% Q0.85" X _Button_Boxes _Button_Hover
 
 
 call :TASKBARDRAW.EXE
 call :TASKBARICON.EXE
 
 
-
+rem  moved the draw time back to kernel! find it in kernel.exe
 
 goto :KERNEL.EXE
 
@@ -731,28 +878,28 @@ set Y=0
 
 For /f "Tokens=1,2,3,4* delims=:" %%A in ('Batbox.exe /m') Do (
 	
-	
+	rem for fallback purposes:
 	Set I=m
 	Set X=%%A
 	Set Y=%%B
 	SET M=%%C
 
 	title WinBatchX 19 [%%A] [%%B] [%%C] [%%D]
-	
+	rem [%%A] [%%B] [%%C] [%%D]
 
 
-	
+	rem reset temporary variables
 
-	
-	
-	
-	
+	REM BUG FIX- theres no need to to so! ..??
+	rem SET _WBX-TIMETEMP1=0
+	rem SET _WBX-TIMETEMP2=0
+	rem SET _WBX-TIMETEMP3=0
 
-	
+	rem do calculations
 	set "_WBX-TIMETEMP1=%Time:~0,-9%"
 	set "_WBX-TIMETEMP2=%Time:~3,-6%"
 
-	
+	rem find the time, am or pm, via the _WBX-TIMETEMP1 (hours)
 	IF %_WBX-TIMETEMP1%==12 set "_WBX-TIMETEMP1=12"&set "_WBX-TIMETEMP3=PM" &GOTO :CONTINUEKERNEL
 	IF %_WBX-TIMETEMP1%==13 set "_WBX-TIMETEMP1= 1"&set "_WBX-TIMETEMP3=PM" &GOTO :CONTINUEKERNEL
 	IF %_WBX-TIMETEMP1%==14 set "_WBX-TIMETEMP1= 2"&set "_WBX-TIMETEMP3=PM" &GOTO :CONTINUEKERNEL
@@ -768,48 +915,48 @@ For /f "Tokens=1,2,3,4* delims=:" %%A in ('Batbox.exe /m') Do (
 	IF %_WBX-TIMETEMP1%==24 set "_WBX-TIMETEMP1=12"&set "_WBX-TIMETEMP3=AM" &GOTO :CONTINUEKERNEL
 	set "_WBX-TIMETEMP3=AM"
 	:CONTINUEKERNEL
-	
+	rem do calculations
 	SET _WBX-DATETEMP1=%DATE:~-10,2%
 	SET _WBX-DATETEMP2=%DATE:~7,-5%
 	SET _WBX-DATETEMP3=%DATE:~-4%
 
-	
+	rem set the variables
 	set "_WBX-TASKBAR-TIME=%_WBX-TIMETEMP1%:%_WBX-TIMETEMP2% %_WBX-TIMETEMP3%"
 	set "_WBX-TASKBAR-DATE=%_WBX-DATETEMP1%/%_WBX-DATETEMP2%/%_WBX-DATETEMP3%"
 
 
 	CALL ButtonHeight0 201 56 %THEMEcolor% "%_WBX-TASKBAR-TIME%" 199 57 %THEMEcolor% "%_WBX-TASKBAR-DATE%" X _Button_Boxes _Button_Hover
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	rem GUI SYSTEM!
+	rem READ FIRST
+	rem .
+	rem There are 2 types of ways WinBatchX uses with NI's GUI to make and use an interface:
+	rem
+	rem X X Y Y TYPE GUI ARRAY. Example: IF %X% GTR # IF %X% LSS # IF %Y% GTR # IF %Y% LSS # COMMAND HERE
+	rem
+	rem X Y X Y TYPE GUI ARRAY. Example: IF %X% GTR # IF %Y% GTR # IF %X% LSS # IF %Y% LSS # COMMAND HERE
+	rem
+	rem None of the if's are shorter than that, but X Y X Y does better in some situations, because pair 'x y' is plot 1 and the other 'x y' is plot 2. Much easier to humans reading this, right??
+	rem Desktop Icons
+	rem IF %_ACTIVEAPPLABEL%==explorer.exe IF %I%==m IF %M% EQU 3 IF %X% GTR 1 IF %Y% GTR 8 IF %X% LSS 24 IF %Y% LSS 15 goto :CALCULATOR.EXE
 
-	
+	rem Core Taskbar!:
 	IF %_TASKBAR.ALIGNMENT%==0 (
+		rem  WIDGET BUTTON
+		rem  USING X Y X Y GUI ARRAY
 		
-		
-		
-		
-		
+		rem Hover
+		rem IF %I%==m IF %M% EQU 0 IF %_WIDGETS.EXE%==0 IF %X% GTR 0 IF %Y% GTR 56 IF %X% LSS 8 IF %Y% LSS 59 set M=0 &call insertphoto 15 790 105 taskbar-dashboard-on-%THEME%.bmp
 
 		IF %I%==m IF %M% EQU 1 IF %_WIDGETS.EXE%==1 IF %X% GTR 0 IF %Y% GTR 56 IF %X% LSS 8 IF %Y% LSS 59 set M=0 &set _WIDGETS.EXE=0 &goto :DESKTOP.EXE
 		IF %I%==m IF %M% EQU 1 IF %_WIDGETS.EXE%==0 IF %X% GTR 0 IF %Y% GTR 56 IF %X% LSS 8 IF %Y% LSS 59 set M=0 &goto :WIDGETS.EXE
 
 
-		
-		
+		rem  START MENU CLICK BUTTON
+		rem  Using X X Y Y TYPE GUI ARRAY.
 
-		
-		
+		rem Hover
+		rem IF %I%==m IF %M% EQU 0 IF %_START.EXE%==0 IF %X% GTR 91 IF %X% LSS 97 IF %Y% GTR 56 IF %Y% LSS 60 set M=0 &call insertphoto 635 786 105 taskbar-start-on-%THEME%.bmp
 
 		IF %I%==m IF %M% EQU 1 IF %_START.EXE%==0 IF %X% GTR 91 IF %X% LSS 97 IF %Y% GTR 56 IF %Y% LSS 60  goto :START.EXE
 		IF %I%==m IF %M% EQU 1 IF %_START.EXE%==1 IF %X% GTR 91 IF %X% LSS 97 IF %Y% GTR 56 IF %Y% LSS 60 set _START.EXE=0 &goto :DESKTOP.EXE
@@ -817,45 +964,45 @@ For /f "Tokens=1,2,3,4* delims=:" %%A in ('Batbox.exe /m') Do (
 		IF %I%==m IF %M% EQU 2 IF %_START.EXE%==0 IF %X% GTR 91 IF %X% LSS 97 IF %Y% GTR 56 IF %Y% LSS 60 set M=0 &goto :RIGHTCLICKSTARTMENU.EXE
 
 
+		rem  SEARCH CLICK BUTTON
+		rem  USING X X Y Y TYPE GUI ARRAY.
 		
-		
-		
-		
-		
+		rem Hover
+		rem IF %I%==m IF %M% EQU 0 IF %_SEARCH.EXE%==0 IF %X% GTR 98 IF %X% LSS 103 IF %Y% GTR 56 IF %Y% LSS 59 set M=0 &call insertphoto 687 789 95 taskbar-search-on-%THEME%.bmp
 
 		IF %I%==m IF %M% EQU 1 IF %_SEARCH.EXE%==1 IF %X% GTR 98 IF %X% LSS 103 IF %Y% GTR 56 IF %Y% LSS 59 set _SEARCH.EXE=0  &goto :DESKTOP.EXE
 		IF %I%==m IF %M% EQU 1 IF %_SEARCH.EXE%==0 IF %X% GTR 98 IF %X% LSS 103 IF %Y% GTR 56 IF %Y% LSS 59 set _SEARCH.EXE=1 &goto :SEARCH.EXE
 		
 		
-		
-		
+		rem  TASK VIEW BUTTON
+		rem  X X Y Y GUI ARRAY
 
-		
-		
+		rem Hover
+		rem IF %I%==m IF %M% EQU 0 IF %_TASKVIEW.EXE%==0 IF %X% GTR 106 IF %X% LSS 111 IF %Y% GTR 56 IF %Y% LSS 59 set M=0 &call insertphoto 740 790 95 taskbar-taskview-on-%THEME%.bmp
 
 		IF %I%==m IF %M% EQU 1 IF %_TASKVIEW.EXE%==0 IF %X% GTR 106 IF %X% LSS 111 IF %Y% GTR 56 IF %Y% LSS 59 goto :TASKVIEW.EXE
 		IF %I%==m IF %M% EQU 1 IF %_TASKVIEW.EXE%==1 IF %X% GTR 106 IF %X% LSS 111 IF %Y% GTR 56 IF %Y% LSS 59 set _TASKVIEW.EXE=0 &goto :DESKTOP.EXE
 		
-		
-		
+		rem  App Button
+		rem  X Y X Y GUI ARRAY
 		IF %I%==m IF %M% EQU 1 IF %X% GTR 112 IF %Y% GTR 56 IF %X% LSS 119 IF %Y% LSS 59 goto :%_ACTIVEAPPLABEL%
 		IF %I%==m IF %M% EQU 2 IF %X% GTR 112 IF %Y% GTR 56 IF %X% LSS 119 IF %Y% LSS 59 goto :RIGHTCLICKAPP.EXE
 		
-		
-		
+		rem  OVERFLOW TASKBAR BUTTON
+		rem  X Y X Y GUI ARRAY
 
-		
-		
+		rem Hover
+		rem IF %_TASKBAROVERFLOW.EXE%==0 IF %I%==m IF %M% EQU 0 IF %X% GTR 120 IF %Y% GTR 56 IF %X% LSS 126 IF %Y% LSS 59 set M=0 &call insertphoto 850 790 105 taskbar-overflow-on-%THEME%.bmp
 
-		
-		
+		rem IF %_TASKBAROVERFLOW.EXE%==0 IF %I%==m IF %M% EQU 1 IF %X% GTR 120 IF %Y% GTR 56 IF %X% LSS 126 IF %Y% LSS 59 goto :TASKBAROVERFLOW.EXE
+		rem IF %_TASKBAROVERFLOW.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 120 IF %Y% GTR 56 IF %X% LSS 126 IF %Y% LSS 59 set "_TASKBAROVERFLOW=0" &goto :TASKBAROVERFLOW.EXE
 	)
 
 
 	IF %_TASKBAR.ALIGNMENT%==1 (
 
-		
-		
+		rem  START MENU CLICK BUTTON
+		rem  Using X X Y Y TYPE GUI ARRAY.
 
 		IF %I%==m IF %M% EQU 1 IF %_START.EXE%==0 IF %X% GTR 0 IF %X% LSS 8 IF %Y% GTR 56 IF %Y% LSS 60  goto :START.EXE
 		IF %I%==m IF %M% EQU 1 IF %_START.EXE%==1 IF %X% GTR 0 IF %X% LSS 8 IF %Y% GTR 56 IF %Y% LSS 60 set _START.EXE=0 &goto :DESKTOP.EXE
@@ -863,69 +1010,69 @@ For /f "Tokens=1,2,3,4* delims=:" %%A in ('Batbox.exe /m') Do (
 		IF %I%==m IF %M% EQU 2 IF %_START.EXE%==0 IF %X% GTR 0 IF %X% LSS 8 IF %Y% GTR 56 IF %Y% LSS 60 set M=0 &goto :RIGHTCLICKSTARTMENU.EXE
 
 
-		
-		
+		rem  SEARCH CLICK BUTTON
+		rem  USING X X Y Y TYPE GUI ARRAY.
 		IF %I%==m IF %M% EQU 1 IF %_SEARCH.EXE%==1 IF %X% GTR 8 IF %X% LSS 14 IF %Y% GTR 56 IF %Y% LSS 59 set _SEARCH.EXE=0  &goto :DESKTOP.EXE
 		IF %I%==m IF %M% EQU 1 IF %_SEARCH.EXE%==0 IF %X% GTR 8 IF %X% LSS 14 IF %Y% GTR 56 IF %Y% LSS 59 set _SEARCH.EXE=1 &goto :SEARCH.EXE
 		
 		
-		
-		
+		rem  TASK VIEW BUTTON
+		rem  X X Y Y GUI ARRAY
 		IF %I%==m IF %M% EQU 1 IF %_TASKVIEW.EXE%==0 IF %X% GTR 15 IF %X% LSS 21 IF %Y% GTR 56 IF %Y% LSS 59 goto :TASKVIEW.EXE
 		IF %I%==m IF %M% EQU 1 IF %_TASKVIEW.EXE%==1 IF %X% GTR 15 IF %X% LSS 21 IF %Y% GTR 56 IF %Y% LSS 59 set _TASKVIEW.EXE=0 &goto :DESKTOP.EXE
 		
-		
-		
+		rem  WIDGET BUTTON
+		rem  USING X Y X Y GUI ARRAY
 		IF %I%==m IF %M% EQU 1 IF %_WIDGETS.EXE%==1 IF %X% GTR 24 IF %Y% GTR 8 IF %X% LSS 29 IF %Y% LSS 59 set M=0 &set _WIDGETS.EXE=0 &goto :DESKTOP.EXE
 		IF %I%==m IF %M% EQU 1 IF %_WIDGETS.EXE%==0 IF %X% GTR 24 IF %Y% GTR 8 IF %X% LSS 29 IF %Y% LSS 59 set M=0 &goto :WIDGETS.EXE
 
 
-		
-		
+		rem  App Button
+		rem  X Y X Y GUI ARRAY
 		IF %I%==m IF %M% EQU 1 IF %X% GTR 31 IF %Y% GTR 56 IF %X% LSS 39 IF %Y% LSS 59 goto :%_ACTIVEAPPLABEL%
 		IF %I%==m IF %M% EQU 2 IF %X% GTR 31 IF %Y% GTR 56 IF %X% LSS 39 IF %Y% LSS 59 goto :RIGHTCLICKAPP.EXE
 		
 
-		
-		
-		
-		
+		rem  OVERFLOW TASKBAR BUTTON
+		rem  X Y X Y GUI ARRAY
+		rem IF %_TASKBAROVERFLOW.EXE%==0 IF %I%==m IF %M% EQU 1 IF %X% GTR 40 IF %Y% GTR 56 IF %X% LSS 45 IF %Y% LSS 59 goto :TASKBAROVERFLOW.EXE
+		rem IF %_TASKBAROVERFLOW.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 40 IF %Y% GTR 56 IF %X% LSS 45 IF %Y% LSS 59 set "_TASKBAROVERFLOW=0" &goto :TASKBAROVERFLOW.EXE
 	)
 
 
 
-		
-		
+		rem  ACTION CENTER BUTTON
+		rem  X Y X Y GUI ARRAY
 		IF %_ACTION.EXE%==1 IF %M% EQU 1 IF %X% GTR 195 IF %Y% GTR 56 IF %X% LSS 199 IF %Y% LSS 59 set M=0 &set _ACTION.EXE=0 &timeout /T 0 /NOBREAK > nul &goto :DESKTOP.EXE
 		IF %_ACTION.EXE%==0 IF %I%==m IF %M% EQU 1 IF %X% GTR 195 IF %Y% GTR 56 IF %X% LSS 199 IF %Y% LSS 59 goto :ACTION.EXE
 
-		
-		
+		rem  NOTIFICATION CENTER BUTTON
+		rem  X Y X Y GUI ARRAY
 		IF %_NOTIFICATION.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 200 IF %Y% GTR 56 IF %X% LSS 212 IF %Y% LSS 58 set _NOTIFICATION.EXE=0 &goto :DESKTOP.EXE
 		IF %_NOTIFICATION.EXE%==0 IF %I%==m IF %M% EQU 1 IF %X% GTR 200 IF %Y% GTR 56 IF %X% LSS 212 IF %Y% LSS 58 GOTO :NOTIFICATION.EXE
 
 
 
-		
+		rem  RIGHTCLICKDESKTOP
 		IF %I%==m IF %M% EQU 2 IF %X% GTR 0 IF %X% LSS 200 IF %Y% GTR 0 IF %Y% LSS 55 IF %_ACTIVEAPPLABEL%==explorer.exe goto :RIGHTCLICKDESKTOP.EXE
 
 
-		
+		rem  RIGHTCLICKTASKBAR
 		IF %I%==m IF %M% EQU 2 IF %X% GTR 0 IF %X% LSS 212 IF %Y% GTR 56 IF %Y% LSS 59 goto :RIGHTCLICKTASKBAR.EXE
 
 
 
-
+rem Feature system settings-
 	
-	
-	
-	
+	rem  START MENU TASKS
+	rem  Using X Y X Y TYPE GUI ARRAY.
+	rem 
 	IF %_START.EXE%==1 (
 
-	
+	rem Search Bar:
 		IF %I%==m IF %M% EQU 1 IF %X% GTR 74 IF %Y% GTR 10 IF %X% LSS 150 IF %Y% LSS 12 set _SEARCH.EXE=1 &goto :SEARCH.EXE
 
-	
+	rem Apps:
 		IF %I%==m IF %M% EQU 1 IF %X% GTR 135 IF %Y% GTR 13 IF %X% LSS 146 IF %Y% LSS 15 set START.EXE=0 &goto :START-ALLAPPS.EXE
     	IF %I%==m IF %M% EQU 1 IF %X% GTR 74 IF %Y% GTR 16 IF %X% LSS 89 IF %Y% LSS 22 set _START.EXE=0 &CALL BOX 74 16 7 15 - - f3  1 &timeout /T 0 /NOBREAK > nul &goto :EDGE.EXE
     	IF %I%==m IF %M% EQU 1 IF %X% GTR 91 IF %Y% GTR 16 IF %X% LSS 101 IF %Y% LSS 22 set _START.EXE=0 &CALL BOX 91 16 7 12 - - f3  1 &timeout /T 0 /NOBREAK > nul &goto :NOTEPAD.EXE
@@ -945,57 +1092,57 @@ For /f "Tokens=1,2,3,4* delims=:" %%A in ('Batbox.exe /m') Do (
 
 
 
+	rem  START MENU POWER TASKS
+	rem  Using X Y X Y TYPE GUI ARRAY.
 	
-	
-	
-	
+	rem  Sign Out
 	IF %_START.EXE%==1 IF %_START-POWERMENU.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 137 IF %Y% GTR 44 IF %X% LSS 149 IF %Y% LSS 46 set _START-POWERMENU.EXE=0 &goto :WBX-LOGIN.EXE
 	
-	
+	rem  Shut Down
 	IF %_START.EXE%==1 IF %_START-POWERMENU.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 137 IF %Y% GTR 46 IF %X% LSS 149 IF %Y% LSS 48 set _START-POWERMENU.EXE=0 &goto :SHUTDOWN.EXE
 	
-	
+	rem  Restart
 	IF %_START.EXE%==1 IF %_START-POWERMENU.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 137 IF %Y% GTR 48 IF %X% LSS 149 IF %Y% LSS 50 set _START-POWERMENU.EXE=0 &goto :RESTART.EXE
 	
-	
+	rem  Open
 	IF %_START.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 140 IF %Y% GTR 51 IF %X% LSS 145 IF %Y% LSS 53 set _START-POWERMENU.EXE=1 &goto :START-POWERMENU.EXE
 	
-	
+	rem  Close
 	IF %_START.EXE%==1 IF %_START-POWERMENU.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 71 IF %Y% GTR 9 IF %X% LSS 152 IF %Y% LSS 54 set _START-POWERMENU.EXE=0 &goto :START.EXE
 	
 
 
 
-	
-	
+	rem  SEARCH TASKS
+	rem  USING X X Y Y TYPE GUI ARRAY.
 	IF %_SEARCH.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 70 IF %X% LSS 154 IF %Y% GTR 26 IF %Y% LSS 28 goto :SEARCH.RUN.EXE
 		
 
-	
-	
+	rem  TASK VIEW TASKS --funny, [task] view [tasks]
+	rem  USING X Y X Y TYPE GUI ARRAY.
 
-	
+	rem Close windows:
 	IF %_TASKVIEW.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 147 IF %Y% GTR 14 IF %X% LSS 152 IF %Y% LSS 16 call :CLEARCACHE.EXE &goto :DESKTOP.EXE
 
 
 
 
-	
-	
+	rem  ACTION CENTER TASKS
+	rem  USING X X Y Y TYPE GUI ARRAY.
 		
 
-	
+	rem the menu:
 
-		
+		rem Accessiblity
 		IF %_ACTION.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 166 IF %X% LSS 179 IF %Y% GTR 43 IF %Y% LSS 45 set _SETTINGS.EXE=0 &set _SETTINGS.SECTION=ACCESSIBILITY &goto :SETTINGS.EXE
 
 
-	
+	rem Bottom of the menu:
 
-		
+		rem To personalize the menu:
 		IF %_ACTION.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 197 IF %X% LSS 201 IF %Y% GTR 52 IF %Y% LSS 54 goto :SETTINGS.EXE
 
-		
+		rem Settings shortcut
 		IF %_ACTION.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 203 IF %X% LSS 207 IF %Y% GTR 52 IF %Y% LSS 54 goto :SETTINGS.EXE
 	
 
@@ -1037,11 +1184,11 @@ For /f "Tokens=1,2,3,4* delims=:" %%A in ('Batbox.exe /m') Do (
 
 
 
-
+rem Batch App controls-
 
 IF %I%==m IF %M% EQU 1 IF %X% GTR 200 IF %Y% GTR 0 IF %X% LSS 211 IF %Y% LSS 11 set M=0 &call :CLEARCACHE.EXE &goto :DESKTOP.EXE
 
-
+rem settings revision 4
 	IF %_ACTIVEAPPLABEL%==settings.exe (
 		IF %I%==m IF %M% EQU 1 IF %X% GTR 1 IF %Y% GTR 12 IF %X% LSS 33 IF %Y% LSS 14 goto :SETTINGS.SYSTEM
 		IF %I%==m IF %M% EQU 1 IF %X% GTR 1 IF %Y% GTR 15 IF %X% LSS 33 IF %Y% LSS 17 goto :SETTINGS.PERSONALIZATION
@@ -1053,7 +1200,7 @@ IF %I%==m IF %M% EQU 1 IF %X% GTR 200 IF %Y% GTR 0 IF %X% LSS 211 IF %Y% LSS 11 
 		IF %I%==m IF %M% EQU 1 IF %X% GTR 1 IF %Y% GTR 33 IF %X% LSS 33 IF %Y% LSS 35 goto :SETTINGS.UPDATE
 
 
-	
+	rem opening system-specific pages on settings
 	IF %_SETTINGS.SECTION%==SYSTEM IF %I%==m IF %M% EQU 1 IF %X% GTR 58 IF %Y% GTR 16 IF %X% LSS 202 IF %Y% LSS 19 goto :SETTINGS.SYSTEM.DISPLAY
 	IF %_SETTINGS.SECTION%==SYSTEM IF %I%==m IF %M% EQU 1 IF %X% GTR 58 IF %Y% GTR 19 IF %X% LSS 202 IF %Y% LSS 22 goto :SETTINGS.SYSTEM.SOUND
 	IF %_SETTINGS.SECTION%==SYSTEM IF %I%==m IF %M% EQU 1 IF %X% GTR 58 IF %Y% GTR 22 IF %X% LSS 202 IF %Y% LSS 25 goto :SETTINGS.SYSTEM.NOTIFICATION
@@ -1067,7 +1214,7 @@ IF %I%==m IF %M% EQU 1 IF %X% GTR 200 IF %Y% GTR 0 IF %X% LSS 211 IF %Y% LSS 11 
 
 	IF %_SETTINGS.SECTION%==PERSONALIZATION IF %I%==m IF %M% EQU 1 IF %X% GTR 58 IF %Y% GTR 45 IF %X% LSS 202 IF %Y% LSS 48 goto :SETTINGS.PERSONALIZATION.TASKBAR
 
-	
+	rem closing system-based pages on settings
 	IF %_SETTINGS.SECTION%==SYSTEM.DISPLAY IF %I%==m IF %M% EQU 1 IF %X% GTR 56 IF %Y% GTR 4 IF %X% LSS 63 IF %Y% LSS 6 goto :SETTINGS.SYSTEM
 	IF %_SETTINGS.SECTION%==SYSTEM.SOUND IF %I%==m IF %M% EQU 1 IF %X% GTR 56 IF %Y% GTR 4 IF %X% LSS 63 IF %Y% LSS 6 goto :SETTINGS.SYSTEM
 	IF %_SETTINGS.SECTION%==SYSTEM.NOTIFICATION IF %I%==m IF %M% EQU 1 IF %X% GTR 56 IF %Y% GTR 4 IF %X% LSS 63 IF %Y% LSS 6 goto :SETTINGS.SYSTEM
@@ -1083,7 +1230,7 @@ IF %I%==m IF %M% EQU 1 IF %X% GTR 200 IF %Y% GTR 0 IF %X% LSS 211 IF %Y% LSS 11 
 
 
 
-	
+	rem SYSTEM.DISPLAY
 	IF %_SETTINGS.SECTION%==SYSTEM.DISPLAY IF %I%==m IF %M% EQU 1 IF %X% GTR 122 IF %Y% GTR 8 IF %X% LSS 127 IF %Y% LSS 10 CALL ButtonHeight0 65 8 f0 "                                                                  " X _Button_Boxes _Button_Hover
 
 	IF %_SETTINGS.SECTION%==PERSONALIZATION IF %I%==m IF %M% EQU 1 IF %X% GTR 56 IF %Y% GTR 4 IF %X% LSS 63 IF %Y% LSS 6 goto :SETTINGS.PERSONALIZATION
@@ -1119,7 +1266,7 @@ IF %I%==m IF %M% EQU 1 IF %X% GTR 200 IF %Y% GTR 0 IF %X% LSS 211 IF %Y% LSS 11 
 	IF %_SETTINGS.SECTION%==UPDATE IF %I%==m IF %M% EQU 1 IF %X% GTR 180 IF %Y% GTR 8 IF %X% LSS 201 IF %Y% LSS 12 goto :SETTINGS.UPDATE.WGET
 	
 	
-	
+	rem PAINT
 	IF %_PAINT.EXE%==1 (
 		IF %I%==m IF %M% EQU 1 IF %X% GTR 7 IF %X% LSS 178 IF %Y% GTR 10 IF %Y% LSS 53 CALL ButtonHeight0 %X% %Y% %_PAINT.COLOR%0 " " X _Button_Boxes _Button_Hover &goto :KERNEL.EXE
 		IF %I%==m IF %M% EQU 1 IF %X% GTR 21 IF %X% LSS 25 IF %Y% GTR 5 IF %Y% LSS 7 set "_PAINT.COLOR=0" &goto :KERNEL.EXE
@@ -1137,22 +1284,22 @@ IF %I%==m IF %M% EQU 1 IF %X% GTR 200 IF %Y% GTR 0 IF %X% LSS 211 IF %Y% LSS 11 
 		IF %I%==m IF %M% EQU 1 IF %X% GTR 81 IF %X% LSS 85 IF %Y% GTR 5 IF %Y% LSS 7 set "_PAINT.COLOR=d" &goto :KERNEL.EXE
 	)
 
-	
+	rem TERMINAL
 	IF %_TERMINAL.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 90 IF %Y% GTR 30 IF %X% LSS 106 IF %Y% LSS 32 goto :TERMINAL.START
 	IF %_TERMINAL.EXE%==1 IF %I%==m IF %M% EQU 0 IF %X% GTR 0 IF %X% LSS 200 IF %Y% GTR 0 IF %Y% LSS 55 CALL ButtonBorder 90 30 0f "Open Terminal" X _Button_Boxes _Button_Hover
 	IF %_TERMINAL.EXE%==1 IF %I%==m IF %M% EQU 0 IF %X% GTR 90 IF %Y% GTR 30 IF %X% LSS 106 IF %Y% LSS 32 CALL ButtonBorder 90 30 03 "Open Terminal" X _Button_Boxes _Button_Hover
 
 
-	
+	rem  SECURITY!
 	IF %_SECURITY.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 14 IF %Y% GTR 7 IF %X% LSS 30 IF %Y% LSS 10 call :SECURITY.SCAN &goto :SECURITY.EXE
 
 
-	
+	rem  PHOTOS
 
-	
+	rem  Import
 	IF %_PHOTOS.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 172 IF %Y% GTR 0 IF %X% LSS 184 IF %Y% LSS 2 call :PHOTOS.SAVEFILEDIALOG &goto :PHOTOS.EXE
 	
-	
+	rem  Settings
 	IF %_PHOTOS.EXE%==1 IF %I%==m IF %M% EQU 1 IF %X% GTR 188 IF %Y% GTR 0 IF %X% LSS 195 IF %Y% LSS 2 call :PHOTOS.SAVEFILEDIALOG &goto :PHOTOS.EXE
 	)
 goto :KERNEL.EXE
@@ -1165,13 +1312,13 @@ goto :KERNEL.EXE
 
 :START.EXE
 
-
+rem To make sure all features are 'shut down' correctly:
 call :TASKBARCLEAR.EXE
 
 set M=0
 set _START.EXE=1
 call :TASKBARICON.EXE
-
+rem  The least to make are sharp corners rounded (3px):
 
 call insertphoto 500 130 544 blank.%THEME%.bmp
 call insertphoto 494 132 530 blank.%THEME%.bmp
@@ -1190,52 +1337,52 @@ call insertphoto 1038 735 30 blank.%THEME%.bmp
 call insertphoto 1041 137 30 blank.%THEME%.bmp
 call insertphoto 1039 132 30 blank.%THEME%.bmp
 
+rem  Start Outlined:
+rem  Rounded to support 3px corners (3px corners are a test)
 
-
-
-
+rem  Top
 PIXELDRAW /dl /p 501 130 1060 130 /c 7
 PIXELDRAW /dl /p 501 130 490 136 /c 7
 
-
+rem  Left Side
 PIXELDRAW /dl /p 490 136 490 764 /c 7
 PIXELDRAW /dl /p 490 764 501 770 /c 7
 
-
+rem  Right Side
 PIXELDRAW /dl /p 1072 136 1072 764 /c 7
 PIXELDRAW /dl /p 1060 770 1072 764 /c 7
 
-
+rem  Bottom
 PIXELDRAW /dl /p 501 770 1060 770 /c 7
 PIXELDRAW /dl /p 1060 130 1072 136 /c 7
 
-
+rem Line border for bottom/up menu
 PIXELDRAW /dl /p 490 700 1072 700 /c 7
 
 
-
-
+rem  Search Bar Outline Rounded:
+rem  Top
 PIXELDRAW /dl /p 521 143 1049 143 /c 7
-
+rem  Left Side
 PIXELDRAW /dl /p 519 145 519 175 /c 7
-
+rem  Right Side
 PIXELDRAW /dl /p 1050 145 1050 175 /c 7
-
+rem  Bottom
 PIXELDRAW /dl /p 521 177 1049 177 /c 9
 
 
 
-
-
+rem  All Apps Outline Rounded:
+rem  Top
 PIXELDRAW /dl /p 945 206 1028 206 /c 7
 
-
+rem  Left Side
 PIXELDRAW /dl /p 943 208 943 226 /c 7
 
-
+rem  Right Side
 PIXELDRAW /dl /p 1030 208 1030 226 /c 7
 
-
+rem  Bottom
 PIXELDRAW /dl /p 945 228 1028 228 /c 7
 
 call insertphoto 535 150 120 taskbar-searchbar-top.bmp
@@ -1267,7 +1414,7 @@ CALL ButtonHeight0 80 10 %THEMEcolor% "Type here to search" X _Button_Boxes _But
 CALL ButtonHeight0 77 14 %THEMEcolor% "Pinned" 133 14 %THEMEcolor% " All Apps > " X _Button_Boxes _Button_Hover
 CALL ButtonHeight0 75 35 %THEMEcolor% "Recomended" X _Button_Boxes _Button_Hover
 CALL ButtonHeight0 77 20 %THEMEcolor% "Edge" 91 20 %THEMEcolor% "Notepad" 102 20 %THEMEcolor% "File Explorer" 121 20 %THEMEcolor% "Settings" 138 20 %THEMEcolor% "Security" 75 26 %THEMEcolor% "Terminal" 91 26 %THEMEcolor% "Photos" 106 26 %THEMEcolor% "Paint" 120 26 %THEMEcolor% "Calculator" 138 26 %THEMEcolor% "Calendar" 77 32 %THEMEcolor% "Setup" 88 32 %THEMEcolor% "Task Manager" 80 51 %THEMEcolor% "%_WBX_USERNAME%" X _Button_Boxes _Button_Hover
-
+rem  CALL ButtonHeight0 75 35 %THEMEcolor% "Recommended" 75 38 %THEMEcolor% "Get Started" 75 39 %THEMEcolor% "Welcome to WinBatchX" 75 41 %THEMEcolor% "Coming soon." X _Button_Boxes _Button_Hover
 goto :KERNEL.EXE
 
 
@@ -1289,28 +1436,28 @@ call insertphoto 1039 132 30 blank.%THEME%.bmp
 
 
 
-
-
+rem  Search Bar Outline Rounded:
+rem  Top
 PIXELDRAW /dl /p 521 143 1049 143 /c 7
-
+rem  Left Side
 PIXELDRAW /dl /p 519 145 519 175 /c 7
-
+rem  Right Side
 PIXELDRAW /dl /p 1050 145 1050 175 /c 7
-
+rem  Bottom
 PIXELDRAW /dl /p 521 177 1049 177 /c 9
 
 
-
-
+rem  All Apps Outline Rounded:
+rem  Top
 PIXELDRAW /dl /p 945 206 1028 206 /c 7
 
-
+rem  Left Side
 PIXELDRAW /dl /p 943 208 943 226 /c 7
 
-
+rem  Right Side
 PIXELDRAW /dl /p 1030 208 1030 226 /c 7
 
-
+rem  Bottom
 PIXELDRAW /dl /p 945 228 1028 228 /c 7
 
 call insertphoto 535 150 120 taskbar-searchbar-top.bmp
@@ -1353,15 +1500,15 @@ goto :DESKTOP.EXE
 :START-POWERMENU.EXE
 set _START-POWERMENU.EXE=1
 
+rem  Power Button Outlined:
 
-
-
+rem  Top
 PIXELDRAW /dl /p 988 720 1020 720 /c 7
-
+rem  Left Side
 PIXELDRAW /dl /p 984 722 984 755 /c 7
-
+rem  Right Side
 PIXELDRAW /dl /p 1022 722 1022 755 /c 7
-
+rem  Bottom
 PIXELDRAW /dl /p 988 757 1020 757 /c 7
 
 
@@ -1381,13 +1528,13 @@ call insertphoto 950 670 40 UI.buttonwhite.bmp
 call insertphoto 949 671 41 UI.buttonwhite.bmp
 call insertphoto 951 674 40 UI.buttonwhite.bmp
 
-
+rem  Top
 PIXELDRAW /dl /p 951 620 1049 620 /c 7
-
+rem  Left Side
 PIXELDRAW /dl /p 949 622 949 708 /c 7
-
+rem  Right Side
 PIXELDRAW /dl /p 1051 622 1051 708 /c 7
-
+rem  Bottom
 PIXELDRAW /dl /p 951 710 1049 710 /c 7
 
 
@@ -1422,7 +1569,7 @@ goto :KERNEL.EXE
 
 :SEARCH.EXE
 
-
+rem To make sure all features are 'shut down' correctly:
 call :TASKBARCLEAR.EXE
 
 
@@ -1441,17 +1588,17 @@ call insertphoto 776 420 313 blank.%THEME%.bmp
 
 call insertphoto 469 421 313 blank.%THEME%.bmp
 call insertphoto 775 421 313 blank.%THEME%.bmp
+rem PIXELDRAW /dr 470 355 /rd 631 415 /c 7
 
 
-
-
-
+rem  Search Bar Outline Rounded:
+rem  Top
 PIXELDRAW /dl /p 491 370 1079 370 /c 7
-
+rem  Left Side
 PIXELDRAW /dl /p 489 372 489 398 /c 7
-
+rem  Right Side
 PIXELDRAW /dl /p 1080 372 1080 398 /c 7
-
+rem  Bottom
 PIXELDRAW /dl /p 491 400 1079 400 /c 9
 
 call insertphoto 500 374 120 taskbar-searchbar-top.bmp
@@ -1501,7 +1648,7 @@ goto :KERNEL.EXE
 
 :TASKVIEW.EXE
 
-
+rem To make sure all features are 'shut down' correctly:
 call :TASKBARCLEAR.EXE
 
 
@@ -1529,11 +1676,11 @@ set M=0
 	call insertphoto 1437 716 42 blank.%THEME%.bmp
 	call insertphoto 20 715 1000 taskbar.%THEME%.bmp
 
-	
+	rem DEBUG:  IF %_APP.EXE%==0 call BUTTONBORDER 99 23 %THEMEcolor% "No apps open." X _Button_Boxes _Button_Hover
 
 	IF %_APP.EXE%==1 call insertphoto 460 200 60 blankloadapp.%THEME%.bmp &call insertphoto 460 208 60 blankloadapp.%THEME%.bmp &call insertphoto 458 202 61 blankloadapp.%THEME%.bmp &call insertphoto 467 200 60 blankloadapp.%THEME%.bmp &call insertphoto 467 208 60 blankloadapp.%THEME%.bmp &call insertphoto 730 300 25 %_ACTIVEAPPIMAGE%.%THEME%.bmp 
 	call insertphoto 465 204 10 %_ACTIVEAPPIMAGE%.%THEME%.bmp &call ButtonHeight0 69 14 %THEMEcolor% "%_ACTIVEAPPTITLE%" X _Button_Boxes _Button_Hover &call insertphoto 1040 210 120 UI.context.close.bmp
-	
+	rem  CALL BOX 74 16 10 35 - - f0  0
 
 	call BUTTONHEIGHT0 91 43 %THEMEcolor% "Desktop 1" X _Button_Boxes _Button_Hover
 	call insertphoto 650 630 10 "%BACKGROUND.DESKTOP.IMAGE%.%THEME%.bmp"
@@ -1554,7 +1701,7 @@ set M=0
 
 :WIDGETS.EXE
 
-
+rem To make sure all features are 'shut down' correctly:
 call :TASKBARCLEAR.EXE
 
 
@@ -1563,22 +1710,22 @@ set _WIDGETS.EXE=1
 call :TASKBARICON.EXE
 call insertphoto 30 30 650 blank.%THEME%.bmp
 
-
+rem  Left Side of GUI
 call insertphoto 29 31 50 blank.%THEME%.bmp
 call insertphoto 29 33 646 blank.%THEME%.bmp
 
 
-
+rem  Right Side of GUI
 call insertphoto 655 31 50 blank.%THEME%.bmp
 call insertphoto 35 33 646 blank.%THEME%.bmp
 
-
+rem Top
 PIXELDRAW /dl /p 31 30 703 30 /c 7
-
+rem Left
 PIXELDRAW /dl /p 29 32 29 755 /c 7
-
+rem Right
 PIXELDRAW /dl /p 705 32 705 755 /c 7
-
+rem Bottom
 PIXELDRAW /dl /p 31 757 703 757 /c 7
 
 call ButtonHeight0 45 2 %THEMEcolor% "%_WBX-TASKBAR-TIME% " X _Button_Boxes _Button_Hover
@@ -1594,8 +1741,8 @@ call ButtonHeight0 10 10 %THEMEcolor% "%Newest-Version-Release%" X _Button_Boxes
 call ButtonHeight0 10 14 %THEMEcolor% "%Newest-Version-Release-Link%" X _Button_Boxes _Button_Hover
 
 
-
-
+rem call ButtonHeight0 54 8 %THEMEcolor% "Tips" X _Button_Boxes _Button_Hover
+rem call ButtonHeight0 54 10 %THEMEcolor% "This widget is in beta" X _Button_Boxes _Button_Hover
 
 
 
@@ -1611,8 +1758,8 @@ call ButtonHeight0 10 20 %THEMEcolor% "%Newest-Build-Release%" X _Button_Boxes _
 call ButtonHeight0 10 24 %THEMEcolor% "%Newest-Build-Release-Link%" X _Button_Boxes _Button_Hover
 
 
-
-
+rem call ButtonHeight0 54 18 %THEMEcolor% "Calendar" X _Button_Boxes _Button_Hover
+rem call ButtonHeight0 54 20 %THEMEcolor% "This widget will be in 18.1." X _Button_Boxes _Button_Hover
 
 
 
@@ -1635,7 +1782,7 @@ goto :KERNEL.EXE
 
 :ACTION.EXE
 
-
+rem To make sure all features are 'shut down' correctly:
 call :TASKBARCLEAR.EXE
 
 
@@ -1643,8 +1790,8 @@ set M=0
 set _ACTION.EXE=1
 call :TASKBARICON.EXE
 
-
-
+rem 1663- outline the rounded action center more efficent
+rem removed in this build due to errors
 
 call insertphoto 1150 590 157 blank.light.bmp
 call insertphoto 1148 592 157 blank.light.bmp
@@ -1681,7 +1828,7 @@ goto :KERNEL.EXE
 
 :NOTIFICATION.EXE
 
-
+rem To make sure all features are 'shut down' correctly:
 call :TASKBARCLEAR.EXE
 
 
@@ -1689,20 +1836,20 @@ set M=0
 set _NOTIFICATION.EXE=1
 call :TASKBARICON.EXE
 
-
+::draw backgrounds
 
 call insertphoto 1220 480 252 blank.%THEME%.bmp
 call insertphoto 1218 481 252 blank.%THEME%.bmp
 call insertphoto 1217 483 252 blank.%THEME%.bmp
+:: Outline corners
 
-
-
+::Top
 PIXELDRAW /dl /p 1221 480 1480 480 /c 7
-
+::Left
 PIXELDRAW /dl /p 1219 482 1219 762 /c 7
-
+::Right
 PIXELDRAW /dl /p 1482 482 1482 762 /c 7
-
+::Bottom
 PIXELDRAW /dl /p 1221 764 1480 764 /c 7
 
 
@@ -1717,8 +1864,8 @@ Call ButtonHeight0 176 49 f0 "                              " X _Button_Boxes _B
 Call ButtonHeight0 176 51 f0 "                              " X _Button_Boxes _Button_Hover
 
 
-
-
+:: Decided to let the system do the "math" on the spot
+:: (Its not fast but it works)
 set "NOTIF-DATE1=%DATE:~-10,2%"
 IF %NOTIF-DATE1%==01 set "NOTIF-DATE2=JAN" &set "NOTIF-DATE3=January" &goto :WBX-NOTIFICATIONCENTER.JAN
 IF %NOTIF-DATE1%==02 set "NOTIF-DATE2=FEB" &set "NOTIF-DATE3=Febuary" &goto :WBX-NOTIFICATIONCENTER.FEB
@@ -1861,7 +2008,7 @@ goto :NOTIFICATION.EXE1
 :NOTIFICATION.EXE1
 
 
-
+::draw backgrounds
 call insertphoto 1220 350 102 blank.%THEME%.bmp
 call insertphoto 1218 351 102 blank.%THEME%.bmp
 call insertphoto 1217 353 102 blank.%THEME%.bmp
@@ -1929,27 +2076,27 @@ goto :KERNEL.EXE
 :RIGHTCLICKDESKTOP.EXE
 set M=0
 
+rem Debug purposes: do not use in alpha builds.
+rem It's WAYY too slow!
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+rem set /A "Xright=%X%-1"
+rem set /A "Yright1=%Y%+1"
+rem set /A "Yright2=%Y%+3"
+rem set /A "Yright3=%Y%+5"
+rem set /A "Yright4=%Y%+7"
+rem set /A "Yright5=%Y%+9"
+rem set /A "Yright6=%Y%+11"
+rem set /A "Yright7=%Y%+13"
+rem set /A "Yright8=%Y%+14"
+rem Call ButtonHeight0 %Xright% %Yright1% f0 "                       " X _Button_Boxes _Button_Hover
+rem Call ButtonHeight0 %Xright% %Yright2% f0 "                       " X _Button_Boxes _Button_Hover
+rem Call ButtonHeight0 %Xright% %Yright3% f0 "                       " X _Button_Boxes _Button_Hover
+rem Call ButtonHeight0 %Xright% %Yright4% f0 "                       " X _Button_Boxes _Button_Hover
+rem Call ButtonHeight0 %Xright% %Yright5% f0 "                       " X _Button_Boxes _Button_Hover
+rem Call ButtonHeight0 %Xright% %Yright6% f0 "                       " X _Button_Boxes _Button_Hover
+rem Call ButtonHeight0 %Xright% %Yright7% f0 "                       " X _Button_Boxes _Button_Hover
+rem Call ButtonHeight0 %Xright% %Yright8% f0 "                       " X _Button_Boxes _Button_Hover
 
 call list %X% %Y% %THEMEcolor% "View               >" " " "Sort by            >" " " "Refresh" "____________________" " " "New                > " "____________________" " " "Display Settings" " " "Personalize" "____________________" " " "Open in Terminal"
 IF %ERRORLEVEL%==0 goto :DESKTOP.EXE
@@ -2016,7 +2163,7 @@ goto :RIGHTCLICKDESKTOP.VIEW
 set M=0
 set Y-taskbar=50
 
-
+rem  Rightclicktaskbar can't be seen from past the desktop
 IF %X% GTR 192 set X=192
 
 call list %X% %Y-taskbar% %THEMEcolor% "Task Manager" "________________" " " "Taskbar Settings"
@@ -2038,15 +2185,15 @@ goto :RIGHTCLICKTASKBAR.EXE
 set M=0
 set Y-taskbar=52
 
-
+rem  Rightclicktaskbar can't be seen from past the desktop
 IF %X% GTR 192 set X=192
 
 call list 85 28 %THEMEcolor% "Installed Apps" " " "Power Options" " " "System" " " "NIFS Management" " " "WinBatchX Management" " " "Terminal" " " "Task Manager" " " "Settings" " " "File Explorer" " " "Search" " " "Run" "_____________________" " " "Shut down" " " "Desktop"
 
 
-IF %ERRORLEVEL%==0 goto 
+IF %ERRORLEVEL%==0 goto rem :SETTINGS.APPS.INSTALLED
 IF %ERRORLEVEL%==1 set _SETTINGS.EXE=0 &set _SETTINGS.SECTION=SYSTEM.POWER &goto :SETTINGS.EXE
-IF %ERRORLEVEL%==3 
+IF %ERRORLEVEL%==3 rem error
 IF %ERRORLEVEL%==5 goto :SETTINGS.SYSTEM.ABOUT
 IF %ERRORLEVEL%==7 goto :DESKTOP.EXE
 IF %ERRORLEVEL%==9 goto :DESKTOP.EXE
@@ -2116,7 +2263,7 @@ timeout /T 3 > nul
 
 
 set START-STATUS=0
-
+rem write a new data-system.bat file
 (
   echo SET START-STATUS=%START-STATUS%
   echo SET FLAG-RECOVERYRESTART=%FLAG-RECOVERYRESTART%
@@ -2147,7 +2294,7 @@ timeout /T 5 > nul
 
 set START-STATUS=0
 set RESTART-STATUS=1
-
+rem write a new data-system.bat file
 (
   echo SET START-STATUS=%START-STATUS%
   echo SET FLAG-RECOVERYRESTART=%FLAG-RECOVERYRESTART%
@@ -2159,6 +2306,9 @@ start kernelreboot reboot
 goto :SHUTDOWN.EXE
 
 
+rem cd ..
+rem call WinBatchX.bat
+rem exit
 
 
 
@@ -2274,10 +2424,30 @@ goto :SHUTDOWN.EXE
 
 
 
+rem  WinBatchX Applications 
+rem  These applications created are under the Unlicense license.
 
 
+rem  These are in order
+rem  1. Notepad
+rem  2. Paint
+rem  3. Settings
+rem  4. Edge
+rem  5. File Explorer
+rem  6. Security
+rem  7. Calculator
+rem  8. Calendar
+rem  9. Clock
+rem  10. Task Manager
+rem  11. Photos
+rem  LAST. Terminal
 
 
+rem  Coming soon! Was still in development when these were revisied for release.
+rem  12. Get help
+rem  13. Store
+rem  14. Snipping Tool
+rem  15. Sticky Notes
 
 
 
@@ -2287,30 +2457,7 @@ goto :SHUTDOWN.EXE
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+rem  Notepad App
 
 :NOTEPAD.EXE
 set _APP.EXE=1
@@ -2332,7 +2479,7 @@ call insertphoto 1450 9 110 WindowedButtons.bmp
 
 timeout /NOBREAK /T 0 > nul
 
-
+rem  call insertphoto 0 0 %BACKGROUND-SIZE% %background%.bmp
 
 
 :NOTEPAD.LOOP
@@ -2354,11 +2501,11 @@ PIXELDRAW /dl /p 0 65 1490 65 /c 0
 
 
 CALL ButtonHeight0 1 2 f8 "File    Edit    View" X _Button_Boxes _Button_Hover
-
+rem  For saving paint (later, in the works)-- test: nircmd savescreenshot "shot.png" 50 50 300 200
 
 call :TASKBARDRAW.EXE
 call :TASKBARICON.EXE
-
+rem  PIXELDRAW /refresh 00
 
 set _ACTIVEAPPLABEL=notepad.exe
 
@@ -2418,7 +2565,7 @@ goto :DESKTOP.EXE
 
 
 
-
+rem  Paint App
 
 :PAINT.EXE
 set _APP.EXE=1
@@ -2440,10 +2587,10 @@ call insertphoto 1450 9 110 WindowedButtons.bmp
 
 timeout /NOBREAK /T 0 > nul
 
+rem  call insertphoto 0 0 %BACKGROUND-SIZE% %background%.bmp
 
 
-
-
+rem  PIXELDRAW /refresh 00
 
 :PAINT.LOOP
 call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blankloadapp.light.bmp &call insertphoto 7 0 147 blankloadapp.light.bmp &call insertphoto 7 35 147 blankloadapp.light.bmp
@@ -2582,7 +2729,7 @@ goto :KERNEL.EXE
 
 
 
-
+rem  Settings App
 
 :SETTINGS.EXE
 set _APP.EXE=1
@@ -2610,18 +2757,18 @@ call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blank
 PIXELDRAW /dr 0 0 /rd 1490 783 /c 0
 PIXELDRAW /dl /p 0 35 1490 35 /c 0
 
-
-
+rem  Theres no icon in the settings app
+rem  call insertphoto 25 12 8 settings.bmp
 call insertphoto 25 12 110 ui.left.bmp
 call insertphoto 1450 9 110 WindowedButtons.bmp
 CALL ButtonHeight0 8 0 f3 "Settings" X _Button_Boxes _Button_Hover
 
-
+rem  Load left app stuff here
 call insertphoto 20 60 30 profile-icon.bmp
 CALL ButtonHeight0 15 4 f3 "%_WBX_USERNAME%" X _Button_Boxes _Button_Hover
 CALL ButtonHeight0 15 6 f0 "Local Account" X _Button_Boxes _Button_Hover
 
-
+rem Load icons first!
 call insertphoto 20 180 150 settings-system-icon.bmp
 call insertphoto 20 220 150 settings-personalization-icon.bmp
 call insertphoto 20 260 150 settings-apps-icon.bmp
@@ -2631,7 +2778,7 @@ call insertphoto 20 385 150 settings-accessibility-icon.bmp
 call insertphoto 20 425 150 settings-security-icon.bmp
 call insertphoto 20 470 150 settings-update-icon.bmp
 
-
+rem Then, load names
 CALL ButtonHeight0 9 12 f3 "System" X _Button_Boxes _Button_Hover
 CALL ButtonHeight0 9 15 f3 "Personalization" X _Button_Boxes _Button_Hover
 CALL ButtonHeight0 9 18 f3 "Apps" X _Button_Boxes _Button_Hover
@@ -2685,7 +2832,7 @@ goto :KERNEL.EXE
 :SETTINGS.SYSTEM
 set _SETTINGS.SECTION=SYSTEM
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp 
 
@@ -2705,7 +2852,7 @@ CALL ButtonHeight0 85 6 f0 "%_HOSTNAME-winbatchx%" X _Button_Boxes _Button_Hover
 CALL ButtonHeight0 85 8 f7 "Reset PC (Soon)" X _Button_Boxes _Button_Hover
 CALL ButtonHeight0 85 10 f7 "Rename" X _Button_Boxes _Button_Hover
 
-
+rem magic number: 43
 PIXELDRAW /dr 400 230 /rd 800 40 /c 7
 CALL ButtonHeight0 65 16 f3 "Display" X _Button_Boxes _Button_Hover
 CALL ButtonHeight0 65 17 f3 "Zoom Size, image display, system responsiveness" X _Button_Boxes _Button_Hover
@@ -2763,13 +2910,13 @@ goto :KERNEL.EXE
 :SETTINGS.SYSTEM.DISPLAY
 set _SETTINGS.SECTION=SYSTEM.DISPLAY
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp 
 
 CALL ButtonHeight0 55 4 f3 "System" 61 4 f0 "   >   Display" X _Button_Boxes _Button_Hover
 
-
+rem magic number: 43
 PIXELDRAW /dr 450 124 /rd 500 20 /c 7
 CALL ButtonHeight0 65 8 f0 "These settings apply only to the command line display." X _Button_Boxes _Button_Hover
 CALL ButtonHeight0 122 8 3f " Ok " X _Button_Boxes _Button_Hover
@@ -2795,13 +2942,13 @@ goto :KERNEL.EXE
 :SETTINGS.SYSTEM.SOUND
 set _SETTINGS.SECTION=SYSTEM.SOUND
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp 
 
 CALL ButtonHeight0 55 4 f3 "System" 61 4 f0 "   >   Sound" X _Button_Boxes _Button_Hover
 
-
+rem magic number: 43
 PIXELDRAW /dr 450 150 /rd 800 40 /c 7
 CALL ButtonHeight0 65 10 f3 "Volume" X _Button_Boxes _Button_Hover
 CALL ButtonBorder 130 11 f3 "               Unavailable                " X _Button_Boxes _Button_Hover
@@ -2826,13 +2973,13 @@ goto :KERNEL.EXE
 :SETTINGS.SYSTEM.NOTIFICATION
 set _SETTINGS.SECTION=SYSTEM.NOTIFICATION
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp 
 
 CALL ButtonHeight0 55 4 f3 "System" 61 4 f0 "   >   Notifications" X _Button_Boxes _Button_Hover
 
-
+rem magic number: 43
 PIXELDRAW /dr 450 150 /rd 800 40 /c 7
 CALL ButtonHeight0 65 10 f3 "Notifications" X _Button_Boxes _Button_Hover
 CALL ButtonHeight0 65 11 f3 "Updates from external apps on WinBatchX" X _Button_Boxes _Button_Hover
@@ -2863,7 +3010,7 @@ goto :KERNEL.EXE
 :SETTINGS.SYSTEM.POWER
 set _SETTINGS.SECTION=SYSTEM.POWER
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp 
 
@@ -2884,7 +3031,7 @@ goto :KERNEL.EXE
 :SETTINGS.SYSTEM.STORAGE
 set _SETTINGS.SECTION=SYSTEM.STORAGE
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp 
 
@@ -2899,7 +3046,7 @@ goto :KERNEL.EXE
 :SETTINGS.SYSTEM.MULTITASKING
 set _SETTINGS.SECTION=SYSTEM.MULTITASKING
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp 
 
@@ -2919,7 +3066,7 @@ goto :KERNEL.EXE
 :SETTINGS.SYSTEM.TROUBLESHOOT
 set _SETTINGS.SECTION=SYSTEM.TROUBLESHOOT
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp 
 
@@ -2938,7 +3085,7 @@ goto :KERNEL.EXE
 :SETTINGS.SYSTEM.RECOVERY
 set _SETTINGS.SECTION=SYSTEM.RECOVERY
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp 
 
@@ -2952,7 +3099,7 @@ CALL ButtonBorder 160 11 f8 "Get Started" X _Button_Boxes _Button_Hover
 PIXELDRAW /dr 450 205 /rd 800 40 /c 7
 CALL ButtonHeight0 65 14 f3 "Reset your WinBatchX Computer" X _Button_Boxes _Button_Hover
 CALL ButtonHeight0 65 15 f8 "Unavailable" X _Button_Boxes _Button_Hover
-
+rem CALL ButtonHeight0 65 15 f8 "Before trying this option, try troubleshooting the issue" X _Button_Boxes _Button_Hover
 CALL ButtonBorder 160 14 f8 "Reset WinBatchX" X _Button_Boxes _Button_Hover
 
 
@@ -2968,7 +3115,7 @@ goto :KERNEL.EXE
 set _SETTINGS.SECTION=SYSTEM.CLIPBOARD
 
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp 
 
@@ -2983,7 +3130,7 @@ goto :KERNEL.EXE
 :SETTINGS.SYSTEM.ABOUT
 set _SETTINGS.SECTION=SYSTEM.ABOUT
 
-
+:: Find the Windows Version
 
 For /f "tokens=1,2 delims=." %%A in ('ver') do (
 	For /f "tokens=4" %%C in ("%%A") do (
@@ -3001,12 +3148,12 @@ If /i "%_Ver%" == "10.0" (Set _winver-winbatchx=10/11)
 
 If /i "%_winver-winbatchx%" == "" (Set _winver-winbatchx=Unknown)
 
-
+:: architecture of os
 IF Not Defined ProgramFiles(x86) (Set _Type=x86) ELSE (Set _Type=x64)
 
 
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp 
 
@@ -3036,8 +3183,8 @@ CALL ButtonHeight0 75 22 f0 "Kernel Version" 100 22 f8 "%_quantum-ver%" X _Butto
 
 
 
-
-
+rem Bug check to prevent wrong errors at next startup of the settings page
+rem also part of privacy of a computer
 
 set _Ver=0.0
 set _Type=x00
@@ -3062,7 +3209,7 @@ goto :KERNEL.EXE
 :SETTINGS.PERSONALIZATION
 set _SETTINGS.SECTION=PERSONALIZATION
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp
 
@@ -3075,7 +3222,7 @@ CALL ButtonHeight0 112 6 f0 "Select a theme to apply" X _Button_Boxes _Button_Ho
 	
 CALL ButtonBorder 125 14 f8 "Not available." X _Button_Boxes _Button_Hover
 
-
+rem magic number: 43
 PIXELDRAW /dr 400 385 /rd 800 40 /c 7
 CALL ButtonHeight0 65 27 f8 "Background" X _Button_Boxes _Button_Hover
 CALL ButtonHeight0 65 28 f8 "Default Image, Solid color" X _Button_Boxes _Button_Hover
@@ -3112,7 +3259,7 @@ goto :KERNEL.EXE
 :SETTINGS.PERSONALIZATION.TASKBAR
 set _SETTINGS.SECTION=PERSONALIZATION.TASKBAR
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp 
 
@@ -3152,7 +3299,7 @@ goto :KERNEL.EXE
 :SETTINGS.APPS
 set _SETTINGS.SECTION=APPS
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp
 
@@ -3184,7 +3331,7 @@ goto :KERNEL.EXE
 :SETTINGS.ACCOUNTS
 set _SETTINGS.SECTION=ACCOUNTS
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp
 
@@ -3216,7 +3363,7 @@ goto :KERNEL.EXE
 :SETTINGS.ACCOUNTS.PROFILE
 set _SETTINGS.SECTION=ACCOUNTS.PROFILE
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp
 
@@ -3238,8 +3385,8 @@ goto :KERNEL.EXE
 :SETTINGS.ACCOUNTS.SIGNIN
 set _SETTINGS.SECTION=ACCOUNTS.SIGNIN
 
-
-
+rem  THIS IS A POP-UP
+rem  Clear the center of the accounts
 PIXELDRAW /dr 578 304 /rd 525 275 /c 0
 call insertphoto 580 305 240 blank.bmp
 call insertphoto 581 306 240 blank.bmp
@@ -3272,11 +3419,11 @@ goto :KERNEL.EXE
 
 :SETTINGS.ACCOUNTS.SIGNIN.CHANGEPASSWORD
 set _SETTINGS.SECTION=ACCOUNTS.SIGNIN.CHANGEPASSWORD
-
-
+rem  THIS IS A POP-UP
+rem  Clear the center of the accounts
 PIXELDRAW /dr 578 304 /rd 525 275 /c 0
 
-
+rem shouldnt be this long
 call insertphoto 580 305 240 blank.bmp
 call insertphoto 581 306 240 blank.bmp
 call insertphoto 579 309 240 blank.bmp
@@ -3332,7 +3479,7 @@ PIXELDRAW /dl /p 1008 400 1008 446 /c 7
 
 PIXELDRAW /dl /p 651 447 1007 447 /c 3
 
-
+rem Set cursor for typing
 BatBOX /g 94 30 /d ""
 set /p _WBX_PASSWORD=
 
@@ -3343,11 +3490,11 @@ set /p _WBX_PASSWORD=
 
 :SETTINGS.ACCOUNTS.SIGNIN.CHANGEPASSWORD.DONE
 set _SETTINGS.SECTION=ACCOUNTS.SIGNIN.CHANGEPASSWORD.DONE
-
-
+rem  THIS IS A POP-UP
+rem  Clear the center of the accounts
 PIXELDRAW /dr 578 304 /rd 525 275 /c 0
 
-
+rem shouldnt be this long
 call insertphoto 580 305 240 blank.bmp
 call insertphoto 581 306 240 blank.bmp
 call insertphoto 579 309 240 blank.bmp
@@ -3377,7 +3524,7 @@ goto :KERNEL.EXE
 :SETTINGS.TIMELANGUAGE
 set _SETTINGS.SECTION=TIMELANGUAGE
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp
 CALL ButtonHeight0 55 4 f0 "Time & Language" X _Button_Boxes _Button_Hover
@@ -3393,7 +3540,7 @@ goto :KERNEL.EXE
 :SETTINGS.ACCESSIBILITY
 set _SETTINGS.SECTION=ACCESSIBILITY
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp
 CALL ButtonHeight0 55 4 f0 "Accessibility" X _Button_Boxes _Button_Hover
@@ -3404,7 +3551,7 @@ goto :KERNEL.EXE
 :SETTINGS.PRIVACYSECURITY
 set _SETTINGS.SECTION=PRIVACYSECURITY
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp
 CALL ButtonHeight0 55 4 f0 "Privacy & Security" X _Button_Boxes _Button_Hover
@@ -3415,7 +3562,7 @@ goto :KERNEL.EXE
 :SETTINGS.UPDATE
 set _SETTINGS.SECTION=UPDATE
 
-
+rem  Clear ONLY the stuff from earlier, dont clear the sidebar
 call insertphoto 380 50 110 blankloadapp.light.bmp 
 call insertphoto 380 210 110 blankloadapp.light.bmp
 
@@ -3435,7 +3582,7 @@ call insertphoto 1299 126 41 UI.buttonblue.bmp
 call insertphoto 1301 129 40 UI.buttonblue.bmp
 CALL ButtonHeight0 180 9 3f "Check for updates" X _Button_Boxes _Button_Hover
 
-
+rem  note stuff
 call insertphoto 380 600 100 UI.buttonwhite.bmp
 call insertphoto 379 601 100 UI.buttonwhite.bmp
 call insertphoto 381 604 100 UI.buttonwhite.bmp
@@ -3469,45 +3616,45 @@ goto :KERNEL.EXE
 
 
 :SETTINGS.UPDATE.WGET
+rem  Update Manager - wget
 
-
-
+rem  Set Variable for _link= (Universal)
 SET "_Link=https://github.com/bes-ptah/WinBatchX/archive/refs/heads/main.zip"
 
-
+rem  download it quietly using -q. It won't spam the command line.
 wget -q "%_Link%" > nul
 
-
+rem  Unpack it (This is why Windows 1809 and higher is recommended, or use tar yourself)
 tar -xf main.zip
 
-
+rem  Enter the directory (always this name)
 cd winbatchx-main
 
-
+rem  Enter the update directory
 cd update
 
-
+rem  CALL the program
 call update.bat
 
-
+rem  Then remove the old files.
 del update.bat
 
 cd ..
 
-
+rem  delete it without a request from user. (or we screw the display screen up)
 rmdir update > nul
 
 del LICENSE
 del README.md
 del _config.yml
 
-
+rem  go back into the system directory.
 cd ..
 
-
+rem  remove the folder itself.
 rmdir winbatchx-main > nul
 
-
+rem  delete the zip file downloaded so the next download update wont crash the cmd line.
 del main.zip
 
 goto :SETTINGS.UPDATE
@@ -3524,7 +3671,7 @@ goto :SETTINGS.UPDATE
 
 
 
-
+rem ALWAYS call this program, never go into it!
 :SETTINGS.REWRITECONFIG
 
 
@@ -3572,8 +3719,8 @@ exit /b
 
 
 
-
-
+rem  WinBatchX Edge - There is no official license yet. 
+rem  Respectivly is 'outbranched' from Microsoft Edge.
 :EDGE.EXE
 set _APP.EXE=1
 IF %_EDGE.EXE%==1 goto :EDGE.LOOP
@@ -3593,7 +3740,7 @@ call insertphoto 1450 9 110 WindowedButtons.bmp
 
 timeout /NOBREAK /T 0 > nul
 
-
+rem  call insertphoto 0 0 %BACKGROUND-SIZE% %background%.bmp
 
 
 :EDGE.LOOP
@@ -3672,11 +3819,11 @@ goto :KERNEL.EXE
 
 
 
-
-
+rem  Explorer App
+rem  Based on Windows Insider Build 22621
 :EXPLORER.EXE
 set _APP.EXE=1
-
+rem  If you want to replicate the actual app of explorer (Win32)
 
 IF %_EXPLORER.EXE%==1 goto :EXPLORER.LOOP
 set _ACTIVEAPPLABEL=explorer.exe
@@ -3716,7 +3863,7 @@ CALL ButtonHeight0 8 1 f0 "Home" X _Button_Boxes _Button_Hover
 
 PIXELDRAW /dl /p 0 100 1490 100 /c 0
 
-
+rem  Command Bar
 Call insertphoto 20 67 120 explorer.top.new.bmp
 CALL ButtonHeight0 5 4 f0 "New" X _Button_Boxes _Button_Hover
 
@@ -3744,7 +3891,7 @@ Call insertphoto 640 55 100 taskbar-overflow-off-light.bmp
 
 PIXELDRAW /dl /p 0 100 1490 100 /c 7
 
-
+rem  Navigation Pane
 PIXELDRAW /dl /p 300 100 300 783 /c 7
 
 Call insertphoto 35 145 80 explorer.home.bmp
@@ -3772,28 +3919,28 @@ CALL ButtonHeight0 9 28 f0 "Videos" X _Button_Boxes _Button_Hover
 
 PIXELDRAW /dl /p 20 432 280 432 /c 7
 
-
+rem  Displayed Part
 
 CALL ButtonHeight0 44 10 f0 "File Explorer is not updated for WinBatchX 18. Upgrade to WinBatchX 18.1 for a updated file explorer and other released apps." X _Button_Boxes _Button_Hover
+rem CALL ButtonHeight0 44 10 f0 "Quick Access" X _Button_Boxes _Button_Hover
 
+ rem Call insertphoto 320 180 100 explorer.desktop.folder.bmp
+ rem CALL ButtonHeight0 45 16 f0 "Desktop" X _Button_Boxes _Button_Hover
 
- 
- 
+ rem Call insertphoto 420 180 100 explorer.documents.folder.bmp
+ rem CALL ButtonHeight0 59 16 f0 "Documents" X _Button_Boxes _Button_Hover
 
- 
- 
+ rem Call insertphoto 520 180 100 explorer.downloads.folder.bmp
+ rem CALL ButtonHeight0 73 16 f0 "Downloads" X _Button_Boxes _Button_Hover
 
- 
- 
+ rem Call insertphoto 620 180 100 explorer.music.folder.bmp
+ rem CALL ButtonHeight0 89 16 f0 "Music" X _Button_Boxes _Button_Hover
 
- 
- 
+ rem Call insertphoto 720 180 100 explorer.pictures.folder.bmp
+ rem CALL ButtonHeight0 102 16 f0 "Pictures" X _Button_Boxes _Button_Hover
 
- 
- 
-
- 
- 
+ rem Call insertphoto 820 180 100 explorer.videos.folder.bmp
+ rem CALL ButtonHeight0 117 16 f0 "Videos" X _Button_Boxes _Button_Hover
 
 call :TASKBARDRAW.EXE
 call :TASKBARICON.EXE
@@ -3843,7 +3990,7 @@ goto :EXPLORER.EXE
 
 
 
-
+rem  Security
 
 :SECURITY.EXE
 set _APP.EXE=1
@@ -3870,7 +4017,7 @@ call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blank
 
 call insertphoto 1450 9 110 WindowedButtons.bmp
 
-
+rem  call insertphoto 1452 38 115 UI.setting.bmp
 
 Call insertphoto 20 10 8 security.light.bmp
 CALL ButtonHeight0 6 0 f0 "WinBatchX Security" X _Button_Boxes _Button_Hover
@@ -3900,12 +4047,12 @@ goto :SECURITY.LOOP
 
 
 :SECURITY.SCAN
-
+rem  9.1.
 set "CD_winbatchx=%CD%"
 cd C:\Program Files\Windows Defender
 MpCmdRun -Scan -ScanType 3 -File %CD_winbatchx% > nul
-
-
+rem  The 3rd flag tells it as a custom scan.
+rem  Change directory back to WBX-17.
 cd "%CD_winbatchx%"
 exit /b
 
@@ -3939,12 +4086,12 @@ exit /b
 
 
 
-
-
+rem  Calculator App (Rev2)
+rem  THIS IS A GUI APP that is in development!
 
 :CALCULATOR.EXE
 
-
+rem App declare variables
 set _APP.EXE=1
 
 set _ACTIVEAPPLABEL=calculator.exe
@@ -3964,15 +4111,15 @@ set WIN2=0
 set M=0
 IF %I%==m IF %M% EQU 0 IF %X% GTR 0 IF %Y% GTR 0 IF %X% LSS 200 IF %Y% LSS 50 set WIN2=n
 
-
+rem changed it for a possible bug fix!
 call :COMPOSE.EXE
 
-
-
+rem  THIS DOES NOT REALLY WORK YET
+rem  CALL BOX %_CALCULATOR.X% %_CALCULATOR.Y% 35 66 - - f0  1
 
 CALL BOX %_CALCULATOR.X% %_CALCULATOR.Y% 15 36 - - f3  1
 
-
+rem Window Title
 set /A _CALCULATOR.X1="%_CALCULATOR.X%+2"
 set /A _CALCULATOR.Y1="%_CALCULATOR.Y%-1"
 
@@ -3986,7 +4133,7 @@ set /A _CALCULATOR.Y3="%_CALCULATOR.Y%+5"
 
 
 
-
+rem ???? the end of the desk?
 set /A _CALCULATOR.X4="%_CALCULATOR.X%+35"
 set /A _CALCULATOR.Y4="%_CALCULATOR.Y%+66"
 
@@ -3995,11 +4142,11 @@ set /A _CALCULATOR.Y4="%_CALCULATOR.Y%+66"
 
 
 
-
+rem Control button (Close only)
 set /A _CALCULATOR.X5="%_CALCULATOR.X%+28"
 set /A _CALCULATOR.Y5="%_CALCULATOR.Y%-1"
 
-
+rem for Control Input
 set /A _CALCULATOR.X5A="%_CALCULATOR.X%+24"
 set /A _CALCULATOR.Y5A="%_CALCULATOR.Y%-3"
 
@@ -4010,7 +4157,7 @@ set /A _CALCULATOR.Y5B="%_CALCULATOR.Y%+4"
 
 
 
-
+rem Show results on calculator
 set /A _CALCULATOR.X6="%_CALCULATOR.X%+2"
 set /A _CALCULATOR.Y6="%_CALCULATOR.Y%+1"
 
@@ -4032,7 +4179,7 @@ set /A _CALCULATOR.Y9="%_CALCULATOR.Y%+4"
 
 
 
-
+rem 1 2 3 4 5 6 7 8 9 + - = buttons
 set /A _CALCULATOR.X10="%_CALCULATOR.X%+2"
 set /A _CALCULATOR.Y10="%_CALCULATOR.Y%+7"
 
@@ -4049,9 +4196,9 @@ set /A _CALCULATOR.Y12="%_CALCULATOR.Y%+11"
 CALL ButtonHeight0 %_CALCULATOR.X1% %_CALCULATOR.Y1% f3 " Calculator " %_CALCULATOR.X5% %_CALCULATOR.Y5% f3 " X " X _Button_Boxes _Button_Hover
 
 
-
-
-
+rem  SET "_CALCULATOR.DIGIT1=0"
+rem  SET "_CALCULATOR.DIGIT2=0"
+rem  SET "_CALCULATOR.OPERAT=+"
 
 
 CALL ButtonHeight0 %_CALCULATOR.X6% %_CALCULATOR.Y6% f3 "Result:  " %_CALCULATOR.X6A% %_CALCULATOR.Y6A% f0 "%_CALCULATOR.FINAL%" X _Button_Boxes _Button_Hover
@@ -4060,7 +4207,7 @@ CALL ButtonHeight0 %_CALCULATOR.X8% %_CALCULATOR.Y8% f8 "Y:  %_CALCULATOR.DIGIT2
 CALL ButtonHeight0 %_CALCULATOR.X9% %_CALCULATOR.Y9% f8 "Operator:  %_CALCULATOR.OPERAT%" X _Button_Boxes _Button_Hover
 
 
-
+rem  CALL ButtonBorder %_CALCULATOR.X8% %_CALCULATOR.Y8% f0 " Ok " X _Button_Boxes _Button_Hover
 
 CALL ButtonBorder %_CALCULATOR.X10% %_CALCULATOR.Y10% f8 "  7 |  8 |  9 |     -" X _Button_Boxes _Button_Hover
 CALL ButtonBorder %_CALCULATOR.X11% %_CALCULATOR.Y11% f8 "  4 |  5 |  6 |     +" X _Button_Boxes _Button_Hover
@@ -4069,7 +4216,7 @@ CALL ButtonBorder %_CALCULATOR.X12% %_CALCULATOR.Y12% f8 "  1 |  2 |  3 |     ="
 
 
 
-	
+	rem test
 	call insertphoto 118 224 100 UI.buttongray.bmp
 	CALL ButtonHeight0 15 15 %THEMEcolor% "Test" X _Button_Boxes _Button_Hover
 
@@ -4087,8 +4234,8 @@ goto :KERNEL.EXE
 
 
 
-
-
+rem  Calendar App
+rem  (The calculating day thing is imported from 16.0)
 
 
 :CALENDAR.EXE
@@ -4116,7 +4263,7 @@ call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blank
 
 call insertphoto 1450 9 110 WindowedButtons.bmp
 
-
+rem  call insertphoto 1452 38 115 UI.setting.bmp
 
 Call insertphoto 20 10 8 calendar.light.bmp
 CALL ButtonHeight0 6 0 f0 "Calendar - %year%" X _Button_Boxes _Button_Hover
@@ -4126,29 +4273,29 @@ PIXELDRAW /dl /p 0 35 1490 35 /c 0
 call :TASKBARDRAW.EXE
 call :TASKBARICON.EXE
 
+rem  This is the orginial CALENDAR.EXE, in a graphical interface.
+rem  With premission of the open-source license, we are allowed to use other pieces of code.
+rem  This stil works in Windows 10/11!
+rem  Most Author's comments are untouched.
+rem  ========================================================================================
+
+
+rem  Xp batch for generating calendars
+rem  Chances look good for win 2000 and above(untested)
+rem  By Judago, August 2009
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+rem  The current codepage is stored in variable %CodePage%,
+rem  then changed to 850 to facilitate box drawing characters.....
 
 SETLOCAL ENABLEDELAYEDEXPANSION
 
+rem  The results are displayed below using substrings of each month's 
+rem  variable.
 
 
-
-
-
+rem  Edited portion of calendar
 
 
 
@@ -4283,7 +4430,7 @@ goto :DESKTOP.EXE
 
 
 
-
+rem  Task Manager App
 :TASKMGR.EXE
 set _APP.EXE=1
 set _ACTIVEAPPLABEL=taskmgr.exe
@@ -4315,7 +4462,7 @@ call insertphoto 0 0 147 blankloadapp.light.bmp &call insertphoto 0 35 147 blank
 
 call insertphoto 1450 9 110 WindowedButtons.bmp
 
-
+rem  call insertphoto 1452 38 115 UI.setting.bmp
 
 
 Call insertphoto 60 10 8 taskmgr.light.bmp
@@ -4324,7 +4471,7 @@ CALL ButtonHeight0 12 0 f0 "Task Manager" X _Button_Boxes _Button_Hover
 PIXELDRAW /dl /p 57 35 1490 35 /c 7
 
 
-
+rem  Navigation Pane
 PIXELDRAW /dl /p 55 37 55 783 /c 7
 Call insertphoto 20 15 100 UI.lines.bmp
 Call insertphoto 20 45 100 ui.appbox.bmp
@@ -4333,26 +4480,26 @@ Call insertphoto 20 755 100 ui.setting.bmp
 
 
 
-
+rem Search on top:
 call insertphoto 487 10 100 taskbar-searchbar-top.bmp
 CALL ButtonHeight0 72 0 f8 "Search" X _Button_Boxes _Button_Hover
 
+rem  Outline for Search Bar:
 
-
-
+rem  Top
 PIXELDRAW /dl /p 482 5 1012 5 /c 7
 
-
+rem  Left
 PIXELDRAW /dl /p 478 7 478 30 /c 7
 
-
+rem  Right
 PIXELDRAW /dl /p 1014 7 1014 30 /c 7
 
-
+rem  Bottom
 PIXELDRAW /dl /p 482 31 1012 31 /c 7
 
 
-
+rem  Main Window
 CALL ButtonHeight0 10 3 f0 "Processes (7)" X _Button_Boxes _Button_Hover
 CALL ButtonHeight0 90 3 f0 "Executables listed below are not in order." X _Button_Boxes _Button_Hover
 
@@ -4364,13 +4511,13 @@ PIXELDRAW /dl /p 60 125 1485 125 /c 7
 CALL ButtonHeight0 10 9 f0 "Apps (1)" X _Button_Boxes _Button_Hover
 
 
-
+rem Task Manager - running! :D
 CALL insertphoto 95 165 8 %_ACTIVEAPPIMAGE%.light.bmp
-
+rem Current running app (use the 'api' rather than saying task manager)
 CALL ButtonHeight0 16 11 f0 "%_ACTIVEAPPTITLE%" X _Button_Boxes _Button_Hover
-
+rem say the app is currently running, 'active' being shown on the screen
 CALL ButtonHeight0 57 11 f0 "Active" X _Button_Boxes _Button_Hover
-
+rem now variables
 CALL ButtonHeight0 77 11 f0 "2G" X _Button_Boxes _Button_Hover
 
 
@@ -4385,7 +4532,7 @@ goto :KERNEL.EXE
 
 
 
-
+rem  Photos App
 :PHOTOS.EXE
 set _APP.EXE=1
 set _ACTIVEAPPLABEL=photos.exe
@@ -4428,18 +4575,18 @@ CALL ButtonHeight0 6 0 f0 "Photos" X _Button_Boxes _Button_Hover
 call insertphoto 445 10 100 taskbar-searchbar-top.bmp
 CALL ButtonHeight0 66 0 f8 "Search" X _Button_Boxes _Button_Hover
 
+rem  Outline for Search Bar:
 
-
-
+rem  Top
 PIXELDRAW /dl /p 440 5 1050 5 /c 8
 
-
+rem  Left
 PIXELDRAW /dl /p 438 7 438 30 /c 8
 
-
+rem  Right
 PIXELDRAW /dl /p 1052 7 1052 30 /c 8
 
-
+rem  Bottom
 PIXELDRAW /dl /p 441 31 1052 31 /c 8
 
 
@@ -4456,12 +4603,12 @@ call insertphoto 1330 10 115 UI.setting.bmp
 PIXELDRAW /dl /p 0 35 1490 35 /c 0
 
 
-
+rem  Navigation Pane
 PIXELDRAW /dl /p 55 35 55 783 /c 0
 Call insertphoto 20 45 100 UI.lines.bmp
 Call insertphoto 18 75 100 ui.photos.all.bmp
 
-
+rem  Main Window
 Call insertphoto 80 50 130 ui.photos.all.bmp
 CALL ButtonHeight0 15 3 f0 "All Photos" X _Button_Boxes _Button_Hover
 
@@ -4552,7 +4699,7 @@ exit /b
 
 
 
-
+rem Terminal App
 :TERMINAL.EXE
 set _APP.EXE=1
 set _ACTIVEAPPLABEL=terminal.exe
@@ -4578,7 +4725,7 @@ call insertphoto 1450 9 110 WindowedButtons.bmp
 timeout /NOBREAK /T 0 > nul
 :TERMINAL.LOOP
 cls
-
+rem for command line to focus back into the desktop
 CALL ButtonHeight0 8 -1 0f "Terminal" 17 -1 03 "BETA" X _Button_Boxes _Button_Hover
 
 call :TASKBARDRAW.EXE
@@ -4629,7 +4776,7 @@ echo Kernel Version %_quantum-ver%
 echo.
 
 :TERMINAL.LOGIN
-echo User p
+echo User premission required.
 echo If you want to exit, type 'exit' now.
 echo User: %_WBX_USERNAME%
 echo.
@@ -4656,7 +4803,7 @@ echo.
 goto :TERMINAL.SYSTEMLOOP
 
 
-
+rem list of commands here
 	:TERMINAL.CLS
 	cls
 	goto :TERMINAL.SYSTEMLOOP
@@ -4714,5 +4861,5 @@ goto :TERMINAL.SYSTEMLOOP
 
 
 
-
-
+rem  END OF WINBATCHX CODE
+rem  WinBatchX.
