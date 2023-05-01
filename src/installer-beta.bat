@@ -91,6 +91,7 @@ call Text 83 38 0f "Please Wait for winbatchOS to start" X _Button_Boxes _Button
 
 rem load initial filesystem HERE into memory, use recovery filesystem
 
+
 call Text 83 38 0f "                                   " X _Button_Boxes _Button_Hover
 
 
@@ -245,6 +246,270 @@ rem (program insert here)
 goto :OS_FILESYSTEM_ENDOFFILE
 
 
+
+
+
+
+
+:WbOS/BIN/Box.bat
+@Echo off
+
+
+REM Checking important files...
+Set _Ver=Q0.5
+
+
+
+If /i "%~1" == "" (goto :help)
+If /i "%~1" == "/?" (goto :help)
+If /i "%~1" == "-h" (goto :help)
+If /i "%~1" == "help" (goto :help)
+If /i "%~1" == "-help" (goto :help)
+
+If /i "%~1" == "ver" (echo.NI_6.1alpha&&goto :eof)
+
+
+If /i "%~2" == "" (goto :help)
+If /i "%~3" == "" (goto :help)
+If /i "%~4" == "" (goto :help)
+
+:Box
+setlocal Enabledelayedexpansion
+set _string=
+set "_SpaceWidth=/d ""
+set _final=
+
+set x_val=%~1
+set y_val=%~2
+set sepr=%~5
+if /i "!sepr!" == "-" (set sepr=)
+set char=%~6
+if /i "!char!" == "-" (set char=)
+if defined char (set char=!char:~0,1!) ELSE (set "char= ")
+set color=%~7
+if defined color (if /i "!color!" == "-" (set color=) Else (set "color=/c 0x%~7"))
+
+Set Type=%~8
+If not defined Type (Set Type=1)
+If %Type% Gtr 4 (Set Type=1)
+
+If /i "%Type%" == "0" (
+	If /I "%~6" == "-" (
+		set _Hor_line=/a 32
+		set _Ver_line=/a 32
+		set _Top_sepr=/a 32
+		set _Base_sepr=/a 32
+		set _Top_left=/a 32
+		set _Top_right=/a 32
+		set _Base_right=/a 32
+		set _Base_left=/a 32
+		) ELSE (
+		set _Hor_line=/d "%char%"
+		set _Ver_line=/d "%char%"
+		set _Top_sepr=/d "%char%"
+		set _Base_sepr=/d "%char%"
+		set _Top_left=/d "%char%"
+		set _Top_right=/d "%char%"
+		set _Base_right=/d "%char%"
+		set _Base_left=/d "%char%"
+		)
+)
+
+If /i "%Type%" == "1" (
+set _Hor_line=/a 196
+set _Ver_line=/a 179
+set _Top_sepr=/a 194
+set _Base_sepr=/a 193
+set _Top_left=/a 218
+set _Top_right=/a 191
+set _Base_right=/a 217
+set _Base_left=/a 192
+)
+
+If /i "%Type%" == "2" (
+set _Hor_line=/a 205
+set _Ver_line=/a 186
+set _Top_sepr=/a 203
+set _Base_sepr=/a 202
+set _Top_left=/a 201
+set _Top_right=/a 187
+set _Base_right=/a 188
+set _Base_left=/a 200
+)
+
+If /i "%Type%" == "3" (
+set _Hor_line=/a 205
+set _Ver_line=/a 179
+set _Top_sepr=/a 209
+set _Base_sepr=/a 207
+set _Top_left=/a 213
+set _Top_right=/a 184
+set _Base_right=/a 190
+set _Base_left=/a 212
+)
+
+If /i "%Type%" == "4" (
+set _Hor_line=/a 196
+set _Ver_line=/a 186
+set _Top_sepr=/a 210
+set _Base_sepr=/a 208
+set _Top_left=/a 214
+set _Top_right=/a 183
+set _Base_right=/a 189
+set _Base_left=/a 211
+)
+
+set /a _char_width=%~4-2
+set /a _box_height=%~3-2
+
+for /l %%A in (1,1,!_char_width!) do (
+	if /i "%%A" == "%~5" (
+	set "_string=!_string! !_Top_sepr!"
+	set "_SpaceWidth=!_SpaceWidth!" !_Ver_line! /d ""
+	) ELSE (
+	set "_string=!_string! !_Hor_line!"
+	set "_SpaceWidth=!_SpaceWidth!!char!"
+	)
+)
+
+set "_SpaceWidth=!_SpaceWidth!""
+set "_final=/g !x_val! !y_val! !_Top_left! !_string! !_Top_right! !_final! "
+set /a y_val+=1
+
+for /l %%A in (1,1,!_box_height!) do (
+set "_final=/g !x_val! !y_val! !_Ver_line! !_SpaceWidth! !_Ver_line! !_final! "
+set /a y_val+=1
+)
+
+
+Set _To_Replace=!_Top_sepr:~-3!
+Set _Replace_With=!_Base_sepr:~-3!
+
+For %%A in ("!_To_Replace!") do For %%B in ("!_Replace_With!") do set "_final=/g !x_val! !y_val! !_Base_left! !_string:%%~A=%%~B! !_Base_right! !_final! "
+
+IF /i "%~9" == "" (batbox %color% %_final% /c 0x07) ELSE (ENDLOCAL && Set "%~9=%color% %_final% /c 0x07")
+goto :eof
+
+:help
+goto :eof
+
+
+:WbOS/BIN/Text.bat
+@echo off
+Setlocal Enabledelayedexpansion
+Set Button_height=1
+FOR %%A In (batbox.exe Getlen.bat Box.bat) DO (IF Not Exist "%%A" (Echo. Button Function, Error... File [%%A] is Missing...))
+Set _Hover=
+Set _Box=
+Set _Text=
+set _ver=Q0.5
+
+:Loop_of_button_fn
+Set _X=%~1
+Set _Y=%~2
+set color=%~3
+Set _Invert_Color=%Color:~1,1%%Color:~0,1%
+set "Button_text=%~4"
+
+
+if not defined _X (goto :EOF)
+if /i "%_X%" == "X" (Goto :End)
+
+
+Call Getlen "%button_text%"
+set button_width=%errorlevel%
+
+
+Set /A _X_Text=%_X% + 2
+Set /A _Y_Text=%_Y% + 1
+Set /A _X_End=%_X% + %button_width% - 1
+Set /A _Y_End=%_Y% + %Button_height% - 1
+
+
+
+
+Set "_Text=!_Text!/g !_X_Text! !_Y_Text! /c 0x!color! /d "!Button_text!" "
+Set "_Hover=!_Hover!!_Invert_Color! "
+Set "_Box=!_Box!!_X! !_Y! !_X_End! !_Y_End! "
+
+
+For /L %%A In (1,1,4) Do (Shift /1)
+Goto :Loop_of_button_fn
+
+:End
+Batbox %_Text% /c 0x07
+Endlocal && set "%~2=%_Box%" && set "%~3=%_Hover%"
+Goto :EOF
+
+
+
+
+
+
+
+
+
+
+:WbOS/BIN/Getlen.bat
+@echo off
+Setlocal EnableDelayedExpansion
+
+
+set _ver=Q0.5
+
+
+set len=0
+
+
+IF /i "%~1" == "" (Goto :End)
+IF /i "%~1" == "/h" (Goto :Help)
+IF /i "%~1" == "/?" (Goto :Help)
+IF /i "%~1" == "-h" (Goto :Help)
+IF /i "%~1" == "Help" (Goto :Help)
+IF /i "%~1" == "/v" (Echo.%ver% && Goto :EOF)
+
+:Main
+set "s=%~1#"
+for %%P in (4096 2048 1024 512 256 128 64 32 16 8 4 2 1) do (
+    if "!s:~%%P,1!" NEQ "" ( 
+        set /a "len+=%%P"
+        set "s=!s:~%%P!"
+    )
+)
+
+:End
+
+Endlocal && Exit /b %len%
+
+
+:WbOS/BIN/GetInput.bat
+MZ�       ��  �       @                                   �   � �	�!�L�!This program cannot be run in DOS mode.
+
+$       V�����������������������Rich���                PE  L ��ZX        �                       @                      @                                       (   (                                                                                       (                           .text   t                          `.rdata  @          
+              @  @.data       0                    @  �                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        U���������\�����  �  �F���}  </uP�F<Tt<tu*��  �F�  f� 0@ ��  �F���K  </u�F<It<i��   �
+0@ �  �F<"u@2�0@ ���F<"t
+�t
+<a|<z, f�GG��Ǎ�\���+���0@ �z  �F<"t�<0r<9w�  f�GG���׍�\���+���0@ </��   �F<Mt<m��   ��\����+  �F</t
+�t��  f�GG��ύ�\���+����
+0@ �~�/ui�F<Ht<hu^�
+0@ ƅ��� ������
+0@ ��  �&F
+�t0��0��	v����v�� �F
+�t,0<	v,<v, ��
+Ī��g��G��j��  �E�j��  �E��E�P�u��  ��   P�u��  ǅ���    f�= 0@ �tj f�5 0@ �u��s  ��    ��  �E�Pj�E�P�u��B  f�}���   �}� t��E�f�tGf��	u
+�E�   t��}f��zw�E�   u�0@ tef��a|_f�� �Yf� f= |Of�� �If�E�f��!�W���f��(~$f��-�G���f��.~f��p�7���f��{�-���f �E�   tf �
+0@ f��  ��\����f�������0@ f+���  f�}�������E�
+0@ �E�   ��   �0@ ������E�   �����f��������������   O����f;��\���r"f;��^���rf;��`���wf;��b�����   �����`���f+��\���fGf���b���f+��^���fF���\���f�����������E�PSW������u��  ��   fNu�ǅ���    �E�
+0@ ��E�   u�̀��f���   �؋�����\���f;rf;_rf;Gwf;_v
+���������0@ f+�f@�E�   ��   ;��������������H�����\����E�PSj�����P�u���   6��.���
+�uf�����f����������`���f+��\���fGf���b���f+��^���f@f���E�PSW������u��   ��   fNu��
+����؁M�   �u��u��~   S�T   f��f�
+ �>F��0r��9wf���0f��f���N��Y   ���F<"u	�F<"u���F< t��u�NÊF< t�N���%  @ �% @ �% @ �% @ �% @ �% @ �% @ �% @ �%  @                                                                                                                                             x   �   �   �   �   �   �   
+!   !      P           2!                          x   �   �   �   �   �   �   
+!   !      � ExitProcess � FillConsoleOutputAttribute  � GetConsoleMode  jGetStdHandle  4ReadConsoleInputA 7ReadConsoleOutputAttribute  nSetConsoleMode  �WaitForSingleObject � GetCommandLineA kernel32.dll                                                                                                                                                                                                  ��                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+
+
+:WbOS/BIN/insertbmp.exe
 
 
 
