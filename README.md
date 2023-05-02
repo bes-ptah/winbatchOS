@@ -14,7 +14,7 @@ Canary | winbatchOS 11.0 Preview | 23.0.10006.100
 -|-|-
 (Stable) Canary | winbatchOS 11.0 Preview | 23.0.10000.200
 
-General Releases | WinBatchX 18.0, WinBatchX 17.1, WinBatchX 18.1, WinBatchX 19 Version 2302 | Builds 1800(18.0), 1814 (17.1), 1820 (18.2), 1900.151 (19 Version 2302), 1900.251 (19 Version 2305)
+General Releases | WinBatchX 18.0, WinBatchX 17.1, WinBatchX 18.1, WinBatchX 19 Version 2302, WinBatchX 19 Version 2305 | Builds 1800(18.0), 1814 (17.1), 1820 (18.2), 1900.151 (19 Version 2302), 1900.251 (19 Version 2305)
 -|-|-
 
 [winbatchOS's website](https://bes-ptah.github.io/winbatchOS/)
