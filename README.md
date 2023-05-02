@@ -1,6 +1,6 @@
-> WinBatchX 19, Version 2202, was released on Febuary 20, 2023.
+> WinBatchX 19, Version 2205, was released May 1st, 2023.
 
-> Recent changes happened to winbatchOS's builds for this year.
+> There are no more general releases up to WinBatchX 20.
 
 # winbatchOS
 
