@@ -1,21 +1,24 @@
-> WinBatchX 19, Version 2205, was released May 1st, 2023.
-
+> WinBatchX 19, Version 2205, was released on May 1st.
 > There are no more general releases up to WinBatchX 20.
 
 # winbatchOS
 
-#### What is WinbatchOS?
-winbatchOS is a successful operating system in batch script inside any supported Windows Release. Over 100 builds have been released since WinBatchX's start in January 2020. The latest release is 18.0 - The Windows 11 Update. The latest stable build is currently 1800 (r18.0!), and our previewing release is 18.1 (1850).
-WinBatchX was our predecessor to WinBatchOS, and laid down many of the rules, policies, infrastructure, and design principles that lead today's builds.
-
+#### What's WinbatchOS?
+###### winbatchOS (or known as WinBatchX) is an open-sourced operating system in batch script and previews the Windows 11 desktop with a fully-pledged GUI and kernel. Over 125 builds have been released since the WinBatchOS project started in 2020. The latest release is WinBatchX 19, Version 2305. WinBatchX was our predecessor to WinBatchOS, and laid down many of the rules, policies, infrastructure, and design principles that lead today's builds.
 ---
 
-Canary | winbatchOS 11.0 Preview | 23.0.10006.100
+Canary | winbatchOS 23.0 Preview | 23.0.10010.100
 -|-|-
-(Stable) Canary | winbatchOS 11.0 Preview | 23.0.10000.200
+Dev | winbatchOS 11.0 Preview | 23.0.10000.200
 
-General Releases | WinBatchX 18.0, WinBatchX 17.1, WinBatchX 18.1, WinBatchX 19 Version 2302, WinBatchX 19 Version 2305 | Builds 1800(18.0), 1814 (17.1), 1820 (18.2), 1900.151 (19 Version 2302), 1900.251 (19 Version 2305)
+Beta | winbatchX 20.0 Beta | 20.0.2000.0
 -|-|-
+
+Release Preview | winbatchX 19 2305 Installer | 1900.251
+-|-|-
+
+General Releases | WinBatchX 18.0 (1800), WinBatchX 17.1 (1814), WinBatchX 18.1 (1820), WinBatchX 19 Version 2302 (1900.151), WinBatchX 19 Version 2305 (1900.251)
+-|-
 
 [winbatchOS's website](https://bes-ptah.github.io/winbatchOS/)
 ***
