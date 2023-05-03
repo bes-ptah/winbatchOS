@@ -1,5 +1,6 @@
 
-rem Java Runtime Environment (JVM) compitability layer batch file
+rem Java Runtime Environment (JVM) Ported into batch file
+rem will be used in WinBatchOS
 rem Version 0.16.0
 
 rem Microsoft Public License (Ms-PL)
@@ -64,6 +65,7 @@ cls
 rem this runs stand-alone right now with it's own files and display.
 rem Uses NI kernel.
 cd sources
+
 
 
 
