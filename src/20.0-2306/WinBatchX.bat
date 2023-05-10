@@ -1,8 +1,8 @@
-rem  WinBatchX 19.0 Beta 10 - Version 2305
-rem  Build 1900.251
-rem  Quantum Kernel 1.0rc1
+rem  WinBatchX 20.0 Preview 1 - Version 2306
+rem  Build 2000.01
+rem  Quantum Kernel 1.0rc4
 
-rem + UNLICENSE
+rem + LICENSE
 rem       Unlicense License
 rem       - 
 rem       This is free and unencumbered software released into the public domain.
@@ -62,7 +62,7 @@ cls
 echo Starting WinBatchX..
 SET "_WBX-OS=WinBatchX"
 SET "_quantum-ver=1.0rc1"
-SET "_version=19 Beta 2"
+SET "_version=20 Beta 2"
 SET "_build=1900.251"
 
 SET _DATESTART=%DATE%
