@@ -61,9 +61,9 @@ tar -xf BMP.zip
 cls
 echo Starting WinBatchX..
 SET "_WBX-OS=WinBatchX"
-SET "_quantum-ver=1.0rc1"
+SET "_quantum-ver=1.0rc4"
 SET "_version=20 Beta 2"
-SET "_build=1900.251"
+SET "_build=2000.01"
 
 SET _DATESTART=%DATE%
 SET _TIMESTART=%TIME%
@@ -4692,13 +4692,6 @@ goto :TERMINAL.SYSTEMLOOP
 	echo This feature is not enabled or is imcomplete.
 	echo.
 	goto :TERMINAL.SYSTEMLOOP
-
-
-
-
-
-
-
 
 
 
