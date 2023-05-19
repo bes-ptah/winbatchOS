@@ -228,8 +228,11 @@ goto pass-check
 IF %PASS-login%==%PASSWORD% goto DESKTOP.EXE
 goto login
 
+rem internal kernel TRIM for v1.1
+rem some code methods by me were not open-sourced but are now ported to be open-sourced
+:KERNEL.EXE
 
-
+goto :KERNEL.EXE
 
 
 
