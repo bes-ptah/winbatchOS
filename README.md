@@ -14,7 +14,7 @@ Dev | winbatchOS 11.0 Preview | 23.0.10000.200
 Beta | winbatchX 20.0 Beta | 20.0.2000.0
 -|-|-
 
-Release Preview | winbatchX 19 2305 Installer | 1900.251
+Release Preview | winbatchX 19 2305 Installer | 1900.412
 -|-|-
 
 General Releases | WinBatchX 18.0 (1800), WinBatchX 17.1 (1814), WinBatchX 18.1 (1820), WinBatchX 19 Version 2302 (1900.151), WinBatchX 19 Version 2305 (1900.251)

@@ -1,10 +1,9 @@
 rem WinBatchX 20 Installer - (Rev1)
 rem This software is licensed under the Microsoft Public License (Ms-PL).
 rem ==
-rem This is a stand-alone batch installer 
-rem that requires an internet connection.
-rem Requires Windows 10 or higher to
-rem install and reinstall WinBatchOS.
+rem WARNING: 
+rem This release cannot install winbatchx 20.
+rem THIS IS A TEST BUILD
 rem ==
 
 rem Microsoft Public License (Ms-PL)
@@ -104,7 +103,7 @@ call Text 1 1 0f "[ DATA ] Installer for winbatchOS 23, Dual Kernel.            
 rem 1
 rem Set General Variables
 SET "_WbOS=WinBatchOS"
-SET "_version=23"
+SET "_version=23"OS_FILESYSTEM_ENDOFFILE.412
 SET "_quantum-ver=1.0"
 SET "_ni-ver=10.3"
 set "_TERMINAL.EXE=0"
