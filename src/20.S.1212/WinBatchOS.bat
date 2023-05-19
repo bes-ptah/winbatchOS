@@ -1,6 +1,6 @@
 
-rem WinBatchOS Server 11 (Rev2Final) - Build 1212 Q1.1
-rem This software is licensed under the Microsoft Public License (Ms-PL).
+rem WinBatchOS Server 23 (Rev2Final) - Build 1212 Q1.1TRIM NI11.9
+rem This software is NOW licensed under the Microsoft Public License (Ms-PL).
 
 
 rem Microsoft Public License (Ms-PL)
@@ -86,18 +86,7 @@ rem  +++
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-rem This build will overwrite any changes in the current Qkernel version before 1.1.
+rem This build will NOT overwrite any changes in the current Qkernel version before 1.1 but it is stable!
 
 
 
@@ -129,13 +118,11 @@ Title WinBatchOS Operating System
 
 set ver-win=18.S
 set quantum_ver=v1.1TRIM
+set ni_ver=11.8
 set "_build=1212"
-set "_version=18.S"
+set "_version=2023S"
+set "_OS=WinBatchX"
 
-
-
-set OS= WinBatchX
-set filesystem=NIFS
 
 set CMD.EXE=OFF
 set DESKTOP.EXE=off
@@ -164,7 +151,7 @@ set ACTIVEAPP=DESKTOP.EXE
 
 cls
 call :c 03 "WinBatchOS is starting.." /n
-echo [SYSTEM] You can safely ingore this message if you are using 18.S.
+echo [SYSTEM] WinBatchOS is starting Server Core..
 
 
 
@@ -221,6 +208,9 @@ timeout /T 5 /NOBREAK > nul
 
 
 
+
+
+
 :USERS.EXE
 cls
 set pass-login=wrong
@@ -237,6 +227,9 @@ goto pass-check
 :pass-check
 IF %PASS-login%==%PASSWORD% goto DESKTOP.EXE
 goto login
+
+
+
 
 
 
