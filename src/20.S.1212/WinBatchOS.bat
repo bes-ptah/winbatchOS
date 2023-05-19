@@ -294,8 +294,8 @@ echo.
 echo.
 echo.
 echo.
-echo WinBatchX 18.S (Minimal Version)
-echo Packed with Quantum Kernel 0.6 (Also Minimal Version)
+echo WinBatchOS Server 2023
+echo Packed with Quantum Kernel 1.1TRIM
 echo.
 call :c 33 "                                                                                                                                                                                                               " /n 
 call :c f3 "                                                                                                                                                                                                               " /n
@@ -618,9 +618,7 @@ if %Errorlevel%==3 goto desk.exe
 if %Errorlevel%==4 goto %ACTIVEAPP%
 if %Errorlevel%==5 goto timemenu.exe
 if %Errorlevel%==6 goto timemenu.exe
-
-timeout /T 1 /NOBREAK > nul
-goto crash
+goto :CMD.EXE
 
 
 
