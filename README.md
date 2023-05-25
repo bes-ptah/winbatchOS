@@ -9,7 +9,7 @@
 
 Canary | winbatchOS 23.0 Preview | 23.0.10010.100
 -|-|-
-Dev | winbatchOS 11.0 Preview | 23.0.10000.200
+Dev | winbatchOS 20.0 | 23.0.10000.200
 
 Beta | winbatchX 20.0 Beta | 20.0.2000.0
 -|-|-
