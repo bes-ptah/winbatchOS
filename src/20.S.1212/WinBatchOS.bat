@@ -2,6 +2,9 @@
 rem WinBatchOS Server 23 (Rev2Final) - Build 1212 Q1.1TRIM NI11.9
 rem This software is NOW licensed under the Microsoft Public License (Ms-PL).
 
+rem Absolutely ONLY command-line interface!
+
+
 
 rem Microsoft Public License (Ms-PL)
 rem.
@@ -75,7 +78,7 @@ rem  | Flags                         | RTM-Rev2          |
 rem  | Quantum Kernel Version        | 1.1beta1          |
 rem  | NI Kernel Version             | 11.Sbeta1         |
 rem  | Build Release                 | 1212.100          |
-rem  | Installed Updates:            | 0                 |
+rem  | Installed Updates:            | 1                 |
 rem  | Last Security Update Patch    | None              |
 rem  |-------------------------------|-------------------|
 rem  +++
@@ -91,67 +94,41 @@ rem This build will NOT overwrite any changes in the current Qkernel version bef
 
 
 @Echo off
+cls
+setlocal disableDelayedExpansion
+
+mode 240,60
+Title WinBatchOS Server (64-bit)
+
+echo [SYSTEM] WinBatchOS is starting Server Core..
+FOR %%A In (batbox.exe Getlen.bat Box.bat GetInput.exe cmdmenusel.exe ) DO (IF Not Exist "%%A" (goto :HALT-error))
+
 IF "%~1" == "" start WinBatchOS start &&endlocal &&exit /b
 IF "%~1" == "start" goto :boot.exe
-IF "%~1" == "startre" call winbatchos/RECOVERY.BAT
+exit /b 
+
 
 
 :BOOT.EXE
-cls
 cd System
 
-FOR %%A In (batbox.exe Getlen.bat Box.bat GetInput.exe cmdmenusel.exe ) DO (IF Not Exist "%%A" (goto HALT-error))
-
-setlocal disableDelayedExpansion
-
-set q=^"
-echo(
-echo(
-
-echo.
-
-PROMPT $G
-mode 50,10
-timeout /T 1 /NOBREAK > nul
-mode 240,60
-Title WinBatchOS Operating System
-
-set ver-win=18.S
+rem Set General Variables
+set ver-win=23.S
 set quantum_ver=v1.1TRIM
-set ni_ver=11.8
-set "_build=1212"
-set "_version=2023S"
-set "_OS=WinBatchX"
+set ni_ver=11.9
+set "_build=2050.100"
+set "_version=Server 2023S"
+set "_OS=WinBatchOS"
+
+rem Set up page file (swap) for winbatchOS
 
 
-set CMD.EXE=OFF
-set DESKTOP.EXE=off
-set EXPLORER.EXE=off
-set EDGE.EXE=off
-set NOTEPAD.EXE=off
-set SECURITY.EXE=off 
-set SETTINGS.EXE=off
 
-set DESKTOP=DESKTOP1
-set DESKTOP1=desktop.exe
-set DESKTOP2=desktop.exe
-set DESKTOP3=desktop.exe
-set DESKTOP4=desktop.exe
-set DESKTOP5=desktop.exe
-set DESKTOP6=desktop.exe
-set DESKTOP7=desktop.exe
-set DESKTOP8=desktop.exe
-set DESKTOP9=desktop.exe
-set DESKTOP10=desktop.exe
 
-set USER=Guest
-set PASSWORD=bes
 
-set ACTIVEAPP=DESKTOP.EXE
-
-cls
-call :c 03 "WinBatchOS is starting.." /n
-echo [SYSTEM] WinBatchOS is starting Server Core..
+rem Set Default User
+set USER=Adminstrator
+set PASSWORD=NONE
 
 
 
@@ -207,6 +184,41 @@ cd %CD_winbatchx%
 timeout /T 5 /NOBREAK > nul
 
 
+:CMD.EXE
+cls
+echo SUPPEND WinBatchX Kernel
+echo [ WinBatchX KERNEL ] HALT
+echo Start WinBatchX-DOS... done 
+echo.
+echo Type EXIT to go back into WinBatchX. The kernel has been halted (suppended).
+goto os 
+
+:os
+set SELECTION=0
+set /p selection= %user%@WBX23:
+IF %SELECTION%==cls cls &goto os
+IF %SELECTION%==help goto help-dos
+IF %SELECTION%==dir echo. &dir &echo. &goto OS
+IF %SELECTION%==logoff goto login
+IF %SELECTION%==exit goto DESKTOP.EXE
+IF %SELECTION%==logout goto login
+IF %SELECTION%==ver echo %DOS_ver% &echo. &goto os
+IF %SELECTION%==exit goto os
+IF %SELECTION%==0 goto os
+echo The command "%SELECTION%" does not exist.
+goto os
+
+:help-dos
+echo.
+echo CLS         Clears the command line.
+echo DIR         Shows directories and files in the current directory.
+echo LOGOFF      Loggoff the computer.
+echo VER         Shows version of MS-DOS.
+echo RESTART     Restarts the computer.
+echo SHUTDOWN    Shuts down the computer.
+echo.
+goto os
+
 
 
 
@@ -227,6 +239,10 @@ goto pass-check
 :pass-check
 IF %PASS-login%==%PASSWORD% goto DESKTOP.EXE
 goto login
+
+
+
+
 
 rem internal kernel TRIM for v1.1
 rem some code methods by me were not open-sourced but are now ported to be open-sourced
@@ -647,51 +663,6 @@ call :c 70 "        This product can be edited even if it is closed-source.     
 call :c 70 "        It is highly configuable since it is made by batch languages from .bat files.                                                                         " /n
 
 call :c 70 "        Read the README section of WinBatchX inside your default Windows 10.                                                                                   " /n
-
-
-
-
-
-:CMD.EXE
-cls
-echo SUPPEND WinBatchX Kernel
-echo [ WinBatchX KERNEL ] HALT
-echo Start WinBatchX-DOS... done 
-echo.
-echo Type EXIT to go back into WinBatchX. The kernel has been halted (suppended).
-goto os 
-
-:os
-set SELECTION=0
-set /p selection= %user%@MSDOS:
-IF %SELECTION%==cls cls &goto os
-IF %SELECTION%==help goto help-dos
-IF %SELECTION%==dir echo. &dir &echo. &goto OS
-IF %SELECTION%==logoff goto login
-IF %SELECTION%==exit goto DESKTOP.EXE
-IF %SELECTION%==logout goto login
-IF %SELECTION%==ver echo MS-DOS %DOS_ver% &echo. &goto os
-IF %SELECTION%==exit goto os
-IF %SELECTION%==0 goto os
-echo The command "%SELECTION%" does not exist.
-goto os
-
-:help-dos
-echo.
-echo CLS         Clears the command line.
-echo DIR         Shows directories and files in the current directory.
-echo LOGOFF      Loggoff the computer.
-echo VER         Shows version of MS-DOS.
-echo RESTART     Restarts the computer.
-echo SHUTDOWN    Shuts down the computer.
-echo.
-goto os
-
-
-
-
-
-
 
 :SETTINGS.EXE
 cls
@@ -1130,77 +1101,3 @@ echo. HALT KERNEL
 pause 
 goto HALT-error
 exit
-
-
-
-
-
-
-
-
-:: example: call :c 02 "hi "&call :c 0E "welcome "&call :c aa "                  " /n
-
-echo(
-
-exit /b
-
-:c
-
-setlocal enableDelayedExpansion
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:colorPrint Color  Str  [/n]
-setlocal
-set "s=%~2"
-call :colorPrintVar %1 s %3
-exit /b
-
-:colorPrintVar  Color  StrVar  [/n]
-if not defined DEL call :initColorPrint
-setlocal enableDelayedExpansion
-pushd .
-':
-cd \
-set "s=!%~2!"
-:: The single blank line within the following IN() clause is critical - DO NOT REMOVE
-for %%n in (^"^
-
-^") do (
-  set "s=!s:\=%%~n\%%~n!"
-  set "s=!s:/=%%~n/%%~n!"
-  set "s=!s::=%%~n:%%~n!"
-)
-for /f delims^=^ eol^= %%s in ("!s!") do (
-  if "!" equ "" setlocal disableDelayedExpansion
-  if %%s==\ (
-    findstr /a:%~1 "." "\'" nul
-    <nul set /p "=%DEL%%DEL%%DEL%"
-  ) else if %%s==/ (
-    findstr /a:%~1 "." "/.\'" nul
-    <nul set /p "=%DEL%%DEL%%DEL%%DEL%%DEL%"
-  ) else (
-    >colorPrint.txt (echo %%s\..\')
-    findstr /a:%~1 /f:colorPrint.txt "."
-    <nul set /p "=%DEL%%DEL%%DEL%%DEL%%DEL%%DEL%%DEL%"
-  )
-)
-if /i "%~3"=="/n" echo(
-popd
-exit /b
-
-
-:initColorPrint
-for /f %%A in ('"prompt $H&for %%B in (1) do rem"') do set "DEL=%%A %%A"
-<nul >"%temp%\'" set /p "=."
-subst ': "%temp%" >nul
-exit /b
-
-
-:cleanupColorPrint
-2>nul del "%temp%\'"
-2>nul del "%temp%\colorPrint.txt"
->nul subst ': /d
-exit /b
-
-
-
