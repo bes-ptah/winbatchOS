@@ -1,5 +1,4 @@
-> WinBatchX 19, Version 2205, was released on May 1st.
-> There are no more general releases up to WinBatchX 20.
+> WinBatchX 20 Release Canidate 1 is now released. WinBatchX 20 will shortly be released soon.
 
 # winbatchOS
 #### The next-generation version of Windows 11.
