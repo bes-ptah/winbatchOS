@@ -8,13 +8,7 @@
 
 Canary | winbatchOS 23.0 Preview | 23.0.10010.100
 -|-|-
-Dev | winbatchOS 20.0 | 23.0.10000.200
-
-Beta | winbatchX 20.0 Beta | 20.0.2000.0
--|-|-
-
-Release Preview | winbatchX 19 2305 Installer | 1900.412
--|-|-
+Canary | winbatchOS 20.0 Release Canidate 1 | 1999.1
 
 General Releases | WinBatchX 18.0 (1800), WinBatchX 17.1 (1814), WinBatchX 18.1 (1820), WinBatchX 19 Version 2302 (1900.151), WinBatchX 19 Version 2305 (1900.251)
 -|-
