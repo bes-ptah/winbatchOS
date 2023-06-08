@@ -1,10 +1,5 @@
-
-
-rem WinBatchOS 24 (Rev1)
+rem WinBatchOS 24 Pre-Beta 1 (Rev1)
 rem This software is licensed under the Microsoft Public License (Ms-PL).
-
-
-
 
 rem Microsoft Public License (Ms-PL)
 rem.
@@ -62,41 +57,6 @@ rem      for a particular purpose and non-infringement.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @Echo off
 IF "%~1" == "" start WinBatchOS start &&endlocal &&exit /b
 IF "%~1" == "start" goto :boot.exe
@@ -104,11 +64,11 @@ IF "%~1" == "startre" call winbatchos/RECOVERY.BAT
 
 
 :BOOT.EXE
+set BOOT=1
 cd winbatchOS
 tar -xf CoreImage.zip
 
-rem Set up command line accessibility for users
-rem who accidently 'outphoto' the imaged os.
+
 setlocal EnableExtensions EnableDelayedExpansion
 mode 1000,1000
 mode 211,60
@@ -118,13 +78,12 @@ cls
 PIXELDRAW /refresh 3f
 
 rem ==================================
-rem Boot Load winbatchOS Desktop 2023:
-rem More simpler now, as most are in
-rem services, yay!
-rem ==================================
-rem 1. Set General Variables
-rem 2. Start up 'OS Critical' Services
-rem 3. Check Hibernation File
+rem Boot Load winbatchOS 23:
+rem Now it takes a long time to start WinBatchOS
+
+rem 1. General Variables
+rem 2. Filesystem
+rem 3.
 rem ==================================
 cls
 PIXELDRAW /refresh 3f
@@ -134,16 +93,10 @@ rem 1
 rem Set General Variables
 SET "_WbOS=WinBatchOS"
 SET "_version=11 Beta 1"
-SET "_build=11.0.10008.100"
+SET "_build=23.0.10050.100"
 SET "_quantum-ver=1.0rc2"
 SET "_ni-ver=11.0"
 SET "_ni-SDK=11"
-
-for /l %%a in (0,1,64) do (cls &&set "_WBX-MEMORY-S%%a=0"
-	call insertphoto 0 0 85 bootimage.bmp
-	rem	Start preloading memory lines:
-	for /l %%b in (0,1,64) do (set "_WBX-MEMORY-S%%aL%%b=0" &&cls &&echo Preloading Set: %%a/64 &&echo Preloading Lines: %%b/64)
-)
 
 
 rem 2
@@ -155,10 +108,103 @@ call Text 83 38 0f "Please Wait for the Time & Date Service                 " X 
 CALL :WbOS/SERVICES/TIMEDATE.BAT
 
 call Text 83 38 0f "Please Wait for the User Profile Service                " X _Button_Boxes _Button_Hover
-CALL Services\PERSONALIZATION.bat
+
+
+rem 11
+rem Set Default Customizations Right Now
+SET THEME=light
+SET COLORMODE=0
+SET ACCENT.COLOR=3
+SET HIGHLIGHT.WINDOW.BORDERS=b
+SET VOLUME=100
+SET NOTIFICATIONS=0
+SET DO-NOT-DISTURB=0
+
+rem Default Set for background (lock screen)
+SET BACKGROUND.LOCKSCREEN.IMAGE=background-lock
+SET BACKGROUND.LOCKSCREEN.SIZE=77
+SET _TASKBAR.ALIGNMENT=0
+
+rem Default Set for background (desktop)
+SET BACKGROUND.DESKTOP.IMAGE=background
+SET BACKGROUND.DESKTOP.SIZE=100
+SET _HOSTNAME-winbatchx=COMPUTER-0
+
+rem set a variable for errors + errorlevel
+set ERRORCODE=0
+set ERRORLEVEL=
+
+
+
+
+
+
+
+
+
+rem 12
+rem  Updated in WinBatchX Desktop 2023.
+rem  Where'd it go? The file moved to the SystemData folder
+
+call CoreData\data-system.bat
+
+rem very annoying line
+rem IF %START-STATUS%==1 Call Text 82 42 0f "Make sure you shut down your computer correctly. You did not shut down properly last time." X _Button_Boxes _Button_Hover
+
+set START-STATUS=1
+set RESTART-STATUS=0
+
+
+rem write a new data-system.bat file
+(
+  echo SET START-STATUS=%START-STATUS%
+  echo SET FLAG-RECOVERYRESTART=%FLAG-RECOVERYRESTART%
+  echo SET HIBERNATE-STATUS=%HIBERNATE-STATUS%
+  echo SET RESTART-STATUS=%RESTART-STATUS%
+) > CoreData\data-system.bat
+
+
+
+		rem 13
+rem call data-settings.bat
+call CoreData\data-settings.bat
+rem Any conversions from data-settings.bat
+IF %THEME%==light set THEMEcolor=f0
+IF %THEME%==dark set THEMEcolor=0f
+
+IF %THEME%==light set lightTHEMEcolor=f8
+IF %THEME%==dark set lightTHEMEcolor=08
+
+IF %THEME%==light set blueTHEMEcolor=f3
+IF %THEME%==dark set blueTHEMEcolor=03
+
+
+IF %THEME%==light set textTHEMEcolor=white
+IF %THEME%==light set micaTHEMEcolor=mica
+
+IF %THEME%==dark set textTHEMEcolor=dark
+IF %THEME%==dark set micaTHEMEcolor=darkmica
+
+
+		rem 14
+call CoreData\data-user.bat
+
+
 
 call Text 83 38 0f "Please Wait for the WinBatchOS Security Service         " X _Button_Boxes _Button_Hover
-CALL Services\SECURITY.bat
+
+rem 17
+rem  Using current updated update service.
+rem  This may not work on older versions (Windows 7/8)
+rem  or newer versions (Windows 11 Dev).
+set "CD_winbatchx=%CD%"
+cd C:\Program Files\Windows Defender
+MpCmdRun -Scan -ScanType 3 -File %CD_winbatchx% > nul
+rem  The 3rd flag tells it as a custom scan.
+rem  Change directory back to WBX-17.
+cd "%CD_winbatchx%"
+
+
 
 call Text 83 38 0f "Please Wait for the WinBatchOS Update Service           " X _Button_Boxes _Button_Hover
 CALL :WbOS/SERVICES/WBXUPDATE.BAT
@@ -659,10 +705,10 @@ goto :OS_FILESYSTEM_ENDOFFILE
 
 
 
+set BOOTSIGNATURE=1
 
 
-
-
+IF %BOOTSIGNATURE%=4328904802849089482 goto :LOGIN.EXE
 
 
 
@@ -681,44 +727,6 @@ goto :OS_FILESYSTEM_ENDOFFILE
 
 
 :LOGIN.EXE
-cls
-PIXELDRAW /refresh 3f
-call insertphoto 0 0 85 blankSystemImage.bmp
-call insertphoto 0 0 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
-
-Call Typo - 95 3 ff "%Time:~0,-6%"
-Call Text 102 12 %THEMEcolor% %DATE:~-10% X _Button_Boxes _Button_Hover
-
-:LOGIN.LOOP
-set I=k
-set M=0
-set X=0
-set Y=0
-For /f "Tokens=1,2,3,4* delims=:" %%A in ('Batbox.exe /m') Do (
-	rem for compitability purposes:
-	Set I=m
-	Set X=%%A
-	Set Y=%%B
-	Set M=%%C
-	title %_WbOS% Build %_build% - Debug: [%%A] [%%B] [%%C] [%%D]
-	)
-IF %I%==m IF %M%==1 IF %X% GTR 0 IF %Y% GTR 0 IF %X% LSS 211 IF %Y% LSS 58 (
-call insertphoto 0 0 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
-call insertphoto 0 -20 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
-call insertphoto 0 -40 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
-call insertphoto 0 -100 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
-call insertphoto 0 -350 %BACKGROUND.LOCKSCREEN.SIZE% %BACKGROUND.LOCKSCREEN.IMAGE%.bmp
-timeout /T 0 /NOBREAK > nul
-
-rem + Disabled Autopassword for this build
-rem IF %_WBX_SETPASSWD%==0 GOTO :WELCOME.EXE
-
-goto :LOGIN.USERFORM
-)
-goto :LOGIN.LOOP
-
-
-
 :LOGIN.USERFORM
 cls
 PIXELDRAW /refresh 3f
@@ -751,6 +759,10 @@ rem Right Side
 PIXELDRAW /dl /p 932 449 932 493 /c 8
 rem Bottom
 PIXELDRAW /dl /p 702 493 930 493 /c b
+
+
+Call Text 102 11 %THEMEcolor% %Time:~0,-6% X _Button_Boxes _Button_Hover
+Call Text 102 12 %THEMEcolor% %DATE:~-10% X _Button_Boxes _Button_Hover
 
 
 
@@ -1351,8 +1363,8 @@ exit /b
 
 
 :DESKTOP.TASKBAR
- call insertphoto 705 785 80 UI.buttonmica.bmp
- call insertphoto 675 785 80 UI.buttonmica.bmp
+ call insertphoto 705 785 80 UI.button%micaTHEMEcolor%.bmp
+ call insertphoto 675 785 80 UI.button%micaTHEMEcolor%.bmp
 rem call insertphoto 30 784 1000 taskbar.%THEME%.bmp
 rem call insertphoto 0 784 1000 taskbar.%THEME%.bmp
 
@@ -1370,12 +1382,14 @@ rem 0=center
 rem 1=left
 
 	IF %_START.EXE%==0 call insertphoto 685 790 105 taskbar-start-off-%THEME%.bmp
-	IF %_SEARCH.EXE%==0 call insertphoto 530 8 30 UI.buttonmica.bmp
-	IF %_SEARCH.EXE%==0 call insertphoto 600 8 30 UI.buttonmica.bmp
-	IF %_SEARCH.EXE%==0 call insertphoto 670 8 30 UI.buttonmica.bmp
-	IF %_SEARCH.EXE%==0 call insertphoto 710 8 30 UI.buttonwhite.bmp
-	IF %_SEARCH.EXE%==0 call insertphoto 780 8 30 UI.buttonwhite.bmp
-	IF %_SEARCH.EXE%==0 call insertphoto 850 8 30 UI.buttonwhite.bmp
+
+	PIXELDRAW /dr 529 7 /rd 400 30 /c 3
+	IF %_SEARCH.EXE%==0 call insertphoto 530 8 30 UI.button%micaTHEMEcolor%.bmp
+	IF %_SEARCH.EXE%==0 call insertphoto 600 8 30 UI.button%micaTHEMEcolor%.bmp
+	IF %_SEARCH.EXE%==0 call insertphoto 670 8 30 UI.button%micaTHEMEcolor%.bmp
+	IF %_SEARCH.EXE%==0 call insertphoto 710 8 30 UI.button%textTHEMEcolor%.bmp
+	IF %_SEARCH.EXE%==0 call insertphoto 780 8 30 UI.button%textTHEMEcolor%.bmp
+	IF %_SEARCH.EXE%==0 call insertphoto 850 8 30 UI.button%textTHEMEcolor%.bmp
 	IF %_SEARCH.EXE%==0 call insertphoto 540 13 80 taskbar-search-off-%THEME%.bmp
 	IF %_SEARCH.EXE%==0 call insertphoto 720 10 8 %_ACTIVEAPPIMAGE%.%THEME%.bmp
 		rem Widgets
@@ -1409,15 +1423,15 @@ exit /b
 
 
 :DESKTOP.LOOP
-call insertphoto 50 230 25 explorer.recyclebin.%THEME%.bmp
-CALL Text 4 23 %THEMEcolor% "Recycle Bin" X _Button_Boxes _Button_Hover
-PIXELDRAW /dr 49 229 /rd 67 67 /c 7
-PIXELDRAW /dr 50 230 /rd 65 65 /c 7
+call insertphoto 50 75 25 explorer.recyclebin.%THEME%.bmp
+CALL Text 4 10 %THEMEcolor% "Recycle Bin" X _Button_Boxes _Button_Hover
+rem PIXELDRAW /dr 49 124 /rd 67 67 /c 7
+rem PIXELDRAW /dr 50 125 /rd 65 65 /c 7
 
-call insertphoto 50 125 25 batchinstaller-%THEME%.bmp
-CALL Text 8 13 %THEMEcolor% "Run" X _Button_Boxes _Button_Hover
-PIXELDRAW /dr 49 124 /rd 67 67 /c 7
-PIXELDRAW /dr 50 125 /rd 65 65 /c 7
+call insertphoto 50 200 25 batchinstaller-%THEME%.bmp
+CALL Text 8 18 %THEMEcolor% "Run" X _Button_Boxes _Button_Hover
+rem PIXELDRAW /dr 49 229 /rd 67 67 /c 7
+rem PIXELDRAW /dr 50 230 /rd 65 65 /c 7
 
 exit /b
 
@@ -1750,10 +1764,10 @@ IF %_TASKBAR.ALIGNMENT%==0 (
 		IF %_TASKVIEW.EXE%==1 IF %Button%==1 IF %X% GTR 105 IF %Y% GTR 56 IF %X% LSS 111 IF %Y% LSS 59 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
 
 	rem Widgets:
-	IF %_WIDGETS.EXE%==0 IF %Button%==1 IF %X% GTR 2 IF %Y% GTR 56 IF %X% LSS 28 IF %Y% LSS 59 goto :WIDGETS.EXE
+	IF %_WIDGETS.EXE%==0 IF %Button%==1 IF %X% GTR 1 IF %Y% GTR 0 IF %X% LSS 51 IF %Y% LSS 2 goto :WIDGETS.EXE
 
 		rem Close Widgets:
-		IF %_WIDGETS.EXE%==1 IF %Button%==1 IF %X% GTR 2 IF %Y% GTR 56 IF %X% LSS 28 IF %Y% LSS 59 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
+		IF %_WIDGETS.EXE%==1 IF %Button%==1 IF %X% GTR 1 IF %Y% GTR 0 IF %X% LSS 51 IF %Y% LSS 2 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
 )
 
 
@@ -1764,14 +1778,14 @@ rem Close the Start Menu - Outside Start Menu UI- Desktop:
 
 
 rem Action Center:
-IF %_ACTION.EXE%==0 IF %Button%==1 IF %X% GTR 193 IF %Y% GTR 56 IF %X% LSS 198 IF %Y% LSS 59 goto :ACTION.EXE
+IF %_ACTION.EXE%==0 IF %Button%==1 IF %X% GTR 179 IF %Y% GTR 0 IF %X% LSS 184 IF %Y% LSS 2 goto :ACTION.EXE
 	rem Close Action Center:
-	IF %_ACTION.EXE%==1 IF %Button%==1 IF %X% GTR 193 IF %Y% GTR 56 IF %X% LSS 198 IF %Y% LSS 59 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
+	IF %_ACTION.EXE%==1 IF %Button%==1 IF %X% GTR 179 IF %Y% GTR 0 IF %X% LSS 184 IF %Y% LSS 2 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
 
 rem Notification Center:
-IF %_NOTIFICATION.EXE%==0 IF %Button%==1 IF %X% GTR 199 IF %Y% GTR 56 IF %X% LSS 211 IF %Y% LSS 59 goto :NOTIFICATION.EXE
+IF %_NOTIFICATION.EXE%==0 IF %Button%==1 IF %X% GTR 186 IF %Y% GTR 0 IF %X% LSS 211 IF %Y% LSS 2 goto :NOTIFICATION.EXE
 	rem Close Notification Center:
-	IF %_NOTIFICATION.EXE%==1 IF %Button%==1 IF %X% GTR 199 IF %Y% GTR 56 IF %X% LSS 211 IF %Y% LSS 59 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
+	IF %_NOTIFICATION.EXE%==1 IF %Button%==1 IF %X% GTR 186 IF %Y% GTR 0 IF %X% LSS 211 IF %Y% LSS 2 call :DESKTOP.CACHECLEAR &goto :DESKTOP.EXE
 
 
 
@@ -2409,31 +2423,16 @@ goto :KERNEL.EXE
 	call :DESKTOP.ICON
 
 
-	call insertphoto 30 30 650 blank.%THEME%.bmp
+	call insertphoto 50 40 650 blank.%THEME%.bmp
 
-	rem  Left Side of GUI
-	call insertphoto 29 31 50 blank.%THEME%.bmp
-	call insertphoto 29 33 646 blank.%THEME%.bmp
-
-
-	rem  Right Side of GUI
-	call insertphoto 655 31 50 blank.%THEME%.bmp
-	call insertphoto 35 33 646 blank.%THEME%.bmp
-
-	rem Top
-	PIXELDRAW /dl /p 31 30 703 30 /c 7
-	rem Left
-	PIXELDRAW /dl /p 29 32 29 755 /c 7
-	rem Right
-	PIXELDRAW /dl /p 705 32 705 755 /c 7
-	rem Bottom
-	PIXELDRAW /dl /p 31 757 703 757 /c 7
+	call insertphoto 600 40 650 blank.%THEME%.bmp
+	call insertphoto 750 40 650 blank.%THEME%.bmp
 
 	call Text 45 2 %THEMEcolor% "%_WBX-TASKBAR-TIME% " X _Button_Boxes _Button_Hover
 
 
 
-	call Text 10 5 %THEMEcolor% "___________________________________      _________________________________" X _Button_Boxes _Button_Hover
+	call Text 10 5 %THEMEcolor% "___________________________________      _________________________________      _________________________________      _________________________________" X _Button_Boxes _Button_Hover
 
 
 
@@ -2442,14 +2441,14 @@ goto :KERNEL.EXE
 	call Text 10 14 %THEMEcolor% "%Newest-Version-Release-Link%" X _Button_Boxes _Button_Hover
 
 
-	rem call Text 54 8 %THEMEcolor% "Tips" X _Button_Boxes _Button_Hover
-	rem call Text 54 10 %THEMEcolor% "This widget is in beta" X _Button_Boxes _Button_Hover
+	call Text 54 8 %THEMEcolor% "Tips" X _Button_Boxes _Button_Hover
+	call Text 54 10 %THEMEcolor% "This widget is in beta" X _Button_Boxes _Button_Hover
 
 
 
 
 
-	call Text 10 15 %THEMEcolor% "___________________________________      _________________________________" X _Button_Boxes _Button_Hover
+	call Text 10 15 %THEMEcolor% "___________________________________      _________________________________      _________________________________      _________________________________" X _Button_Boxes _Button_Hover
 
 
 
@@ -2459,13 +2458,13 @@ goto :KERNEL.EXE
 	call Text 10 24 %THEMEcolor% "%Newest-Build-Release-Link%" X _Button_Boxes _Button_Hover
 
 
-	rem call Text 54 18 %THEMEcolor% "Calendar" X _Button_Boxes _Button_Hover
-	rem call Text 54 20 %THEMEcolor% "This widget will be in 18.1." X _Button_Boxes _Button_Hover
+	call Text 54 18 %THEMEcolor% "Calendar" X _Button_Boxes _Button_Hover
+	call Text 54 20 %THEMEcolor% "This widget will be in 18.1." X _Button_Boxes _Button_Hover
 
 
 
-	call Text 10 25 %THEMEcolor% "___________________________________      _________________________________" X _Button_Boxes _Button_Hover
-	call Text 10 28 %THEMEcolor% "__________________________________________________________________________" X _Button_Boxes _Button_Hover
+	call Text 10 25 %THEMEcolor% "___________________________________      _________________________________      _________________________________      _________________________________" X _Button_Boxes _Button_Hover
+	call Text 10 28 %THEMEcolor% "________________________________________________________________________________________________________________________________________________________" X _Button_Boxes _Button_Hover
 
 
 
@@ -2474,7 +2473,7 @@ goto :KERNEL.EXE
 
 
 
-	call Text 10 38 %THEMEcolor% "__________________________________________________________________________" X _Button_Boxes _Button_Hover
+	call Text 10 38 %THEMEcolor% "________________________________________________________________________________________________________________________________________________________" X _Button_Boxes _Button_Hover
 
 	goto :KERNEL.EXE
 
