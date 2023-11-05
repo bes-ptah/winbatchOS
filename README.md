@@ -1,7 +1,5 @@
-> WinBatchX 20 Release Canidate 1 is now released. WinBatchX 20 will shortly be released soon.
-
 # winbatchOS
-#### The next-generation version of Windows 11.
+#### We're working on restarting the development cycle.
 
 ###### winbatchOS (or known as WinBatchX) is an open-sourced operating system in batch script and previews the Windows 11 desktop with a fully-pledged GUI and kernel. Over 125 builds have been released since the WinBatchOS project started in 2020. The latest release is WinBatchX 19, Version 2305. WinBatchX was our predecessor to WinBatchOS, and laid down many of the rules, policies, infrastructure, and design principles that lead today's builds. Maintaining compitability has been a problem in previous versions, but compitability mode solves many of the issues now in WinBatchOS 23.
 ---
